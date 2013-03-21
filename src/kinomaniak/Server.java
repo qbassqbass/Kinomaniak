@@ -9,5 +9,11 @@ package kinomaniak;
  * @author qbass
  */
 public class Server {
+    private int users;
+    private int[] commands;
+    
+    public Server(){
+        
+    }
     
 }
