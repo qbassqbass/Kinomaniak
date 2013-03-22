@@ -1,4 +1,4 @@
 Kinomaniak
 ==========
 
-Cinema Management System - Java Project (Client-Server)
+Theater Management System - Java Project (Client-Server)
