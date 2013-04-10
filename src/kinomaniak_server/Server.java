@@ -24,7 +24,20 @@ public class Server {
     }
     
     private void setcmds(int type){
-        
+        switch(type){
+            case 0 : { //Client
+                
+                break;
+            }
+            case 1 : { //User
+                
+                break;
+            }
+            case 2 : { //SuperUser/Admin
+                
+                break;
+            }
+        }
     }
     
     public void sendtoclient(Client client){

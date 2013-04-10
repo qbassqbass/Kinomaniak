@@ -1,0 +1,10 @@
+0 - dodaj film
+1 - usuń film
+2 - dodaj godzinę filmu
+3 - usuń godzinę filmu
+4 - rezerwuj bilet
+5 - potwierdzenie rezerwacji
+6 - odbiór rezerwacji
+7 - anuluj rezerwację
+666 - nowy użytkownik
+667 - usuń użytkownika
