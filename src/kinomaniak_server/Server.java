@@ -13,6 +13,7 @@ public class Server {
     private String loginname;
     private int logintype;
     private int[] availcmds;
+    private final int cmdCount = 10;
     private Client[] activeconns;
     private int command;
     
@@ -20,17 +21,21 @@ public class Server {
      * @param args the command line arguments
      */
     public Server(int type){
-        setcmds(type);
+        this.availcmds = new int[10];
+        this.setCmds(type);        
     }
     
-    private void setcmds(int type){
+    private void setCmds(int type){
         switch(type){
             case 0 : { //Client
-                
+                this.availcmds[0] = 4;
                 break;
             }
             case 1 : { //User
-                
+                this.availcmds[0] = 4;
+                this.availcmds[1] = 5;
+                this.availcmds[2] = 6;
+                this.availcmds[3] = 7;
                 break;
             }
             case 2 : { //SuperUser/Admin
@@ -40,22 +45,22 @@ public class Server {
         }
     }
     
-    public void sendtoclient(Client client){
+    public void sendToClient(Client client){
         
     }
     
-    public void recvcmd(){
+    public void recvCmd(){
         
     }
     
-    public void processcmd(int cmd){
+    public void processCmd(int cmd){
         if(cmd == -1){ //logoff
             //LOGOFF
         }else if(cmd == -2){ //exit
             //EXIT
         }
     }
-    public void sendresp(){
+    public void sendResp(){
         
     }
     

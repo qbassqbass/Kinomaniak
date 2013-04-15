@@ -17,14 +17,14 @@ public class Passthrough {
     public Passthrough(){
         
     }
-    public boolean islogged(){
+    public boolean isLogged(){
         return this.logged;
     }
-    public void setlogin(String usr,String pwd){
+    public void setLogin(String usr,String pwd){
         this.user = usr;
         this.password = pwd;
     }
-    public int checklogin(){
+    public int checkLogin(){
         /* int uid=-1;
          * for(int i=0;users.getusers.length;i++){
          *  if(this.user == users.getusers[i]) {
