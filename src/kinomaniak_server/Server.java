@@ -4,7 +4,7 @@
  */
 package kinomaniak_server;
 import kinomaniak_client.*;
-
+import kinomaniak_objs.*;
 /**
  *
  * @author qbass
@@ -14,13 +14,14 @@ public class Server {
     private int logintype;
     private int[] availcmds;
     private final int cmdCount = 10;
-    private Client[] activeconns;
+//    private Client[] activeconns;
     private int command;
     
     /**
      * @param args the command line arguments
      */
-    public Server(int type){
+    public Server(int type,String username){
+        this.loginname = username;
         this.availcmds = new int[10];
         this.setCmds(type);        
     }

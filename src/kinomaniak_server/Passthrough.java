@@ -10,12 +10,15 @@ package kinomaniak_server;
  */
 public class Passthrough {
     private boolean logged;
+    private int act;
     private String user;
     private String password;
     private int type;
+    private Server[] activeServers;
     
     public Passthrough(){
-        
+        this.activeServers = new Server[5];
+        this.act = 0;
     }
     public boolean isLogged(){
         return this.logged;
@@ -26,8 +29,8 @@ public class Passthrough {
     }
     public int checkLogin(){
         /* int uid=-1;
-         * for(int i=0;users.getusers.length;i++){
-         *  if(this.user == users.getusers[i]) {
+         * for(int i=0;users.getusers().length;i++){
+         *  if(this.user == users.getusers()[i]) {
          *      uid = i;
          *      break;
          *  }
@@ -38,7 +41,7 @@ public class Passthrough {
         return -1;
     }
     private void login(){
-        this.logged = true;
-        Server srv = new Server(this.type);
+        this.activeServers[act] = new Server(this.type, this.user);
+        act++;
     }
 }

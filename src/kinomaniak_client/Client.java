@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package kinomaniak_client;
+import kinomaniak_objs.*;
 
 /**
  *
