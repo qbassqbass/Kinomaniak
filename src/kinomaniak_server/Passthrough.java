@@ -9,8 +9,7 @@ package kinomaniak_server;
  * @author qbass
  */
 public class Passthrough {
-    private boolean logged;
-    private int act;
+    private int act; //acvive serrver count
     private String user;
     private String password;
     private int type;
@@ -19,10 +18,7 @@ public class Passthrough {
     public Passthrough(){
         this.activeServers = new Server[5];
         this.act = 0;
-    }
-    public boolean isLogged(){
-        return this.logged;
-    }
+    }    
     public void setLogin(String usr,String pwd){
         this.user = usr;
         this.password = pwd;
