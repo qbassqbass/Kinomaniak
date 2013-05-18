@@ -1,10 +1,12 @@
-0 - dodaj film
-1 - usuń film
-2 - dodaj godzinę filmu
-3 - usuń godzinę filmu
-4 - rezerwuj bilet
-5 - potwierdzenie rezerwacji
-6 - odbiór rezerwacji
-7 - anuluj rezerwację
+-2 - baza filmów
+-1 - wyloguj
+1 - dodaj film
+2 - usuń film
+3 - dodaj godzinę filmu
+4 - usuń godzinę filmu
+5 - rezerwuj bilet
+6 - potwierdzenie rezerwacji
+7 - odbiór rezerwacji
+8 - anuluj rezerwację
 666 - nowy użytkownik
 667 - usuń użytkownika

@@ -20,6 +20,7 @@ public class User implements Serializable{
         this.password = password;
         this.utype = utype;
         this.availcmds = new int[10];
+        this.setCmds();
     }
     
     public int[] getACmds(){
@@ -36,27 +37,30 @@ public class User implements Serializable{
     }
     
     private void setCmds(){
+        for(int i=0;i<10;i++){
+            this.availcmds[i] = 0;
+        }
         switch(this.utype){
             case 0 : { //Client
-                this.availcmds[0] = 4;
+                this.availcmds[0] = 5;
                 break;
             }
             case 1 : { //User
-                this.availcmds[0] = 4;
-                this.availcmds[1] = 5;
-                this.availcmds[2] = 6;
-                this.availcmds[3] = 7;
+                this.availcmds[0] = 5;
+                this.availcmds[1] = 6;
+                this.availcmds[2] = 7;
+                this.availcmds[3] = 8;
                 break;
             }
             case 2 : { //SuperUser/Admin
-                this.availcmds[0] = 0;
-                this.availcmds[1] = 1;
-                this.availcmds[2] = 2;
-                this.availcmds[3] = 3;
-                this.availcmds[4] = 4;
-                this.availcmds[5] = 5;
-                this.availcmds[6] = 6;
-                this.availcmds[7] = 7;
+                this.availcmds[0] = 1;
+                this.availcmds[1] = 2;
+                this.availcmds[2] = 3;
+                this.availcmds[3] = 4;
+                this.availcmds[4] = 5;
+                this.availcmds[5] = 6;
+                this.availcmds[6] = 7;
+                this.availcmds[7] = 8;
                 this.availcmds[8] = 666;
                 this.availcmds[9] = 667;
                 break;
