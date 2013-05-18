@@ -9,7 +9,7 @@ package kinomaniak_objs;
  * @author qbass
  */
 public class Movie {
-    public class Time{
+    public class Time{ 
         private int hour;
         private int minute;
         
