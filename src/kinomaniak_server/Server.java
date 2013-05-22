@@ -49,7 +49,7 @@ public class Server  implements Runnable{
             this.oout = new ObjectOutputStream(this.sockfd.getOutputStream()); // output for objects
             this.in = new BufferedReader(new InputStreamReader(this.sockfd.getInputStream())); //in for data
             this.oin = new ObjectInputStream(this.sockfd.getInputStream()); //input for objects
-             this.logged = true;
+            this.logged = true;
         }catch(IOException e){
             System.err.println("IOError!");
         }
@@ -58,8 +58,31 @@ public class Server  implements Runnable{
     @Override
     public void run(){ //todo!
         boolean cmdAvail = false;
+        String tmp;
         try{
-            this.luser = (User)oin.readObject(); // odczyt obiektu użytkownika od klienta           
+            this.out.write("!OK!");
+            this.luser = (User)oin.readObject(); // odczyt obiektu użytkownika od klienta        
+            boolean uok = false;
+            //check user            
+            if(uok) this.out.write("!UOK");
+            else{
+                this.logged = false;
+                this.out.write("!ERROR!");
+            }
+            tmp = this.in.readLine();
+            if(tmp.equals("!GETMOV!")){
+                this.out.write("!OK!");
+                //this.oout.writeObject(MoviesDB);
+            }else if(tmp.equals("!GETMOVDT!")){
+                tmp = this.in.readLine();
+                //if(tmp.equals(newestDBdate)) this.out.write("!MOVOK!");
+                //else{ this.out.write("!MOVUPD!"); this.oout.writeObject(MoviesDB); }
+            }
+            while(!tmp.equals("!RDY!")){
+                tmp = this.in.readLine();                
+                this.out.write("Waiting for RDY command...");
+            }
+            this.out.write("!RDY!");            
             while (this.logged){
                 if(in.ready()){ //sprawdzenie dostępności danych w buforze wejścia 
                     String data = in.readLine();
@@ -77,6 +100,7 @@ public class Server  implements Runnable{
                             else out.write("!NGRANT!"); //not granted
                             
                         }
+                    cmdAvail = false;
                 }
             }
             in.close();
@@ -111,6 +135,7 @@ public class Server  implements Runnable{
     }
     
     public boolean checkGrants(int cmd){
+        if(cmd < 0) return true;
         for(int i=0;i<10;i++){
             if(cmd == luser.getACmds()[i]){
                 return true;
@@ -168,6 +193,9 @@ public class Server  implements Runnable{
             case 667:{
                 
                 break;
+            }
+            default:{
+                out.write("!NOCMD!");
             }
             
      }

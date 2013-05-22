@@ -57,6 +57,8 @@ public class Passthrough {
             }else{
                 try{
                     this.activeConns[MAXCONNS+1] = sockfd.accept();
+                    PrintWriter out = new PrintWriter(this.activeConns[MAXCONNS+1].getOutputStream(),true);  //out for data
+                    out.write("Sorry, this server cannot accept more than "+MAXCONNS+" connections");
                 }catch(IOException e){
                     System.err.println("Could not connect Client.");
                 }
