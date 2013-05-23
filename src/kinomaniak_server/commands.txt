@@ -10,3 +10,20 @@
 8 - anuluj rezerwację
 666 - nowy użytkownik
 667 - usuń użytkownika
+------------------------------------
+Struktura pliku bazy filmów:
+(String)<data_utworzenia>
+(Integer)<ilosc_seansow>
+(Show[])<tablica_seansów>
+zapis np.:
+(zakładamy, że in to wejście ObjectInputStream, out ObjectOutputStream)
+(oraz, że db to Show[num])
+out.writeObject((String)"10-10-2010");
+out.writeObject((Integer)num);
+out.writeObject(db); //zapisując Show, zapisujemy również zawarty w nim Movie/CRoom/Time (wszystkie muszą implementować Serializable)
+
+odczyt:
+String date = (String)in.readObject();
+int num = (Integer)in.readObject();
+Show[] db = new Show[num]; //tworzymy tablicę o wielkości pobranej przed chwilą!
+db = (Show[])in.readObject();
