@@ -4,11 +4,13 @@
  */
 package kinomaniak_objs;
 
+import java.io.Serializable;
+
 /**
  *
  * @author qbass
  */
-public class CRoom {
+public class CRoom implements Serializable {
     private int id;
     private boolean[][] seats;
     

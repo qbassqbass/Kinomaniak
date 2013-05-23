@@ -8,6 +8,8 @@
 6 - potwierdzenie rezerwacji
 7 - odbiór rezerwacji
 8 - anuluj rezerwację
+9 - dodaj seans
+10 - usuń sesans
 666 - nowy użytkownik
 667 - usuń użytkownika
 ------------------------------------
@@ -27,3 +29,11 @@ String date = (String)in.readObject();
 int num = (Integer)in.readObject();
 Show[] db = new Show[num]; //tworzymy tablicę o wielkości pobranej przed chwilą!
 db = (Show[])in.readObject();
+
+----------------------------------------
+Plik użytkowników: (users.txt dostępny tylko dla serwera)
+user:password 
+user2:password 
+ew. (bezpieczeństwo)
+user:sha1pass
+user2:sha2pass

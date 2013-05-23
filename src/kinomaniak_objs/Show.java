@@ -4,12 +4,14 @@
  */
 package kinomaniak_objs;
 
+import java.io.Serializable;
+
 /**
  *
  * @author qbass
  */
-public class Show {
-    public class Time{
+public class Show implements Serializable {
+    public class Time implements Serializable{
         private int hour;
         private int minute;
         
@@ -32,5 +34,11 @@ public class Show {
         this.mov = mov;
         this.room = room;
         this.time = time;
+    }
+    public int[] getTime(){
+        int tim[] = new int[2];
+        tim[0] = this.time.getHour();
+        tim[1] = this.time.getMinute();
+        return tim;
     }
 }
