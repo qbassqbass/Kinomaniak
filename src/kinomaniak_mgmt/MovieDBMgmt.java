@@ -111,6 +111,36 @@ public class MovieDBMgmt {
         this.shows = new Show[len+1];
         System.arraycopy(this.showtmp,0,this.shows,0,len+1);
     }
+    public void delMovie(int n){
+        int len = this.movies.length;
+        this.movietmp = new Movie[len];
+        System.arraycopy(this.movies,0,this.movietmp,0,len);
+        for(int i = n;i<this.movietmp.length-1;i++){
+            this.movietmp[i] = this.movietmp[i+1];
+        }
+        this.movies = new Movie[len-1];
+        System.arraycopy(this.movietmp,0,this.movies,0,len-1);
+    }
+    public void delCRoom(int n){
+        int len = this.crooms.length;
+        this.croomtmp = new CRoom[len];
+        System.arraycopy(this.crooms,0,this.croomtmp,0,len);
+        for(int i = n;i<this.croomtmp.length-1;i++){
+            this.croomtmp[i] = this.croomtmp[i+1];
+        }
+        this.crooms = new CRoom[len-1];
+        System.arraycopy(this.croomtmp,0,this.crooms,0,len-1);
+    }
+    public void delShow(int n){
+        int len = this.shows.length;
+        this.showtmp = new Show[len];
+        System.arraycopy(this.shows,0,this.showtmp,0,len);
+        for(int i = n;i<this.showtmp.length-1;i++){
+            this.showtmp[i] = this.showtmp[i+1];
+        }
+        this.shows = new Show[len-1];
+        System.arraycopy(this.showtmp,0,this.shows,0,len-1);
+    }
     public Movie[] getMovies(){
         return this.movies;
     }

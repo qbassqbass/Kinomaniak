@@ -47,6 +47,7 @@ public class MgmtApp {
        return -666;
     }
     
+    @SuppressWarnings("empty-statement")
     public static void main(String[] args){
         System.out.println("==Welcome in Movie DataBase Management System==");
         MovieDBMgmt mgmt = new MovieDBMgmt();
@@ -55,7 +56,7 @@ public class MgmtApp {
         switch(tmp){
             case -1:{
                 Movie[] mov = new Movie[1];
-                mov[0] = new Movie("Heroes","Action","Best");
+                mov[0] = new Movie("Heroes","Action","Everyone");
                 CRoom[] cr = new CRoom[1];
                 cr[0] = new CRoom(1);
                 Time[] tm = new Time[1];
@@ -86,12 +87,20 @@ public class MgmtApp {
             case 0:{
                 mgmt.getData();
                 System.out.println("Data loaded...");
+                System.out.println("\nPress Enter to continue...");
+                Scanner sc = new Scanner(System.in);
+                while(!sc.nextLine().equals(""));
+                sc.close();
                 loaded = true;
                 break;
             }
             case 1:{
                 mgmt.saveData();
                 System.out.println("Data saved...");
+                System.out.println("\nPress Enter to continue...");
+                Scanner sc = new Scanner(System.in);
+                while(!sc.nextLine().equals(""));
+                sc.close();
                 break;
             }
             case 2:{
@@ -104,6 +113,11 @@ public class MgmtApp {
                 String rating = in.nextLine();
                 mgmt.addMovie(name,genre,rating);
                 System.out.println("Movie added");
+                System.out.println("\nPress Enter to continue...");
+                Scanner sc = new Scanner(System.in);
+                while(!sc.nextLine().equals(""));
+                sc.close();
+                in.close();
                 break;
             }
             case 3:{
@@ -114,6 +128,11 @@ public class MgmtApp {
                 int m = in.nextInt();
                 mgmt.setTime(h, m);
                 System.out.println("Time added");
+                System.out.println("\nPress Enter to continue...");
+                Scanner sc = new Scanner(System.in);
+                while(!sc.nextLine().equals(""));
+                sc.close();
+                in.close();
                 break;
             }
             case 4:{
@@ -122,6 +141,11 @@ public class MgmtApp {
                 int id = in.nextInt();
                 mgmt.addCRoom(id);
                 System.out.println("CRoom added");
+                System.out.println("\nPress Enter to continue...");
+                Scanner sc = new Scanner(System.in);
+                while(!sc.nextLine().equals(""));
+                sc.close();
+                in.close();
                 break;
             }
             case 5:{
@@ -142,6 +166,11 @@ public class MgmtApp {
                 mgmt.setTime(h,m);
                 mgmt.addShow(mgmt.getMovies()[mov],mgmt.getTime(),mgmt.getCRooms()[cr]);
                 System.out.println("Show added");
+                System.out.println("\nPress Enter to continue...");
+                Scanner sc = new Scanner(System.in);
+                while(!sc.nextLine().equals(""));
+                sc.close();
+                in.close();
                 break;
             }
             case 6:{
@@ -149,6 +178,7 @@ public class MgmtApp {
                 System.out.println("\nPress Enter to continue...");
                 Scanner sc = new Scanner(System.in);
                 while(!sc.nextLine().equals(""));
+                sc.close();
                 break;
             }
             case 7:{
@@ -156,6 +186,7 @@ public class MgmtApp {
                 System.out.println("\nPress Enter to continue...");
                 Scanner sc = new Scanner(System.in);
                 while(!sc.nextLine().equals(""));
+                sc.close();
                 break;
             }
             case 8:{
@@ -164,18 +195,49 @@ public class MgmtApp {
                 System.out.println("\nPress Enter to continue...");
                 Scanner sc = new Scanner(System.in);
                 while(!sc.nextLine().equals(""));
+                sc.close();
                 break;
             }
             case 9:{
                 //delete Movie
+                mgmt.listMovies();
+                System.out.print("MovieID to delete: ");
+                Scanner in = new Scanner(System.in);
+                int d = in.nextInt();
+                in.close();
+                mgmt.delMovie(d);
+                System.out.println("\nPress Enter to continue...");
+                Scanner sc = new Scanner(System.in);
+                while(!sc.nextLine().equals(""));
+                sc.close();
                 break;
             }
             case 10:{
                 //delete CRoom
+                mgmt.listCRooms();
+                System.out.print("CRoomID to delete: ");
+                Scanner in = new Scanner(System.in);
+                int d = in.nextInt();
+                in.close();
+                mgmt.delCRoom(d);
+                System.out.println("\nPress Enter to continue...");
+                Scanner sc = new Scanner(System.in);
+                while(!sc.nextLine().equals(""));
+                sc.close();
                 break;
             }
             case 11:{
                 //delete Show
+                mgmt.listShows();
+                System.out.print("ShowID to delete: ");
+                Scanner in = new Scanner(System.in);
+                int d = in.nextInt();
+                in.close();
+                mgmt.delShow(d);
+                System.out.println("\nPress Enter to continue...");
+                Scanner sc = new Scanner(System.in);
+                while(!sc.nextLine().equals(""));
+                sc.close();
                 break;
             }
             case 666:{
@@ -184,6 +246,10 @@ public class MgmtApp {
             }
             default:{
                 System.out.println("You have to choose proper option!");
+                System.out.println("\nPress Enter to continue...");
+                Scanner sc = new Scanner(System.in);
+                while(!sc.nextLine().equals(""));
+                sc.close();
                 break;
             }
         }

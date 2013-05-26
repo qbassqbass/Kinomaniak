@@ -1,7 +1,7 @@
 -2 - baza filmów
 -1 - wyloguj
-1 - dodaj film
-2 - usuń film
+1 - [dodaj film] wyświetl listę seansów
+2 - [usuń film] 
 3 - dodaj godzinę filmu
 4 - usuń godzinę filmu
 5 - rezerwuj bilet
