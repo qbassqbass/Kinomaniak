@@ -18,4 +18,7 @@ public class CRoom implements Serializable {
         this.id = id;
         seats = new boolean[10][10];
     }
+    public int getID(){
+        return this.id;
+    }
 }

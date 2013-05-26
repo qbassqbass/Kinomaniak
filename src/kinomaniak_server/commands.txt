@@ -34,6 +34,6 @@ db = (Show[])in.readObject();
 Plik użytkowników: (users.txt dostępny tylko dla serwera)
 user:password 
 user2:password 
-ew. (bezpieczeństwo)
+ew. (bezpieczeństwo)!!!!!!
 user:sha1pass
 user2:sha2pass

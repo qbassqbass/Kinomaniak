@@ -11,21 +11,7 @@ import java.io.Serializable;
  * @author qbass
  */
 public class Show implements Serializable {
-    public class Time implements Serializable{
-        private int hour;
-        private int minute;
-        
-        public Time(int hour,int minute){
-            this.hour = hour;
-            this.minute = minute;
-        }        
-        public int getHour(){
-            return this.hour;
-        }
-        public int getMinute(){
-            return this.minute;
-        }
-    }
+    
     private Movie mov;
     private CRoom room;
     private Time time;
@@ -40,5 +26,14 @@ public class Show implements Serializable {
         tim[0] = this.time.getHour();
         tim[1] = this.time.getMinute();
         return tim;
+    }
+    public Movie getMovie(){
+        return mov;
+    }
+    public CRoom getRoom(){
+        return room;
+    }
+    public Time getCTime(){
+        return time;
     }
 }

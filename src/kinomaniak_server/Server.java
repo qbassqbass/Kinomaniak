@@ -181,6 +181,14 @@ public class Server  implements Runnable{
                 
                 break;
             }
+            case 9:{
+                
+                break;
+            }
+            case 10:{
+                
+                break;
+            }
             case 666 :{
                 
                 break;
