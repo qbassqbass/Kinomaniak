@@ -127,9 +127,9 @@ public class Server  implements Runnable{
             out.close();
             oout.close();
         }catch(IOException e){
-            System.err.println("IOError!");
+            System.err.println("IOError: "+e);
         }catch(ClassNotFoundException e){
-            System.err.println("Class not found");
+            System.err.println("Class not found: "+e);
         }
     }
     

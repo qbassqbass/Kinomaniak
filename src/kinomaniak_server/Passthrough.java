@@ -16,78 +16,89 @@ import java.io.InputStreamReader;
  * @author qbass
  */
 public class Passthrough {
-    private static final int PORT = 8888;
-    private static final int MAXCONNS = 5;
-    private boolean logged;
-    private String user;
-    private String password;
-    private int type;
-//    private Server[] activeServers;
-    private ServerSocket sockfd;
-    private Socket[] activeConns;
-    private Thread[] activeThreads;
-    private int connectionCount; 
+//    private static final int PORT = 8888;
+//    private static final int MAXCONNS = 5;
+//    private boolean logged;
+//    private String user;
+//    private String password;
+//    private int type;
+////    private Server[] activeServers;
+//    private ServerSocket sockfd;
+//    private Socket[] activeConns;
+//    private Thread[] activeThreads;
+//    private int connectionCount; 
   //  private Socket acceptsockfd;
     
-    public Passthrough(){
-        try{
-            sockfd = new ServerSocket(PORT);
-        }catch(IOException e){
-            System.err.println("Could not listen on port: "+PORT);  
-            System.exit(1); 
-        }
-        this.connectionCount = 0;
-//        this.activeServers = new Server[MAXCONNS];
-        this.activeConns = new Socket[MAXCONNS+1];// +1 for sending error message to 'not connected' client
-        this.activeThreads = new Thread[MAXCONNS];
-    }
-    public void waitForConnection(){ //wait for client connection
-        while(1==1){ 
-            if(this.connectionCount<MAXCONNS){
-                //wait for client to connect
-                try{
-                    this.activeConns[connectionCount] = sockfd.accept();
-                    this.activeThreads[connectionCount] = new Thread(new Server(this.activeConns[connectionCount]));
-                    this.connectionCount++;
-                    System.out.println("Connected");
-                }catch(IOException e ){
-                    System.err.println("Could not connect Client.");
-                }
-                
-            }else{
-                try{
-                    this.activeConns[MAXCONNS+1] = sockfd.accept();
-                    PrintWriter out = new PrintWriter(this.activeConns[MAXCONNS+1].getOutputStream(),true);  //out for data
-                    out.write("Sorry, this server cannot accept more than "+MAXCONNS+" connections");
-                }catch(IOException e){
-                    System.err.println("Could not connect Client.");
+    public static void main(String[] args){
+        final int PORT = 8888;
+        final int MAXCONNS = 5;
+        boolean logged;
+        String user;
+        String password;
+        int type;
+        ServerSocket sockfd;
+        Socket[] activeConns;
+        Thread[] activeThreads;
+         int connectionCount; 
+        System.out.println("Waiting for connection");
+            try{
+                sockfd = new ServerSocket(PORT);
+                connectionCount = 0;
+                activeConns = new Socket[MAXCONNS+1];// +1 for sending error message to 'not connected' client
+                activeThreads = new Thread[MAXCONNS];
+                while(1==1){ 
+                if(connectionCount<MAXCONNS){
+                    //wait for client to connect
+                    try{
+                        activeConns[connectionCount] = sockfd.accept();
+                        
+                        
+                        System.out.println("Connected");
+                        activeThreads[connectionCount] = new Thread(new Server(activeConns[connectionCount]));
+                        activeThreads[connectionCount].start();
+                        connectionCount++;
+                    }catch(IOException e ){
+                        System.err.println("Could not connect Client.");
+                    }
+
+                }else{
+                    try{
+                        activeConns[MAXCONNS+1] = sockfd.accept();
+                        PrintWriter out = new PrintWriter(activeConns[MAXCONNS+1].getOutputStream(),true);  //out for data
+                        out.write("Sorry, this server cannot accept more than "+MAXCONNS+" connections");
+                    }catch(IOException e){
+                        System.err.println("Could not connect Client.");
+                    }
                 }
             }
-        }
+            }catch(IOException e){
+                System.err.println("Could not listen on port: "+PORT);  
+                System.exit(1); 
+            }
+            
     }
-    public boolean isLogged(){
-        return this.logged;
+    public void waitForConnection(){ //wait for client connection
+//        while(1==1){ 
+//            if(connectionCount<MAXCONNS){
+//                //wait for client to connect
+//                try{
+//                    activeConns[connectionCount] = sockfd.accept();
+//                    activeThreads[connectionCount] = new Thread(new Server(activeConns[connectionCount]));
+//                    connectionCount++;
+//                    System.out.println("Connected");
+//                }catch(IOException e ){
+//                    System.err.println("Could not connect Client.");
+//                }
+//                
+//            }else{
+//                try{
+//                    activeConns[MAXCONNS+1] = sockfd.accept();
+//                    PrintWriter out = new PrintWriter(activeConns[MAXCONNS+1].getOutputStream(),true);  //out for data
+//                    out.write("Sorry, this server cannot accept more than "+MAXCONNS+" connections");
+//                }catch(IOException e){
+//                    System.err.println("Could not connect Client.");
+//                }
+//            }
+//        }
     }
-    public void setLogin(String usr,String pwd){
-        this.user = usr;
-        this.password = pwd;
-    }
-    public int checkLogin(){
-        /* int uid=-1;
-         * for(int i=0;users.getusers().length;i++){
-         *  if(this.user == users.getusers()[i]) {
-         *      uid = i;
-         *      break;
-         *  }
-         * }if(uid == -1) return -1; //no user
-         * if(sha1(this.password) == users.getpass(uid)) return users.gettypeid(uid);
-         * return -2; // bad password
-         */
-        return -1;
-    }
-    /*
-    private void login(){
-        this.activeServers[this.connectionCount] = new Server(this.type, this.user);
-        connectionCount++;
-    }*/
 }

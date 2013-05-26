@@ -22,21 +22,6 @@ public class MovieDBMgmt {
     private Show[] showtmp;
     private Movie[] movietmp;
     private CRoom[] croomtmp;
-//    private class Time{
-//        private int hour;
-//        private int minute;
-//        
-//        public Time(int hour,int minute){
-//            this.hour = hour;
-//            this.minute = minute;
-//        }        
-//        public int getHour(){
-//            return this.hour;
-//        }
-//        public int getMinute(){
-//            return this.minute;
-//        }
-//    }
     
     public MovieDBMgmt(){
         
