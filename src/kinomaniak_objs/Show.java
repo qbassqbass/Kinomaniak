@@ -12,6 +12,7 @@ import java.io.Serializable;
  */
 public class Show implements Serializable {
     
+    private int showid;
     private Movie mov;
     private CRoom room;
     private Time time;
@@ -35,5 +36,11 @@ public class Show implements Serializable {
     }
     public Time getCTime(){
         return time;
+    }
+    public int getID(){
+        return this.showid;
+    }
+    public void setID(int id){
+        this.showid = id;
     }
 }

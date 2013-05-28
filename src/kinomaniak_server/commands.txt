@@ -36,4 +36,4 @@ user:password
 user2:password 
 ew. (bezpieczeństwo)!!!!!!
 user:sha1pass
-user2:sha2pass
+user2:sha1pass

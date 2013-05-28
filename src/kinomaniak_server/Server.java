@@ -14,6 +14,7 @@ import java.io.BufferedReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -82,17 +83,20 @@ public class Server  implements Runnable{
             }
             tmp = this.in.readLine();
             ObjectInputStream we = new ObjectInputStream(new FileInputStream("movies.db"));
-            if(tmp.equals("!GETMOV!")){
-                this.out.write("!OK!");
-                this.oout.writeObject(we);
-                //this.oout.writeObject(MoviesDB);
-            }else if(tmp.equals("!GETMOVDT!")){
-                tmp = this.in.readLine();
-                String dbDate = (String)we.readObject();
-                if(tmp.equals(dbDate)) this.out.write("!MOVOK!");
-                else { this.out.write("!MOVUPD!"); this.oout.writeObject(we); }
-                //if(tmp.equals(newestDBdate)) this.out.write("!MOVOK!");
-                //else{ this.out.write("!MOVUPD!"); this.oout.writeObject(MoviesDB); }
+            switch (tmp) {
+                case "!GETMOV!":
+                    this.out.write("!OK!");
+                    this.oout.writeObject(we);
+                    //this.oout.writeObject(MoviesDB);
+                    break;
+                case "!GETMOVDT!":
+                    tmp = this.in.readLine();
+                    String dbDate = (String)we.readObject();
+                    if(tmp.equals(dbDate)) this.out.write("!MOVOK!");
+                    else { this.out.write("!MOVUPD!"); this.oout.writeObject(we); }
+                    //if(tmp.equals(newestDBdate)) this.out.write("!MOVOK!");
+                    //else{ this.out.write("!MOVUPD!"); this.oout.writeObject(MoviesDB); }
+                    break;
             }
             while(!tmp.equals("!RDY!")){
                 tmp = this.in.readLine();                
@@ -102,12 +106,16 @@ public class Server  implements Runnable{
             while (this.logged){
                 if(in.ready()){ //sprawdzenie dostępności danych w buforze wejścia 
                     String data = in.readLine();
-                    if(data.equals("!CMD!")){ //jeśli klient wysyła komendę
-                        cmdAvail = true;
-                    }else if(data.equals("!OK!")){ //jeśli klient przesyła potwierdzenie
-                        
-                    }else{
-                        out.write("!NAVAIL!"); //not available
+                    switch (data) {
+                        case "!CMD!":
+                            //jeśli klient wysyła komendę
+                            cmdAvail = true;
+                            break;
+                        case "!OK!":
+                            break;
+                        default:
+                            out.write("!NAVAIL!"); //not available
+                            break;
                     }
                     if(cmdAvail)
                         if(in.ready()){
@@ -165,20 +173,154 @@ public class Server  implements Runnable{
                 
                 break;
             }
-            case 5:{
-                
+            case 5:{ // rezerwacja biletu
+                try{
+                    out.print("!GDATA!");
+                    if(in.readLine().equals("!OK!"))
+                        out.print("!NAZW!");
+                        String nazwa = in.readLine();
+                        out.println("!OK!");
+                        out.print("!SEANS!");
+                        int showid = in.read();
+                        out.print("!OK!");
+                        out.print("!MIEJSC!");
+                        int[] seat = (int[])oin.readObject();
+                        Res res = new Res(nazwa,showid,seat);
+                    synchronized (this){
+                        try{
+                            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
+                            int num = (Integer)we.readObject();
+                            Res ares[] = new Res[num+1];
+                            ares = (Res[])we.readObject();
+                            we.close();
+                            ares[num+1] = res;
+                            ObjectOutputStream wy = new ObjectOutputStream(new FileOutputStream("Res.kin"));
+                            wy.writeObject(num+1);
+                            wy.writeObject(ares);
+                            wy.close();
+                        }catch(IOException e){
+                            System.err.println("IO Error: "+e);
+                        }
+                    }
+                }catch(IOException e){
+                    System.err.println("IO Error: "+e);
+                }catch(ClassNotFoundException e){
+                    System.err.println("Class not found :"+e);
+                }
                 break;
             }
-            case 6:{
-                
+            case 6:{// potwierdzenie rezerwacji
+                try{
+                    out.print("!GDATA!");
+                    if(in.readLine().equals("!OK!"))
+                        out.print("!GORES!"); // Get Object Res
+                        Res res = (Res)oin.readObject();
+                        synchronized(this){
+                            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
+                            int num = (Integer)we.readObject();
+                            Res ares[] = new Res[num];
+                            ares = (Res[])we.readObject();
+                            we.close();
+                            boolean acc = false;
+                            for (int i = 0;i<ares.length;i++){
+                                if(ares[i].equals(res)){
+                                    ares[i].accept();
+                                    acc = true;
+                                    break;
+                                }
+                            }
+                            if(acc){
+                                ObjectOutputStream wy = new ObjectOutputStream(new FileOutputStream("Res.kin"));
+                                wy.writeObject(ares.length);
+                                wy.writeObject(ares);
+                                wy.close();
+                                out.println("!OK!");
+                            }else out.println("!NORES!");
+                        }
+                }catch(IOException e){
+                    System.err.println("IO Error: "+e);
+                }catch(ClassNotFoundException e){
+                    System.err.println("Class not found :"+e);
+                }
                 break;
             }
-            case 7 :{
-                
+            case 7 :{ // odbiór rezerwacji
+                try{
+                    out.print("!GDATA!");
+                    if(in.readLine().equals("!OK!"))
+                        out.print("!GORES!"); // Get Object Res
+                        Res res = (Res)oin.readObject();
+                        synchronized(this){
+                            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
+                            int num = (Integer)we.readObject();
+                            Res ares[] = new Res[num];
+                            ares = (Res[])we.readObject();
+                            we.close();
+                            boolean ok = false;
+                            for (int i = 0;i<ares.length;i++){
+                                if(ares[i].equals(res)){
+                                    ares[i].get();
+                                    ok = true;
+                                    break;
+                                }
+                            }
+                            if(ok){
+                                ObjectOutputStream wy = new ObjectOutputStream(new FileOutputStream("Res.kin"));
+                                wy.writeObject(ares.length);
+                                wy.writeObject(ares);
+                                wy.close();                                
+                                out.println("!OK!");
+                            }else out.println("!NORES!");
+                        }
+                }catch(IOException e){
+                    System.err.println("IO Error: "+e);
+                }catch(ClassNotFoundException e){
+                    System.err.println("Class not found :"+e);
+                }
                 break;
             }
-            case 8:{
-                
+            case 8:{ // anulowanie rezerwacji
+                try{
+                    out.print("!GDATA!");
+                    if(in.readLine().equals("!OK!"))
+                        out.print("!GORES!"); // Get Object Res
+                        Res res = (Res)oin.readObject();
+                        synchronized(this){
+                            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
+                            int num = (Integer)we.readObject();
+                            Res ares[] = new Res[num];
+                            ares = (Res[])we.readObject();
+                            we.close();
+                            int tmp = -254;
+                            for (int i = 0;i<ares.length;i++){
+                                if(ares[i].equals(res)){
+                                    tmp = i;
+                                    break;
+                                }
+                            }
+                            if(tmp>-1){
+                                
+                                int len = ares.length;
+                                Res arestmp[] = new Res[len];
+                                System.arraycopy(ares,0,arestmp,0,len);
+                                for(int i = tmp;i<arestmp.length-1;i++){
+                                    arestmp[i] = arestmp[i+1];
+                                }
+                                ares = new Res[len-1];
+                                System.arraycopy(arestmp,0,ares,0,len-1);
+                                
+                                ObjectOutputStream wy = new ObjectOutputStream(new FileOutputStream("Res.kin"));
+                                wy.writeObject(ares.length);
+                                wy.writeObject(ares);
+                                wy.close();                                
+                                out.println("!OK!");
+                            }else out.println("!NORES!");
+                        }
+                }catch(IOException e){
+                    System.err.println("IO Error: "+e);
+                }catch(ClassNotFoundException e){
+                    System.err.println("Class not found :"+e);
+                }
                 break;
             }
             case 9:{

@@ -63,6 +63,7 @@ public class MgmtApp {
                 tm[0] = new Time(12,10);
                 Show[] sh = new Show[1];
                 sh[0] = new Show(mov[0],cr[0],tm[0]);
+                sh[0].setID(0);
                 try{
                     ObjectOutputStream wy = new ObjectOutputStream(new FileOutputStream("Movies.kin"));
                     wy.writeObject(mov);

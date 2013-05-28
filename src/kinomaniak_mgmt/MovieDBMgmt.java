@@ -90,9 +90,11 @@ public class MovieDBMgmt {
     }
     public void addShow(Movie movie, Time time, CRoom croom ){
         int len = this.shows.length;
+        int prevID = this.shows[len-1].getID();
         this.showtmp = new Show[len+1];
         System.arraycopy(this.shows,0,this.showtmp,0,len);
         this.showtmp[len] = new Show(movie,croom,time);
+        this.showtmp[len].setID(prevID+1);
         this.shows = new Show[len+1];
         System.arraycopy(this.showtmp,0,this.shows,0,len+1);
     }

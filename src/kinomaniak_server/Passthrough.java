@@ -32,10 +32,10 @@ public class Passthrough {
     public static void main(String[] args){
         final int PORT = 8888;
         final int MAXCONNS = 5;
-        boolean logged;
-        String user;
-        String password;
-        int type;
+        //boolean logged;
+        //String user;
+        //String password;
+       // int type;
         ServerSocket sockfd;
         Socket[] activeConns;
         Thread[] activeThreads;
@@ -51,8 +51,6 @@ public class Passthrough {
                     //wait for client to connect
                     try{
                         activeConns[connectionCount] = sockfd.accept();
-                        
-                        
                         System.out.println("Connected");
                         activeThreads[connectionCount] = new Thread(new Server(activeConns[connectionCount]));
                         activeThreads[connectionCount].start();
@@ -76,29 +74,5 @@ public class Passthrough {
                 System.exit(1); 
             }
             
-    }
-    public void waitForConnection(){ //wait for client connection
-//        while(1==1){ 
-//            if(connectionCount<MAXCONNS){
-//                //wait for client to connect
-//                try{
-//                    activeConns[connectionCount] = sockfd.accept();
-//                    activeThreads[connectionCount] = new Thread(new Server(activeConns[connectionCount]));
-//                    connectionCount++;
-//                    System.out.println("Connected");
-//                }catch(IOException e ){
-//                    System.err.println("Could not connect Client.");
-//                }
-//                
-//            }else{
-//                try{
-//                    activeConns[MAXCONNS+1] = sockfd.accept();
-//                    PrintWriter out = new PrintWriter(activeConns[MAXCONNS+1].getOutputStream(),true);  //out for data
-//                    out.write("Sorry, this server cannot accept more than "+MAXCONNS+" connections");
-//                }catch(IOException e){
-//                    System.err.println("Could not connect Client.");
-//                }
-//            }
-//        }
     }
 }
