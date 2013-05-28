@@ -68,44 +68,45 @@ public class Server  implements Runnable{
         boolean cmdAvail = false;
         String tmp;
         try{
-            this.out.write("!OK!");
+            //this.out.write("!OK!");
+            this.oout.writeObject((String)"!OK!");
             this.luser = (User)oin.readObject(); // odczyt obiektu użytkownika od klienta        
             boolean uok = checkUser(); // sprawdzenie użytkownika
-            if(uok) this.out.write("!UOK");
+            if(uok) this.oout.writeObject((String)"!UOK");
             else{
                 this.logged = false;
-                this.out.write("!ERROR!");
+                this.oout.writeObject((String)"!ERROR!");
                 this.in.close();
                 this.out.close();
                 this.oin.close();
                 this.oout.close();
                 System.exit(-1);
             }
-            tmp = this.in.readLine();
+            tmp = (String)oin.readObject();
             ObjectInputStream we = new ObjectInputStream(new FileInputStream("movies.db"));
             switch (tmp) {
                 case "!GETMOV!":
-                    this.out.write("!OK!");
+                    this.oout.writeObject((String)"!OK!");
                     this.oout.writeObject(we);
                     //this.oout.writeObject(MoviesDB);
                     break;
                 case "!GETMOVDT!":
-                    tmp = this.in.readLine();
+                    tmp = (String)oin.readObject();
                     String dbDate = (String)we.readObject();
-                    if(tmp.equals(dbDate)) this.out.write("!MOVOK!");
-                    else { this.out.write("!MOVUPD!"); this.oout.writeObject(we); }
+                    if(tmp.equals(dbDate)) this.oout.writeObject((String)"!MOVOK!");
+                    else { this.oout.writeObject((String)"!MOVUPD!"); this.oout.writeObject(we); }
                     //if(tmp.equals(newestDBdate)) this.out.write("!MOVOK!");
                     //else{ this.out.write("!MOVUPD!"); this.oout.writeObject(MoviesDB); }
                     break;
             }
             while(!tmp.equals("!RDY!")){
-                tmp = this.in.readLine();                
-                this.out.write("Waiting for RDY command...");
+                tmp = (String)oin.readObject();                
+                this.oout.writeObject((String)"Waiting for RDY command...");
             }
-            this.out.write("!RDY!");            
+            this.oout.writeObject((String)"!RDY!");            
             while (this.logged){
                 if(in.ready()){ //sprawdzenie dostępności danych w buforze wejścia 
-                    String data = in.readLine();
+                    String data = (String)oin.readObject();
                     switch (data) {
                         case "!CMD!":
                             //jeśli klient wysyła komendę
@@ -114,17 +115,17 @@ public class Server  implements Runnable{
                         case "!OK!":
                             break;
                         default:
-                            out.write("!NAVAIL!"); //not available
+                            this.oout.writeObject((String)"!NAVAIL!"); //not available
                             break;
                     }
                     if(cmdAvail)
                         if(in.ready()){
-                            int cmd = in.read();
+                            int cmd = (Integer)oin.readObject();
                             if(this.checkGrants(cmd)){
                                 this.processCmd(cmd);
-                                out.write("!OK!");
+                                this.oout.writeObject((String)"!OK!");
                             }
-                            else out.write("!NGRANT!"); //not granted
+                            else this.oout.writeObject((String)"!NGRANT!"); //not granted
                             
                         }
                     cmdAvail = false;
@@ -175,15 +176,16 @@ public class Server  implements Runnable{
             }
             case 5:{ // rezerwacja biletu
                 try{
-                    out.print("!GDATA!");
-                    if(in.readLine().equals("!OK!"))
-                        out.print("!NAZW!");
-                        String nazwa = in.readLine();
-                        out.println("!OK!");
-                        out.print("!SEANS!");
-                        int showid = in.read();
-                        out.print("!OK!");
-                        out.print("!MIEJSC!");
+                    this.oout.writeObject((String)"!GDATA!");
+                    String tmp = (String)oin.readObject();
+                    if(tmp.equals("!OK!"))
+                        this.oout.writeObject((String)"!NAZW!");
+                        String nazwa = (String)oin.readObject();
+                        this.oout.writeObject((String)"!OK!");
+                        this.oout.writeObject((String)"!SEANS!");
+                        int showid = (Integer)oin.readObject();
+                        this.oout.writeObject((String)"!OK!");
+                        this.oout.writeObject((String)"!MIEJSC!");
                         int[] seat = (int[])oin.readObject();
                         Res res = new Res(nazwa,showid,seat);
                     synchronized (this){
@@ -211,9 +213,10 @@ public class Server  implements Runnable{
             }
             case 6:{// potwierdzenie rezerwacji
                 try{
-                    out.print("!GDATA!");
-                    if(in.readLine().equals("!OK!"))
-                        out.print("!GORES!"); // Get Object Res
+                    this.oout.writeObject((String)"!GDATA!");
+                    String tmp = (String)oin.readObject();
+                    if(tmp.equals("!OK!"))
+                        this.oout.writeObject((String)"!GORES!"); // Get Object Res
                         Res res = (Res)oin.readObject();
                         synchronized(this){
                             ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
@@ -234,8 +237,8 @@ public class Server  implements Runnable{
                                 wy.writeObject(ares.length);
                                 wy.writeObject(ares);
                                 wy.close();
-                                out.println("!OK!");
-                            }else out.println("!NORES!");
+                                this.oout.writeObject((String)"!OK!");
+                            }else this.oout.writeObject((String)"!NORES!");
                         }
                 }catch(IOException e){
                     System.err.println("IO Error: "+e);
@@ -246,9 +249,10 @@ public class Server  implements Runnable{
             }
             case 7 :{ // odbiór rezerwacji
                 try{
-                    out.print("!GDATA!");
-                    if(in.readLine().equals("!OK!"))
-                        out.print("!GORES!"); // Get Object Res
+                    this.oout.writeObject((String)"!GDATA!");
+                    String tmp = (String)oin.readObject();
+                    if(tmp.equals("!OK!"))
+                        this.oout.writeObject((String)"!GORES!"); // Get Object Res
                         Res res = (Res)oin.readObject();
                         synchronized(this){
                             ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
@@ -269,8 +273,8 @@ public class Server  implements Runnable{
                                 wy.writeObject(ares.length);
                                 wy.writeObject(ares);
                                 wy.close();                                
-                                out.println("!OK!");
-                            }else out.println("!NORES!");
+                                this.oout.writeObject((String)"!OK!");
+                            }else this.oout.writeObject((String)"!NORES!");
                         }
                 }catch(IOException e){
                     System.err.println("IO Error: "+e);
@@ -281,9 +285,10 @@ public class Server  implements Runnable{
             }
             case 8:{ // anulowanie rezerwacji
                 try{
-                    out.print("!GDATA!");
-                    if(in.readLine().equals("!OK!"))
-                        out.print("!GORES!"); // Get Object Res
+                    this.oout.writeObject((String)"!GDATA!");
+                    String tmps = (String)oin.readObject();
+                    if(tmps.equals("!OK!"))
+                         this.oout.writeObject((String)"!GORES!"); // Get Object Res
                         Res res = (Res)oin.readObject();
                         synchronized(this){
                             ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
@@ -313,8 +318,8 @@ public class Server  implements Runnable{
                                 wy.writeObject(ares.length);
                                 wy.writeObject(ares);
                                 wy.close();                                
-                                out.println("!OK!");
-                            }else out.println("!NORES!");
+                                 this.oout.writeObject((String)"!OK!");
+                            }else  this.oout.writeObject((String)"!NORES!");
                         }
                 }catch(IOException e){
                     System.err.println("IO Error: "+e);

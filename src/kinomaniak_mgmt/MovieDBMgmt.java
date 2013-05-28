@@ -19,9 +19,11 @@ public class MovieDBMgmt {
     private Movie[] movies;
     private CRoom[] crooms;
     private Time time;
+    private User[] users;
     private Show[] showtmp;
     private Movie[] movietmp;
     private CRoom[] croomtmp;
+    private User[] usertmp;
     
     public MovieDBMgmt(){
         
@@ -42,6 +44,9 @@ public class MovieDBMgmt {
             we.close();
             we = new ObjectInputStream(new FileInputStream("CRooms.kin"));
             this.crooms = (CRoom[])we.readObject();
+            we.close();
+            we = new ObjectInputStream(new FileInputStream("Users.kin"));
+            this.users = (User[])we.readObject();
             we.close();
          }catch(IOException e){
             System.err.println("IO Error: "+e);
@@ -65,6 +70,9 @@ public class MovieDBMgmt {
             wy.writeObject(st);
             wy.writeObject(this.shows.length);
             wy.writeObject(this.shows);
+            wy.close();
+            wy = new ObjectOutputStream(new FileOutputStream("Users.kin"));
+            wy.writeObject(this.users);
             wy.close();
         }catch(IOException e){
             System.err.println("IO Error: "+e);
@@ -97,6 +105,14 @@ public class MovieDBMgmt {
         this.showtmp[len].setID(prevID+1);
         this.shows = new Show[len+1];
         System.arraycopy(this.showtmp,0,this.shows,0,len+1);
+    }    
+    public void addUser(String name, String password,int utype){
+        int len = this.users.length;
+        this.usertmp = new User[len+1];
+        System.arraycopy(this.users,0,this.usertmp,0,len);
+        this.usertmp[len] = new User(name,password,utype);
+        this.users = new User[len+1];
+        System.arraycopy(this.usertmp,0,this.users,0,len+1);
     }
     public void delMovie(int n){
         int len = this.movies.length;
@@ -128,6 +144,16 @@ public class MovieDBMgmt {
         this.shows = new Show[len-1];
         System.arraycopy(this.showtmp,0,this.shows,0,len-1);
     }
+    public void delUser(int n){
+        int len = this.users.length;
+        this.usertmp = new User[len];
+        System.arraycopy(this.users,0,this.usertmp,0,len);
+        for(int i = n;i<this.usertmp.length-1;i++){
+            this.usertmp[i] = this.usertmp[i+1];
+        }
+        this.users = new User[len-1];
+        System.arraycopy(this.usertmp,0,this.users,0,len-1);
+    }
     public Movie[] getMovies(){
         return this.movies;
     }
@@ -136,6 +162,9 @@ public class MovieDBMgmt {
     }
     public Show[] getShows(){
         return this.shows;
+    }
+    public User[] getUsers(){
+        return this.users;
     }
     public void listMovies(){
         for(int i=0;i<this.movies.length;i++){
@@ -150,6 +179,11 @@ public class MovieDBMgmt {
     public void listShows(){
         for(int i=0;i<this.shows.length;i++){
             System.out.println(i+". "+this.shows[i].getMovie().getName()+" Room: "+this.shows[i].getRoom().getID()+" Time: "+this.shows[i].getCTime().getHour()+':'+this.shows[i].getCTime().getMinute());
+        }
+    }
+    public void listUsers(){
+        for(int i=0;i<this.users.length;i++){
+            System.out.println(i+". "+this.users[i].getName()+"  Type: "+this.users[i].getUType());
         }
     }
     public Time getTime(){

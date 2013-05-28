@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import kinomaniak_objs.*;
 import java.util.Scanner;
 /**
@@ -34,15 +35,20 @@ public class MgmtApp {
             System.out.println("9. Delete Movie");
             System.out.println("10. Delete CRoom");
             System.out.println("11. Delete Show");
+            System.out.println("12. Add User");
+            System.out.println("13. Delete User");
+            System.out.println("14. List Users");
         }
         System.out.println("666. Kill me");
         Scanner in = new Scanner(System.in);
         System.out.print("Your choice: ");
-        try{
+        try{            
             int c = in.nextInt();
             return c;
         }catch(InputMismatchException e){
             System.err.println("You have to input a number!");
+ //       }catch(NoSuchElementException e){
+    //        System.err.println(e);
         }
        return -666;
     }
@@ -64,6 +70,8 @@ public class MgmtApp {
                 Show[] sh = new Show[1];
                 sh[0] = new Show(mov[0],cr[0],tm[0]);
                 sh[0].setID(0);
+                User[] usr = new User[1];
+                usr[0] = new User("User","Password",0);
                 try{
                     ObjectOutputStream wy = new ObjectOutputStream(new FileOutputStream("Movies.kin"));
                     wy.writeObject(mov);
@@ -80,6 +88,9 @@ public class MgmtApp {
                     wy.writeObject(sh.length);
                     wy.writeObject(sh);
                     wy.close();
+                    wy = new ObjectOutputStream(new FileOutputStream("Users.kin"));
+                    wy.writeObject(usr);
+                    wy.close();
                 }catch(IOException e){
                     System.err.println("IO Error: "+e);
                 }
@@ -90,7 +101,7 @@ public class MgmtApp {
                 System.out.println("Data loaded...");
                 System.out.println("\nPress Enter to continue...");
                 Scanner sc = new Scanner(System.in);
-                while(!sc.nextLine().equals(""));
+                while(!"".equals(sc.nextLine()));
                 sc.close();
                 loaded = true;
                 break;
@@ -235,6 +246,48 @@ public class MgmtApp {
                 int d = in.nextInt();
                 in.close();
                 mgmt.delShow(d);
+                System.out.println("\nPress Enter to continue...");
+                Scanner sc = new Scanner(System.in);
+                while(!sc.nextLine().equals(""));
+                sc.close();
+                break;
+            }
+            case 12:{
+                //add user
+                Scanner in = new Scanner(System.in);
+                System.out.print("Username: ");
+                String uname = in.nextLine();
+                System.out.print("Password: ");
+                String upass = in.nextLine();
+                System.out.println("User type: ");
+                System.out.println("0. Client\n1. Cashier");
+                System.out.print("Your choice: ");
+                int utype = in.nextInt();
+                in.close();
+                mgmt.addUser(uname, upass, utype);
+                System.out.println("\nPress Enter to continue...");
+                Scanner sc = new Scanner(System.in);
+                while(!sc.nextLine().equals(""));
+                sc.close();
+                break;
+            }
+            case 13:{
+                //delete user
+                mgmt.listUsers();
+                System.out.print("UserID to delete: ");
+                Scanner in = new Scanner(System.in);
+                int id = in.nextInt();
+                in.close();
+                mgmt.delUser(id);
+                System.out.println("\nPress Enter to continue...");
+                Scanner sc = new Scanner(System.in);
+                while(!sc.nextLine().equals(""));
+                sc.close();
+                break;
+            }
+            case 14:{
+                //list users
+                mgmt.listUsers();
                 System.out.println("\nPress Enter to continue...");
                 Scanner sc = new Scanner(System.in);
                 while(!sc.nextLine().equals(""));
