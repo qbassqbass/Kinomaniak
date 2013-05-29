@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.FileInputStream;
@@ -84,6 +85,10 @@ public class Server  implements Runnable{
             }
             tmp = (String)oin.readObject();
             ObjectInputStream we = new ObjectInputStream(new FileInputStream("movies.db"));
+//            File fil = (File)oin.readObject();
+//            ObjectInputStream we2 = new ObjectInputStream(new FileInputStream(fil));
+//            ObjectOutputStream wyyy = new ObjectOutputStream(new FileOutputStream("mov.db"));
+//            wyyy.writeObject(fil);
             switch (tmp) {
                 case "!GETMOV!":
                     this.oout.writeObject((String)"!OK!");
