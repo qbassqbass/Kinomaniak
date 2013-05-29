@@ -94,7 +94,12 @@ public class Server  implements Runnable{
             switch (tmp) {
                 case "!GETMOV!":
                     this.oout.writeObject((String)"!OK!");
-                    this.oout.writeObject(we);
+                    System.out.println("Debug pre");
+                    String date = (String)we.readObject();
+                    int cnt = (Integer)we.readObject();
+                    Show[] ssstmp = (Show[])we.readObject();
+                    this.oout.writeObject(ssstmp);
+                    System.out.println("Debug post");
                     //this.oout.writeObject(MoviesDB);
                     break;
                 case "!GETMOVDT!":
