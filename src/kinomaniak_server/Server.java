@@ -20,6 +20,8 @@ import java.io.FileOutputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Formatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author qbass
@@ -358,13 +360,25 @@ public class Server  implements Runnable{
     private boolean checkUser(){
         String usr = this.luser.getName();
         String pwd = this.luser.getPass();//sha1pass
+        
         boolean log = false;
         try{
-            BufferedReader userfile = new BufferedReader(new InputStreamReader(new FileInputStream("users.txt")));
-            String temp;
-            while((temp = userfile.readLine()) != null){
-                String[] tmp = temp.split(":");
-                if(tmp[0].equals(usr)) if(tmp[1].equals(pwd)) log = true;
+            //BufferedReader userfile = new BufferedReader(new InputStreamReader(new FileInputStream("users.txt")));
+            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Users.kin"));
+            try {
+                User[] tmp = (User[])we.readObject();
+                int ctmp = 0;
+                for(int i=0;i<tmp.length;i++){
+                    if(usr.equals(tmp[i].getName())){
+                        ctmp = i;
+                        break;
+                    }
+                }
+                if(pwd.equals(tmp[ctmp])){
+                    log = true;
+                }
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
             }
         }catch(IOException e){
             System.err.println("IO Error");
