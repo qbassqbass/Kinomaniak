@@ -86,7 +86,7 @@ public class Server  implements Runnable{
                 System.exit(-1);
             }
             tmp = (String)oin.readObject();
-            ObjectInputStream we = new ObjectInputStream(new FileInputStream("movies.db"));
+            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Shows.kin"));
 //            File fil = (File)oin.readObject();
 //            ObjectInputStream we2 = new ObjectInputStream(new FileInputStream(fil));
 //            ObjectOutputStream wyyy = new ObjectOutputStream(new FileOutputStream("mov.db"));
