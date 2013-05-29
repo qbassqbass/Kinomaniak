@@ -367,6 +367,7 @@ public class Server  implements Runnable{
             ObjectInputStream we = new ObjectInputStream(new FileInputStream("Users.kin"));
             try {
                 User[] tmp = (User[])we.readObject();
+                we.close();
                 int ctmp = 0;
                 for(int i=0;i<tmp.length;i++){
                     if(usr.equals(tmp[i].getName())){
@@ -374,7 +375,7 @@ public class Server  implements Runnable{
                         break;
                     }
                 }
-                if(pwd.equals(tmp[ctmp])){
+                if(pwd.equals(tmp[ctmp].getPass())){
                     log = true;
                 }
             } catch (ClassNotFoundException ex) {
