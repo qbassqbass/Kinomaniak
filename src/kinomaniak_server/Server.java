@@ -267,15 +267,19 @@ public class Server  implements Runnable{
                 try{
                     this.oout.writeObject((String)"!GDATA!");
                     String tmp = (String)oin.readObject();
-                    if(tmp.equals("!OK!"))
-                        this.oout.writeObject((String)"!GORES!"); // Get Object Res
-                        Res res = (Res)oin.readObject();
+                    Res ares[];
+                    if(tmp.equals("!OK!")){
                         synchronized(this){
                             ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
                             int num = (Integer)we.readObject();
-                            Res ares[] = new Res[num];
+                            ares = new Res[num];
                             ares = (Res[])we.readObject();
                             we.close();
+                         }
+                        this.oout.writeObject((Res[])ares);
+                        this.oout.writeObject((String)"!GORES!"); // Get Object Res
+                        Res res = (Res)oin.readObject();
+                        synchronized(this){                            
                             boolean ok = false;
                             for (int i = 0;i<ares.length;i++){
                                 if(ares[i].equals(res)){
@@ -292,6 +296,7 @@ public class Server  implements Runnable{
                                 this.oout.writeObject((String)"!OK!");
                             }else this.oout.writeObject((String)"!NORES!");
                         }
+                    }
                 }catch(IOException e){
                     System.err.println("IO Error: "+e);
                 }catch(ClassNotFoundException e){
@@ -303,15 +308,19 @@ public class Server  implements Runnable{
                 try{
                     this.oout.writeObject((String)"!GDATA!");
                     String tmps = (String)oin.readObject();
-                    if(tmps.equals("!OK!"))
+                    Res ares[];
+                    if(tmps.equals("!OK!")){
+                         synchronized(this){
+                            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
+                            int num = (Integer)we.readObject();
+                            ares = new Res[num];
+                            ares = (Res[])we.readObject();
+                            we.close();
+                         }
+                        this.oout.writeObject((Res[])ares);
                          this.oout.writeObject((String)"!GORES!"); // Get Object Res
                         Res res = (Res)oin.readObject();
                         synchronized(this){
-                            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
-                            int num = (Integer)we.readObject();
-                            Res ares[] = new Res[num];
-                            ares = (Res[])we.readObject();
-                            we.close();
                             int tmp = -254;
                             for (int i = 0;i<ares.length;i++){
                                 if(ares[i].equals(res)){
@@ -337,6 +346,7 @@ public class Server  implements Runnable{
                                  this.oout.writeObject((String)"!OK!");
                             }else  this.oout.writeObject((String)"!NORES!");
                         }
+                    }
                 }catch(IOException e){
                     System.err.println("IO Error: "+e);
                 }catch(ClassNotFoundException e){
