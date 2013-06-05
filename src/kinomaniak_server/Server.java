@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.FileInputStream;
@@ -72,7 +73,7 @@ public class Server  implements Runnable{
             this.oout.writeObject((String)"!OK!");
             this.luser = (User)oin.readObject(); // odczyt obiektu użytkownika od klienta        
             boolean uok = checkUser(); // sprawdzenie użytkownika
-            if(uok) this.oout.writeObject((String)"!UOK");
+            if(uok) this.oout.writeObject((String)"!UOK!");
             else{
                 this.logged = false;
                 this.oout.writeObject((String)"!ERROR!");
@@ -83,11 +84,20 @@ public class Server  implements Runnable{
                 System.exit(-1);
             }
             tmp = (String)oin.readObject();
-            ObjectInputStream we = new ObjectInputStream(new FileInputStream("movies.db"));
+            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Shows.kin"));
+//            File fil = (File)oin.readObject();
+//            ObjectInputStream we2 = new ObjectInputStream(new FileInputStream(fil));
+//            ObjectOutputStream wyyy = new ObjectOutputStream(new FileOutputStream("mov.db"));
+//            wyyy.writeObject(fil);
             switch (tmp) {
                 case "!GETMOV!":
                     this.oout.writeObject((String)"!OK!");
-                    this.oout.writeObject(we);
+                    System.out.println("Debug pre");
+                    String date = (String)we.readObject();
+                    int cnt = (Integer)we.readObject();
+                    Show[] ssstmp = (Show[])we.readObject();
+                    this.oout.writeObject(ssstmp);
+                    System.out.println("Debug post");
                     //this.oout.writeObject(MoviesDB);
                     break;
                 case "!GETMOVDT!":
@@ -100,8 +110,7 @@ public class Server  implements Runnable{
                     break;
             }
             while(!tmp.equals("!RDY!")){
-                tmp = (String)oin.readObject();                
-                this.oout.writeObject((String)"Waiting for RDY command...");
+                tmp = (String)oin.readObject();
             }
             this.oout.writeObject((String)"!RDY!");            
             while (this.logged){
@@ -214,16 +223,20 @@ public class Server  implements Runnable{
             case 6:{// potwierdzenie rezerwacji
                 try{
                     this.oout.writeObject((String)"!GDATA!");
-                    String tmp = (String)oin.readObject();
-                    if(tmp.equals("!OK!"))
+                    String tmp = (String)oin.readObject();                   
+                    Res ares[];
+                    if(tmp.equals("!OK!")){
+                         synchronized(this){
+                            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
+                            int num = (Integer)we.readObject();
+                            ares = new Res[num];
+                            ares = (Res[])we.readObject();
+                            we.close();
+                         }
+                        this.oout.writeObject((Res[])ares);
                         this.oout.writeObject((String)"!GORES!"); // Get Object Res
                         Res res = (Res)oin.readObject();
                         synchronized(this){
-                            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
-                            int num = (Integer)we.readObject();
-                            Res ares[] = new Res[num];
-                            ares = (Res[])we.readObject();
-                            we.close();
                             boolean acc = false;
                             for (int i = 0;i<ares.length;i++){
                                 if(ares[i].equals(res)){
@@ -240,6 +253,7 @@ public class Server  implements Runnable{
                                 this.oout.writeObject((String)"!OK!");
                             }else this.oout.writeObject((String)"!NORES!");
                         }
+                    }
                 }catch(IOException e){
                     System.err.println("IO Error: "+e);
                 }catch(ClassNotFoundException e){
@@ -353,13 +367,26 @@ public class Server  implements Runnable{
     private boolean checkUser(){
         String usr = this.luser.getName();
         String pwd = this.luser.getPass();//sha1pass
+        
         boolean log = false;
         try{
-            BufferedReader userfile = new BufferedReader(new InputStreamReader(new FileInputStream("users.txt")));
-            String temp;
-            while((temp = userfile.readLine()) != null){
-                String[] tmp = temp.split(":");
-                if(tmp[0].equals(usr)) if(tmp[1].equals(pwd)) log = true;
+            //BufferedReader userfile = new BufferedReader(new InputStreamReader(new FileInputStream("users.txt")));
+            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Users.kin"));
+            try {
+                User[] tmp = (User[])we.readObject();
+                we.close();
+                int ctmp = 0;
+                for(int i=0;i<tmp.length;i++){
+                    if(usr.equals(tmp[i].getName())){
+                        ctmp = i;
+                        break;
+                    }
+                }
+                if(pwd.equals(tmp[ctmp].getPass())){
+                    log = true;
+                }
+            } catch (ClassNotFoundException e) {
+                System.err.println("ClassNotFoundException: "+e);
             }
         }catch(IOException e){
             System.err.println("IO Error");
@@ -375,7 +402,7 @@ public class Server  implements Runnable{
             Object obj = we.readObject();
             return obj;
         }catch(IOException e){
-            System.err.println("BÅ‚Ä…d odczytu pliku");
+            System.err.println("Błąd odczytu pliku");
         }catch(ClassNotFoundException c){
             System.err.println("Brak klasy Object xD");
         } 
