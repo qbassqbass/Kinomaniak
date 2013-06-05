@@ -20,6 +20,8 @@ import java.io.FileOutputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Formatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author qbass
