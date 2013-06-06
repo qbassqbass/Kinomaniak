@@ -61,6 +61,12 @@ public class MgmtApp {
        return -666;
     }
     
+    /**
+     * Main method for ManagementApp
+     * 
+     * @param args
+     * @throws IOException
+     */
     @SuppressWarnings("empty-statement")
     public static void main(String[] args) throws IOException{
         System.out.println("==Welcome in Movie DataBase Management System==");
@@ -131,7 +137,10 @@ public class MgmtApp {
                 String genre = in.nextLine();
                 System.out.print("Movie Rating: ");
                 String rating = in.nextLine();
-                mgmt.addMovie(name,genre,rating);
+                System.out.print("Short Movie Description('null' if no desc): ");
+                String desc = in.nextLine();
+                if(desc.equals("null")) mgmt.addMovie(name,genre,rating);
+                else mgmt.addMovie(name,genre,rating,desc);
                 System.out.println("Movie added");
 //                System.out.println("\nPress Enter to continue...");
 //            //    Scanner sc = new Scanner(System.in);

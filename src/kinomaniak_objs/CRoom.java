@@ -14,10 +14,18 @@ public class CRoom implements Serializable {
     private int id;
     private boolean[][] seats;
     
+    /**
+     *
+     * @param id
+     */
     public CRoom(int id){
         this.id = id;
         seats = new boolean[10][10];
     }
+    /**
+     *
+     * @return
+     */
     public int getID(){
         return this.id;
     }

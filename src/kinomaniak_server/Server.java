@@ -44,7 +44,7 @@ public class Server  implements Runnable{
      
     
     /**
-     * @param args the command line arguments
+     * @param sockfd 
      */
     /*
     public Server(int type,String username){
@@ -153,6 +153,11 @@ public class Server  implements Runnable{
         }
     }
     
+    /**
+     *
+     * @param cmd
+     * @return
+     */
     public boolean checkGrants(int cmd){
         if(cmd < 0) return true;
         for(int i=0;i<12;i++){
@@ -163,6 +168,10 @@ public class Server  implements Runnable{
         return false;
     }
     
+    /**
+     *
+     * @param cmd
+     */
     public void processCmd(int cmd){
         switch(cmd){
             case -1 : {
@@ -426,6 +435,9 @@ public class Server  implements Runnable{
         }
         return log;
     }
+    /**
+     *
+     */
     public void sendResp(){
         
     }

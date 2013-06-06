@@ -19,6 +19,12 @@ public class User implements Serializable{
     private int utype;
     private int[] availcmds;
     
+    /**
+     *
+     * @param name
+     * @param password
+     * @param utype
+     */
     public User(String name, String password,int utype){
         this.name = name;
         this.password = password;
@@ -27,15 +33,31 @@ public class User implements Serializable{
         this.setCmds();
     }
     
+    /**
+     *
+     * @return
+     */
     public int[] getACmds(){
         return this.availcmds;
     }    
+    /**
+     *
+     * @return
+     */
     public String getName(){
         return this.name;
     }
+    /**
+     *
+     * @return
+     */
     public String getPass(){
         return toSHA1(this.password.getBytes());
     }
+    /**
+     *
+     * @return
+     */
     public int getUType(){
         return this.utype;
     }
