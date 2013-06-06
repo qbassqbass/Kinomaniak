@@ -20,12 +20,12 @@ public class Passthrough {
 //    private String user;
 //    private String password;
 //    private int type;
-////    private Server[] activeServers;
+//    private Server[] activeServers;
 //    private ServerSocket sockfd;
 //    private Socket[] activeConns;
 //    private Thread[] activeThreads;
 //    private int connectionCount; 
-  //  private Socket acceptsockfd;
+//    private Socket acceptsockfd;
     
     /**
      *
@@ -34,10 +34,10 @@ public class Passthrough {
     public static void main(String[] args){
         final int PORT = 8888;
         final int MAXCONNS = 5;
-        //boolean logged;
-        //String user;
-        //String password;
-       // int type;
+//        boolean logged;
+//        String user;
+//        String password;
+//        int type;
         ServerSocket sockfd;
         Socket[] activeConns;
         Thread[] activeThreads;
@@ -50,7 +50,7 @@ public class Passthrough {
                 activeThreads = new Thread[MAXCONNS];
                 while(1==1){ 
                 if(connectionCount<MAXCONNS){
-                    //wait for client to connect
+//                    wait for client to connect
                     try{
                         activeConns[connectionCount] = sockfd.accept();
                         System.out.println("Connected");

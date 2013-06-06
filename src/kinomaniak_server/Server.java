@@ -71,7 +71,7 @@ public class Server  implements Runnable{
         boolean cmdAvail = false;
         String tmp;
         try{
-            //this.out.write("!OK!");
+//            this.out.write("!OK!");
             this.oout.writeObject((String)"!OK!");
             this.luser = (User)oin.readObject(); // odczyt obiektu użytkownika od klienta        
             boolean uok = checkUser(); // sprawdzenie użytkownika
@@ -100,15 +100,15 @@ public class Server  implements Runnable{
                     Show[] ssstmp = (Show[])we.readObject();
                     this.oout.writeObject(ssstmp);
                     System.out.println("Debug post");
-                    //this.oout.writeObject(MoviesDB);
+//                    this.oout.writeObject(MoviesDB);
                     break;
                 case "!GETMOVDT!":
                     tmp = (String)oin.readObject();
                     String dbDate = (String)we.readObject();
                     if(tmp.equals(dbDate)) this.oout.writeObject((String)"!MOVOK!");
                     else { this.oout.writeObject((String)"!MOVUPD!"); this.oout.writeObject(we); }
-                    //if(tmp.equals(newestDBdate)) this.out.write("!MOVOK!");
-                    //else{ this.out.write("!MOVUPD!"); this.oout.writeObject(MoviesDB); }
+//                    if(tmp.equals(newestDBdate)) this.out.write("!MOVOK!");
+//                    else{ this.out.write("!MOVUPD!"); this.oout.writeObject(MoviesDB); }
                     break;
             }
             while(!tmp.equals("!RDY!")){
@@ -120,7 +120,7 @@ public class Server  implements Runnable{
                     String data = (String)oin.readObject();
                     switch (data) {
                         case "!CMD!":
-                            //jeśli klient wysyła komendę
+//                            jeśli klient wysyła komendę
                             cmdAvail = true;
                             break;
                         case "!OK!":

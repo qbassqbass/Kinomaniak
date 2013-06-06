@@ -18,10 +18,10 @@ public class Movie implements Serializable{
     private String desc;
     
     /**
-     *
-     * @param name
-     * @param genre
-     * @param rating
+     * Konstruktor klasy filmowej bez opisu
+     * @param name tytuł filmu
+     * @param genre rodzaj filmu
+     * @param rating klasyfikacja filmu
      */
     public Movie(String name,String genre,String rating){
         this.name = name;
@@ -30,11 +30,11 @@ public class Movie implements Serializable{
         this.desc = null;
     }
     /**
-     *
-     * @param name
-     * @param genre
-     * @param rating
-     * @param desc
+     * Konstruktor klasy filmowej z opisem
+     * @param name tytuł filmu
+     * @param genre rodzaj filmu
+     * @param rating klasyfikacja filmu
+     * @param desc opis filmu
      */
     public Movie(String name,String genre,String rating,String desc){
         this.name = name;
@@ -43,29 +43,29 @@ public class Movie implements Serializable{
         this.desc = desc;
     }
     /**
-     *
-     * @return
+     * Metoda zwracająca tytuł filmu
+     * @return tytuł filmu
      */
     public String getName(){
         return this.name;
     }
     /**
-     *
-     * @return
+     * Metoda zwracająca rodzaj filmu
+     * @return rodzaj filmu
      */
     public String getGenre(){
         return this.genre;
     }
     /**
-     *
-     * @return
+     * Metoda zwracająca klasyfikację filmu
+     * @return klasyfikacja filmu
      */
     public String getRating(){
         return this.rating;
     }
     /**
-     *
-     * @return
+     * Metoda zwracająca krótki opis filmu
+     * @return opis filmu
      */
     public String getDesc(){
         return this.desc;

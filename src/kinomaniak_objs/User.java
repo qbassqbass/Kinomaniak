@@ -20,10 +20,10 @@ public class User implements Serializable{
     private int[] availcmds;
     
     /**
-     *
-     * @param name
-     * @param password
-     * @param utype
+     * Utworzenie instancji klasy użytkownika o podanych parametrach i ustawiająca dostępne komendy
+     * @param name nazwa użytkownika
+     * @param password hasło w czystej postaci
+     * @param utype type(0-klient,1-kasjer)
      */
     public User(String name, String password,int utype){
         this.name = name;
@@ -34,34 +34,36 @@ public class User implements Serializable{
     }
     
     /**
-     *
-     * @return
+     * Metoda zwracająca dostępne komendy
+     * @return tablica int[] z dostępnymi komendami dla danego użytkownika
      */
     public int[] getACmds(){
         return this.availcmds;
     }    
     /**
-     *
-     * @return
+     * Metoda zwracająca nazwę użytkownika
+     * @return nazwa użytkownika
      */
     public String getName(){
         return this.name;
     }
     /**
-     *
-     * @return
+     * Metoda zwracająca hasło zahashowane algorytmem SHA1
+     * @return ciąg SHA1 
      */
     public String getPass(){
         return toSHA1(this.password.getBytes());
     }
     /**
-     *
-     * @return
+     * Metoda zwracająca typ użytkownika
+     * @return typ użytkownika
      */
     public int getUType(){
         return this.utype;
     }
-    
+    /**
+     * Metoda ustawiająca tablicę z dostępnymi komendami dla danego użytkownika
+     */
     private void setCmds(){
         for(int i=0;i<12;i++){
             this.availcmds[i] = 0;
@@ -95,7 +97,11 @@ public class User implements Serializable{
             }
         }
     }
-    
+    /**
+     * Metoda hashująca hasło algorytmem SHA1
+     * @param pass hasło w czystej postaci
+     * @return hasło w SHA1
+     */
     private String toSHA1(byte[] pass) {
         MessageDigest md;
         try{

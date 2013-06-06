@@ -25,12 +25,23 @@ public class MovieDBMgmt {
     private CRoom[] croomtmp;
     private User[] usertmp;
     
+    /**
+     *
+     */
     public MovieDBMgmt(){
         
     }
+    /**
+     *
+     * @param hrs
+     * @param mins
+     */
     public void setTime(int hrs, int mins){
         this.time = new Time(hrs,mins);
     }
+    /**
+     *
+     */
     public void getData(){
         try{
             ObjectInputStream we = new ObjectInputStream(new FileInputStream("Shows.kin"));
@@ -54,6 +65,9 @@ public class MovieDBMgmt {
             System.err.println("Class not found: "+e);
         }
     }
+    /**
+     *
+     */
     public void saveData(){
         try{
             ObjectOutputStream wy = new ObjectOutputStream(new FileOutputStream("Movies.kin"));
@@ -78,6 +92,12 @@ public class MovieDBMgmt {
             System.err.println("IO Error: "+e);
         }
     }
+    /**
+     *
+     * @param name
+     * @param genre
+     * @param rating
+     */
     public void addMovie(String name,String genre,String rating){
         int len = this.movies.length;
         System.out.println("len:"+len);
@@ -88,6 +108,10 @@ public class MovieDBMgmt {
         this.movies = new Movie[len+1];
         System.arraycopy(this.movietmp,0,this.movies,0,len+1);
     }
+    /**
+     *
+     * @param id
+     */
     public void addCRoom(int id){
         int len = this.crooms.length;
         this.croomtmp = new CRoom[len+1];
@@ -96,6 +120,12 @@ public class MovieDBMgmt {
         this.crooms = new CRoom[len+1];
         System.arraycopy(this.croomtmp,0,this.crooms,0,len+1);
     }
+    /**
+     *
+     * @param movie
+     * @param time
+     * @param croom
+     */
     public void addShow(Movie movie, Time time, CRoom croom ){
         int len = this.shows.length;
         int prevID = this.shows[len-1].getID();
@@ -106,6 +136,12 @@ public class MovieDBMgmt {
         this.shows = new Show[len+1];
         System.arraycopy(this.showtmp,0,this.shows,0,len+1);
     }    
+    /**
+     *
+     * @param name
+     * @param password
+     * @param utype
+     */
     public void addUser(String name, String password,int utype){
         int len = this.users.length;
         this.usertmp = new User[len+1];
@@ -114,6 +150,10 @@ public class MovieDBMgmt {
         this.users = new User[len+1];
         System.arraycopy(this.usertmp,0,this.users,0,len+1);
     }
+    /**
+     *
+     * @param n
+     */
     public void delMovie(int n){
         int len = this.movies.length;
         this.movietmp = new Movie[len];
@@ -124,6 +164,10 @@ public class MovieDBMgmt {
         this.movies = new Movie[len-1];
         System.arraycopy(this.movietmp,0,this.movies,0,len-1);
     }
+    /**
+     *
+     * @param n
+     */
     public void delCRoom(int n){
         int len = this.crooms.length;
         this.croomtmp = new CRoom[len];
@@ -134,6 +178,10 @@ public class MovieDBMgmt {
         this.crooms = new CRoom[len-1];
         System.arraycopy(this.croomtmp,0,this.crooms,0,len-1);
     }
+    /**
+     *
+     * @param n
+     */
     public void delShow(int n){
         int len = this.shows.length;
         this.showtmp = new Show[len];
@@ -144,6 +192,10 @@ public class MovieDBMgmt {
         this.shows = new Show[len-1];
         System.arraycopy(this.showtmp,0,this.shows,0,len-1);
     }
+    /**
+     *
+     * @param n
+     */
     public void delUser(int n){
         int len = this.users.length;
         this.usertmp = new User[len];
@@ -154,38 +206,70 @@ public class MovieDBMgmt {
         this.users = new User[len-1];
         System.arraycopy(this.usertmp,0,this.users,0,len-1);
     }
+    /**
+     *
+     * @return
+     */
     public Movie[] getMovies(){
         return this.movies;
     }
+    /**
+     *
+     * @return
+     */
     public CRoom[] getCRooms(){
         return this.crooms;
     }
+    /**
+     *
+     * @return
+     */
     public Show[] getShows(){
         return this.shows;
     }
+    /**
+     *
+     * @return
+     */
     public User[] getUsers(){
         return this.users;
     }
+    /**
+     *
+     */
     public void listMovies(){
         for(int i=0;i<this.movies.length;i++){
             System.out.println(i+". "+this.movies[i].getName()+" Gen:"+this.movies[i].getGenre()+" Rat:"+this.movies[i].getRating());
         }
     }
+    /**
+     *
+     */
     public void listCRooms(){
         for(int i=0;i<this.crooms.length;i++){
             System.out.println(i+". "+this.crooms[i].getID());
         }
     }
+    /**
+     *
+     */
     public void listShows(){
         for(int i=0;i<this.shows.length;i++){
             System.out.println(i+". "+this.shows[i].getMovie().getName()+" Room: "+this.shows[i].getRoom().getID()+" Time: "+this.shows[i].getCTime().getHour()+':'+this.shows[i].getCTime().getMinute());
         }
     }
+    /**
+     *
+     */
     public void listUsers(){
         for(int i=0;i<this.users.length;i++){
             System.out.println(i+". "+this.users[i].getName()+"  Type: "+this.users[i].getUType());
         }
     }
+    /**
+     *
+     * @return
+     */
     public Time getTime(){
         return time;
     }

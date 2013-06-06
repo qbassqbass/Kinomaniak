@@ -16,15 +16,15 @@ public class CRoom implements Serializable {
     
     /**
      *
-     * @param id
+     * @param id identyfikator sali kinowej
      */
     public CRoom(int id){
         this.id = id;
         seats = new boolean[10][10];
     }
     /**
-     *
-     * @return
+     * Metoda zwracająca ID sali kinowej
+     * @return identyfikator sali kinowej
      */
     public int getID(){
         return this.id;
