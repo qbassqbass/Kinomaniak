@@ -57,6 +57,7 @@ public class MovieDBMgmt2 {
     /**
      * Metoda wczytująca dane z plików .kin
      */
+    @SuppressWarnings("unchecked")
     public void getData(){
         try{
             ObjectInputStream we = new ObjectInputStream(new FileInputStream("Shows.kin"));
