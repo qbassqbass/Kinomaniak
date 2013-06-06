@@ -97,7 +97,8 @@ public class Server  implements Runnable{
                     System.out.println("Debug pre");
                     String date = (String)we.readObject();
 //                    int cnt = (Integer)we.readObject();
-                    Show[] ssstmp = (Show[])we.readObject();
+//                    Show[] ssstmp = (Show[])we.readObject();
+                    List<Show> ssstmp = (ArrayList<Show>)we.readObject();
                     this.oout.writeObject(ssstmp);
                     System.out.println("Debug post");
 //                    this.oout.writeObject(MoviesDB);
@@ -201,10 +202,8 @@ public class Server  implements Runnable{
                     if(tmp.equals("!OK!"))
                         this.oout.writeObject((String)"!NAZW!");
                         String nazwa = (String)oin.readObject();
-                        this.oout.writeObject((String)"!OK!");
                         this.oout.writeObject((String)"!SEANS!");
                         int showid = (Integer)oin.readObject();
-                        this.oout.writeObject((String)"!OK!");
                         this.oout.writeObject((String)"!MIEJSC!");
                         int[] seat = (int[])oin.readObject();
                         Res res = new Res(nazwa,showid,seat);
