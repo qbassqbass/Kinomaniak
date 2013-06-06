@@ -64,7 +64,7 @@ public class MgmtApp {
     @SuppressWarnings("empty-statement")
     public static void main(String[] args) throws IOException{
         System.out.println("==Welcome in Movie DataBase Management System==");
-        MovieDBMgmt mgmt = new MovieDBMgmt();
+        MovieDBMgmt2 mgmt = new MovieDBMgmt2();
         while(true){
         int tmp = menu();
         switch(tmp){
@@ -225,7 +225,8 @@ public class MgmtApp {
            //     Scanner in = new Scanner(System.in);
                 int d = MgmtApp.in.nextInt();
             //    in.close();
-                mgmt.delMovie(d);
+                if(mgmt.delMovie(d) < 0) System.out.println("No Movie: "+d);
+                else System.out.println("Movie "+d+" deleted");
 //                System.out.println("\nPress Enter to continue...");
 //             //   Scanner sc = new Scanner(System.in);
 //                while(!MgmtApp.in.nextLine().equals(""));
@@ -239,7 +240,8 @@ public class MgmtApp {
              //   Scanner in = new Scanner(System.in);
                 int d = MgmtApp.in.nextInt();
             //    in.close();
-                mgmt.delCRoom(d);
+                if(mgmt.delCRoom(d) < 0) System.out.println("No CRoom: "+d);
+                else System.out.println("CRoom "+d+" deleted");
 //                System.out.println("\nPress Enter to continue...");
 //             //   Scanner sc = new Scanner(System.in);
 //                while(!MgmtApp.in.nextLine().equals(""));
@@ -253,7 +255,8 @@ public class MgmtApp {
                // Scanner in = new Scanner(System.in);
                 int d = MgmtApp.in.nextInt();
                // in.close();
-                mgmt.delShow(d);
+                if(mgmt.delShow(d) < 0) System.out.println("No Show: "+d);
+                else System.out.println("Show "+d+" deleted");
 //                System.out.println("\nPress Enter to continue...");
 //            //    Scanner sc = new Scanner(System.in);
 //                while(!MgmtApp.in.nextLine().equals(""));
@@ -286,7 +289,8 @@ public class MgmtApp {
                 Scanner in = new Scanner(System.in);
                 int id = in.nextInt();
           //      in.close();
-                mgmt.delUser(id);
+                if(mgmt.delUser(id) < 0) System.out.println("No User: "+id);
+                else System.out.println("User "+id+" deleted");
 //                System.out.println("\nPress Enter to continue...");
 //         //       Scanner sc = new Scanner(System.in);
 //                while(!MgmtApp.in.nextLine().equals(""));

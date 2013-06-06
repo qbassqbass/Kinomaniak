@@ -201,6 +201,10 @@ public class Server  implements Runnable{
                         Res res = new Res(nazwa,showid,seat);
                     synchronized (this){
                         try{
+                            File r = new File("Res.kin");
+                            if(!r.exists()){
+                                r.createNewFile();
+                            }
                             ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
                             int num = (Integer)we.readObject();
                             Res ares[] = new Res[num+1];
@@ -228,6 +232,10 @@ public class Server  implements Runnable{
                     String tmp = (String)oin.readObject();                   
                     Res ares[];
                     if(tmp.equals("!OK!")){
+                        File r = new File("Res.kin");
+                            if(!r.exists()){
+                                r.createNewFile();
+                            }
                          synchronized(this){
                             ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
                             int num = (Integer)we.readObject();
@@ -269,6 +277,10 @@ public class Server  implements Runnable{
                     String tmp = (String)oin.readObject();
                     Res ares[];
                     if(tmp.equals("!OK!")){
+                        File r = new File("Res.kin");
+                            if(!r.exists()){
+                                r.createNewFile();
+                            }
                         synchronized(this){
                             ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
                             int num = (Integer)we.readObject();
@@ -310,6 +322,10 @@ public class Server  implements Runnable{
                     String tmps = (String)oin.readObject();
                     Res ares[];
                     if(tmps.equals("!OK!")){
+                        File r = new File("Res.kin");
+                            if(!r.exists()){
+                                r.createNewFile();
+                            }
                          synchronized(this){
                             ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
                             int num = (Integer)we.readObject();
@@ -401,7 +417,7 @@ public class Server  implements Runnable{
                 System.err.println("ClassNotFoundException: "+e);
             }
         }catch(IOException e){
-            System.err.println("IO Error");
+            System.err.println("IO Error: "+e);
         }
         return log;
     }
