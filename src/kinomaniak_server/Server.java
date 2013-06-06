@@ -96,9 +96,12 @@ public class Server  implements Runnable{
                     this.oout.writeObject((String)"!OK!");
                     System.out.println("Debug pre");
                     String date = (String)we.readObject();
+                    System.out.println("Debug pre");
 //                    int cnt = (Integer)we.readObject();
+                    System.out.println("Debug pre");
 //                    Show[] ssstmp = (Show[])we.readObject();
                     List<Show> ssstmp = (ArrayList<Show>)we.readObject();
+                    System.out.println("Debug pre");
                     this.oout.writeObject(ssstmp);
                     System.out.println("Debug post");
 //                    this.oout.writeObject(MoviesDB);
@@ -414,7 +417,9 @@ public class Server  implements Runnable{
             //BufferedReader userfile = new BufferedReader(new InputStreamReader(new FileInputStream("users.txt")));
             ObjectInputStream we = new ObjectInputStream(new FileInputStream("Users.kin"));
             try {
-                User[] tmp = (User[])we.readObject();
+                List<User> ar = (ArrayList<User>)we.readObject();
+                User[] tmp = ar.toArray(new User[]{}); 
+                //User[] tmp = (User[])we.readObject();
                 we.close();
                 int ctmp = 0;
                 for(int i=0;i<tmp.length;i++){
