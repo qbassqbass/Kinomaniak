@@ -19,9 +19,9 @@ import java.io.FileOutputStream;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Formatter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.List;
 /**
  *
  * @author qbass
@@ -96,7 +96,7 @@ public class Server  implements Runnable{
                     this.oout.writeObject((String)"!OK!");
                     System.out.println("Debug pre");
                     String date = (String)we.readObject();
-                    int cnt = (Integer)we.readObject();
+//                    int cnt = (Integer)we.readObject();
                     Show[] ssstmp = (Show[])we.readObject();
                     this.oout.writeObject(ssstmp);
                     System.out.println("Debug post");
@@ -202,15 +202,20 @@ public class Server  implements Runnable{
                     synchronized (this){
                         try{
                             File r = new File("Res.kin");
+                            Res ares[];
+                            int num = 0;
                             if(!r.exists()){
                                 r.createNewFile();
+                                ares = new Res[1];
+                                ares[0] = res;
+                            }else{
+                                ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
+                                num = (Integer)we.readObject();
+                                ares= new Res[num+1];
+                                ares = (Res[])we.readObject();
+                                we.close();
+                                ares[num+1] = res;
                             }
-                            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
-                            int num = (Integer)we.readObject();
-                            Res ares[] = new Res[num+1];
-                            ares = (Res[])we.readObject();
-                            we.close();
-                            ares[num+1] = res;
                             ObjectOutputStream wy = new ObjectOutputStream(new FileOutputStream("Res.kin"));
                             wy.writeObject(num+1);
                             wy.writeObject(ares);
