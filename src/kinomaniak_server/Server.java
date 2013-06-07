@@ -125,6 +125,7 @@ public class Server  implements Runnable{
                     switch (data) {
                         case "!CMD!":
 //                            jeśli klient wysyła komendę
+                            this.oout.writeObject((String)"!OK!");
                             cmdAvail = true;
                             break;
                         case "!OK!":
