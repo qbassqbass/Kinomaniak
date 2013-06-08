@@ -43,9 +43,7 @@ public class Server  implements Runnable{
      private ObjectInputStream oin; //input for objects
      
     
-    /**
-     * @param sockfd 
-     */
+    
     /*
     public Server(int type,String username){
         this.loginname = username;
@@ -53,6 +51,10 @@ public class Server  implements Runnable{
         this.setCmds(type);        
     }
     */
+     /**
+      * Konstruktor wątku serwera
+     * @param sockfd deskryptor gniazda dla podłączonego klienta
+     */
     public Server(Socket sockfd){
         this.sockfd = sockfd;
         try{
@@ -62,7 +64,20 @@ public class Server  implements Runnable{
             this.oin = new ObjectInputStream(this.sockfd.getInputStream()); //input for objects
             this.logged = true;
         }catch(IOException e){
-            System.err.println("IOError!");
+            System.err.println("IOError from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+        }
+    }
+    
+    private void endThread(){
+        try{
+            in.close();
+            oin.close();
+            out.close();
+            oout.close();
+            sockfd.close();
+            return;
+        }catch(IOException e){
+            
         }
     }
     
@@ -94,16 +109,16 @@ public class Server  implements Runnable{
             switch (tmp) {
                 case "!GETMOV!":
                     this.oout.writeObject((String)"!OK!");
-                    System.out.println("Debug pre");
+//                    System.out.println("Debug pre");
                     String date = (String)we.readObject();
-                    System.out.println("Debug pre");
+//                    System.out.println("Debug pre");
 //                    int cnt = (Integer)we.readObject();
                     System.out.println("Debug pre");
 //                    Show[] ssstmp = (Show[])we.readObject();
                     List<Show> ssstmp = (ArrayList<Show>)we.readObject();
-                    System.out.println("Debug pre");
+//                    System.out.println("Debug pre");
                     this.oout.writeObject(ssstmp);
-                    System.out.println("Debug post");
+//                    System.out.println("Debug post");
 //                    this.oout.writeObject(MoviesDB);
                     break;
                 case "!GETMOVDT!":
@@ -147,21 +162,19 @@ public class Server  implements Runnable{
                     cmdAvail = false;
                 }
             }
-            in.close();
-            oin.close();
-            out.close();
-            oout.close();
+            this.endThread();
         }catch(IOException e){
-            System.err.println("IOError: "+e);
+            System.err.println("IOError from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+            this.endThread();
         }catch(ClassNotFoundException e){
-            System.err.println("Class not found: "+e);
+            System.err.println("Class not found from "+sockfd.getInetAddress().getHostAddress()+": "+e);
         }
     }
     
     /**
-     *
-     * @param cmd
-     * @return
+     * Metoda sprawdzająca czy zalogowany użytkownik ma prawo do wykonania danej komendy
+     * @param cmd identyfikator komendy 
+     * @return true - jeśli dany użytkownik ma uprawnienia do wykonania, false - jeśli nie
      */
     public boolean checkGrants(int cmd){
         if(cmd < 0) return true;
@@ -174,8 +187,8 @@ public class Server  implements Runnable{
     }
     
     /**
-     *
-     * @param cmd
+     * Metoda wykonująca komendę podaną przez użytkownika
+     * @param cmd identyfikator komendy
      */
     public void processCmd(int cmd){
         switch(cmd){
@@ -240,7 +253,7 @@ public class Server  implements Runnable{
                             wy.writeObject(reslist);
                             wy.close();
                         }catch(IOException e){
-                            System.err.println("IO Error: "+e);
+                            System.err.println("IO Error from "+sockfd.getInetAddress().getHostAddress()+": "+e);
                         }
                     }
                 }catch(IOException e){
@@ -298,9 +311,9 @@ public class Server  implements Runnable{
                         }
                     }
                 }catch(IOException e){
-                    System.err.println("IO Error: "+e);
+                    System.err.println("IO Error from "+sockfd.getInetAddress().getHostAddress()+": "+e);
                 }catch(ClassNotFoundException e){
-                    System.err.println("Class not found :"+e);
+                    System.err.println("Class not found from "+sockfd.getInetAddress().getHostAddress()+": "+e);
                 }
                 break;
             }
@@ -353,9 +366,9 @@ public class Server  implements Runnable{
                         }
                     }
                 }catch(IOException e){
-                    System.err.println("IO Error: "+e);
+                    System.err.println("IO Error from "+sockfd.getInetAddress().getHostAddress()+": "+e);
                 }catch(ClassNotFoundException e){
-                    System.err.println("Class not found :"+e);
+                    System.err.println("Class not found from "+sockfd.getInetAddress().getHostAddress()+": "+e);
                 }
                 break;
             }
@@ -420,9 +433,9 @@ public class Server  implements Runnable{
                         }
                     }
                 }catch(IOException e){
-                    System.err.println("IO Error: "+e);
+                    System.err.println("IO Error from "+sockfd.getInetAddress().getHostAddress()+": "+e);
                 }catch(ClassNotFoundException e){
-                    System.err.println("Class not found :"+e);
+                    System.err.println("Class not found from "+sockfd.getInetAddress().getHostAddress()+": "+e);
                 }
                 break;
             }
@@ -472,18 +485,12 @@ public class Server  implements Runnable{
                     log = true;
                 }
             } catch (ClassNotFoundException e) {
-                System.err.println("ClassNotFoundException: "+e);
+                System.err.println("ClassNotFoundException from "+sockfd.getInetAddress().getHostAddress()+": "+e);
             }
         }catch(IOException e){
-            System.err.println("IO Error: "+e);
+            System.err.println("IO Error from "+sockfd.getInetAddress().getHostAddress()+": "+e);
         }
         return log;
-    }
-    /**
-     *
-     */
-    public void sendResp(){
-        
     }
     private Object getObj(String file){
         try{
