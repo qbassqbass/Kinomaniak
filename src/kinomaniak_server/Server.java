@@ -115,7 +115,7 @@ public class Server  implements Runnable{
 //                    int cnt = (Integer)we.readObject();
                     System.out.println("Debug pre");
 //                    Show[] ssstmp = (Show[])we.readObject();
-                    List<Show> ssstmp = (ArrayList<Show>)we.readObject();
+                    List<Show> ssstmp = (ArrayList<Show>)we.readObject(); 
 //                    System.out.println("Debug pre");
                     this.oout.writeObject(ssstmp);
 //                    System.out.println("Debug post");
@@ -135,7 +135,6 @@ public class Server  implements Runnable{
             }
             this.oout.writeObject((String)"!RDY!");            
             while (this.logged){
-                if(in.ready()){ //sprawdzenie dostępności danych w buforze wejścia 
                     String data = (String)oin.readObject();
                     switch (data) {
                         case "!CMD!":
@@ -149,18 +148,16 @@ public class Server  implements Runnable{
                             this.oout.writeObject((String)"!NAVAIL!"); //not available
                             break;
                     }
-                    if(cmdAvail)
-                        if(in.ready()){
+                    if(cmdAvail){
                             int cmd = (Integer)oin.readObject();
                             if(this.checkGrants(cmd)){
                                 this.processCmd(cmd);
-                                this.oout.writeObject((String)"!OK!");
+//                                this.oout.writeObject((String)"!OK!");
                             }
                             else this.oout.writeObject((String)"!NGRANT!"); //not granted
-                            
-                        }
+                    }
+                        
                     cmdAvail = false;
-                }
             }
             this.endThread();
         }catch(IOException e){
