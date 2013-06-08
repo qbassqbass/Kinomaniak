@@ -215,22 +215,29 @@ public class Server  implements Runnable{
                         try{
                             File r = new File("Res.kin");
                             Res ares[];
+                            List<Res> reslist = new ArrayList<Res>();
                             int num = 0;
                             if(!r.exists()){
                                 r.createNewFile();
-                                ares = new Res[1];
-                                ares[0] = res;
+//                                ares = new Res[1];
+//                                ares[0] = res;
+                                reslist.add(res);
                             }else{
                                 ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
-                                num = (Integer)we.readObject();
-                                ares= new Res[num+1];
-                                ares = (Res[])we.readObject();
+//                                num = (Integer)we.readObject();
+//                                ares= new Res[num+1];
+//                                System.out.println(num+1);
+//                                ares = (Res[])we.readObject();
+                                reslist = (ArrayList<Res>)we.readObject();
                                 we.close();
-                                ares[num+1] = res;
+//                                System.out.println(ares.length);
+//                                ares[num] = res;
+                                reslist.add(res);
                             }
                             ObjectOutputStream wy = new ObjectOutputStream(new FileOutputStream("Res.kin"));
-                            wy.writeObject(num+1);
-                            wy.writeObject(ares);
+//                            wy.writeObject(num+1);
+//                            wy.writeObject(ares);
+                            wy.writeObject(reslist);
                             wy.close();
                         }catch(IOException e){
                             System.err.println("IO Error: "+e);
@@ -247,7 +254,8 @@ public class Server  implements Runnable{
                 try{
                     this.oout.writeObject((String)"!GDATA!");
                     String tmp = (String)oin.readObject();                   
-                    Res ares[];
+//                    Res ares[];
+                    List<Res> reslist = new ArrayList<Res>();
                     if(tmp.equals("!OK!")){
                         File r = new File("Res.kin");
                             if(!r.exists()){
@@ -255,27 +263,35 @@ public class Server  implements Runnable{
                             }
                          synchronized(this){
                             ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
-                            int num = (Integer)we.readObject();
-                            ares = new Res[num];
-                            ares = (Res[])we.readObject();
+//                            int num = (Integer)we.readObject();
+//                            ares = new Res[num];
+//                            ares = (Res[])we.readObject();
+                            reslist = (ArrayList<Res>)we.readObject();
                             we.close();
                          }
-                        this.oout.writeObject((Res[])ares);
+//                        this.oout.writeObject((Res[])ares);
+                         Res restmp[] = new Res[reslist.size()];
+                         restmp = reslist.toArray(restmp);
+                         this.oout.writeObject((Res[])restmp);
                         this.oout.writeObject((String)"!GORES!"); // Get Object Res
                         Res res = (Res)oin.readObject();
                         synchronized(this){
                             boolean acc = false;
-                            for (int i = 0;i<ares.length;i++){
-                                if(ares[i].equals(res)){
-                                    ares[i].accept();
+//                            for (int i = 0;i<ares.length;i++){
+//                                if(ares[i].equals(res)){
+//                                    ares[i].accept();
+                            for(int i =0;i<reslist.size();i++){
+                                if(reslist.get(i).equals(res)){
+                                    reslist.get(i).accept();
                                     acc = true;
                                     break;
                                 }
                             }
                             if(acc){
                                 ObjectOutputStream wy = new ObjectOutputStream(new FileOutputStream("Res.kin"));
-                                wy.writeObject(ares.length);
-                                wy.writeObject(ares);
+//                                wy.writeObject(ares.length);
+//                                wy.writeObject(ares);
+                                wy.writeObject(reslist);
                                 wy.close();
                                 this.oout.writeObject((String)"!OK!");
                             }else this.oout.writeObject((String)"!NORES!");
@@ -292,7 +308,8 @@ public class Server  implements Runnable{
                 try{
                     this.oout.writeObject((String)"!GDATA!");
                     String tmp = (String)oin.readObject();
-                    Res ares[];
+//                    Res ares[];
+                    List<Res> reslist = new ArrayList<Res>();
                     if(tmp.equals("!OK!")){
                         File r = new File("Res.kin");
                             if(!r.exists()){
@@ -300,27 +317,36 @@ public class Server  implements Runnable{
                             }
                         synchronized(this){
                             ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
-                            int num = (Integer)we.readObject();
-                            ares = new Res[num];
-                            ares = (Res[])we.readObject();
+//                            int num = (Integer)we.readObject();
+//                            ares = new Res[num];
+//                            ares = (Res[])we.readObject();
+                            reslist = (ArrayList<Res>)we.readObject();
                             we.close();
                          }
-                        this.oout.writeObject((Res[])ares);
+//                        this.oout.writeObject((Res[])ares);
+                        Res restmp[] = new Res[reslist.size()];
+                        restmp = reslist.toArray(restmp);
+                        this.oout.writeObject((Res[])restmp);
                         this.oout.writeObject((String)"!GORES!"); // Get Object Res
                         Res res = (Res)oin.readObject();
                         synchronized(this){                            
                             boolean ok = false;
-                            for (int i = 0;i<ares.length;i++){
-                                if(ares[i].equals(res)){
-                                    ares[i].get();
+//                            for (int i = 0;i<ares.length;i++){
+//                                if(ares[i].equals(res)){
+//                                    ares[i].get();
+                            for(int i = 0;i<reslist.size();i++){
+                                if(reslist.get(i).equals(res)){
+                                    reslist.get(i).get();
+                                    System.out.println(i);
                                     ok = true;
                                     break;
                                 }
                             }
                             if(ok){
                                 ObjectOutputStream wy = new ObjectOutputStream(new FileOutputStream("Res.kin"));
-                                wy.writeObject(ares.length);
-                                wy.writeObject(ares);
+//                                wy.writeObject(ares.length);
+//                                wy.writeObject(ares);
+                                wy.writeObject(reslist);
                                 wy.close();                                
                                 this.oout.writeObject((String)"!OK!");
                             }else this.oout.writeObject((String)"!NORES!");
@@ -337,7 +363,8 @@ public class Server  implements Runnable{
                 try{
                     this.oout.writeObject((String)"!GDATA!");
                     String tmps = (String)oin.readObject();
-                    Res ares[];
+//                    Res ares[];
+                    List<Res> reslist = new ArrayList<Res>();
                     if(tmps.equals("!OK!")){
                         File r = new File("Res.kin");
                             if(!r.exists()){
@@ -345,36 +372,48 @@ public class Server  implements Runnable{
                             }
                          synchronized(this){
                             ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
-                            int num = (Integer)we.readObject();
-                            ares = new Res[num];
-                            ares = (Res[])we.readObject();
+//                            int num = (Integer)we.readObject();
+//                            ares = new Res[num];
+//                            ares = (Res[])we.readObject();
+                            reslist = (ArrayList<Res>)we.readObject();
                             we.close();
                          }
-                        this.oout.writeObject((Res[])ares);
-                         this.oout.writeObject((String)"!GORES!"); // Get Object Res
+//                        this.oout.writeObject((Res[])ares);
+                        Res restmp[] = new Res[reslist.size()];
+                        restmp = reslist.toArray(restmp);
+                        this.oout.writeObject((Res[])restmp);
+                        this.oout.writeObject((String)"!GORES!"); // Get Object Res
                         Res res = (Res)oin.readObject();
                         synchronized(this){
                             int tmp = -254;
-                            for (int i = 0;i<ares.length;i++){
-                                if(ares[i].equals(res)){
+//                            for (int i = 0;i<ares.length;i++){
+//                                if(ares[i].equals(res)){
+//                                    tmp = i;
+//                                    break;
+//                                }
+                            for(int i = 0;i<reslist.size();i++){
+                               if(reslist.get(i).equals(res)){
                                     tmp = i;
+                                    reslist.remove(i);
                                     break;
                                 }
                             }
                             if(tmp>-1){
                                 
-                                int len = ares.length;
-                                Res arestmp[] = new Res[len];
-                                System.arraycopy(ares,0,arestmp,0,len);
-                                for(int i = tmp;i<arestmp.length-1;i++){
-                                    arestmp[i] = arestmp[i+1];
-                                }
-                                ares = new Res[len-1];
-                                System.arraycopy(arestmp,0,ares,0,len-1);
+//                                int len = ares.length;
+//                                Res arestmp[] = new Res[len];
+//                                System.arraycopy(ares,0,arestmp,0,len);
+//                                for(int i = tmp;i<arestmp.length-1;i++){
+//                                    arestmp[i] = arestmp[i+1];
+//                                }
+//                                ares = new Res[len-1];
+//                                System.arraycopy(arestmp,0,ares,0,len-1);
+                                
                                 
                                 ObjectOutputStream wy = new ObjectOutputStream(new FileOutputStream("Res.kin"));
-                                wy.writeObject(ares.length);
-                                wy.writeObject(ares);
+//                                wy.writeObject(ares.length);
+//                                wy.writeObject(ares);
+                                wy.writeObject(reslist);
                                 wy.close();                                
                                  this.oout.writeObject((String)"!OK!");
                             }else  this.oout.writeObject((String)"!NORES!");

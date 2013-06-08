@@ -46,6 +46,7 @@ public class MgmtApp {
             System.out.println("12. Add User");
             System.out.println("13. Delete User");
             System.out.println("14. List Users");
+            System.out.println("15. List Reservations");
         }
         System.out.println("666. Kill me");
         //Scanner in = new Scanner(System.in);
@@ -313,6 +314,11 @@ public class MgmtApp {
 //          //      Scanner sc = new Scanner(System.in);
 //                while(!MgmtApp.in.nextLine().equals(""));
 //           //     sc.close();
+                break;
+            }
+            case 15:{
+                //list Ress
+                mgmt.listRess();
                 break;
             }
             case 666:{

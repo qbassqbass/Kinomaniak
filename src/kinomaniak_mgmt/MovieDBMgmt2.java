@@ -22,6 +22,7 @@ public class MovieDBMgmt2 {
     private List<Movie> movies;
     private List<CRoom> crooms;
     private List<User> users;
+    private List<Res> ress;
     
     /**
      *
@@ -75,6 +76,9 @@ public class MovieDBMgmt2 {
             we = new ObjectInputStream(new FileInputStream("Users.kin"));
             this.users = (ArrayList<User>)we.readObject();
             we.close();
+            we = new ObjectInputStream(new FileInputStream("Res.kin"));
+            this.ress = (ArrayList<Res>)we.readObject();
+            we.close();
          }catch(IOException e){
             System.err.println("IO Error: "+e);
         }catch(ClassNotFoundException e){
@@ -103,6 +107,9 @@ public class MovieDBMgmt2 {
             wy.close();
             wy = new ObjectOutputStream(new FileOutputStream("Users.kin"));
             wy.writeObject(this.users);
+            wy.close();
+            wy = new ObjectOutputStream(new FileOutputStream("Res.kin"));
+            wy.writeObject(this.ress);
             wy.close();
         }catch(IOException e){
             System.err.println("IO Error: "+e);
@@ -259,6 +266,12 @@ public class MovieDBMgmt2 {
     public void listUsers(){
         for(int i=0;i<this.users.size();i++){
             System.out.println(i+". "+this.users.get(i).getName()+"  Type: "+this.users.get(i).getUType());
+        }
+    }
+    public void listRess(){
+        for(int i=0;i<this.ress.size();i++){
+            System.out.println(i+". "+this.ress.get(i).getName()+" ShowID"+this.ress.get(i).getShowID()+" Seat:"
+                    +this.ress.get(i).getSeat()[0]+"-"+this.ress.get(i).getSeat()[1]+" isok:"+this.ress.get(i).isok());
         }
     }
     /**
