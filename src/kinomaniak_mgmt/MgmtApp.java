@@ -151,13 +151,13 @@ public class MgmtApp {
                 break;
             }
             case 3:{
-                Scanner in = new Scanner(System.in);
-                System.out.print("Hour: ");
-                int h = in.nextInt();
-                System.out.print("Minute: ");
-                int m = in.nextInt();
-                mgmt.setTime(h, m);
-                System.out.println("Time added");
+//                Scanner in = new Scanner(System.in);
+//                System.out.print("Hour: ");
+//                int h = in.nextInt();
+//                System.out.print("Minute: ");
+//                int m = in.nextInt();
+//                mgmt.setTime(h, m);
+//                System.out.println("Time added");
 //                System.out.println("\nPress Enter to continue...");
 //           //     Scanner sc = new Scanner(System.in);
 //                while(!MgmtApp.in.nextLine().equals(""));
@@ -188,12 +188,19 @@ public class MgmtApp {
                 mgmt.listCRooms();
                 System.out.print("Your Choice: ");
                 int cr = in.nextInt();
+                System.out.println("Date: ");
+                System.out.print("Day: ");
+                int day = in.nextInt();
+                System.out.print("Month: ");
+                int mon = in.nextInt();
+                System.out.print("Year: ");
+                int year = in.nextInt();
                 System.out.println("Time: ");
                 System.out.print("Hour: ");
                 int h = in.nextInt();
                 System.out.print("Minutes: ");
                 int m = in.nextInt();
-                mgmt.setTime(h,m);
+                mgmt.setTime(h,m,day,mon,year);
                 mgmt.addShow(mgmt.getMovies()[mov],mgmt.getTime(),mgmt.getCRooms()[cr]);
                 System.out.println("Show added");
 //                System.out.println("\nPress Enter to continue...");

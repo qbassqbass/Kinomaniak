@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
+import java.io.EOFException;
 import java.io.File;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -83,6 +84,7 @@ public class Server  implements Runnable{
     
     @Override
     public void run(){ //todo!
+        System.out.println(Thread.currentThread().getName()+": "+sockfd.getInetAddress().getHostAddress());
         boolean cmdAvail = false;
         String tmp;
         try{
@@ -160,6 +162,9 @@ public class Server  implements Runnable{
                     cmdAvail = false;
             }
             this.endThread();
+        }catch(EOFException e){
+             System.err.println("Connection closed: "+sockfd.getInetAddress().getHostAddress());
+             this.endThread();
         }catch(IOException e){
             System.err.println("IOError from "+sockfd.getInetAddress().getHostAddress()+": "+e);
             this.endThread();
@@ -219,8 +224,8 @@ public class Server  implements Runnable{
                         this.oout.writeObject((String)"!SEANS!");
                         int showid = (Integer)oin.readObject();
                         this.oout.writeObject((String)"!MIEJSC!");
-                        int[] seat = (int[])oin.readObject();
-                        Res res = new Res(nazwa,showid,seat);
+                        int[][] seat = (int[][])oin.readObject();
+                        Res res = new Res(nazwa,showid,seat.length,seat);
                     synchronized (this){
                         try{
                             File r = new File("Res.kin");
@@ -344,6 +349,7 @@ public class Server  implements Runnable{
 //                            for (int i = 0;i<ares.length;i++){
 //                                if(ares[i].equals(res)){
 //                                    ares[i].get();
+                            System.out.println("Checking");
                             for(int i = 0;i<reslist.size();i++){
                                 if(reslist.get(i).equals(res)){
                                     reslist.get(i).get();
@@ -429,8 +435,10 @@ public class Server  implements Runnable{
                             }else  this.oout.writeObject((String)"!NORES!");
                         }
                     }
+                }catch(EOFException e){
+                     System.err.println("Connection closed: "+e);
                 }catch(IOException e){
-                    System.err.println("IO Error from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+                    System.err.println("IO Error from "+sockfd.getInetAddress().getHostAddress()+": "+e);                   
                 }catch(ClassNotFoundException e){
                     System.err.println("Class not found from "+sockfd.getInetAddress().getHostAddress()+": "+e);
                 }

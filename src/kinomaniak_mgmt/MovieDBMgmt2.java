@@ -52,8 +52,8 @@ public class MovieDBMgmt2 {
      * @param hrs godzina
      * @param mins minuty
      */
-    public void setTime(int hrs, int mins){
-        this.time = new Time(hrs,mins);
+    public void setTime(int hrs, int mins,int day,int month,int year){
+        this.time = new Time(hrs,mins,day,month,year);
     }
     /**
      * Metoda wczytująca dane z plików .kin
@@ -256,8 +256,13 @@ public class MovieDBMgmt2 {
      * Metoda wypisująca na standardowe wyjście listę seansów
      */
     public void listShows(){
-        for(int i=0;i<this.shows.size();i++){
-            System.out.println(i+". "+this.shows.get(i).getMovie().getName()+" Room: "+this.shows.get(i).getRoom().getID()+" Time: "+this.shows.get(i).getCTime().getHour()+':'+this.shows.get(i).getCTime().getMinute());
+//        for(int i=0;i<this.shows.size();i++){
+//            System.out.println(i+". "+this.shows.get(i).getMovie().getName()+" Room: "+this.shows.get(i).getRoom().getID()+" Time: "+this.shows.get(i).getCTime().getHour()+':'+this.shows.get(i).getCTime().getMinute());
+//        }
+        int i = 0;
+        for(Show s : shows){
+            System.out.println(i+". "+s.getMovie().getName()+" Room: "+s.getRoom().getID()+" Time: "+s.getFormatted());
+            i++;
         }
     }
     /**
@@ -269,9 +274,22 @@ public class MovieDBMgmt2 {
         }
     }
     public void listRess(){
-        for(int i=0;i<this.ress.size();i++){
-            System.out.println(i+". "+this.ress.get(i).getName()+" ShowID"+this.ress.get(i).getShowID()+" Seat:"
-                    +this.ress.get(i).getSeat()[0]+"-"+this.ress.get(i).getSeat()[1]+" isok:"+this.ress.get(i).isok());
+//        for(int i=0;i<this.ress.size();i++){
+//            System.out.println(i+". "+this.ress.get(i).getName()+" ShowID"+this.ress.get(i).getShowID()+" Seat:"
+//                    +this.ress.get(i).getSeat()[0]+"-"+this.ress.get(i).getSeat()[1]+" isok:"+this.ress.get(i).isok());
+//        }
+        try{
+            int i = 0;
+            for(Res r : ress){
+                System.out.println(i+". "+r.getName()+" ShowID:"+r.getShowID()+" Seats: ");
+                for(int[] s : r.getSeats()){
+                    System.out.println("*"+s[0]+"-"+s[1]);
+                }
+                System.out.println("isok: "+r.isok());
+                i++;
+            }
+        }catch(NullPointerException e){
+            System.out.println("No reservations!");
         }
     }
     /**
