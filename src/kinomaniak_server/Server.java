@@ -267,6 +267,7 @@ public class Server  implements Runnable{
             }
             case 6:{// potwierdzenie rezerwacji
                 try{
+//                    System.out.println("Potwierdzenie");
                     this.oout.writeObject((String)"!GDATA!");
                     String tmp = (String)oin.readObject();                   
 //                    Res ares[];
