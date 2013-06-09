@@ -14,7 +14,7 @@ import java.util.Objects;
  */
 public class Res implements Serializable{
     
-    private static final long serialVersionUID = 3L;
+    private static final long serialVersionUID = 4L;
    
     private String imienazwisko;
     private int showid;
@@ -58,7 +58,7 @@ public class Res implements Serializable{
         if (this.getClass() == obj.getClass())
         {
             Res res = (Res) obj;
-            if ((res.imienazwisko).equals(this.imienazwisko) && res.showid == this.showid) {
+            if ((res.imienazwisko).equals(this.imienazwisko) && Arrays.deepEquals(this.seat, res.seat) && res.showid == this.showid) {
                 System.out.println("equals");
                 isEqual = true;
             }
@@ -121,6 +121,13 @@ public class Res implements Serializable{
      */
     public int[][] getSeats(){
         return this.seat;
+    }
+    public String formatSeats(){
+        String tmp = "";
+        for(int s[] : this.getSeats()){
+            tmp += "Rząd: "+s[0]+" Miejsce: "+s[1]+"\n";
+        }
+        return tmp;
     }
     
 }
