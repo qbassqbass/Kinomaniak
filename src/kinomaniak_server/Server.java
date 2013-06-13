@@ -104,32 +104,19 @@ public class Server  implements Runnable{
             }
             tmp = (String)oin.readObject();
             ObjectInputStream we = new ObjectInputStream(new FileInputStream("Shows.kin"));
-//            File fil = (File)oin.readObject();
-//            ObjectInputStream we2 = new ObjectInputStream(new FileInputStream(fil));
-//            ObjectOutputStream wyyy = new ObjectOutputStream(new FileOutputStream("mov.db"));
-//            wyyy.writeObject(fil);
             switch (tmp) {
                 case "!GETMOV!":
                     this.oout.writeObject((String)"!OK!");
-//                    System.out.println("Debug pre");
                     String date = (String)we.readObject();
-//                    System.out.println("Debug pre");
-//                    int cnt = (Integer)we.readObject();
                     System.out.println("Debug pre");
-//                    Show[] ssstmp = (Show[])we.readObject();
                     List<Show> ssstmp = (ArrayList<Show>)we.readObject(); 
-//                    System.out.println("Debug pre");
                     this.oout.writeObject(ssstmp);
-//                    System.out.println("Debug post");
-//                    this.oout.writeObject(MoviesDB);
                     break;
                 case "!GETMOVDT!":
                     tmp = (String)oin.readObject();
                     String dbDate = (String)we.readObject();
                     if(tmp.equals(dbDate)) this.oout.writeObject((String)"!MOVOK!");
                     else { this.oout.writeObject((String)"!MOVUPD!"); this.oout.writeObject(we); }
-//                    if(tmp.equals(newestDBdate)) this.out.write("!MOVOK!");
-//                    else{ this.out.write("!MOVUPD!"); this.oout.writeObject(MoviesDB); }
                     break;
             }
             while(!tmp.equals("!RDY!")){
@@ -154,7 +141,6 @@ public class Server  implements Runnable{
                             int cmd = (Integer)oin.readObject();
                             if(this.checkGrants(cmd)){
                                 this.processCmd(cmd);
-//                                this.oout.writeObject((String)"!OK!");
                             }
                             else this.oout.writeObject((String)"!NGRANT!"); //not granted
                     }
