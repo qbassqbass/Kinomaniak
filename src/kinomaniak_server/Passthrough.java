@@ -7,6 +7,8 @@ package kinomaniak_server;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 //import java.io.ObjectOutputStream;
 //import java.io.PrintWriter;
 
@@ -33,6 +35,7 @@ public class Passthrough {
      * @param args
      */
     public static void main(String[] args){
+        Log logger = new Log();
         final int PORT = 8888;
 //        final int MAXCONNS = 5;
 //        boolean logged;
@@ -58,6 +61,9 @@ public class Passthrough {
 //                        System.out.println("Client connected from "+activeConns[connectionCount].getInetAddress().getHostAddress());
 //                        activeThreads[connectionCount] = new Thread(new Server(activeConns[connectionCount]));
                         System.out.println("Client connected from "+tmpsockfd.getInetAddress().getHostAddress());
+                        String st = new StringBuilder(new SimpleDateFormat("dd-mm-yyyy").format(new Date())).toString();
+                        logger.doLog("separator");
+                        logger.doLog("Client connected from "+tmpsockfd.getInetAddress().getHostAddress());
                         new Thread(new Server(tmpsockfd)).start();
 //                        activeThreads[connectionCount].start();
 //                        connectionCount++;

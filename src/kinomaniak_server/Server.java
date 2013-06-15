@@ -20,7 +20,9 @@ import java.io.FileOutputStream;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Formatter;
 import java.util.List;
 /**
@@ -42,7 +44,8 @@ public class Server  implements Runnable{
      private ObjectOutputStream oout; // output for objects
      private BufferedReader in; //in for data
      private ObjectInputStream oin; //input for objects
-     
+     private Log logger;
+     private String threadName;
     
     
     /*
@@ -64,6 +67,8 @@ public class Server  implements Runnable{
             this.in = new BufferedReader(new InputStreamReader(this.sockfd.getInputStream())); //in for data
             this.oin = new ObjectInputStream(this.sockfd.getInputStream()); //input for objects
             this.logged = true;
+            this.logger = new Log();
+            this.threadName = Thread.currentThread().getName();
         }catch(IOException e){
             System.err.println("IOError from "+sockfd.getInetAddress().getHostAddress()+": "+e);
         }
@@ -84,7 +89,8 @@ public class Server  implements Runnable{
     
     @Override
     public void run(){ //todo!
-        System.out.println(Thread.currentThread().getName()+": "+sockfd.getInetAddress().getHostAddress());
+        System.out.println(this.threadName+": "+sockfd.getInetAddress().getHostAddress());
+        logger.doLog(this.threadName+": "+sockfd.getInetAddress().getHostAddress());
         boolean cmdAvail = false;
         String tmp;
         try{
@@ -150,12 +156,15 @@ public class Server  implements Runnable{
             this.endThread();
         }catch(EOFException e){
              System.err.println("Connection closed: "+sockfd.getInetAddress().getHostAddress());
+             logger.doLog(this.threadName+": Connection closed: "+sockfd.getInetAddress().getHostAddress());
              this.endThread();
         }catch(IOException e){
             System.err.println("IOError from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+            logger.doLog(this.threadName+": IOError from "+sockfd.getInetAddress().getHostAddress()+": "+e);
             this.endThread();
         }catch(ClassNotFoundException e){
             System.err.println("Class not found from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+            logger.doLog(this.threadName+": Class not found from "+sockfd.getInetAddress().getHostAddress()+": "+e);
         }
     }
     
@@ -220,24 +229,14 @@ public class Server  implements Runnable{
                             int num = 0;
                             if(!r.exists()){
                                 r.createNewFile();
-//                                ares = new Res[1];
-//                                ares[0] = res;
                                 reslist.add(res);
                             }else{
                                 ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
-//                                num = (Integer)we.readObject();
-//                                ares= new Res[num+1];
-//                                System.out.println(num+1);
-//                                ares = (Res[])we.readObject();
                                 reslist = (ArrayList<Res>)we.readObject();
                                 we.close();
-//                                System.out.println(ares.length);
-//                                ares[num] = res;
                                 reslist.add(res);
                             }
                             ObjectOutputStream wy = new ObjectOutputStream(new FileOutputStream("Res.kin"));
-//                            wy.writeObject(num+1);
-//                            wy.writeObject(ares);
                             wy.writeObject(reslist);
                             wy.close();
                         }catch(IOException e){
@@ -246,17 +245,17 @@ public class Server  implements Runnable{
                     }
                 }catch(IOException e){
                     System.err.println("IO Error: "+e);
+                    logger.doLog(this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
                 }catch(ClassNotFoundException e){
                     System.err.println("Class not found :"+e);
+                    logger.doLog(this.threadName+": Class not found from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
                 }
                 break;
             }
             case 6:{// potwierdzenie rezerwacji
                 try{
-//                    System.out.println("Potwierdzenie");
                     this.oout.writeObject((String)"!GDATA!");
-                    String tmp = (String)oin.readObject();                   
-//                    Res ares[];
+                    String tmp = (String)oin.readObject();           
                     List<Res> reslist = new ArrayList<Res>();
                     if(tmp.equals("!OK!")){
                         File r = new File("Res.kin");
@@ -265,13 +264,9 @@ public class Server  implements Runnable{
                             }
                          synchronized(this){
                             ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
-//                            int num = (Integer)we.readObject();
-//                            ares = new Res[num];
-//                            ares = (Res[])we.readObject();
                             reslist = (ArrayList<Res>)we.readObject();
                             we.close();
                          }
-//                        this.oout.writeObject((Res[])ares);
                          Res restmp[] = new Res[reslist.size()];
                          restmp = reslist.toArray(restmp);
                          this.oout.writeObject((Res[])restmp);
@@ -279,9 +274,6 @@ public class Server  implements Runnable{
                         Res res = (Res)oin.readObject();
                         synchronized(this){
                             boolean acc = false;
-//                            for (int i = 0;i<ares.length;i++){
-//                                if(ares[i].equals(res)){
-//                                    ares[i].accept();
                             for(int i =0;i<reslist.size();i++){
                                 if(reslist.get(i).equals(res)){
                                     reslist.get(i).accept();
@@ -291,8 +283,6 @@ public class Server  implements Runnable{
                             }
                             if(acc){
                                 ObjectOutputStream wy = new ObjectOutputStream(new FileOutputStream("Res.kin"));
-//                                wy.writeObject(ares.length);
-//                                wy.writeObject(ares);
                                 wy.writeObject(reslist);
                                 wy.close();
                                 this.oout.writeObject((String)"!OK!");
@@ -300,9 +290,11 @@ public class Server  implements Runnable{
                         }
                     }
                 }catch(IOException e){
-                    System.err.println("IO Error from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+                    System.err.println("IO Error: "+e);
+                    logger.doLog(this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
                 }catch(ClassNotFoundException e){
-                    System.err.println("Class not found from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+                    System.err.println("Class not found :"+e);
+                    logger.doLog(this.threadName+": Class not found from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
                 }
                 break;
             }
@@ -310,7 +302,6 @@ public class Server  implements Runnable{
                 try{
                     this.oout.writeObject((String)"!GDATA!");
                     String tmp = (String)oin.readObject();
-//                    Res ares[];
                     List<Res> reslist = new ArrayList<Res>();
                     if(tmp.equals("!OK!")){
                         File r = new File("Res.kin");
@@ -319,13 +310,9 @@ public class Server  implements Runnable{
                             }
                         synchronized(this){
                             ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
-//                            int num = (Integer)we.readObject();
-//                            ares = new Res[num];
-//                            ares = (Res[])we.readObject();
                             reslist = (ArrayList<Res>)we.readObject();
                             we.close();
                          }
-//                        this.oout.writeObject((Res[])ares);
                         Res restmp[] = new Res[reslist.size()];
                         restmp = reslist.toArray(restmp);
                         this.oout.writeObject((Res[])restmp);
@@ -333,9 +320,6 @@ public class Server  implements Runnable{
                         Res res = (Res)oin.readObject();
                         synchronized(this){                            
                             boolean ok = false;
-//                            for (int i = 0;i<ares.length;i++){
-//                                if(ares[i].equals(res)){
-//                                    ares[i].get();
                             System.out.println("Checking");
                             for(int i = 0;i<reslist.size();i++){
                                 if(reslist.get(i).equals(res)){
@@ -347,8 +331,6 @@ public class Server  implements Runnable{
                             }
                             if(ok){
                                 ObjectOutputStream wy = new ObjectOutputStream(new FileOutputStream("Res.kin"));
-//                                wy.writeObject(ares.length);
-//                                wy.writeObject(ares);
                                 wy.writeObject(reslist);
                                 wy.close();                                
                                 this.oout.writeObject((String)"!OK!");
@@ -356,9 +338,11 @@ public class Server  implements Runnable{
                         }
                     }
                 }catch(IOException e){
-                    System.err.println("IO Error from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+                    System.err.println("IO Error: "+e);
+                    logger.doLog(this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
                 }catch(ClassNotFoundException e){
-                    System.err.println("Class not found from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+                    System.err.println("Class not found :"+e);
+                    logger.doLog(this.threadName+": Class not found from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
                 }
                 break;
             }
@@ -366,7 +350,6 @@ public class Server  implements Runnable{
                 try{
                     this.oout.writeObject((String)"!GDATA!");
                     String tmps = (String)oin.readObject();
-//                    Res ares[];
                     List<Res> reslist = new ArrayList<Res>();
                     if(tmps.equals("!OK!")){
                         File r = new File("Res.kin");
@@ -375,13 +358,9 @@ public class Server  implements Runnable{
                             }
                          synchronized(this){
                             ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
-//                            int num = (Integer)we.readObject();
-//                            ares = new Res[num];
-//                            ares = (Res[])we.readObject();
                             reslist = (ArrayList<Res>)we.readObject();
                             we.close();
                          }
-//                        this.oout.writeObject((Res[])ares);
                         Res restmp[] = new Res[reslist.size()];
                         restmp = reslist.toArray(restmp);
                         this.oout.writeObject((Res[])restmp);
@@ -389,11 +368,6 @@ public class Server  implements Runnable{
                         Res res = (Res)oin.readObject();
                         synchronized(this){
                             int tmp = -254;
-//                            for (int i = 0;i<ares.length;i++){
-//                                if(ares[i].equals(res)){
-//                                    tmp = i;
-//                                    break;
-//                                }
                             for(int i = 0;i<reslist.size();i++){
                                if(reslist.get(i).equals(res)){
                                     tmp = i;
@@ -402,20 +376,7 @@ public class Server  implements Runnable{
                                 }
                             }
                             if(tmp>-1){
-                                
-//                                int len = ares.length;
-//                                Res arestmp[] = new Res[len];
-//                                System.arraycopy(ares,0,arestmp,0,len);
-//                                for(int i = tmp;i<arestmp.length-1;i++){
-//                                    arestmp[i] = arestmp[i+1];
-//                                }
-//                                ares = new Res[len-1];
-//                                System.arraycopy(arestmp,0,ares,0,len-1);
-                                
-                                
                                 ObjectOutputStream wy = new ObjectOutputStream(new FileOutputStream("Res.kin"));
-//                                wy.writeObject(ares.length);
-//                                wy.writeObject(ares);
                                 wy.writeObject(reslist);
                                 wy.close();                                
                                  this.oout.writeObject((String)"!OK!");
@@ -423,11 +384,14 @@ public class Server  implements Runnable{
                         }
                     }
                 }catch(EOFException e){
-                     System.err.println("Connection closed: "+e);
+                     System.err.println("Connection closed: "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
+                      logger.doLog(this.threadName+":Connection closed from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
                 }catch(IOException e){
-                    System.err.println("IO Error from "+sockfd.getInetAddress().getHostAddress()+": "+e);                   
+                    System.err.println("IO Error: "+e);
+                    logger.doLog(this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
                 }catch(ClassNotFoundException e){
-                    System.err.println("Class not found from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+                    System.err.println("Class not found :"+e);
+                    logger.doLog(this.threadName+": Class not found from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
                 }
                 break;
             }
@@ -459,12 +423,10 @@ public class Server  implements Runnable{
         
         boolean log = false;
         try{
-            //BufferedReader userfile = new BufferedReader(new InputStreamReader(new FileInputStream("users.txt")));
             ObjectInputStream we = new ObjectInputStream(new FileInputStream("Users.kin"));
             try {
                 List<User> ar = (ArrayList<User>)we.readObject();
                 User[] tmp = ar.toArray(new User[]{}); 
-                //User[] tmp = (User[])we.readObject();
                 we.close();
                 int ctmp = 0;
                 for(int i=0;i<tmp.length;i++){
@@ -476,11 +438,13 @@ public class Server  implements Runnable{
                 if(pwd.equals(tmp[ctmp].getPass())){
                     log = true;
                 }
-            } catch (ClassNotFoundException e) {
-                System.err.println("ClassNotFoundException from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+            } catch(ClassNotFoundException e){
+                    System.err.println("Class not found :"+e);
+                    logger.doLog(this.threadName+": Class not found from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
             }
         }catch(IOException e){
             System.err.println("IO Error from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+             logger.doLog(this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
         }
         return log;
     }
@@ -491,8 +455,9 @@ public class Server  implements Runnable{
             return obj;
         }catch(IOException e){
             System.err.println("Błąd odczytu pliku");
+            logger.doLog(this.threadName+": Błąd odczytu pliku from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
         }catch(ClassNotFoundException c){
-            System.err.println("Brak klasy Object xD");
+            System.err.println("Brak klasy Object");
         } 
         return null;
     } 
@@ -504,6 +469,7 @@ public class Server  implements Runnable{
             md = MessageDigest.getInstance("SHA-1");
         }catch(NoSuchAlgorithmException e){
             System.err.println("No Such Algorithm Exception: "+e);
+            logger.doLog(this.threadName+": No Such Algorithm Exception from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
             return null;
         }
         return byteToHex(md.digest(pass));

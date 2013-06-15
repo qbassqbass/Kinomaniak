@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.Formatter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Objects;
 
 
 /**
@@ -32,6 +33,32 @@ public class User implements Serializable{
         this.utype = utype;
         this.availcmds = new int[12];
         this.setCmds();
+    }
+    public User(String name, String password){
+        this.name = name;
+        this.password = password;
+    }
+    
+    @Override
+    public boolean equals(Object obj){
+        boolean isEqual = false;
+        if (this.getClass() == obj.getClass())
+        {
+            User res = (User) obj;
+            if ((res.name).equals(this.name) && (res.password).equals(this.password)) {
+                System.out.println("equals");
+                isEqual = true;
+            }
+        } 
+        return isEqual;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 59 * hash + Objects.hashCode(this.name);
+        hash = 59 * hash + Objects.hashCode(this.password);
+        return hash;
     }
     
     /**
