@@ -15,7 +15,7 @@ import java.util.Objects;
  * @author qbass
  */
 public class User implements Serializable{
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2L;
     private String name;
     private String password;
     private int utype;
@@ -29,14 +29,16 @@ public class User implements Serializable{
      */
     public User(String name, String password,int utype){
         this.name = name;
-        this.password = password;
+        String tmp = password;
+        this.password = toSHA1(tmp.getBytes());        
         this.utype = utype;
         this.availcmds = new int[12];
         this.setCmds();
     }
     public User(String name, String password){
         this.name = name;
-        this.password = password;
+        String tmp = password;
+        this.password = toSHA1(tmp.getBytes());      
     }
     
     @Override
@@ -80,7 +82,8 @@ public class User implements Serializable{
      * @return ciąg SHA1 
      */
     public String getPass(){
-        return toSHA1(this.password.getBytes());
+//        return toSHA1(this.password.getBytes());
+        return this.password;
     }
     /**
      * Metoda zwracająca typ użytkownika

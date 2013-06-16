@@ -68,7 +68,7 @@ public class Server  implements Runnable{
             this.oin = new ObjectInputStream(this.sockfd.getInputStream()); //input for objects
             this.logged = true;
             this.logger = new Log();
-            this.threadName = Thread.currentThread().getName();
+            
         }catch(IOException e){
             System.err.println("IOError from "+sockfd.getInetAddress().getHostAddress()+": "+e);
         }
@@ -89,6 +89,7 @@ public class Server  implements Runnable{
     
     @Override
     public void run(){ //todo!
+        this.threadName = Thread.currentThread().getName();
         System.out.println(this.threadName+": "+sockfd.getInetAddress().getHostAddress());
         logger.doLog(this.threadName+": "+sockfd.getInetAddress().getHostAddress());
         boolean cmdAvail = false;
@@ -479,6 +480,7 @@ public class Server  implements Runnable{
                 }
                 if(pwd.equals(tmp[ctmp].getPass())){
                     log = true;
+                    this.luser = tmp[ctmp];
                 }
             } catch(ClassNotFoundException e){
                     System.err.println("Class not found :"+e);
