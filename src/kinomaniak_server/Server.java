@@ -428,8 +428,49 @@ public class Server  implements Runnable{
                 }
                 break;
             }
-            case 10:{
-                
+            case 10:{ // sprzedaż biletu w kasie
+                try{
+                    this.oout.writeObject((String)"!GDATA!");
+                    String tmp = (String)oin.readObject();
+                    if(tmp.equals("!OK!"))
+                        this.oout.writeObject((String)"!NAZW!");
+                        String nazwa = (String)oin.readObject();
+                        this.oout.writeObject((String)"!SEANS!");
+                        int showid = (Integer)oin.readObject();
+                        int[][] seat = (int[][])oin.readObject();
+                        Res res = new Res(nazwa,showid,seat.length,seat);
+                        res.accept();
+                        res.get();
+                    synchronized (this){
+                        try{
+                            File r = new File("Res.kin");
+                            Res ares[];
+                            List<Res> reslist = new ArrayList<Res>();
+                            int num = 0;
+                            if(!r.exists()){
+                                r.createNewFile();
+                                reslist.add(res);
+                            }else{
+                                ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
+                                reslist = (ArrayList<Res>)we.readObject();
+                                we.close();
+                                reslist.add(res);
+                            }
+                            ObjectOutputStream wy = new ObjectOutputStream(new FileOutputStream("Res.kin"));
+                            wy.writeObject(reslist);
+                            wy.close();
+                        }catch(IOException e){
+                            System.err.println("IO Error from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+                        }
+                    }
+                    logger.doLog(1,"Res: "+res.getName()+" ShowID: "+res.getShowID()+" SeatCount: "+res.getSeats().length);
+                }catch(IOException e){
+                    System.err.println("IO Error: "+e);
+                    logger.doLog(0,this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
+                }catch(ClassNotFoundException e){
+                    System.err.println("Class not found :"+e);
+                    logger.doLog(0,this.threadName+": Class not found from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
+                }
                 break;
             }
             case 666 :{
@@ -471,10 +512,6 @@ public class Server  implements Runnable{
                         }                        
                     }
                 }
-//                if(pwd.equals(tmp[ctmp].getPass())){
-//                    log = true;
-//                    this.luser = tmp[ctmp];
-//                }
             } catch(ClassNotFoundException e){
                     System.err.println("Class not found :"+e);
                     logger.doLog(0,this.threadName+": Class not found from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);

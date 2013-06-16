@@ -39,3 +39,8 @@
 ====18:29:47====
 18:29:47  Client connected from 127.0.0.1
 18:29:51  Thread-0: User login error from 127.0.0.1
+23:10:52  
+====23:11:12====
+23:11:12  Client connected from 127.0.0.1
+23:11:21  Thread-0 as adas: 127.0.0.1
+23:11:40  Thread-0 as adas: Connection closed: 127.0.0.1
