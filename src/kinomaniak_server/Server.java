@@ -73,8 +73,7 @@ public class Server  implements Runnable{
     @Override
     public void run(){ //todo!
         this.threadName = Thread.currentThread().getName();
-        System.out.println(this.threadName+": "+sockfd.getInetAddress().getHostAddress());
-        logger.doLog(0,this.threadName+": "+sockfd.getInetAddress().getHostAddress());
+        
         boolean cmdAvail = false;
         String tmp;
         try{
@@ -85,12 +84,16 @@ public class Server  implements Runnable{
             else{
                 this.logged = false;
                 this.oout.writeObject((String)"!ERROR!");
+                logger.doLog(0,this.threadName+": User login error from "+sockfd.getInetAddress().getHostAddress());
                 this.in.close();
                 this.out.close();
                 this.oin.close();
                 this.oout.close();
                 System.exit(-1);
             }
+            this.threadName += " as "+this.luser.getName();
+            System.out.println(this.threadName+": "+sockfd.getInetAddress().getHostAddress());
+            logger.doLog(0,this.threadName+": "+sockfd.getInetAddress().getHostAddress());
             tmp = (String)oin.readObject();
             ObjectInputStream we = new ObjectInputStream(new FileInputStream("Shows.kin"));
             switch (tmp) {
@@ -201,7 +204,6 @@ public class Server  implements Runnable{
                         String nazwa = (String)oin.readObject();
                         this.oout.writeObject((String)"!SEANS!");
                         int showid = (Integer)oin.readObject();
-//                        this.oout.writeObject((String)"!MIEJSC!");
                         int[][] seat = (int[][])oin.readObject();
                         Res res = new Res(nazwa,showid,seat.length,seat);
                     synchronized (this){
@@ -226,6 +228,7 @@ public class Server  implements Runnable{
                             System.err.println("IO Error from "+sockfd.getInetAddress().getHostAddress()+": "+e);
                         }
                     }
+                    logger.doLog(1,"Res: "+res.getName()+" ShowID: "+res.getShowID()+" SeatCount: "+res.getSeats().length);
                 }catch(IOException e){
                     System.err.println("IO Error: "+e);
                     logger.doLog(0,this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
@@ -271,6 +274,7 @@ public class Server  implements Runnable{
                                 this.oout.writeObject((String)"!OK!");
                             }else this.oout.writeObject((String)"!NORES!");
                         }
+                        logger.doLog(1, "AccRes: "+res.getName()+" ShowID:"+res.getShowID()+" SeatsCount:"+res.getSeats().length);
                     }
                 }catch(IOException e){
                     System.err.println("IO Error: "+e);
@@ -319,6 +323,7 @@ public class Server  implements Runnable{
                                 this.oout.writeObject((String)"!OK!");
                             }else this.oout.writeObject((String)"!NORES!");
                         }
+                        logger.doLog(1, "GetRes: "+res.getName()+" ShowID:"+res.getShowID()+" SeatsCount:"+res.getSeats().length);
                     }
                 }catch(IOException e){
                     System.err.println("IO Error: "+e);
@@ -365,6 +370,7 @@ public class Server  implements Runnable{
                                  this.oout.writeObject((String)"!OK!");
                             }else  this.oout.writeObject((String)"!NORES!");
                         }
+                        logger.doLog(1, "CancelRes: "+res.getName()+" ShowID:"+res.getShowID()+" SeatsCount:"+res.getSeats().length);
                     }
                 }catch(EOFException e){
                      System.err.println("Connection closed: "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
