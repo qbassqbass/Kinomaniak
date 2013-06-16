@@ -13,10 +13,12 @@ import java.util.Date;
  */
 public class Log {
     /**
-     * Konstruktor klasy Log sprawdzający dostępność podkatalogu logs i ewentualne utworzenie go.
+     * Konstruktor klasy Log sprawdzający dostępność podkatalogów logs oraz stats i ewentualne utworzenie ich.
      */
     public Log(){
         File dir = new File("logs");
+        if(!dir.exists()) dir.mkdir();
+        dir = new File("stats");
         if(!dir.exists()) dir.mkdir();
     }
     /**
