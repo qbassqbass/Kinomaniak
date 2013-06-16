@@ -3,7 +3,6 @@
  * and open the template in the editor.
  */
 package kinomaniak_mgmt;
-import kinomaniak_objs.*;
 
 /**
  *
@@ -44,13 +43,6 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        pListShow = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        liShowList = new javax.swing.JList();
-        bDelShowOK = new javax.swing.JButton();
-        bShowShow = new javax.swing.JButton();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        tShowMore = new javax.swing.JTextArea();
         pMain = new javax.swing.JPanel();
         bLoad = new javax.swing.JButton();
         bSave = new javax.swing.JButton();
@@ -64,6 +56,13 @@ public class MainFrame extends javax.swing.JFrame {
         bAddUser = new javax.swing.JButton();
         bListUser = new javax.swing.JButton();
         bListRes = new javax.swing.JButton();
+        pListShow = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        liShowList = new javax.swing.JList();
+        bDelShowOK = new javax.swing.JButton();
+        bShowShow = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tShowMore = new javax.swing.JTextArea();
         pListRes = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
         tResList = new javax.swing.JTextArea();
@@ -127,68 +126,8 @@ public class MainFrame extends javax.swing.JFrame {
         bExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        liShowList.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane5.setViewportView(liShowList);
-
-        bDelShowOK.setText("Del Show");
-        bDelShowOK.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bDelShowOKActionPerformed(evt);
-            }
-        });
-
-        bShowShow.setText("More Info");
-        bShowShow.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bShowShowActionPerformed(evt);
-            }
-        });
-
-        tShowMore.setEditable(false);
-        tShowMore.setColumns(20);
-        tShowMore.setRows(5);
-        jScrollPane6.setViewportView(tShowMore);
-
-        javax.swing.GroupLayout pListShowLayout = new javax.swing.GroupLayout(pListShow);
-        pListShow.setLayout(pListShowLayout);
-        pListShowLayout.setHorizontalGroup(
-            pListShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pListShowLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(pListShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pListShowLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(pListShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bDelShowOK)
-                            .addComponent(bShowShow)))
-                    .addGroup(pListShowLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(58, Short.MAX_VALUE))
-        );
-        pListShowLayout.setVerticalGroup(
-            pListShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pListShowLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pListShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(pListShowLayout.createSequentialGroup()
-                        .addComponent(bDelShowOK)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bShowShow)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane6))
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
-
-        pListShow.setBounds(0, 0, 540, 260);
-        jLayeredPane1.add(pListShow, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        setTitle("Management app for Kinomaniak project");
+        setResizable(false);
 
         bLoad.setText("LOAD");
         bLoad.addActionListener(new java.awt.event.ActionListener() {
@@ -339,6 +278,68 @@ public class MainFrame extends javax.swing.JFrame {
 
         pMain.setBounds(0, 0, 390, 240);
         jLayeredPane1.add(pMain, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        liShowList.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane5.setViewportView(liShowList);
+
+        bDelShowOK.setText("Del Show");
+        bDelShowOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bDelShowOKActionPerformed(evt);
+            }
+        });
+
+        bShowShow.setText("More Info");
+        bShowShow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bShowShowActionPerformed(evt);
+            }
+        });
+
+        tShowMore.setEditable(false);
+        tShowMore.setColumns(20);
+        tShowMore.setRows(5);
+        jScrollPane6.setViewportView(tShowMore);
+
+        javax.swing.GroupLayout pListShowLayout = new javax.swing.GroupLayout(pListShow);
+        pListShow.setLayout(pListShowLayout);
+        pListShowLayout.setHorizontalGroup(
+            pListShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pListShowLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pListShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pListShowLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(pListShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bDelShowOK)
+                            .addComponent(bShowShow)))
+                    .addGroup(pListShowLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(58, Short.MAX_VALUE))
+        );
+        pListShowLayout.setVerticalGroup(
+            pListShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pListShowLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pListShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pListShowLayout.createSequentialGroup()
+                        .addComponent(bDelShowOK)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bShowShow)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane6))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+
+        pListShow.setBounds(0, 0, 540, 260);
+        jLayeredPane1.add(pListShow, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         tResList.setColumns(20);
         tResList.setRows(5);
@@ -801,7 +802,7 @@ public class MainFrame extends javax.swing.JFrame {
                 bReturnActionPerformed(evt);
             }
         });
-        bReturn.setBounds(10, 270, 130, 29);
+        bReturn.setBounds(0, 280, 130, 29);
         jLayeredPane1.add(bReturn, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         bExit.setText("Exit");
@@ -810,7 +811,7 @@ public class MainFrame extends javax.swing.JFrame {
                 bExitActionPerformed(evt);
             }
         });
-        bExit.setBounds(180, 270, 80, 29);
+        bExit.setBounds(400, 280, 80, 29);
         jLayeredPane1.add(bExit, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
