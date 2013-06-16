@@ -218,7 +218,7 @@ public class Server  implements Runnable{
                         String nazwa = (String)oin.readObject();
                         this.oout.writeObject((String)"!SEANS!");
                         int showid = (Integer)oin.readObject();
-                        this.oout.writeObject((String)"!MIEJSC!");
+//                        this.oout.writeObject((String)"!MIEJSC!");
                         int[][] seat = (int[][])oin.readObject();
                         Res res = new Res(nazwa,showid,seat.length,seat);
                     synchronized (this){
@@ -395,8 +395,50 @@ public class Server  implements Runnable{
                 }
                 break;
             }
-            case 9:{
-                
+            case 9:{ // sprawdzenie zajętości miejsc
+                try{
+                    this.oout.writeObject((String)"!GDATA!");
+                    String tmps = (String)oin.readObject();
+                    List<Res> reslist = new ArrayList<Res>();
+                    int reserved[][] = new int[10][10];
+                    if(tmps.equals("!OK!")){
+                        this.oout.writeObject((String)"!GSID!");
+                        int showid = (Integer)this.oin.readObject();
+                        File r = new File("Res.kin");
+                            if(!r.exists()){
+                                for(int[] i : reserved){
+                                    for(int j : i){
+                                        j = 0;
+                                    }
+                                }
+                                this.oout.writeObject(reserved);
+                                break;
+                            }
+                         synchronized(this){
+                            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
+                            reslist = (ArrayList<Res>)we.readObject();
+                            we.close();
+                         }
+                         for(Res rs : reslist){
+                             if(rs.getShowID() == showid){
+                                 int seats[][] = rs.getSeats();
+                                 for(int[] i : seats){
+                                     reserved[i[0]][i[1]] = 1;
+                                 }
+                             }
+                         }
+                         this.oout.writeObject(reserved);
+                    }
+                }catch(EOFException e){
+                     System.err.println("Connection closed: "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
+                      logger.doLog(this.threadName+":Connection closed from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
+                }catch(IOException e){
+                    System.err.println("IO Error: "+e);
+                    logger.doLog(this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
+                }catch(ClassNotFoundException e){
+                    System.err.println("Class not found :"+e);
+                    logger.doLog(this.threadName+": Class not found from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
+                }
                 break;
             }
             case 10:{
