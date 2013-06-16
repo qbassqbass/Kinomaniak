@@ -20,14 +20,30 @@ public class Log {
         if(!dir.exists()) dir.mkdir();
         dir = new File("stats");
         if(!dir.exists()) dir.mkdir();
+        dir = new File("others");
+        if(!dir.exists()) dir.mkdir();
     }
     /**
      * Metoda zapisująca zdarzenia do pliku z aktualnymi logami
+     * @param type typ logu(0 - zdarzenie/błąd, 1 - statystyka)
      * @param tolog zdarzenie/błąd do zapisania w logu
      */
-    public void doLog(String tolog){
+    public void doLog(int type, String tolog){
         PrintWriter out = null;
-        String fname = "logs/"+new StringBuilder(new SimpleDateFormat("dd-MM-yyyy").format(new Date())).toString()+".log";
+        String fname;
+        switch(type){
+            case 0:{
+                fname = "logs/"+new StringBuilder(new SimpleDateFormat("dd-MM-yyyy").format(new Date())).toString()+".log";
+                break;
+            }
+            case 1:{
+                fname = "stats/"+new StringBuilder(new SimpleDateFormat("dd-MM-yyyy").format(new Date())).toString()+".log";
+                break;
+            }
+            default:{
+                fname =  "others/"+new StringBuilder(new SimpleDateFormat("dd-MM-yyyy").format(new Date())).toString()+".log";
+            }
+        }
         try{
             File fil = new File(fname);
             if(!fil.exists()) fil.createNewFile();

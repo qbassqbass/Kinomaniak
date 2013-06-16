@@ -33,8 +33,8 @@ public class Passthrough {
                         Socket tmpsockfd = sockfd.accept();
                         System.out.println("Client connected from "+tmpsockfd.getInetAddress().getHostAddress());
                         String st = new StringBuilder(new SimpleDateFormat("dd-mm-yyyy").format(new Date())).toString();
-                        logger.doLog("separator");
-                        logger.doLog("Client connected from "+tmpsockfd.getInetAddress().getHostAddress());
+                        logger.doLog(0,"separator");
+                        logger.doLog(0,"Client connected from "+tmpsockfd.getInetAddress().getHostAddress());
                         new Thread(new Server(tmpsockfd)).start();
                     }catch(IOException e ){
                         System.err.println("Could not connect Client.");

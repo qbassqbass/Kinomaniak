@@ -74,7 +74,7 @@ public class Server  implements Runnable{
     public void run(){ //todo!
         this.threadName = Thread.currentThread().getName();
         System.out.println(this.threadName+": "+sockfd.getInetAddress().getHostAddress());
-        logger.doLog(this.threadName+": "+sockfd.getInetAddress().getHostAddress());
+        logger.doLog(0,this.threadName+": "+sockfd.getInetAddress().getHostAddress());
         boolean cmdAvail = false;
         String tmp;
         try{
@@ -139,15 +139,15 @@ public class Server  implements Runnable{
             this.endThread();
         }catch(EOFException e){
              System.err.println("Connection closed: "+sockfd.getInetAddress().getHostAddress());
-             logger.doLog(this.threadName+": Connection closed: "+sockfd.getInetAddress().getHostAddress());
+             logger.doLog(0,this.threadName+": Connection closed: "+sockfd.getInetAddress().getHostAddress());
              this.endThread();
         }catch(IOException e){
             System.err.println("IOError from "+sockfd.getInetAddress().getHostAddress()+": "+e);
-            logger.doLog(this.threadName+": IOError from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+            logger.doLog(0,this.threadName+": IOError from "+sockfd.getInetAddress().getHostAddress()+": "+e);
             this.endThread();
         }catch(ClassNotFoundException e){
             System.err.println("Class not found from "+sockfd.getInetAddress().getHostAddress()+": "+e);
-            logger.doLog(this.threadName+": Class not found from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+            logger.doLog(0,this.threadName+": Class not found from "+sockfd.getInetAddress().getHostAddress()+": "+e);
         }
     }
     
@@ -228,10 +228,10 @@ public class Server  implements Runnable{
                     }
                 }catch(IOException e){
                     System.err.println("IO Error: "+e);
-                    logger.doLog(this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
+                    logger.doLog(0,this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
                 }catch(ClassNotFoundException e){
                     System.err.println("Class not found :"+e);
-                    logger.doLog(this.threadName+": Class not found from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
+                    logger.doLog(0,this.threadName+": Class not found from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
                 }
                 break;
             }
@@ -274,10 +274,10 @@ public class Server  implements Runnable{
                     }
                 }catch(IOException e){
                     System.err.println("IO Error: "+e);
-                    logger.doLog(this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
+                    logger.doLog(0,this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
                 }catch(ClassNotFoundException e){
                     System.err.println("Class not found :"+e);
-                    logger.doLog(this.threadName+": Class not found from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
+                    logger.doLog(0,this.threadName+": Class not found from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
                 }
                 break;
             }
@@ -322,10 +322,10 @@ public class Server  implements Runnable{
                     }
                 }catch(IOException e){
                     System.err.println("IO Error: "+e);
-                    logger.doLog(this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
+                    logger.doLog(0,this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
                 }catch(ClassNotFoundException e){
                     System.err.println("Class not found :"+e);
-                    logger.doLog(this.threadName+": Class not found from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
+                    logger.doLog(0,this.threadName+": Class not found from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
                 }
                 break;
             }
@@ -368,13 +368,13 @@ public class Server  implements Runnable{
                     }
                 }catch(EOFException e){
                      System.err.println("Connection closed: "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
-                      logger.doLog(this.threadName+":Connection closed from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
+                      logger.doLog(0,this.threadName+":Connection closed from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
                 }catch(IOException e){
                     System.err.println("IO Error: "+e);
-                    logger.doLog(this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
+                    logger.doLog(0,this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
                 }catch(ClassNotFoundException e){
                     System.err.println("Class not found :"+e);
-                    logger.doLog(this.threadName+": Class not found from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
+                    logger.doLog(0,this.threadName+": Class not found from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
                 }
                 break;
             }
@@ -414,13 +414,13 @@ public class Server  implements Runnable{
                     }
                 }catch(EOFException e){
                      System.err.println("Connection closed: "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
-                      logger.doLog(this.threadName+":Connection closed from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
+                      logger.doLog(0,this.threadName+":Connection closed from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
                 }catch(IOException e){
                     System.err.println("IO Error: "+e);
-                    logger.doLog(this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
+                    logger.doLog(0,this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
                 }catch(ClassNotFoundException e){
                     System.err.println("Class not found :"+e);
-                    logger.doLog(this.threadName+": Class not found from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
+                    logger.doLog(0,this.threadName+": Class not found from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
                 }
                 break;
             }
@@ -470,11 +470,11 @@ public class Server  implements Runnable{
                 }
             } catch(ClassNotFoundException e){
                     System.err.println("Class not found :"+e);
-                    logger.doLog(this.threadName+": Class not found from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
+                    logger.doLog(0,this.threadName+": Class not found from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
             }
         }catch(IOException e){
             System.err.println("IO Error from "+sockfd.getInetAddress().getHostAddress()+": "+e);
-             logger.doLog(this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
+             logger.doLog(0,this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
         }
         return log;
     }
