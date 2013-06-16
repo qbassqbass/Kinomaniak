@@ -12,7 +12,7 @@ import java.util.InputMismatchException;
 import kinomaniak_objs.*;
 import java.util.Scanner;
 /**
- *
+ * Klasa główna Menadżera dla projektu Kinomaniak.
  * @author qbass
  */
 public class MgmtApp {
@@ -21,12 +21,10 @@ public class MgmtApp {
     
     @SuppressWarnings("empty-statement")
     private static int menu() throws IOException{
-        //in.close();
         Scanner sc = new Scanner(System.in);
         System.out.println("\nPress Enter to continue...");
         
         while(!sc.nextLine().equals(""));
-        //sc.close();
         in = new Scanner(System.in);
         System.out.println("==MENU==");
         System.out.println("-1. Generate placeholder data");
@@ -34,7 +32,6 @@ public class MgmtApp {
         if(loaded){
             System.out.println("1. Save data");
             System.out.println("2. Add Movie");
-         //   System.out.println("3. (N/A)Add Time");
             System.out.println("4. Add CRoom");
             System.out.println("5. Add Show");
             System.out.println("6. List Movies");
@@ -49,23 +46,19 @@ public class MgmtApp {
             System.out.println("15. List Reservations");
         }
         System.out.println("666. Kill me");
-        //Scanner in = new Scanner(System.in);
         System.out.print("Your choice: ");
         try{            
             int c = MgmtApp.in.nextInt();
             return c;
         }catch(InputMismatchException e){
             System.err.println("You have to input a number!");
- //       }catch(NoSuchElementException e){
-    //        System.err.println(e);
         }
        return -666;
     }
     
     /**
-     * Main method for ManagementApp
-     * 
-     * @param args
+     * Główna metoda dla Aplikacji Menadżera projektu Kinomaniak.
+     * @param args nieużywane
      * @throws IOException
      */
     @SuppressWarnings("empty-statement")
@@ -114,10 +107,6 @@ public class MgmtApp {
             case 0:{
                 mgmt.getData();
                 System.out.println("Data loaded...");
-//                System.out.println("\nPress Enter to continue...");
-////                Scanner sc = new Scanner(System.in);
-//                while(!"".equals(MgmtApp.in.nextLine()));
-// //               sc.close();
                 loaded = true;
                 break;
             }
@@ -125,9 +114,6 @@ public class MgmtApp {
                 mgmt.saveData();
                 System.out.println("Data saved...");
                 System.out.println("\nPress Enter to continue...");
-      //          Scanner sc = new Scanner(System.in);
-     //           while(!MgmtApp.in.nextLine().equals(""));
-   //             sc.close();
                 break;
             }
             case 2:{
@@ -143,26 +129,9 @@ public class MgmtApp {
                 if(desc.equals("null")) mgmt.addMovie(name,genre,rating);
                 else mgmt.addMovie(name,genre,rating,desc);
                 System.out.println("Movie added");
-//                System.out.println("\nPress Enter to continue...");
-//            //    Scanner sc = new Scanner(System.in);
-//                while(!MgmtApp.in.nextLine().equals(""));
-//          //      sc.close();
-//           //     in.close();
                 break;
             }
             case 3:{
-//                Scanner in = new Scanner(System.in);
-//                System.out.print("Hour: ");
-//                int h = in.nextInt();
-//                System.out.print("Minute: ");
-//                int m = in.nextInt();
-//                mgmt.setTime(h, m);
-//                System.out.println("Time added");
-//                System.out.println("\nPress Enter to continue...");
-//           //     Scanner sc = new Scanner(System.in);
-//                while(!MgmtApp.in.nextLine().equals(""));
-//           //     sc.close();
-//            //    in.close();
                 break;
             }
             case 4:{
@@ -171,11 +140,6 @@ public class MgmtApp {
                 int id = in.nextInt();
                 mgmt.addCRoom(id);
                 System.out.println("CRoom added");
-//                System.out.println("\nPress Enter to continue...");
-//           //     Scanner sc = new Scanner(System.in);
-//                while(!MgmtApp.in.nextLine().equals(""));
-//           //     sc.close();
-//           //     in.close();
                 break;
             }
             case 5:{
@@ -203,81 +167,46 @@ public class MgmtApp {
                 mgmt.setTime(h,m,day,mon,year);
                 mgmt.addShow(mgmt.getMovies()[mov],mgmt.getTime(),mgmt.getCRooms()[cr]);
                 System.out.println("Show added");
-//                System.out.println("\nPress Enter to continue...");
-//           //     Scanner sc = new Scanner(System.in);
-//                while(!MgmtApp.in.nextLine().equals(""));
-//            //    sc.close();
-//            //    in.close();
                 break;
             }
             case 6:{
                 mgmt.listMovies();
-//                System.out.println("\nPress Enter to continue...");
-//            //    Scanner sc = new Scanner(System.in);
-//                while(!MgmtApp.in.nextLine().equals(""));
-//            //    sc.close();
                 break;
             }
             case 7:{
                 mgmt.listCRooms();
-//                System.out.println("\nPress Enter to continue...");
-//           //     Scanner sc = new Scanner(System.in);
-//                while(!MgmtApp.in.nextLine().equals(""));
-//           //     sc.close();
                 break;
             }
             case 8:{
                 System.out.flush();
                 mgmt.listShows();
-//                System.out.println("\nPress Enter to continue...");
-//           //     Scanner sc = new Scanner(System.in);
-//                while(!MgmtApp.in.nextLine().equals(""));
-//           //     sc.close();
                 break;
             }
             case 9:{
                 //delete Movie
                 mgmt.listMovies();
                 System.out.print("MovieID to delete: ");
-           //     Scanner in = new Scanner(System.in);
                 int d = MgmtApp.in.nextInt();
-            //    in.close();
                 if(mgmt.delMovie(d) < 0) System.out.println("No Movie: "+d);
                 else System.out.println("Movie "+d+" deleted");
-//                System.out.println("\nPress Enter to continue...");
-//             //   Scanner sc = new Scanner(System.in);
-//                while(!MgmtApp.in.nextLine().equals(""));
-//            //    sc.close();
                 break;
             }
             case 10:{
                 //delete CRoom
                 mgmt.listCRooms();
                 System.out.print("CRoomID to delete: ");
-             //   Scanner in = new Scanner(System.in);
                 int d = MgmtApp.in.nextInt();
-            //    in.close();
                 if(mgmt.delCRoom(d) < 0) System.out.println("No CRoom: "+d);
                 else System.out.println("CRoom "+d+" deleted");
-//                System.out.println("\nPress Enter to continue...");
-//             //   Scanner sc = new Scanner(System.in);
-//                while(!MgmtApp.in.nextLine().equals(""));
-//             //   sc.close();
                 break;
             }
             case 11:{
                 //delete Show
                 mgmt.listShows();
                 System.out.print("ShowID to delete: ");
-               // Scanner in = new Scanner(System.in);
                 int d = MgmtApp.in.nextInt();
-               // in.close();
                 if(mgmt.delShow(d) < 0) System.out.println("No Show: "+d);
                 else System.out.println("Show "+d+" deleted");
-//                System.out.println("\nPress Enter to continue...");
-//            //    Scanner sc = new Scanner(System.in);
-//                while(!MgmtApp.in.nextLine().equals(""));
-//             //   sc.close();
                 break;
             }
             case 12:{
@@ -291,12 +220,7 @@ public class MgmtApp {
                 System.out.println("0. Client\n1. Cashier");
                 System.out.print("Your choice: ");
                 int utype = in.nextInt();
-            //    in.close();
                 mgmt.addUser(uname, upass, utype);
-//                System.out.println("\nPress Enter to continue...");
-//             //   Scanner sc = new Scanner(System.in);
-//                while(!MgmtApp.in.nextLine().equals(""));
-//            //    sc.close();
                 break;
             }
             case 13:{
@@ -305,22 +229,13 @@ public class MgmtApp {
                 System.out.print("UserID to delete: ");
                 Scanner in = new Scanner(System.in);
                 int id = in.nextInt();
-          //      in.close();
                 if(mgmt.delUser(id) < 0) System.out.println("No User: "+id);
                 else System.out.println("User "+id+" deleted");
-//                System.out.println("\nPress Enter to continue...");
-//         //       Scanner sc = new Scanner(System.in);
-//                while(!MgmtApp.in.nextLine().equals(""));
-//           //     sc.close();
                 break;
             }
             case 14:{
                 //list users
                 mgmt.listUsers();
-//                System.out.println("\nPress Enter to continue...");
-//          //      Scanner sc = new Scanner(System.in);
-//                while(!MgmtApp.in.nextLine().equals(""));
-//           //     sc.close();
                 break;
             }
             case 15:{
@@ -334,10 +249,6 @@ public class MgmtApp {
             }
             default:{
                 System.out.println("You have to choose proper option!");
-//                System.out.println("\nPress Enter to continue...");
-//           //     Scanner sc = new Scanner(System.in);
-//                while(!MgmtApp.in.nextLine().equals(""));
-//            //    sc.close();
                 break;
             }
         }

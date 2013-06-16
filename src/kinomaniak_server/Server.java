@@ -3,7 +3,6 @@
  * and open the template in the editor.
  */
 package kinomaniak_server;
-import kinomaniak_client.*;
 import kinomaniak_objs.*;
 import java.net.Socket;
 
@@ -17,28 +16,15 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Formatter;
 import java.util.List;
 /**
  *
  * @author qbass
  */
 public class Server  implements Runnable{
-//    private String user;
-//    private String password;
     private Socket sockfd;
-//    private int logintype;
-//    private int[] availcmds;
-//    private final int cmdCount = 10;
-//    private Client[] activeconns;
     private boolean logged;
-//    private int command;
     private User luser;
      private PrintWriter out;  //out for data
      private ObjectOutputStream oout; // output for objects
@@ -47,14 +33,6 @@ public class Server  implements Runnable{
      private Log logger;
      private String threadName;
     
-    
-    /*
-    public Server(int type,String username){
-        this.loginname = username;
-        this.availcmds = new int[10];
-        this.setCmds(type);        
-    }
-    */
      /**
       * Konstruktor wątku serwera
      * @param sockfd deskryptor gniazda dla podłączonego klienta
@@ -73,7 +51,10 @@ public class Server  implements Runnable{
             System.err.println("IOError from "+sockfd.getInetAddress().getHostAddress()+": "+e);
         }
     }
-    
+    /**
+     * Metoda kończąca dany wątek. Zamyka wszelkie połączenia z klientem.
+     * 
+     */
     private void endThread(){
         try{
             in.close();
@@ -86,7 +67,9 @@ public class Server  implements Runnable{
             
         }
     }
-    
+    /**
+     * Główna metoda działania uruchomionego dla klienta wątku.
+     */
     @Override
     public void run(){ //todo!
         this.threadName = Thread.currentThread().getName();
@@ -95,7 +78,6 @@ public class Server  implements Runnable{
         boolean cmdAvail = false;
         String tmp;
         try{
-//            this.out.write("!OK!");
             this.oout.writeObject((String)"!OK!");
             this.luser = (User)oin.readObject(); // odczyt obiektu użytkownika od klienta        
             boolean uok = checkUser(); // sprawdzenie użytkownika
@@ -460,6 +442,10 @@ public class Server  implements Runnable{
             
      }
     }
+    /**
+     * Sprawdza czy na serwerze dostępny jest podany przez klienta użytkownik
+     * @return true jeśli podany użytkownik pozwala na zalogowanie się na serwerze, false jeśli nie
+     */
     private boolean checkUser(){
         String usr = this.luser.getName();
         String pwd = this.luser.getPass();//sha1pass
@@ -492,43 +478,43 @@ public class Server  implements Runnable{
         }
         return log;
     }
-    private Object getObj(String file){
-        try{
-            ObjectInputStream we = new ObjectInputStream(new FileInputStream(file));
-            Object obj = we.readObject();
-            return obj;
-        }catch(IOException e){
-            System.err.println("Błąd odczytu pliku");
-            logger.doLog(this.threadName+": Błąd odczytu pliku from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
-        }catch(ClassNotFoundException c){
-            System.err.println("Brak klasy Object");
-        } 
-        return null;
-    } 
+//    private Object getObj(String file){
+//        try{
+//            ObjectInputStream we = new ObjectInputStream(new FileInputStream(file));
+//            Object obj = we.readObject();
+//            return obj;
+//        }catch(IOException e){
+//            System.err.println("Błąd odczytu pliku");
+//            logger.doLog(this.threadName+": Błąd odczytu pliku from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
+//        }catch(ClassNotFoundException c){
+//            System.err.println("Brak klasy Object");
+//        } 
+//        return null;
+//    } 
     
     
-     private String toSHA1(byte[] pass) {
-        MessageDigest md;
-        try{
-            md = MessageDigest.getInstance("SHA-1");
-        }catch(NoSuchAlgorithmException e){
-            System.err.println("No Such Algorithm Exception: "+e);
-            logger.doLog(this.threadName+": No Such Algorithm Exception from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
-            return null;
-        }
-        return byteToHex(md.digest(pass));
-    }
-    
-    private String byteToHex(byte[] hash)
-    {
-        Formatter formatter = new Formatter();
-        for (byte b : hash)
-        {
-            formatter.format("%02x", b);
-        }
-        String result = formatter.toString();
-        formatter.close();
-        return result;
-    }
+//     private String toSHA1(byte[] pass) {
+//        MessageDigest md;
+//        try{
+//            md = MessageDigest.getInstance("SHA-1");
+//        }catch(NoSuchAlgorithmException e){
+//            System.err.println("No Such Algorithm Exception: "+e);
+//            logger.doLog(this.threadName+": No Such Algorithm Exception from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
+//            return null;
+//        }
+//        return byteToHex(md.digest(pass));
+//    }
+//    
+//    private String byteToHex(byte[] hash)
+//    {
+//        Formatter formatter = new Formatter();
+//        for (byte b : hash)
+//        {
+//            formatter.format("%02x", b);
+//        }
+//        String result = formatter.toString();
+//        formatter.close();
+//        return result;
+//    }
     
 }

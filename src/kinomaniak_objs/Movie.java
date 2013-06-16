@@ -7,7 +7,7 @@ package kinomaniak_objs;
 import java.io.Serializable;
 
 /**
- *
+ * Klasa reprezentująca film
  * @author qbass
  */
 public class Movie implements Serializable{

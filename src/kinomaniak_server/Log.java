@@ -8,16 +8,21 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- *
+ * Klasa logująca zdarzenia/błędy do plików
  * @author qbass
  */
 public class Log {
-    
+    /**
+     * Konstruktor klasy Log sprawdzający dostępność podkatalogu logs i ewentualne utworzenie go.
+     */
     public Log(){
         File dir = new File("logs");
         if(!dir.exists()) dir.mkdir();
     }
-    
+    /**
+     * Metoda zapisująca zdarzenia do pliku z aktualnymi logami
+     * @param tolog zdarzenie/błąd do zapisania w logu
+     */
     public void doLog(String tolog){
         PrintWriter out = null;
         String fname = "logs/"+new StringBuilder(new SimpleDateFormat("dd-MM-yyyy").format(new Date())).toString()+".log";
@@ -26,10 +31,6 @@ public class Log {
             if(!fil.exists()) fil.createNewFile();
             out = new PrintWriter(new BufferedWriter(new FileWriter(fname,true)));
             if(tolog.equals("separator")){
-//                Date dateNow = new Date (); 
-//                SimpleDateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
-//                StringBuilder sdt = new StringBuilder( dt.format( dateNow ) );
-//                String st = sdt.toString();
                 String st = new StringBuilder(new SimpleDateFormat("HH:mm:ss").format(new Date())).toString();
                 out.println("===="+st+"====");
             }else{

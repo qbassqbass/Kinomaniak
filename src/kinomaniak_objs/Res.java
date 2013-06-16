@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Objects;
 // !!!!! MOŻLIWOŚĆ REZERWACJI KILKU MIEJSC !!!!!
 /**
- *
+ * Klasa reprezentująca rezerwację seansu
  * @author qbass
  */
 public class Res implements Serializable{

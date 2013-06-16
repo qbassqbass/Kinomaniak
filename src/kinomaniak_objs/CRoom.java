@@ -7,7 +7,7 @@ package kinomaniak_objs;
 import java.io.Serializable;
 
 /**
- *
+ * Klasa reprezentująca salę kinową
  * @author qbass
  */
 public class CRoom implements Serializable {
@@ -17,7 +17,7 @@ public class CRoom implements Serializable {
     private boolean[][] seats;
     
     /**
-     *
+     * Konstruktor klasy Sali kinowej
      * @param id identyfikator sali kinowej
      */
     public CRoom(int id){

@@ -9,7 +9,7 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 
 /**
- *
+ * @deprecated 
  * @author qbass
  */
 public class MovieDBMgmt {

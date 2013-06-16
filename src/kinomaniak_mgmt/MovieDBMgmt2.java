@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Klasa funkcjonalna dla Menadżera projektu Kinomaniak.
  * @author qbass
  */
 public class MovieDBMgmt2 {
@@ -25,7 +25,7 @@ public class MovieDBMgmt2 {
     private List<Res> ress;
     
     /**
-     *
+     * Konstruktor klasy MovieDBMgmt tworzący listy obiektów projektu Kinomaniak.
      */
     public MovieDBMgmt2(){        
             this.shows = new ArrayList<Show>();
@@ -34,11 +34,11 @@ public class MovieDBMgmt2 {
             this.users = new ArrayList<User>();
     }
     /**
-     *
-     * @param showFile
-     * @param movieFile
-     * @param croomFile
-     * @param userFile
+     * Nieużywany konstruktor klasy MovieDBMgmt
+     * @param showFile ścieżka pliku zawierającego listę Seansów
+     * @param movieFile ścieżka pliku zawierającego listę Filmów
+     * @param croomFile świeżka pliku zawierającego listę Sal kinowych
+     * @param userFile ścieżka pliku zawierającego listę użytkowników
      */
     public MovieDBMgmt2(String showFile,String movieFile,String croomFile,String userFile){
             this.shows = new ArrayList<Show>();
@@ -51,12 +51,15 @@ public class MovieDBMgmt2 {
      * Metoda ustawiająca czas dla danego seansu
      * @param hrs godzina
      * @param mins minuty
+     * @param day dzień
+     * @param month miesiąc
+     * @param year rok
      */
     public void setTime(int hrs, int mins,int day,int month,int year){
         this.time = new Time(hrs,mins,day,month,year);
     }
     /**
-     * Metoda wczytująca dane z plików .kin
+     * Metoda wczytująca dane z plików .kin.
      */
     @SuppressWarnings("unchecked")
     public void getData(){
@@ -86,7 +89,7 @@ public class MovieDBMgmt2 {
         }
     }
     /**
-     * Metoda zapisująca dane do plików .kin
+     * Metoda zapisująca dane do plików .kin.
      */
     public void saveData(){
         try{
@@ -116,7 +119,7 @@ public class MovieDBMgmt2 {
         }
     }
     /**
-     * Metoda dodająca film do listy filmów(z opisem)
+     * Metoda dodająca film do listy filmów(z opisem).
      * @param name tytuł filmu
      * @param genre rodzaj
      * @param rating klasyfikacja
@@ -126,7 +129,7 @@ public class MovieDBMgmt2 {
         this.movies.add(new Movie(name,genre,rating,desc));
     }
     /**
-     * Metoda dodająca film do listy filmów(bez opisu)
+     * Metoda dodająca film do listy filmów(bez opisu).
      * @param name tytuł filmu
      * @param genre rodzaj
      * @param rating klasyfikacja
@@ -237,7 +240,7 @@ public class MovieDBMgmt2 {
         return usrs;
     }
     /**
-     * Metoda wypisująca na standardowe wyjście listę filmów
+     * Metoda wypisująca na standardowe wyjście listę filmów.
      */
     public void listMovies(){
         for(int i=0;i<this.movies.size();i++){
@@ -245,7 +248,7 @@ public class MovieDBMgmt2 {
         }
     }
     /**
-     * Metoda wypisująca na standardowe wyjście listę sal kinowych
+     * Metoda wypisująca na standardowe wyjście listę sal kinowych.
      */
     public void listCRooms(){
         for(int i=0;i<this.crooms.size();i++){
@@ -253,12 +256,9 @@ public class MovieDBMgmt2 {
         }
     }
     /**
-     * Metoda wypisująca na standardowe wyjście listę seansów
+     * Metoda wypisująca na standardowe wyjście listę seansów.
      */
     public void listShows(){
-//        for(int i=0;i<this.shows.size();i++){
-//            System.out.println(i+". "+this.shows.get(i).getMovie().getName()+" Room: "+this.shows.get(i).getRoom().getID()+" Time: "+this.shows.get(i).getCTime().getHour()+':'+this.shows.get(i).getCTime().getMinute());
-//        }
         int i = 0;
         for(Show s : shows){
             System.out.println(i+". "+s.getMovie().getName()+" Room: "+s.getRoom().getID()+" Time: "+s.getFormatted());
@@ -266,18 +266,17 @@ public class MovieDBMgmt2 {
         }
     }
     /**
-     * Metoda wypisująca na standardowe wyjście listę użytkowników
+     * Metoda wypisująca na standardowe wyjście listę użytkowników.
      */
     public void listUsers(){
         for(int i=0;i<this.users.size();i++){
             System.out.println(i+". "+this.users.get(i).getName()+"  Type: "+this.users.get(i).getUType());
         }
     }
+    /**
+     * Metoda wypisująca na standardowe wyjście listę aktualnych rezerwacji.
+     */
     public void listRess(){
-//        for(int i=0;i<this.ress.size();i++){
-//            System.out.println(i+". "+this.ress.get(i).getName()+" ShowID"+this.ress.get(i).getShowID()+" Seat:"
-//                    +this.ress.get(i).getSeat()[0]+"-"+this.ress.get(i).getSeat()[1]+" isok:"+this.ress.get(i).isok());
-//        }
         try{
             int i = 0;
             for(Res r : ress){

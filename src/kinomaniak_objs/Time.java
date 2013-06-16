@@ -5,9 +5,9 @@
 package kinomaniak_objs;
 
 import java.io.Serializable;
-//!!!!!! DODAĆ DATĘ  !!!!!!!
+
 /**
- *
+ * Klasa reprezentująca czas rozpoczęscia seansu
  * @author qbass
  */
 public class Time implements Serializable{
@@ -18,15 +18,23 @@ public class Time implements Serializable{
         private int month;
         private int year;
         
-        /**
-     *
-     * @param hour exact hour
-     * @param minute exact minute
+    /**
+     * Konstruktor klasy czasu dla ustawienia godziny
+     * @param hour dokładna godzina
+     * @param minute dokładna minuta
      */
     public Time(int hour,int minute){
             this.hour = hour;
             this.minute = minute;
         }        
+    /**
+     * Konstruktor klasy czasu dla ustawienia daty i godziny
+     * @param hour godzina
+     * @param minute minuta
+     * @param day dzień
+     * @param month miesiąc
+     * @param year rok
+     */
     public Time(int hour,int minute,int day,int month,int year){
         this.hour = hour;
         this.minute  =minute;
@@ -34,36 +42,36 @@ public class Time implements Serializable{
         this.month = month;
         this.year = year;
     }
-        /**
-     * gets hour from {@link #Time} class
-     * @return hour
+    /**
+     * Pobiera godzinę z klasy {@link #Time}.
+     * @return hour godzina rozpoczęcia
      */
     public int getHour(){
             return this.hour;
         }
-        /**
-     * gets minute from {@link #Time} class
-     * @return minute
+    /**
+     * Pobiera minutę z klasy {@link #Time}.
+     * @return minute minuta rozpoczęcia
      */
     public int getMinute(){
             return this.minute;
         }
     /**
-     * gets day from {@link #Time} class
+     * Pobiera dzień z klasy  {@link #Time}.
      * @return day
      */
     public int getDay(){
         return this.day;
     }
     /**
-     * gets month from {@link #Time} class
+     * Pobiera miesiąc z klasy {@link #Time}.
      * @return month
      */
     public int getMonth(){
         return this.month;
     }
     /**
-     * gets year from {@link #Time} class
+     * Pobiera rok z klasy  {@link #Time}.
      * @return year
      */
     public int getYear(){
