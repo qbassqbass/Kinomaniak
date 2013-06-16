@@ -62,7 +62,7 @@ public class Server  implements Runnable{
             out.close();
             oout.close();
             sockfd.close();
-            return;
+            Thread.currentThread().interrupt();
         }catch(IOException e){
             
         }
@@ -73,84 +73,82 @@ public class Server  implements Runnable{
     @Override
     public void run(){ //todo!
         this.threadName = Thread.currentThread().getName();
-        
-        boolean cmdAvail = false;
-        String tmp;
-        try{
-            this.oout.writeObject((String)"!OK!");
-            this.luser = (User)oin.readObject(); // odczyt obiektu użytkownika od klienta        
-            boolean uok = checkUser(); // sprawdzenie użytkownika
-            if(uok) this.oout.writeObject((String)"!UOK!");
-            else{
-                this.logged = false;
-                this.oout.writeObject((String)"!ERROR!");
-                logger.doLog(0,this.threadName+": User login error from "+sockfd.getInetAddress().getHostAddress());
-                this.in.close();
-                this.out.close();
-                this.oin.close();
-                this.oout.close();
-                System.exit(-1);
-            }
-            this.threadName += " as "+this.luser.getName();
-            System.out.println(this.threadName+": "+sockfd.getInetAddress().getHostAddress());
-            logger.doLog(0,this.threadName+": "+sockfd.getInetAddress().getHostAddress());
-            tmp = (String)oin.readObject();
-            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Shows.kin"));
-            switch (tmp) {
-                case "!GETMOV!":
-                    this.oout.writeObject((String)"!OK!");
-                    String date = (String)we.readObject();
-                    System.out.println("Debug pre");
-                    List<Show> ssstmp = (ArrayList<Show>)we.readObject(); 
-                    this.oout.writeObject(ssstmp);
+        while(!Thread.currentThread().isInterrupted()){
+            boolean cmdAvail = false;
+            String tmp;
+            try{
+                this.oout.writeObject((String)"!OK!");
+                this.luser = (User)oin.readObject(); // odczyt obiektu użytkownika od klienta        
+                boolean uok = checkUser(); // sprawdzenie użytkownika
+                if(uok) this.oout.writeObject((String)"!UOK!");
+                else{
+                    this.logged = false;
+                    this.oout.writeObject((String)"!ERROR!");
+                    logger.doLog(0,this.threadName+": User login error from "+sockfd.getInetAddress().getHostAddress());
+                    endThread();
                     break;
-                case "!GETMOVDT!":
-                    tmp = (String)oin.readObject();
-                    String dbDate = (String)we.readObject();
-                    if(tmp.equals(dbDate)) this.oout.writeObject((String)"!MOVOK!");
-                    else { this.oout.writeObject((String)"!MOVUPD!"); this.oout.writeObject(we); }
-                    break;
-            }
-            while(!tmp.equals("!RDY!")){
+                }
+                this.threadName += " as "+this.luser.getName();
+                System.out.println(this.threadName+": "+sockfd.getInetAddress().getHostAddress());
+                logger.doLog(0,this.threadName+": "+sockfd.getInetAddress().getHostAddress());
                 tmp = (String)oin.readObject();
+                ObjectInputStream we = new ObjectInputStream(new FileInputStream("Shows.kin"));
+                switch (tmp) {
+                    case "!GETMOV!":
+                        this.oout.writeObject((String)"!OK!");
+                        String date = (String)we.readObject();
+                        System.out.println("Debug pre");
+                        List<Show> ssstmp = (ArrayList<Show>)we.readObject(); 
+                        this.oout.writeObject(ssstmp);
+                        break;
+                    case "!GETMOVDT!":
+                        tmp = (String)oin.readObject();
+                        String dbDate = (String)we.readObject();
+                        if(tmp.equals(dbDate)) this.oout.writeObject((String)"!MOVOK!");
+                        else { this.oout.writeObject((String)"!MOVUPD!"); this.oout.writeObject(we); }
+                        break;
+                }
+                while(!tmp.equals("!RDY!")){
+                    tmp = (String)oin.readObject();
+                }
+                this.oout.writeObject((String)"!RDY!");            
+                while (this.logged){
+                        String data = (String)oin.readObject();
+                        switch (data) {
+                            case "!CMD!":
+    //                            jeśli klient wysyła komendę
+                                this.oout.writeObject((String)"!OK!");
+                                cmdAvail = true;
+                                break;
+                            case "!OK!":
+                                break;
+                            default:
+                                this.oout.writeObject((String)"!NAVAIL!"); //not available
+                                break;
+                        }
+                        if(cmdAvail){
+                                int cmd = (Integer)oin.readObject();
+                                if(this.checkGrants(cmd)){
+                                    this.processCmd(cmd);
+                                }
+                                else this.oout.writeObject((String)"!NGRANT!"); //not granted
+                        }
+
+                        cmdAvail = false;
+                }
+                this.endThread();
+            }catch(EOFException e){
+                 System.err.println("Connection closed: "+sockfd.getInetAddress().getHostAddress());
+                 logger.doLog(0,this.threadName+": Connection closed: "+sockfd.getInetAddress().getHostAddress());
+                 this.endThread();
+            }catch(IOException e){
+                System.err.println("IOError from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+                logger.doLog(0,this.threadName+": IOError from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+                this.endThread();
+            }catch(ClassNotFoundException e){
+                System.err.println("Class not found from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+                logger.doLog(0,this.threadName+": Class not found from "+sockfd.getInetAddress().getHostAddress()+": "+e);
             }
-            this.oout.writeObject((String)"!RDY!");            
-            while (this.logged){
-                    String data = (String)oin.readObject();
-                    switch (data) {
-                        case "!CMD!":
-//                            jeśli klient wysyła komendę
-                            this.oout.writeObject((String)"!OK!");
-                            cmdAvail = true;
-                            break;
-                        case "!OK!":
-                            break;
-                        default:
-                            this.oout.writeObject((String)"!NAVAIL!"); //not available
-                            break;
-                    }
-                    if(cmdAvail){
-                            int cmd = (Integer)oin.readObject();
-                            if(this.checkGrants(cmd)){
-                                this.processCmd(cmd);
-                            }
-                            else this.oout.writeObject((String)"!NGRANT!"); //not granted
-                    }
-                        
-                    cmdAvail = false;
-            }
-            this.endThread();
-        }catch(EOFException e){
-             System.err.println("Connection closed: "+sockfd.getInetAddress().getHostAddress());
-             logger.doLog(0,this.threadName+": Connection closed: "+sockfd.getInetAddress().getHostAddress());
-             this.endThread();
-        }catch(IOException e){
-            System.err.println("IOError from "+sockfd.getInetAddress().getHostAddress()+": "+e);
-            logger.doLog(0,this.threadName+": IOError from "+sockfd.getInetAddress().getHostAddress()+": "+e);
-            this.endThread();
-        }catch(ClassNotFoundException e){
-            System.err.println("Class not found from "+sockfd.getInetAddress().getHostAddress()+": "+e);
-            logger.doLog(0,this.threadName+": Class not found from "+sockfd.getInetAddress().getHostAddress()+": "+e);
         }
     }
     
@@ -466,14 +464,17 @@ public class Server  implements Runnable{
                 int ctmp = 0;
                 for(int i=0;i<tmp.length;i++){
                     if(usr.equals(tmp[i].getName())){
-                        ctmp = i;
-                        break;
+                        if(pwd.equals(tmp[i].getPass())){
+                            log = true;
+                            this.luser = tmp[i];
+                            break;
+                        }                        
                     }
                 }
-                if(pwd.equals(tmp[ctmp].getPass())){
-                    log = true;
-                    this.luser = tmp[ctmp];
-                }
+//                if(pwd.equals(tmp[ctmp].getPass())){
+//                    log = true;
+//                    this.luser = tmp[ctmp];
+//                }
             } catch(ClassNotFoundException e){
                     System.err.println("Class not found :"+e);
                     logger.doLog(0,this.threadName+": Class not found from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
