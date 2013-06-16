@@ -23,6 +23,7 @@ public class MainFrame extends javax.swing.JFrame {
         pAddMov.setVisible(false);
         pListMov.setVisible(false);
         bReturn.setVisible(false);
+        pListCRoom.setVisible(false);
         this.mgmt = new MovieDBMgmt2();
     }
 
@@ -36,9 +37,10 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        pAddCRoom = new javax.swing.JPanel();
-        lCRoomHello = new javax.swing.JLabel();
-        lCRoomID = new javax.swing.JLabel();
+        pListCRoom = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        liCRoomList = new javax.swing.JList();
+        bDelCRoomSel = new javax.swing.JButton();
         pMain = new javax.swing.JPanel();
         bLoad = new javax.swing.JButton();
         bSave = new javax.swing.JButton();
@@ -56,6 +58,11 @@ public class MainFrame extends javax.swing.JFrame {
         bListUser = new javax.swing.JButton();
         bDelUser = new javax.swing.JButton();
         bListRes = new javax.swing.JButton();
+        pAddCRoom = new javax.swing.JPanel();
+        lCRoomHello = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        eCRoomID = new javax.swing.JTextField();
+        bCRoomAdd = new javax.swing.JButton();
         pListMov = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         liMovieList = new javax.swing.JList();
@@ -78,33 +85,42 @@ public class MainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lCRoomHello.setText("Adding CRoom with 10x10 seats...");
+        liCRoomList.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane4.setViewportView(liCRoomList);
 
-        lCRoomID.setText("Last CRoom ID: ");
+        bDelCRoomSel.setText("Del CRoom");
+        bDelCRoomSel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bDelCRoomSelActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout pAddCRoomLayout = new javax.swing.GroupLayout(pAddCRoom);
-        pAddCRoom.setLayout(pAddCRoomLayout);
-        pAddCRoomLayout.setHorizontalGroup(
-            pAddCRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pAddCRoomLayout.createSequentialGroup()
+        javax.swing.GroupLayout pListCRoomLayout = new javax.swing.GroupLayout(pListCRoom);
+        pListCRoom.setLayout(pListCRoomLayout);
+        pListCRoomLayout.setHorizontalGroup(
+            pListCRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pListCRoomLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pAddCRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lCRoomHello)
-                    .addComponent(lCRoomID))
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(bDelCRoomSel)
+                .addContainerGap(178, Short.MAX_VALUE))
         );
-        pAddCRoomLayout.setVerticalGroup(
-            pAddCRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pAddCRoomLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lCRoomHello)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lCRoomID)
-                .addContainerGap(208, Short.MAX_VALUE))
+        pListCRoomLayout.setVerticalGroup(
+            pListCRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pListCRoomLayout.createSequentialGroup()
+                .addGroup(pListCRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bDelCRoomSel))
+                .addGap(0, 52, Short.MAX_VALUE))
         );
 
-        pAddCRoom.setBounds(0, 0, 420, 260);
-        jLayeredPane1.add(pAddCRoom, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pListCRoom.setBounds(0, 0, 440, 270);
+        jLayeredPane1.add(pListCRoom, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         bLoad.setText("LOAD");
         bLoad.addActionListener(new java.awt.event.ActionListener() {
@@ -128,6 +144,11 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         bAddCRoom.setText("Add CRoom");
+        bAddCRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAddCRoomActionPerformed(evt);
+            }
+        });
 
         bAddShow.setText("Add Show");
 
@@ -141,6 +162,11 @@ public class MainFrame extends javax.swing.JFrame {
         bListShow.setText("List Shows");
 
         bListCRoom.setText("List CRooms");
+        bListCRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bListCRoomActionPerformed(evt);
+            }
+        });
 
         bDelMov.setText("Del Movie");
 
@@ -237,6 +263,53 @@ public class MainFrame extends javax.swing.JFrame {
 
         pMain.setBounds(0, 0, 350, 240);
         jLayeredPane1.add(pMain, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        lCRoomHello.setText("Adding CRoom with 10x10 seats...");
+
+        jLabel1.setText("ID: ");
+
+        bCRoomAdd.setText("Add CRoom");
+        bCRoomAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCRoomAddActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pAddCRoomLayout = new javax.swing.GroupLayout(pAddCRoom);
+        pAddCRoom.setLayout(pAddCRoomLayout);
+        pAddCRoomLayout.setHorizontalGroup(
+            pAddCRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pAddCRoomLayout.createSequentialGroup()
+                .addGroup(pAddCRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pAddCRoomLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(pAddCRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lCRoomHello)
+                            .addGroup(pAddCRoomLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(eCRoomID, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(pAddCRoomLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(bCRoomAdd)))
+                .addContainerGap(179, Short.MAX_VALUE))
+        );
+        pAddCRoomLayout.setVerticalGroup(
+            pAddCRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pAddCRoomLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lCRoomHello)
+                .addGap(35, 35, 35)
+                .addGroup(pAddCRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(eCRoomID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bCRoomAdd)
+                .addContainerGap(134, Short.MAX_VALUE))
+        );
+
+        pAddCRoom.setBounds(0, 0, 420, 260);
+        jLayeredPane1.add(pAddCRoom, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         liMovieList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -466,11 +539,41 @@ public class MainFrame extends javax.swing.JFrame {
         bSave.setVisible(true);
         pAddMov.setVisible(false);
         pListMov.setVisible(false);
+        pListCRoom.setVisible(false);
     }//GEN-LAST:event_bReturnActionPerformed
 
     private void bSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSaveActionPerformed
         mgmt.saveData();
     }//GEN-LAST:event_bSaveActionPerformed
+
+    private void bCRoomAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCRoomAddActionPerformed
+        mgmt.addCRoom(Integer.parseInt(eCRoomID.getText()));
+        pMain.setVisible(true);
+        pAddCRoom.setVisible(false);
+    }//GEN-LAST:event_bCRoomAddActionPerformed
+
+    private void bAddCRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAddCRoomActionPerformed
+        pMain.setVisible(false);
+        pAddCRoom.setVisible(true);
+    }//GEN-LAST:event_bAddCRoomActionPerformed
+
+    private void bListCRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bListCRoomActionPerformed
+        pMain.setVisible(false);
+        pListCRoom.setVisible(true);
+        Integer[] crooms = new Integer[mgmt.getCRooms().length];
+        for(int i = 0;i<mgmt.getCRooms().length;i++){
+            crooms[i] = mgmt.getCRooms()[i].getID();
+        }
+        liCRoomList.setListData((Integer[])crooms);
+    }//GEN-LAST:event_bListCRoomActionPerformed
+
+    private void bDelCRoomSelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDelCRoomSelActionPerformed
+        int sel = liCRoomList.getSelectedIndex();
+        if(sel < 0) return;
+        mgmt.delCRoom(sel);
+        pMain.setVisible(true);
+        pListCRoom.setVisible(false);
+    }//GEN-LAST:event_bDelCRoomSelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -512,7 +615,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton bAddMovOK;
     private javax.swing.JButton bAddShow;
     private javax.swing.JButton bAddUser;
+    private javax.swing.JButton bCRoomAdd;
     private javax.swing.JButton bDelCRoom;
+    private javax.swing.JButton bDelCRoomSel;
     private javax.swing.JButton bDelMov;
     private javax.swing.JButton bDelMovie;
     private javax.swing.JButton bDelShow;
@@ -526,22 +631,26 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton bReturn;
     private javax.swing.JButton bSave;
     private javax.swing.JButton bShowMore;
+    private javax.swing.JTextField eCRoomID;
     private javax.swing.JTextField eMovieGenre;
     private javax.swing.JTextField eMovieName;
     private javax.swing.JTextField eMovieRating;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lCRoomHello;
-    private javax.swing.JLabel lCRoomID;
     private javax.swing.JLabel lMovieDesc;
     private javax.swing.JLabel lMovieGenre;
     private javax.swing.JLabel lMovieName;
     private javax.swing.JLabel lMovieRating;
+    private javax.swing.JList liCRoomList;
     private javax.swing.JList liMovieList;
     private javax.swing.JPanel pAddCRoom;
     private javax.swing.JPanel pAddMov;
+    private javax.swing.JPanel pListCRoom;
     private javax.swing.JPanel pListMov;
     private javax.swing.JPanel pMain;
     private javax.swing.JPanel pOptions;
