@@ -291,6 +291,24 @@ public class MovieDBMgmt2 {
             System.out.println("No reservations!");
         }
     }
+    
+    public String getFormattedRes(){
+        String res = "";
+        try{
+            int i = 0;
+            for(Res r : ress){
+                res += (i+". Name: "+r.getName()+" ShowID:"+r.getShowID()+" Seats: \n");
+                for(int[] s : r.getSeats()){
+                    res += ("*"+s[0]+"-"+s[1]+"\n");
+                }
+                res += ("isok: "+r.isok()+"\n");
+                i++;
+            }
+        }catch(NullPointerException e){
+            res += ("No reservations!\n");
+        }
+        return res;
+    }
     /**
      * Metoda zwracająca obiekt klasy Time z czasem danego filmu
      * @return obiekt klasy Time
