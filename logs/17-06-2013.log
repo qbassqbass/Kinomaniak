@@ -1,0 +1,44 @@
+====09:14:02====
+09:14:02  Client connected from 127.0.0.1
+09:14:05  Thread-0 as adas: 127.0.0.1
+09:19:44  Thread-0 as adas: IOError from 127.0.0.1: java.net.SocketException: Connection reset
+====09:19:47====
+09:19:47  Client connected from 127.0.0.1
+09:19:51  Thread-1 as adas: 127.0.0.1
+09:20:40  Thread-1 as adas: IOError from 127.0.0.1: java.net.SocketException: Connection reset
+====09:20:43====
+09:20:43  Client connected from 127.0.0.1
+09:20:45  Thread-2 as adas: 127.0.0.1
+09:21:57  Thread-2 as adas: IOError from 127.0.0.1: java.net.SocketException: Connection reset
+====09:57:10====
+09:57:10  Client connected from 127.0.0.1
+09:57:18  Thread-1 as adas: 127.0.0.1
+====09:57:21====
+09:57:21  Client connected from 127.0.0.1
+09:57:25  Thread-2 as adas: 127.0.0.1
+====09:57:29====
+09:57:29  Client connected from 127.0.0.1
+====10:02:22====
+10:02:22  Client connected from 127.0.0.1
+====10:02:43====
+10:02:43  Client connected from 127.0.0.1
+10:02:46  Thread-1 as adas: 127.0.0.1
+====10:02:49====
+10:02:49  Client connected from 127.0.0.1
+10:02:51  Thread-2 as adas: 127.0.0.1
+====10:09:13====
+10:09:13  Client connected from 127.0.0.1
+10:09:16  Thread-1 as adas: 127.0.0.1
+10:09:23  Thread-1 as adas: IOError from 127.0.0.1: java.net.SocketException: Connection reset
+====10:24:58====
+10:24:58  Client connected from 127.0.0.1
+10:25:01  Thread-1 as adas: 127.0.0.1
+10:25:13  Thread-1 as adas: IOError from 127.0.0.1: java.net.SocketException: Connection reset
+====10:25:23====
+10:25:23  Client connected from 127.0.0.1
+====10:25:25====
+10:25:25  Client connected from 127.0.0.1
+10:25:28  Thread-1 as adas: 127.0.0.1
+10:25:31  Thread-2 as adas: 127.0.0.1
+10:25:36  Thread-1 as adas: IOError from 127.0.0.1: java.net.SocketException: Connection reset
+10:25:39  Thread-2 as adas: IOError from 127.0.0.1: java.net.SocketException: Connection reset

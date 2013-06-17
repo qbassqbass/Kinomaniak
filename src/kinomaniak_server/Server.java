@@ -116,7 +116,7 @@ public class Server  implements Runnable{
                         String data = (String)oin.readObject();
                         switch (data) {
                             case "!CMD!":
-    //                            jeśli klient wysyła komendę
+//                                jeśli klient wysyła komendę
                                 this.oout.writeObject((String)"!OK!");
                                 cmdAvail = true;
                                 break;
@@ -203,6 +203,19 @@ public class Server  implements Runnable{
                         this.oout.writeObject((String)"!SEANS!");
                         int showid = (Integer)oin.readObject();
                         int[][] seat = (int[][])oin.readObject();
+//                        boolean seatok = true;
+//                        for(int s[] : seat){
+//                            if ((s[0] < 0) || (s[0] > 10) || (s[1] < 0) || (s[1] > 10)){
+//                                seatok = false;
+//                            }
+//                        }
+////                        TODO
+//                        if(!seatok){
+//                            this.oout.writeObject((String)"!SNOK!");
+//                            break;
+//                        }
+////                        TODO
+//                        this.oout.writeObject((String)"!SOK!");                            
                         Res res = new Res(nazwa,showid,seat.length,seat);
                     synchronized (this){
                         try{
@@ -224,6 +237,7 @@ public class Server  implements Runnable{
                             wy.close();
                         }catch(IOException e){
                             System.err.println("IO Error from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+                            logger.doLog(0,this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
                         }
                     }
                     logger.doLog(1,"Res: "+res.getName()+" ShowID: "+res.getShowID()+" SeatCount: "+res.getSeats().length);
