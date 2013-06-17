@@ -65,3 +65,13 @@
 10:42:19  Client connected from 192.168.137.1
 10:42:22  Thread-3 as adas: 192.168.137.1
 10:42:36  Thread-3 as adas: IOError from 192.168.137.1: java.net.SocketException: Connection reset
+====11:21:28====
+11:21:28  Client connected from 192.168.137.1
+11:21:33  Thread-1 as adas: 192.168.137.1
+11:23:02  Thread-1 as adas: IOError from 192.168.137.1: java.net.SocketException: Connection reset
+====11:24:40====
+11:24:40  Client connected from 192.168.137.1
+11:24:43  Thread-1 as adas: 192.168.137.1
+====11:25:12====
+11:25:12  Client connected from 192.168.137.1
+11:25:14  Thread-1 as adas: 192.168.137.1

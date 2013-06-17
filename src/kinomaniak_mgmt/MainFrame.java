@@ -4,6 +4,13 @@
  */
 package kinomaniak_mgmt;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 /**
  *
  * @author qbass
@@ -30,6 +37,8 @@ public class MainFrame extends javax.swing.JFrame {
         pListUser.setVisible(false);
         pListRes.setVisible(false);
         bExit.setVisible(false);
+        pLogs.setVisible(false);
+        pStats.setVisible(false);
         this.mgmt = new MovieDBMgmt2();
     }
 
@@ -56,6 +65,20 @@ public class MainFrame extends javax.swing.JFrame {
         bAddUser = new javax.swing.JButton();
         bListUser = new javax.swing.JButton();
         bListRes = new javax.swing.JButton();
+        bListLogs = new javax.swing.JButton();
+        bListStats = new javax.swing.JButton();
+        pStats = new javax.swing.JPanel();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        liStatList = new javax.swing.JList();
+        bGetStat = new javax.swing.JButton();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        tStatText = new javax.swing.JTextArea();
+        pLogs = new javax.swing.JPanel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        liLogList = new javax.swing.JList();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        tLogText = new javax.swing.JTextArea();
+        bGetLog = new javax.swing.JButton();
         pListShow = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         liShowList = new javax.swing.JList();
@@ -206,6 +229,20 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        bListLogs.setText("Logs");
+        bListLogs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bListLogsActionPerformed(evt);
+            }
+        });
+
+        bListStats.setText("Stats");
+        bListStats.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bListStatsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pOptionsLayout = new javax.swing.GroupLayout(pOptions);
         pOptions.setLayout(pOptionsLayout);
         pOptionsLayout.setHorizontalGroup(
@@ -219,12 +256,16 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(bAddUser))
                 .addGap(18, 18, 18)
                 .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bListShow)
                     .addComponent(bListMov)
+                    .addComponent(bListShow)
                     .addComponent(bListCRoom)
                     .addComponent(bListUser)
                     .addComponent(bListRes))
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bListLogs)
+                    .addComponent(bListStats))
+                .addGap(4, 4, 4))
         );
         pOptionsLayout.setVerticalGroup(
             pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,11 +273,13 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bAddMov)
-                    .addComponent(bListMov))
+                    .addComponent(bListMov)
+                    .addComponent(bListLogs))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bAddCRoom)
-                    .addComponent(bListCRoom))
+                    .addComponent(bListCRoom)
+                    .addComponent(bListStats))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bAddShow)
@@ -261,9 +304,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(bSave)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pMainLayout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
+                .addContainerGap(31, Short.MAX_VALUE)
                 .addComponent(pOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         pMainLayout.setVerticalGroup(
             pMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,11 +316,106 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(bSave))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         pMain.setBounds(0, 0, 390, 240);
         jLayeredPane1.add(pMain, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        liStatList.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane11.setViewportView(liStatList);
+
+        bGetStat.setText("Get Stat");
+        bGetStat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bGetStatActionPerformed(evt);
+            }
+        });
+
+        tStatText.setColumns(20);
+        tStatText.setRows(5);
+        jScrollPane12.setViewportView(tStatText);
+
+        javax.swing.GroupLayout pStatsLayout = new javax.swing.GroupLayout(pStats);
+        pStats.setLayout(pStatsLayout);
+        pStatsLayout.setHorizontalGroup(
+            pStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pStatsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane11)
+                    .addComponent(bGetStat, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pStatsLayout.setVerticalGroup(
+            pStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pStatsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane12)
+                    .addGroup(pStatsLayout.createSequentialGroup()
+                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bGetStat)
+                        .addGap(0, 89, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
+        pStats.setBounds(0, 0, 480, 270);
+        jLayeredPane1.add(pStats, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        liLogList.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane9.setViewportView(liLogList);
+
+        tLogText.setEditable(false);
+        tLogText.setColumns(20);
+        tLogText.setRows(5);
+        jScrollPane10.setViewportView(tLogText);
+
+        bGetLog.setText("Get Logs");
+        bGetLog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bGetLogActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pLogsLayout = new javax.swing.GroupLayout(pLogs);
+        pLogs.setLayout(pLogsLayout);
+        pLogsLayout.setHorizontalGroup(
+            pLogsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pLogsLayout.createSequentialGroup()
+                .addGroup(pLogsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane9)
+                    .addComponent(bGetLog, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pLogsLayout.setVerticalGroup(
+            pLogsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pLogsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pLogsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pLogsLayout.createSequentialGroup()
+                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(bGetLog)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pLogs.setBounds(0, 0, 480, 270);
+        jLayeredPane1.add(pLogs, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         liShowList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -321,7 +459,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(pListShowLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         pListShowLayout.setVerticalGroup(
             pListShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -335,7 +473,7 @@ public class MainFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane6))
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
 
         pListShow.setBounds(0, 0, 540, 260);
@@ -358,7 +496,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(pListResLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pListRes.setBounds(0, 0, 530, 260);
@@ -393,7 +531,7 @@ public class MainFrame extends javax.swing.JFrame {
             pListUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pListUserLayout.createSequentialGroup()
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 32, Short.MAX_VALUE))
+                .addGap(0, 120, Short.MAX_VALUE))
             .addGroup(pListUserLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(bDelUserOK)
@@ -440,7 +578,7 @@ public class MainFrame extends javax.swing.JFrame {
                             .addComponent(cbUType, 0, 113, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(lPass)))
-                .addContainerGap(246, Short.MAX_VALUE))
+                .addContainerGap(283, Short.MAX_VALUE))
         );
         pAddUserLayout.setVerticalGroup(
             pAddUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -460,7 +598,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(cbUType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(bUserAddOK)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         pAddUser.setBounds(0, 0, 540, 270);
@@ -535,7 +673,7 @@ public class MainFrame extends javax.swing.JFrame {
                                         .addComponent(eYearSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(eMinuteSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addComponent(bShowAddSet))
-                .addContainerGap(229, Short.MAX_VALUE))
+                .addContainerGap(278, Short.MAX_VALUE))
         );
         pAddShowLayout.setVerticalGroup(
             pAddShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -564,7 +702,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(eYearSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bShowAddSet)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         pAddShow.setBounds(0, 0, 460, 270);
@@ -593,7 +731,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(bDelCRoomSel)
-                .addContainerGap(178, Short.MAX_VALUE))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
         pListCRoomLayout.setVerticalGroup(
             pListCRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -601,7 +739,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(pListCRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bDelCRoomSel))
-                .addGap(0, 52, Short.MAX_VALUE))
+                .addGap(0, 140, Short.MAX_VALUE))
         );
 
         pListCRoom.setBounds(0, 0, 440, 270);
@@ -635,7 +773,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(pAddCRoomLayout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(bCRoomAdd)))
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addContainerGap(243, Short.MAX_VALUE))
         );
         pAddCRoomLayout.setVerticalGroup(
             pAddCRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -648,7 +786,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(eCRoomID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bCRoomAdd)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
 
         pAddCRoom.setBounds(0, 0, 420, 260);
@@ -694,7 +832,7 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGroup(pListMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(bShowMore)
                             .addComponent(bDelMovie))
-                        .addContainerGap(82, Short.MAX_VALUE))
+                        .addContainerGap(90, Short.MAX_VALUE))
                     .addGroup(pListMovLayout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addContainerGap())))
@@ -709,7 +847,7 @@ public class MainFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bShowMore)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
                     .addGroup(pListMovLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)))
@@ -768,7 +906,7 @@ public class MainFrame extends javax.swing.JFrame {
                                 .addComponent(eMovieName, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                                 .addComponent(eMovieGenre)
                                 .addComponent(eMovieRating)))))
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addContainerGap(379, Short.MAX_VALUE))
         );
         pAddMovLayout.setVerticalGroup(
             pAddMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -790,7 +928,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bAddMovOK)
-                .addGap(0, 173, Short.MAX_VALUE))
+                .addGap(0, 221, Short.MAX_VALUE))
         );
 
         pAddMov.setBounds(0, 20, 430, 230);
@@ -802,7 +940,7 @@ public class MainFrame extends javax.swing.JFrame {
                 bReturnActionPerformed(evt);
             }
         });
-        bReturn.setBounds(0, 280, 130, 29);
+        bReturn.setBounds(0, 280, 130, 23);
         jLayeredPane1.add(bReturn, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         bExit.setText("Exit");
@@ -811,7 +949,7 @@ public class MainFrame extends javax.swing.JFrame {
                 bExitActionPerformed(evt);
             }
         });
-        bExit.setBounds(400, 280, 80, 29);
+        bExit.setBounds(400, 280, 80, 23);
         jLayeredPane1.add(bExit, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -899,6 +1037,8 @@ public class MainFrame extends javax.swing.JFrame {
         pAddUser.setVisible(false);
         pListUser.setVisible(false);
         pListRes.setVisible(false);
+        pLogs.setVisible(false);
+        pStats.setVisible(false);
     }//GEN-LAST:event_bReturnActionPerformed
 
     private void bSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSaveActionPerformed
@@ -1029,6 +1169,75 @@ public class MainFrame extends javax.swing.JFrame {
         tResList.setText(mgmt.getFormattedRes());
     }//GEN-LAST:event_bListResActionPerformed
 
+    private void bListStatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bListStatsActionPerformed
+        pMain.setVisible(false);
+        pStats.setVisible(true);
+        File statdir = new File("stats");
+        File[] statlist = statdir.listFiles();
+        String[] files = new String[statlist.length];
+        int i = 0;
+        for (File file : statlist){
+            files[i] = file.getName();
+            i++;
+        }
+        liStatList.setListData((String[])files);
+    }//GEN-LAST:event_bListStatsActionPerformed
+
+    private void bListLogsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bListLogsActionPerformed
+        pMain.setVisible(false);
+        pLogs.setVisible(true);
+        File logdir = new File("logs");
+        File[] loglist = logdir.listFiles();
+        String[] files = new String[loglist.length];
+        int i = 0;
+        for (File file : loglist){
+            files[i] = file.getName();
+            i++;
+        }
+        liLogList.setListData((String[])files);
+        
+    }//GEN-LAST:event_bListLogsActionPerformed
+
+    private void bGetLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGetLogActionPerformed
+        File logdir = new File("logs");
+        File[] loglist = logdir.listFiles();
+        int sel = liLogList.getSelectedIndex();
+        try{
+            FileInputStream file = new FileInputStream("logs/"+loglist[sel].getName());
+            BufferedReader br = new BufferedReader(new InputStreamReader(file));
+            String log = "";
+            String tmp = null;
+            while((tmp = br.readLine()) != null){
+                log += tmp+"\n";
+            }
+            tLogText.setText(log);            
+        }catch(FileNotFoundException e){
+            tLogText.setText("File Not Found "+e);
+        }catch(IOException e){
+            tLogText.setText("IOError "+e);
+        }
+    }//GEN-LAST:event_bGetLogActionPerformed
+
+    private void bGetStatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGetStatActionPerformed
+        File statdir = new File("stats");
+        File[] statlist = statdir.listFiles();
+        int sel = liStatList.getSelectedIndex();
+        try{
+            FileInputStream file = new FileInputStream("stats/"+statlist[sel].getName());
+            BufferedReader br = new BufferedReader(new InputStreamReader(file));
+            String log = "";
+            String tmp = null;
+            while((tmp = br.readLine()) != null){
+                log += tmp+"\n";
+            }
+            tStatText.setText(log);            
+        }catch(FileNotFoundException e){
+            tStatText.setText("File Not Found "+e);
+        }catch(IOException e){
+            tStatText.setText("IOError "+e);
+        }
+    }//GEN-LAST:event_bGetStatActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1075,10 +1284,14 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton bDelShowOK;
     private javax.swing.JButton bDelUserOK;
     private javax.swing.JButton bExit;
+    private javax.swing.JButton bGetLog;
+    private javax.swing.JButton bGetStat;
     private javax.swing.JButton bListCRoom;
+    private javax.swing.JButton bListLogs;
     private javax.swing.JButton bListMov;
     private javax.swing.JButton bListRes;
     private javax.swing.JButton bListShow;
+    private javax.swing.JButton bListStats;
     private javax.swing.JButton bListUser;
     private javax.swing.JButton bLoad;
     private javax.swing.JButton bReturn;
@@ -1104,6 +1317,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1111,6 +1327,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JLabel lCRoomHello;
     private javax.swing.JLabel lCRoomSet;
     private javax.swing.JLabel lDateSet;
@@ -1128,8 +1345,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lUType;
     private javax.swing.JLabel lUserName;
     private javax.swing.JList liCRoomList;
+    private javax.swing.JList liLogList;
     private javax.swing.JList liMovieList;
     private javax.swing.JList liShowList;
+    private javax.swing.JList liStatList;
     private javax.swing.JList liUserList;
     private javax.swing.JPanel pAddCRoom;
     private javax.swing.JPanel pAddMov;
@@ -1140,11 +1359,15 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel pListRes;
     private javax.swing.JPanel pListShow;
     private javax.swing.JPanel pListUser;
+    private javax.swing.JPanel pLogs;
     private javax.swing.JPanel pMain;
     private javax.swing.JPanel pOptions;
+    private javax.swing.JPanel pStats;
+    private javax.swing.JTextArea tLogText;
     private javax.swing.JTextArea tMovieDesc;
     private javax.swing.JTextArea tMovieMore;
     private javax.swing.JTextArea tResList;
     private javax.swing.JTextArea tShowMore;
+    private javax.swing.JTextArea tStatText;
     // End of variables declaration//GEN-END:variables
 }

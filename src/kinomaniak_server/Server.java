@@ -16,6 +16,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -137,6 +138,10 @@ public class Server  implements Runnable{
                         cmdAvail = false;
                 }
                 this.endThread();
+            }catch(SocketException e){
+                System.err.println("Client Disconnected: "+sockfd.getInetAddress().getHostAddress());
+                logger.doLog(0,this.threadName+": Client disconnected: "+sockfd.getInetAddress().getHostAddress());
+                endThread();
             }catch(EOFException e){
                  System.err.println("Connection closed: "+sockfd.getInetAddress().getHostAddress());
                  logger.doLog(0,this.threadName+": Connection closed: "+sockfd.getInetAddress().getHostAddress());
@@ -241,6 +246,10 @@ public class Server  implements Runnable{
                         }
                     }
                     logger.doLog(1,"Res: "+res.getName()+" ShowID: "+res.getShowID()+" SeatCount: "+res.getSeats().length);
+                }catch(SocketException e){
+                    System.err.println("Client Disconnected: "+sockfd.getInetAddress().getHostAddress());
+                    logger.doLog(0,this.threadName+": Client disconnected: "+sockfd.getInetAddress().getHostAddress());
+                    endThread();
                 }catch(IOException e){
                     System.err.println("IO Error: "+e);
                     logger.doLog(0,this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
@@ -258,7 +267,10 @@ public class Server  implements Runnable{
                     if(tmp.equals("!OK!")){
                         File r = new File("Res.kin");
                             if(!r.exists()){
-                                r.createNewFile();
+                                this.oout.writeObject((String)"!NORES!");
+                                break;
+                            }else{
+                                this.oout.writeObject((String)"!OKRES!");
                             }
                          synchronized(this){
                             ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
@@ -288,6 +300,10 @@ public class Server  implements Runnable{
                         }
                         logger.doLog(1, "AccRes: "+res.getName()+" ShowID:"+res.getShowID()+" SeatsCount:"+res.getSeats().length);
                     }
+                }catch(SocketException e){
+                    System.err.println("Client Disconnected: "+sockfd.getInetAddress().getHostAddress());
+                    logger.doLog(0,this.threadName+": Client disconnected: "+sockfd.getInetAddress().getHostAddress());
+                    endThread();
                 }catch(IOException e){
                     System.err.println("IO Error: "+e);
                     logger.doLog(0,this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
@@ -305,7 +321,10 @@ public class Server  implements Runnable{
                     if(tmp.equals("!OK!")){
                         File r = new File("Res.kin");
                             if(!r.exists()){
-                                r.createNewFile();
+                                this.oout.writeObject((String)"!NORES!");
+                                break;
+                            }else{
+                                this.oout.writeObject((String)"!OKRES!");
                             }
                         synchronized(this){
                             ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
@@ -337,6 +356,10 @@ public class Server  implements Runnable{
                         }
                         logger.doLog(1, "GetRes: "+res.getName()+" ShowID:"+res.getShowID()+" SeatsCount:"+res.getSeats().length);
                     }
+                }catch(SocketException e){
+                    System.err.println("Client Disconnected: "+sockfd.getInetAddress().getHostAddress());
+                    logger.doLog(0,this.threadName+": Client disconnected: "+sockfd.getInetAddress().getHostAddress());
+                    endThread();
                 }catch(IOException e){
                     System.err.println("IO Error: "+e);
                     logger.doLog(0,this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
@@ -354,7 +377,10 @@ public class Server  implements Runnable{
                     if(tmps.equals("!OK!")){
                         File r = new File("Res.kin");
                             if(!r.exists()){
-                                r.createNewFile();
+                                this.oout.writeObject((String)"!NORES!");
+                                break;
+                            }else{
+                                this.oout.writeObject((String)"!OKRES!");
                             }
                          synchronized(this){
                             ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
@@ -384,6 +410,10 @@ public class Server  implements Runnable{
                         }
                         logger.doLog(1, "CancelRes: "+res.getName()+" ShowID:"+res.getShowID()+" SeatsCount:"+res.getSeats().length);
                     }
+                }catch(SocketException e){
+                    System.err.println("Client Disconnected: "+sockfd.getInetAddress().getHostAddress());
+                    logger.doLog(0,this.threadName+": Client disconnected: "+sockfd.getInetAddress().getHostAddress());
+                    endThread();
                 }catch(EOFException e){
                      System.err.println("Connection closed: "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
                       logger.doLog(0,this.threadName+":Connection closed from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
@@ -430,6 +460,10 @@ public class Server  implements Runnable{
                          }
                          this.oout.writeObject(reserved);
                     }
+                }catch(SocketException e){
+                    System.err.println("Client Disconnected: "+sockfd.getInetAddress().getHostAddress());
+                    logger.doLog(0,this.threadName+": Client disconnected: "+sockfd.getInetAddress().getHostAddress());
+                    endThread();
                 }catch(EOFException e){
                      System.err.println("Connection closed: "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
                       logger.doLog(0,this.threadName+":Connection closed from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
@@ -477,7 +511,11 @@ public class Server  implements Runnable{
                             System.err.println("IO Error from "+sockfd.getInetAddress().getHostAddress()+": "+e);
                         }
                     }
-                    logger.doLog(1,"Res: "+res.getName()+" ShowID: "+res.getShowID()+" SeatCount: "+res.getSeats().length);
+                    logger.doLog(1,"OffLineRes: "+res.getName()+" ShowID: "+res.getShowID()+" SeatCount: "+res.getSeats().length);
+                }catch(SocketException e){
+                    System.err.println("Client Disconnected: "+sockfd.getInetAddress().getHostAddress());
+                    logger.doLog(0,this.threadName+": Client disconnected: "+sockfd.getInetAddress().getHostAddress());
+                    endThread();
                 }catch(IOException e){
                     System.err.println("IO Error: "+e);
                     logger.doLog(0,this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
