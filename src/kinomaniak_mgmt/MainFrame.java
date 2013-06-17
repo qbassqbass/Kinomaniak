@@ -4,6 +4,7 @@
  */
 package kinomaniak_mgmt;
 
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -39,6 +40,7 @@ public class MainFrame extends javax.swing.JFrame {
         bExit.setVisible(false);
         pLogs.setVisible(false);
         pStats.setVisible(false);
+        lSaveInfo.setVisible(false);
         this.mgmt = new MovieDBMgmt2();
     }
 
@@ -52,20 +54,6 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        pLogs = new javax.swing.JPanel();
-        jScrollPane9 = new javax.swing.JScrollPane();
-        liLogList = new javax.swing.JList();
-        jScrollPane10 = new javax.swing.JScrollPane();
-        tLogText = new javax.swing.JTextArea();
-        bGetLog = new javax.swing.JButton();
-        bClearLog = new javax.swing.JButton();
-        pStats = new javax.swing.JPanel();
-        jScrollPane11 = new javax.swing.JScrollPane();
-        liStatList = new javax.swing.JList();
-        bGetStat = new javax.swing.JButton();
-        jScrollPane12 = new javax.swing.JScrollPane();
-        tStatText = new javax.swing.JTextArea();
-        bClearStat = new javax.swing.JButton();
         pMain = new javax.swing.JPanel();
         bLoad = new javax.swing.JButton();
         bSave = new javax.swing.JButton();
@@ -81,6 +69,20 @@ public class MainFrame extends javax.swing.JFrame {
         bListRes = new javax.swing.JButton();
         bListLogs = new javax.swing.JButton();
         bListStats = new javax.swing.JButton();
+        pLogs = new javax.swing.JPanel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        liLogList = new javax.swing.JList();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        tLogText = new javax.swing.JTextArea();
+        bGetLog = new javax.swing.JButton();
+        bClearLog = new javax.swing.JButton();
+        pStats = new javax.swing.JPanel();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        liStatList = new javax.swing.JList();
+        bGetStat = new javax.swing.JButton();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        tStatText = new javax.swing.JTextArea();
+        bClearStat = new javax.swing.JButton();
         pListShow = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         liShowList = new javax.swing.JList();
@@ -149,126 +151,11 @@ public class MainFrame extends javax.swing.JFrame {
         bAddMovOK = new javax.swing.JButton();
         bReturn = new javax.swing.JButton();
         bExit = new javax.swing.JButton();
+        lSaveInfo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Management app for Kinomaniak project");
         setResizable(false);
-
-        liLogList.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane9.setViewportView(liLogList);
-
-        tLogText.setEditable(false);
-        tLogText.setColumns(20);
-        tLogText.setRows(5);
-        jScrollPane10.setViewportView(tLogText);
-
-        bGetLog.setText("Get Logs");
-        bGetLog.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bGetLogActionPerformed(evt);
-            }
-        });
-
-        bClearLog.setText("Del Logs");
-        bClearLog.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bClearLogActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pLogsLayout = new javax.swing.GroupLayout(pLogs);
-        pLogs.setLayout(pLogsLayout);
-        pLogsLayout.setHorizontalGroup(
-            pLogsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pLogsLayout.createSequentialGroup()
-                .addGroup(pLogsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane9)
-                    .addComponent(bGetLog, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
-                    .addComponent(bClearLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        pLogsLayout.setVerticalGroup(
-            pLogsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pLogsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pLogsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pLogsLayout.createSequentialGroup()
-                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(bGetLog)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bClearLog)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        pLogs.setBounds(0, 0, 480, 270);
-        jLayeredPane1.add(pLogs, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        liStatList.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane11.setViewportView(liStatList);
-
-        bGetStat.setText("Get Stat");
-        bGetStat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bGetStatActionPerformed(evt);
-            }
-        });
-
-        tStatText.setEditable(false);
-        tStatText.setColumns(20);
-        tStatText.setRows(5);
-        jScrollPane12.setViewportView(tStatText);
-
-        bClearStat.setText("Del Stat");
-        bClearStat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bClearStatActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pStatsLayout = new javax.swing.GroupLayout(pStats);
-        pStats.setLayout(pStatsLayout);
-        pStatsLayout.setHorizontalGroup(
-            pStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pStatsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane11)
-                    .addComponent(bGetStat, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                    .addComponent(bClearStat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        pStatsLayout.setVerticalGroup(
-            pStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pStatsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane12)
-                    .addGroup(pStatsLayout.createSequentialGroup()
-                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bGetStat)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bClearStat)
-                        .addGap(0, 60, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-
-        pStats.setBounds(0, 0, 480, 270);
-        jLayeredPane1.add(pStats, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         bLoad.setText("LOAD");
         bLoad.addActionListener(new java.awt.event.ActionListener() {
@@ -439,6 +326,122 @@ public class MainFrame extends javax.swing.JFrame {
 
         pMain.setBounds(0, 0, 390, 240);
         jLayeredPane1.add(pMain, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        liLogList.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane9.setViewportView(liLogList);
+
+        tLogText.setEditable(false);
+        tLogText.setColumns(20);
+        tLogText.setRows(5);
+        jScrollPane10.setViewportView(tLogText);
+
+        bGetLog.setText("Get Logs");
+        bGetLog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bGetLogActionPerformed(evt);
+            }
+        });
+
+        bClearLog.setText("Del Logs");
+        bClearLog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bClearLogActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pLogsLayout = new javax.swing.GroupLayout(pLogs);
+        pLogs.setLayout(pLogsLayout);
+        pLogsLayout.setHorizontalGroup(
+            pLogsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pLogsLayout.createSequentialGroup()
+                .addGroup(pLogsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane9)
+                    .addComponent(bGetLog, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                    .addComponent(bClearLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pLogsLayout.setVerticalGroup(
+            pLogsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pLogsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pLogsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pLogsLayout.createSequentialGroup()
+                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(bGetLog)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bClearLog)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pLogs.setBounds(0, 0, 480, 270);
+        jLayeredPane1.add(pLogs, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        liStatList.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane11.setViewportView(liStatList);
+
+        bGetStat.setText("Get Stat");
+        bGetStat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bGetStatActionPerformed(evt);
+            }
+        });
+
+        tStatText.setEditable(false);
+        tStatText.setColumns(20);
+        tStatText.setRows(5);
+        jScrollPane12.setViewportView(tStatText);
+
+        bClearStat.setText("Del Stat");
+        bClearStat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bClearStatActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pStatsLayout = new javax.swing.GroupLayout(pStats);
+        pStats.setLayout(pStatsLayout);
+        pStatsLayout.setHorizontalGroup(
+            pStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pStatsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane11)
+                    .addComponent(bGetStat, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                    .addComponent(bClearStat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pStatsLayout.setVerticalGroup(
+            pStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pStatsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane12)
+                    .addGroup(pStatsLayout.createSequentialGroup()
+                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bGetStat)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bClearStat)
+                        .addGap(0, 60, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
+        pStats.setBounds(0, 0, 480, 270);
+        jLayeredPane1.add(pStats, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         liShowList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -975,6 +978,11 @@ public class MainFrame extends javax.swing.JFrame {
         bExit.setBounds(400, 280, 80, 23);
         jLayeredPane1.add(bExit, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        lSaveInfo.setForeground(new java.awt.Color(204, 0, 0));
+        lSaveInfo.setText("Remember to save before exit...");
+        lSaveInfo.setBounds(140, 280, 240, 14);
+        jLayeredPane1.add(lSaveInfo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -994,6 +1002,9 @@ public class MainFrame extends javax.swing.JFrame {
         bSave.setVisible(true);
         bReturn.setVisible(true);
         bExit.setVisible(true);
+        lSaveInfo.setVisible(true);
+        lSaveInfo.setText("Data loaded...");
+        lSaveInfo.setForeground(Color.BLUE);
         this.mgmt.getData();
     }//GEN-LAST:event_bLoadActionPerformed
 
@@ -1062,10 +1073,16 @@ public class MainFrame extends javax.swing.JFrame {
         pListRes.setVisible(false);
         pLogs.setVisible(false);
         pStats.setVisible(false);
+        lSaveInfo.setVisible(true);
+        lSaveInfo.setText("Remember to save before exit...");
+        lSaveInfo.setForeground(Color.red);
     }//GEN-LAST:event_bReturnActionPerformed
 
     private void bSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSaveActionPerformed
         mgmt.saveData();
+        lSaveInfo.setVisible(true);
+        lSaveInfo.setText("Data saved...");
+        lSaveInfo.setForeground(Color.blue);
     }//GEN-LAST:event_bSaveActionPerformed
 
     private void bCRoomAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCRoomAddActionPerformed
@@ -1405,6 +1422,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lMovieSet;
     private javax.swing.JLabel lPass;
     private javax.swing.JLabel lPassword;
+    private javax.swing.JLabel lSaveInfo;
     private javax.swing.JLabel lSep1;
     private javax.swing.JLabel lSep2;
     private javax.swing.JLabel lSep3;
