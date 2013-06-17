@@ -671,15 +671,15 @@ public class MainFrame extends javax.swing.JFrame {
             pListShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pListShowLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pListShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(pListShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
                     .addGroup(pListShowLayout.createSequentialGroup()
                         .addComponent(bDelShowOK)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bShowShow)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane6))
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(119, Short.MAX_VALUE))
+                        .addComponent(jScrollPane6)))
+                .addContainerGap())
         );
 
         pListShow.setBounds(0, 0, 540, 260);
@@ -1121,6 +1121,8 @@ public class MainFrame extends javax.swing.JFrame {
     private void bAddShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAddShowActionPerformed
         pMain.setVisible(false);
         pAddShow.setVisible(true);
+        cbMovieList.removeAllItems();
+        cbCRoomList.removeAllItems();
         for(int i = 0;i<mgmt.getMovies().length;i++){
             cbMovieList.addItem((String)mgmt.getMovies()[i].getName());
         }
@@ -1169,6 +1171,8 @@ public class MainFrame extends javax.swing.JFrame {
         tShowMore.setText("Time: "+mgmt.getShows()[sel].getFormatted()+"\nName: "+mgmt.getShows()[sel].getMovie().getName()
                 +"\nGenre: "+mgmt.getShows()[sel].getMovie().getGenre()+"\nRating: "
                 +mgmt.getShows()[sel].getMovie().getRating()+"\nDesc:\n"+mgmt.getShows()[sel].getMovie().getDesc());
+        tShowMore.setWrapStyleWord(true);
+        tShowMore.setLineWrap(true);
     }//GEN-LAST:event_bShowShowActionPerformed
 
     private void bAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAddUserActionPerformed
