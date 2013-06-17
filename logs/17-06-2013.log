@@ -75,3 +75,7 @@
 ====11:25:12====
 11:25:12  Client connected from 192.168.137.1
 11:25:14  Thread-1 as adas: 192.168.137.1
+====11:40:46====
+11:40:46  Client connected from 192.168.137.1
+11:40:50  Thread-1 as adas: 192.168.137.1
+11:40:54  Thread-1 as adas: Client disconnected: 192.168.137.1
