@@ -39,6 +39,302 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout"/>
       <SubComponents>
+        <Container class="javax.swing.JPanel" name="pAddMov">
+          <Properties>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Default Cursor"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[600, 400]"/>
+            </Property>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
+              <JLayeredPaneConstraints x="0" y="20" width="470" height="250" layer="0" position="-1"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lMovieName" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lMovieGenre" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lMovieDesc" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lMovieRating" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="eMovieName" pref="112" max="32767" attributes="0"/>
+                              <Component id="eMovieGenre" alignment="0" max="32767" attributes="0"/>
+                              <Component id="eMovieRating" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Component id="bAddMovOK" min="-2" max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="379" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="eMovieName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lMovieName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lMovieGenre" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="eMovieGenre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="eMovieRating" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lMovieRating" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lMovieDesc" min="-2" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="bAddMovOK" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="221" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JTextField" name="eMovieName">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eMovieNameActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lMovieName">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Movie title:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lMovieGenre">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Genre:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lMovieRating">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Rating:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lMovieDesc">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Description:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="eMovieGenre">
+            </Component>
+            <Component class="javax.swing.JTextField" name="eMovieRating">
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextArea" name="tMovieDesc">
+                  <Properties>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="rows" type="int" value="5"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JButton" name="bAddMovOK">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Add Movie"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bAddMovOKActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="pAddShow">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
+              <JLayeredPaneConstraints x="0" y="0" width="460" height="270" layer="0" position="-1"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lMovieSet" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lCRoomSet" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lTimeSet" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lDateSet" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="cbMovieList" max="32767" attributes="0"/>
+                                      <Component id="cbCRoomList" pref="130" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="eHourSet" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="lSep1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="eDaySet" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="lSep2" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="eMonthSet" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="lSep3" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="eYearSet" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="eMinuteSet" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Component id="bShowAddSet" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="278" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cbMovieList" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lMovieSet" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cbCRoomList" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lCRoomSet" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lTimeSet" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="eHourSet" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lSep1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="eMinuteSet" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lDateSet" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="eDaySet" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="eMonthSet" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lSep2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lSep3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="eYearSet" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="bShowAddSet" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="122" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JComboBox" name="cbMovieList">
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cbCRoomList">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lMovieSet">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Movie:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lCRoomSet">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CRoom:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lTimeSet">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Time: "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lDateSet">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Date:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="eHourSet">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="00"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lSep1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value=":"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="eMinuteSet">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="00"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="eDaySet">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="01"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="eMonthSet">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="01"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lSep2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="-"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lSep3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="-"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="eYearSet">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="2013"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="bShowAddSet">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Add Show"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bShowAddSetActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
         <Container class="javax.swing.JPanel" name="pMain">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
@@ -768,176 +1064,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="pAddShow">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
-              <JLayeredPaneConstraints x="0" y="0" width="460" height="270" layer="0" position="-1"/>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lMovieSet" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lCRoomSet" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lTimeSet" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lDateSet" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="cbMovieList" max="32767" attributes="0"/>
-                                      <Component id="cbCRoomList" pref="130" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="eHourSet" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="lSep1" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="eDaySet" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="lSep2" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="eMonthSet" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="lSep3" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="eYearSet" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="eMinuteSet" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <Component id="bShowAddSet" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="278" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cbMovieList" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lMovieSet" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cbCRoomList" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lCRoomSet" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lTimeSet" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="eHourSet" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lSep1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="eMinuteSet" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lDateSet" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="eDaySet" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="eMonthSet" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lSep2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lSep3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="eYearSet" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="bShowAddSet" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="122" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JComboBox" name="cbMovieList">
-            </Component>
-            <Component class="javax.swing.JComboBox" name="cbCRoomList">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lMovieSet">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Movie:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lCRoomSet">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="CRoom:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lTimeSet">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Time: "/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lDateSet">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Date:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="eHourSet">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="00"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lSep1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value=":"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="eMinuteSet">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="00"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="eDaySet">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="01"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="eMonthSet">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="01"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lSep2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="-"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lSep3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="-"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="eYearSet">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="2013"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="bShowAddSet">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Add Show"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bShowAddSetActionPerformed"/>
-              </Events>
-            </Component>
-          </SubComponents>
-        </Container>
         <Container class="javax.swing.JPanel" name="pListCRoom">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
@@ -1182,134 +1308,6 @@
                 </Component>
               </SubComponents>
             </Container>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="pAddMov">
-          <Properties>
-            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
-            </Property>
-            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[600, 400]"/>
-            </Property>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
-              <JLayeredPaneConstraints x="0" y="20" width="430" height="230" layer="0" position="-1"/>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="bAddMovOK" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lMovieName" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lMovieGenre" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lMovieDesc" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lMovieRating" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="eMovieName" pref="112" max="32767" attributes="0"/>
-                                      <Component id="eMovieGenre" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="eMovieRating" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace pref="379" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="eMovieName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lMovieName" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lMovieGenre" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="eMovieGenre" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="eMovieRating" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lMovieRating" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lMovieDesc" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="bAddMovOK" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="221" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JTextField" name="eMovieName">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eMovieNameActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lMovieName">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Movie title:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lMovieGenre">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Genre:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lMovieRating">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Rating:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lMovieDesc">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Descritpion:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="eMovieGenre">
-            </Component>
-            <Component class="javax.swing.JTextField" name="eMovieRating">
-            </Component>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JTextArea" name="tMovieDesc">
-                  <Properties>
-                    <Property name="columns" type="int" value="20"/>
-                    <Property name="rows" type="int" value="5"/>
-                  </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Component class="javax.swing.JButton" name="bAddMovOK">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Add Movie"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bAddMovOKActionPerformed"/>
-              </Events>
-            </Component>
           </SubComponents>
         </Container>
         <Component class="javax.swing.JButton" name="bReturn">

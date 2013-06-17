@@ -54,6 +54,33 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
+        pAddMov = new javax.swing.JPanel();
+        eMovieName = new javax.swing.JTextField();
+        lMovieName = new javax.swing.JLabel();
+        lMovieGenre = new javax.swing.JLabel();
+        lMovieRating = new javax.swing.JLabel();
+        lMovieDesc = new javax.swing.JLabel();
+        eMovieGenre = new javax.swing.JTextField();
+        eMovieRating = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tMovieDesc = new javax.swing.JTextArea();
+        bAddMovOK = new javax.swing.JButton();
+        pAddShow = new javax.swing.JPanel();
+        cbMovieList = new javax.swing.JComboBox();
+        cbCRoomList = new javax.swing.JComboBox();
+        lMovieSet = new javax.swing.JLabel();
+        lCRoomSet = new javax.swing.JLabel();
+        lTimeSet = new javax.swing.JLabel();
+        lDateSet = new javax.swing.JLabel();
+        eHourSet = new javax.swing.JTextField();
+        lSep1 = new javax.swing.JLabel();
+        eMinuteSet = new javax.swing.JTextField();
+        eDaySet = new javax.swing.JTextField();
+        eMonthSet = new javax.swing.JTextField();
+        lSep2 = new javax.swing.JLabel();
+        lSep3 = new javax.swing.JLabel();
+        eYearSet = new javax.swing.JTextField();
+        bShowAddSet = new javax.swing.JButton();
         pMain = new javax.swing.JPanel();
         bLoad = new javax.swing.JButton();
         bSave = new javax.swing.JButton();
@@ -106,22 +133,6 @@ public class MainFrame extends javax.swing.JFrame {
         ePassword = new javax.swing.JPasswordField();
         cbUType = new javax.swing.JComboBox();
         lPass = new javax.swing.JLabel();
-        pAddShow = new javax.swing.JPanel();
-        cbMovieList = new javax.swing.JComboBox();
-        cbCRoomList = new javax.swing.JComboBox();
-        lMovieSet = new javax.swing.JLabel();
-        lCRoomSet = new javax.swing.JLabel();
-        lTimeSet = new javax.swing.JLabel();
-        lDateSet = new javax.swing.JLabel();
-        eHourSet = new javax.swing.JTextField();
-        lSep1 = new javax.swing.JLabel();
-        eMinuteSet = new javax.swing.JTextField();
-        eDaySet = new javax.swing.JTextField();
-        eMonthSet = new javax.swing.JTextField();
-        lSep2 = new javax.swing.JLabel();
-        lSep3 = new javax.swing.JLabel();
-        eYearSet = new javax.swing.JTextField();
-        bShowAddSet = new javax.swing.JButton();
         pListCRoom = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         liCRoomList = new javax.swing.JList();
@@ -138,17 +149,6 @@ public class MainFrame extends javax.swing.JFrame {
         bShowMore = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tMovieMore = new javax.swing.JTextArea();
-        pAddMov = new javax.swing.JPanel();
-        eMovieName = new javax.swing.JTextField();
-        lMovieName = new javax.swing.JLabel();
-        lMovieGenre = new javax.swing.JLabel();
-        lMovieRating = new javax.swing.JLabel();
-        lMovieDesc = new javax.swing.JLabel();
-        eMovieGenre = new javax.swing.JTextField();
-        eMovieRating = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tMovieDesc = new javax.swing.JTextArea();
-        bAddMovOK = new javax.swing.JButton();
         bReturn = new javax.swing.JButton();
         bExit = new javax.swing.JButton();
         lSaveInfo = new javax.swing.JLabel();
@@ -156,6 +156,186 @@ public class MainFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Management app for Kinomaniak project");
         setResizable(false);
+
+        pAddMov.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        pAddMov.setMinimumSize(new java.awt.Dimension(600, 400));
+
+        eMovieName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eMovieNameActionPerformed(evt);
+            }
+        });
+
+        lMovieName.setText("Movie title:");
+
+        lMovieGenre.setText("Genre:");
+
+        lMovieRating.setText("Rating:");
+
+        lMovieDesc.setText("Description:");
+
+        tMovieDesc.setColumns(20);
+        tMovieDesc.setRows(5);
+        jScrollPane1.setViewportView(tMovieDesc);
+
+        bAddMovOK.setText("Add Movie");
+        bAddMovOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAddMovOKActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pAddMovLayout = new javax.swing.GroupLayout(pAddMov);
+        pAddMov.setLayout(pAddMovLayout);
+        pAddMovLayout.setHorizontalGroup(
+            pAddMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pAddMovLayout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(pAddMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lMovieName)
+                    .addComponent(lMovieGenre)
+                    .addComponent(lMovieDesc)
+                    .addComponent(lMovieRating))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pAddMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pAddMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(eMovieName, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                        .addComponent(eMovieGenre)
+                        .addComponent(eMovieRating))
+                    .addGroup(pAddMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(bAddMovOK)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(379, Short.MAX_VALUE))
+        );
+        pAddMovLayout.setVerticalGroup(
+            pAddMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pAddMovLayout.createSequentialGroup()
+                .addGroup(pAddMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(eMovieName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lMovieName))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pAddMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lMovieGenre)
+                    .addComponent(eMovieGenre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pAddMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(eMovieRating, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lMovieRating))
+                .addGap(12, 12, 12)
+                .addGroup(pAddMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lMovieDesc)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bAddMovOK)
+                .addGap(0, 221, Short.MAX_VALUE))
+        );
+
+        pAddMov.setBounds(0, 20, 470, 250);
+        jLayeredPane1.add(pAddMov, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        lMovieSet.setText("Movie:");
+
+        lCRoomSet.setText("CRoom:");
+
+        lTimeSet.setText("Time: ");
+
+        lDateSet.setText("Date:");
+
+        eHourSet.setText("00");
+
+        lSep1.setText(":");
+
+        eMinuteSet.setText("00");
+
+        eDaySet.setText("01");
+
+        eMonthSet.setText("01");
+
+        lSep2.setText("-");
+
+        lSep3.setText("-");
+
+        eYearSet.setText("2013");
+
+        bShowAddSet.setText("Add Show");
+        bShowAddSet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bShowAddSetActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pAddShowLayout = new javax.swing.GroupLayout(pAddShow);
+        pAddShow.setLayout(pAddShowLayout);
+        pAddShowLayout.setHorizontalGroup(
+            pAddShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pAddShowLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pAddShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pAddShowLayout.createSequentialGroup()
+                        .addGroup(pAddShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lMovieSet)
+                            .addComponent(lCRoomSet)
+                            .addComponent(lTimeSet)
+                            .addComponent(lDateSet))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pAddShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pAddShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(cbMovieList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbCRoomList, 0, 130, Short.MAX_VALUE))
+                            .addGroup(pAddShowLayout.createSequentialGroup()
+                                .addGroup(pAddShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pAddShowLayout.createSequentialGroup()
+                                        .addComponent(eHourSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lSep1))
+                                    .addGroup(pAddShowLayout.createSequentialGroup()
+                                        .addComponent(eDaySet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lSep2)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pAddShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pAddShowLayout.createSequentialGroup()
+                                        .addComponent(eMonthSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lSep3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(eYearSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(eMinuteSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(bShowAddSet))
+                .addContainerGap(278, Short.MAX_VALUE))
+        );
+        pAddShowLayout.setVerticalGroup(
+            pAddShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pAddShowLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pAddShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbMovieList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lMovieSet))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pAddShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbCRoomList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lCRoomSet))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pAddShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lTimeSet)
+                    .addComponent(eHourSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lSep1)
+                    .addComponent(eMinuteSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pAddShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lDateSet)
+                    .addComponent(eDaySet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eMonthSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lSep2)
+                    .addComponent(lSep3)
+                    .addComponent(eYearSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bShowAddSet)
+                .addContainerGap(122, Short.MAX_VALUE))
+        );
+
+        pAddShow.setBounds(0, 0, 460, 270);
+        jLayeredPane1.add(pAddShow, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         bLoad.setText("LOAD");
         bLoad.addActionListener(new java.awt.event.ActionListener() {
@@ -630,110 +810,6 @@ public class MainFrame extends javax.swing.JFrame {
         pAddUser.setBounds(0, 0, 540, 270);
         jLayeredPane1.add(pAddUser, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        lMovieSet.setText("Movie:");
-
-        lCRoomSet.setText("CRoom:");
-
-        lTimeSet.setText("Time: ");
-
-        lDateSet.setText("Date:");
-
-        eHourSet.setText("00");
-
-        lSep1.setText(":");
-
-        eMinuteSet.setText("00");
-
-        eDaySet.setText("01");
-
-        eMonthSet.setText("01");
-
-        lSep2.setText("-");
-
-        lSep3.setText("-");
-
-        eYearSet.setText("2013");
-
-        bShowAddSet.setText("Add Show");
-        bShowAddSet.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bShowAddSetActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pAddShowLayout = new javax.swing.GroupLayout(pAddShow);
-        pAddShow.setLayout(pAddShowLayout);
-        pAddShowLayout.setHorizontalGroup(
-            pAddShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pAddShowLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pAddShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pAddShowLayout.createSequentialGroup()
-                        .addGroup(pAddShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lMovieSet)
-                            .addComponent(lCRoomSet)
-                            .addComponent(lTimeSet)
-                            .addComponent(lDateSet))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pAddShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pAddShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(cbMovieList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cbCRoomList, 0, 130, Short.MAX_VALUE))
-                            .addGroup(pAddShowLayout.createSequentialGroup()
-                                .addGroup(pAddShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pAddShowLayout.createSequentialGroup()
-                                        .addComponent(eHourSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lSep1))
-                                    .addGroup(pAddShowLayout.createSequentialGroup()
-                                        .addComponent(eDaySet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lSep2)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pAddShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pAddShowLayout.createSequentialGroup()
-                                        .addComponent(eMonthSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lSep3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(eYearSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(eMinuteSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addComponent(bShowAddSet))
-                .addContainerGap(278, Short.MAX_VALUE))
-        );
-        pAddShowLayout.setVerticalGroup(
-            pAddShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pAddShowLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pAddShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbMovieList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lMovieSet))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pAddShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbCRoomList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lCRoomSet))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pAddShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lTimeSet)
-                    .addComponent(eHourSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lSep1)
-                    .addComponent(eMinuteSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pAddShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lDateSet)
-                    .addComponent(eDaySet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eMonthSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lSep2)
-                    .addComponent(lSep3)
-                    .addComponent(eYearSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bShowAddSet)
-                .addContainerGap(122, Short.MAX_VALUE))
-        );
-
-        pAddShow.setBounds(0, 0, 460, 270);
-        jLayeredPane1.add(pAddShow, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
         liCRoomList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -882,83 +958,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         pListMov.setBounds(0, 0, 430, 260);
         jLayeredPane1.add(pListMov, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        pAddMov.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        pAddMov.setMinimumSize(new java.awt.Dimension(600, 400));
-
-        eMovieName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eMovieNameActionPerformed(evt);
-            }
-        });
-
-        lMovieName.setText("Movie title:");
-
-        lMovieGenre.setText("Genre:");
-
-        lMovieRating.setText("Rating:");
-
-        lMovieDesc.setText("Descritpion:");
-
-        tMovieDesc.setColumns(20);
-        tMovieDesc.setRows(5);
-        jScrollPane1.setViewportView(tMovieDesc);
-
-        bAddMovOK.setText("Add Movie");
-        bAddMovOK.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bAddMovOKActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pAddMovLayout = new javax.swing.GroupLayout(pAddMov);
-        pAddMov.setLayout(pAddMovLayout);
-        pAddMovLayout.setHorizontalGroup(
-            pAddMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pAddMovLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(pAddMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(bAddMovOK)
-                    .addGroup(pAddMovLayout.createSequentialGroup()
-                        .addGroup(pAddMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lMovieName)
-                            .addComponent(lMovieGenre)
-                            .addComponent(lMovieDesc)
-                            .addComponent(lMovieRating))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pAddMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pAddMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(eMovieName, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
-                                .addComponent(eMovieGenre)
-                                .addComponent(eMovieRating)))))
-                .addContainerGap(379, Short.MAX_VALUE))
-        );
-        pAddMovLayout.setVerticalGroup(
-            pAddMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pAddMovLayout.createSequentialGroup()
-                .addGroup(pAddMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(eMovieName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lMovieName))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pAddMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lMovieGenre)
-                    .addComponent(eMovieGenre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pAddMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(eMovieRating, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lMovieRating))
-                .addGap(12, 12, 12)
-                .addGroup(pAddMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lMovieDesc)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bAddMovOK)
-                .addGap(0, 221, Short.MAX_VALUE))
-        );
-
-        pAddMov.setBounds(0, 20, 430, 230);
-        jLayeredPane1.add(pAddMov, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         bReturn.setText("Return");
         bReturn.addActionListener(new java.awt.event.ActionListener() {
