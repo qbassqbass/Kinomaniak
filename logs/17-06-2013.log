@@ -42,3 +42,26 @@
 10:25:31  Thread-2 as adas: 127.0.0.1
 10:25:36  Thread-1 as adas: IOError from 127.0.0.1: java.net.SocketException: Connection reset
 10:25:39  Thread-2 as adas: IOError from 127.0.0.1: java.net.SocketException: Connection reset
+====10:35:51====
+10:35:51  Client connected from 192.168.137.1
+10:35:54  Thread-1 as adas: 192.168.137.1
+10:38:05  Thread-1 as adas: IOError from 192.168.137.1: java.net.SocketException: Connection reset
+====10:40:17====
+10:40:17  Client connected from 192.168.137.1
+10:40:20  Thread-1 as adas: 192.168.137.1
+10:40:53  Thread-1 as adas: IO Error from 192.168.137.1: java.net.SocketException: Software caused connection abort: recv failed
+10:40:53  Thread-1 as adas: IOError from 192.168.137.1: java.net.SocketException: Software caused connection abort: recv failed
+====10:41:11====
+10:41:11  Client connected from 192.168.137.1
+10:41:13  Thread-1 as adas: 192.168.137.1
+10:41:18  Thread-1 as adas:Connection closed from 192.168.137.1: java.io.EOFException
+10:41:18  Thread-1 as adas: Connection closed: 192.168.137.1
+====10:41:31====
+10:41:31  Client connected from 192.168.137.1
+10:41:35  Thread-2 as adas: 192.168.137.1
+10:41:40  Thread-2 as adas: IO Error from 192.168.137.1: java.net.SocketException: Software caused connection abort: recv failed
+10:41:40  Thread-2 as adas: IOError from 192.168.137.1: java.net.SocketException: Software caused connection abort: recv failed
+====10:42:19====
+10:42:19  Client connected from 192.168.137.1
+10:42:22  Thread-3 as adas: 192.168.137.1
+10:42:36  Thread-3 as adas: IOError from 192.168.137.1: java.net.SocketException: Connection reset

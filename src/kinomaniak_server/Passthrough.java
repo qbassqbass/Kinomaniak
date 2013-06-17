@@ -34,11 +34,11 @@ public class Passthrough {
             public List<Thread> thrli = new ArrayList<Thread>();
             public boolean interrupted = false;
             public void doExit(){
-                System.out.println("Exit");
+                System.out.println("Waiting for clients disconnection...");
                 while(true){
                     int alive = 0;
                     for (Thread t : thrli){
-                        t.interrupt();
+//                        t.interrupt();
                         if(t.isAlive()) alive++;
                     }
                     if(alive == 0){
