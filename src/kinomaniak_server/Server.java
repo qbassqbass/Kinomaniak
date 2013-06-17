@@ -194,8 +194,40 @@ public class Server  implements Runnable{
                 
                 break;
             }
-            case 4:{
-                
+            case 4:{ // pobierz liste rezerwacji
+                try{
+                    this.oout.writeObject((String)"!GDATA!");
+                    String tmp = (String)oin.readObject();           
+                    List<Res> reslist = new ArrayList<Res>();
+                    if(tmp.equals("!OK!")){
+                        File r = new File("Res.kin");
+                            if(!r.exists()){
+                                this.oout.writeObject((String)"!NORES!");
+                                break;
+                            }else{
+                                this.oout.writeObject((String)"!OKRES!");
+                            }
+                         synchronized(this){
+                            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Res.kin"));
+                            reslist = (ArrayList<Res>)we.readObject();
+                            we.close();
+                         }
+                         Res restmp[] = new Res[reslist.size()];
+                         restmp = reslist.toArray(restmp);
+                         this.oout.writeObject((Res[])restmp);
+                        logger.doLog(1, "SendRes to "+this.threadName);
+                    }
+                }catch(SocketException e){
+                    System.err.println("Client Disconnected: "+sockfd.getInetAddress().getHostAddress());
+                    logger.doLog(0,this.threadName+": Client disconnected: "+sockfd.getInetAddress().getHostAddress());
+                    endThread();
+                }catch(IOException e){
+                    System.err.println("IO Error: "+e);
+                    logger.doLog(0,this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
+                }catch(ClassNotFoundException e){
+                    System.err.println("Class not found :"+e);
+                    logger.doLog(0,this.threadName+": Class not found from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
+                }
                 break;
             }
             case 5:{ // rezerwacja biletu
