@@ -5,6 +5,8 @@
 package kinomaniak_objs;
 
 import java.io.Serializable;
+import org.jdom2.Element;
+import org.jdom2.Attribute;
 
 /**
  * Klasa reprezentująca salę kinową
@@ -15,6 +17,12 @@ public class CRoom implements Serializable {
     private static final long serialVersionUID = 1L;
     private int id;
     private boolean[][] seats;
+    
+    public Element toXML(){
+        Element res = new Element("CRoom");
+        res.addContent(new Element("id").setText(String.valueOf(this.id)));
+        return res;
+    }
     
     /**
      * Konstruktor klasy Sali kinowej

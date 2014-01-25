@@ -7,6 +7,7 @@ package kinomaniak_objs;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Objects;
+import org.jdom2.Element;
 
 /**
  * Klasa reprezentująca rezerwację seansu
@@ -21,6 +22,21 @@ public class Res implements Serializable{
     private int[][] seat;
     private boolean checked; // potwierdzenie rezerwacji
     private boolean ok; // odebrana rezerwacja
+    
+    public Element toXML(){
+        Element res = new Element("Movie");
+        res.addContent(new Element("imienazwisko").setText(String.valueOf(this.imienazwisko)));
+        res.addContent(new Element("showid").setText(String.valueOf(this.showid)));
+        res.addContent(new Element("checked").setText(String.valueOf(this.checked)));
+        res.addContent(new Element("ok").setText(String.valueOf(this.ok)));
+        Element seats = new Element("seats");
+        for (int[] s : this.seat) {
+                seats.addContent(new Element("row").setText(String.valueOf(s[0])));
+                seats.addContent(new Element("col").setText(String.valueOf(s[1])));
+        }
+        res.addContent(seats);
+        return res;
+    }
     
     /**
      * Konstruktor klasy Rezerwacji danego seansu dla pojedyńczego miejsca

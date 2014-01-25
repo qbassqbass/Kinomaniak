@@ -96,6 +96,7 @@ public class MainFrame extends javax.swing.JFrame {
         bListRes = new javax.swing.JButton();
         bListLogs = new javax.swing.JButton();
         bListStats = new javax.swing.JButton();
+        bSaveXML = new javax.swing.JButton();
         pLogs = new javax.swing.JPanel();
         jScrollPane9 = new javax.swing.JScrollPane();
         liLogList = new javax.swing.JList();
@@ -230,8 +231,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(0, 221, Short.MAX_VALUE))
         );
 
+        jLayeredPane1.add(pAddMov);
         pAddMov.setBounds(0, 20, 470, 250);
-        jLayeredPane1.add(pAddMov, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         lMovieSet.setText("Movie:");
 
@@ -334,8 +335,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(122, Short.MAX_VALUE))
         );
 
+        jLayeredPane1.add(pAddShow);
         pAddShow.setBounds(0, 0, 460, 270);
-        jLayeredPane1.add(pAddShow, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         bLoad.setText("LOAD");
         bLoad.addActionListener(new java.awt.event.ActionListener() {
@@ -428,6 +429,13 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        bSaveXML.setText("SaveXML");
+        bSaveXML.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSaveXMLActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pOptionsLayout = new javax.swing.GroupLayout(pOptions);
         pOptions.setLayout(pOptionsLayout);
         pOptionsLayout.setHorizontalGroup(
@@ -446,11 +454,14 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(bListCRoom)
                     .addComponent(bListUser)
                     .addComponent(bListRes))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bListLogs)
-                    .addComponent(bListStats))
-                .addGap(4, 4, 4))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pOptionsLayout.createSequentialGroup()
+                        .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bListLogs)
+                            .addComponent(bListStats))
+                        .addGap(4, 4, 4))
+                    .addComponent(bSaveXML, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
         pOptionsLayout.setVerticalGroup(
             pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -468,7 +479,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bAddShow)
-                    .addComponent(bListShow))
+                    .addComponent(bListShow)
+                    .addComponent(bSaveXML))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bAddUser)
@@ -489,9 +501,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(bSave)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pMainLayout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addComponent(pOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         pMainLayout.setVerticalGroup(
             pMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -504,8 +516,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(45, Short.MAX_VALUE))
         );
 
+        jLayeredPane1.add(pMain);
         pMain.setBounds(0, 0, 390, 240);
-        jLayeredPane1.add(pMain, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         liLogList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -561,8 +573,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLayeredPane1.add(pLogs);
         pLogs.setBounds(0, 0, 480, 270);
-        jLayeredPane1.add(pLogs, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         liStatList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -620,8 +632,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jLayeredPane1.add(pStats);
         pStats.setBounds(0, 0, 480, 270);
-        jLayeredPane1.add(pStats, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         liShowList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -682,8 +694,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jLayeredPane1.add(pListShow);
         pListShow.setBounds(0, 0, 540, 260);
-        jLayeredPane1.add(pListShow, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         tResList.setColumns(20);
         tResList.setRows(5);
@@ -705,8 +717,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
+        jLayeredPane1.add(pListRes);
         pListRes.setBounds(0, 0, 530, 260);
-        jLayeredPane1.add(pListRes, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         liUserList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -744,8 +756,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLayeredPane1.add(pListUser);
         pListUser.setBounds(0, 0, 500, 250);
-        jLayeredPane1.add(pListUser, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         lUserName.setText("Name:");
 
@@ -807,8 +819,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(128, Short.MAX_VALUE))
         );
 
+        jLayeredPane1.add(pAddUser);
         pAddUser.setBounds(0, 0, 540, 270);
-        jLayeredPane1.add(pAddUser, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         liCRoomList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -844,8 +856,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(0, 140, Short.MAX_VALUE))
         );
 
+        jLayeredPane1.add(pListCRoom);
         pListCRoom.setBounds(0, 0, 440, 270);
-        jLayeredPane1.add(pListCRoom, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         lCRoomHello.setText("Adding CRoom with 10x10 seats...");
 
@@ -891,8 +903,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(151, Short.MAX_VALUE))
         );
 
+        jLayeredPane1.add(pAddCRoom);
         pAddCRoom.setBounds(0, 0, 420, 260);
-        jLayeredPane1.add(pAddCRoom, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         liMovieList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -956,8 +968,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jLayeredPane1.add(pListMov);
         pListMov.setBounds(0, 0, 430, 260);
-        jLayeredPane1.add(pListMov, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         bReturn.setText("Return");
         bReturn.addActionListener(new java.awt.event.ActionListener() {
@@ -965,8 +977,8 @@ public class MainFrame extends javax.swing.JFrame {
                 bReturnActionPerformed(evt);
             }
         });
+        jLayeredPane1.add(bReturn);
         bReturn.setBounds(0, 280, 130, 23);
-        jLayeredPane1.add(bReturn, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         bExit.setText("Exit");
         bExit.addActionListener(new java.awt.event.ActionListener() {
@@ -974,13 +986,13 @@ public class MainFrame extends javax.swing.JFrame {
                 bExitActionPerformed(evt);
             }
         });
+        jLayeredPane1.add(bExit);
         bExit.setBounds(400, 280, 80, 23);
-        jLayeredPane1.add(bExit, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         lSaveInfo.setForeground(new java.awt.Color(204, 0, 0));
         lSaveInfo.setText("Remember to save before exit...");
+        jLayeredPane1.add(lSaveInfo);
         lSaveInfo.setBounds(140, 280, 240, 14);
-        jLayeredPane1.add(lSaveInfo, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1328,6 +1340,11 @@ public class MainFrame extends javax.swing.JFrame {
         liLogList.setListData((String[])files);
     }//GEN-LAST:event_bClearLogActionPerformed
 
+    private void bSaveXMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSaveXMLActionPerformed
+        mgmt.saveXML();
+        
+    }//GEN-LAST:event_bSaveXMLActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1388,6 +1405,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton bLoad;
     private javax.swing.JButton bReturn;
     private javax.swing.JButton bSave;
+    private javax.swing.JButton bSaveXML;
     private javax.swing.JButton bShowAddSet;
     private javax.swing.JButton bShowMore;
     private javax.swing.JButton bShowShow;

@@ -8,6 +8,7 @@ import java.util.Formatter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
+import org.jdom2.Element;
 
 
 /**
@@ -20,6 +21,14 @@ public class User implements Serializable{
     private String password;
     private int utype;
     private int[] availcmds;
+    
+    public Element toXML(){
+        Element res = new Element("User");
+        res.addContent(new Element("name").setText(String.valueOf(this.name)));
+        res.addContent(new Element("password").setText(String.valueOf(this.getPass())));
+        res.addContent(new Element("utype").setText(String.valueOf(this.utype)));
+        return res;
+    }
     
     /**
      * Utworzenie instancji klasy użytkownika o podanych parametrach i ustawiająca dostępne komendy

@@ -5,6 +5,7 @@
 package kinomaniak_objs;
 
 import java.io.Serializable;
+import org.jdom2.Element;
 
 /**
  * Klasa reprezentująca czas rozpoczęscia seansu
@@ -12,11 +13,21 @@ import java.io.Serializable;
  */
 public class Time implements Serializable{
     private static final long serialVersionUID = 2L;
-        private int hour;
-        private int minute;
-        private int day;
-        private int month;
-        private int year;
+    private int hour;
+    private int minute;
+    private int day;
+    private int month;
+    private int year;
+        
+    public Element toXML(){
+        Element res = new Element("Time");
+        res.addContent(new Element("hour").setText(String.valueOf(this.hour)));
+        res.addContent(new Element("minute").setText(String.valueOf(this.minute)));
+        res.addContent(new Element("day").setText(String.valueOf(this.day)));
+        res.addContent(new Element("month").setText(String.valueOf(this.month)));
+        res.addContent(new Element("year").setText(String.valueOf(this.year)));
+        return res;
+    }
         
     /**
      * Konstruktor klasy czasu dla ustawienia godziny

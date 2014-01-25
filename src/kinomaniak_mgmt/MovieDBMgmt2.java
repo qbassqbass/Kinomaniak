@@ -9,6 +9,10 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
 
 /**
  * Klasa funkcjonalna dla Menadżera projektu Kinomaniak.
@@ -59,7 +63,7 @@ public class MovieDBMgmt2 {
         this.time = new Time(hrs,mins,day,month,year);
     }
     /**
-     * Metoda wczytująca dane z plików .kin.
+     * Metoda wczytująca dane z plików binarnych .kin.
      */
     @SuppressWarnings("unchecked")
     public void getData(){
@@ -89,7 +93,38 @@ public class MovieDBMgmt2 {
         }
     }
     /**
-     * Metoda zapisująca dane do plików binarnych.kin.
+     * Metoda zapisująca dane do plików XML
+     */
+    public void saveXML(){
+        Element res = new Element("Kinomaniak");
+        for(Show show : this.shows){
+            res.addContent(show.toXML());
+        }
+        for(User user : this.users){
+            res.addContent(user.toXML());
+        }
+        for (Res r : this.ress){
+            res.addContent(r.toXML());
+        }
+        
+        Document doc = new Document(res);
+        XMLOutputter xmlOutput = new XMLOutputter();
+        
+        xmlOutput.setFormat(Format.getPrettyFormat());
+        try{
+            xmlOutput.output(doc, System.out);
+        }catch(IOException e){
+            System.err.println("IOExc: "+e);
+        }
+    }
+    /** 
+     * Metoda wczytująca dane z plików XML
+     */
+    public void loadXML(){
+        
+    }
+    /**
+     * Metoda zapisująca dane do plików binarnych .kin.
      */
     public void saveData(){
         try{

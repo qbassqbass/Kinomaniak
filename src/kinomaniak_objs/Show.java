@@ -5,6 +5,7 @@
 package kinomaniak_objs;
 
 import java.io.Serializable;
+import org.jdom2.Element;
 
 /**
  * Klasa reprezentująca dany seans
@@ -17,6 +18,15 @@ public class Show implements Serializable {
     private Movie mov;
     private CRoom room;
     private Time time;
+    
+    public Element toXML(){
+        Element res = new Element("CRoom");
+        res.addContent(new Element("showid").setText(String.valueOf(this.showid)));
+        res.addContent(mov.toXML());
+        res.addContent(room.toXML());
+        res.addContent(time.toXML());
+        return res;
+    }
     
     /**
      * Konstruktor seansu

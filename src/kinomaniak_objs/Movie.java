@@ -5,6 +5,7 @@
 package kinomaniak_objs;
 
 import java.io.Serializable;
+import org.jdom2.Element;
 
 /**
  * Klasa reprezentująca film
@@ -18,6 +19,15 @@ public class Movie implements Serializable{
     private String genre;
     private String rating;
     private String desc;
+    
+    public Element toXML(){
+        Element res = new Element("Movie");
+        res.addContent(new Element("name").setText(String.valueOf(this.name)));
+        res.addContent(new Element("genre").setText(String.valueOf(this.genre)));
+        res.addContent(new Element("rating").setText(String.valueOf(this.rating)));
+        res.addContent(new Element("desc").setText(String.valueOf(this.desc)));
+        return res;
+    }
     
     /**
      * Konstruktor klasy filmowej bez opisu
