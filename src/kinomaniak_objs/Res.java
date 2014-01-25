@@ -6,6 +6,7 @@ package kinomaniak_objs;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import org.jdom2.Element;
 
@@ -32,8 +33,10 @@ public class Res implements Serializable{
         Element seats = new Element("seats");
         seats.setAttribute("count", String.valueOf(this.seat.length));
         for (int[] s : this.seat) {
-            seats.addContent(new Element("row").setText(String.valueOf(s[0])));
-            seats.addContent(new Element("col").setText(String.valueOf(s[1])));
+            Element r = new Element("seat");
+            seats.addContent(r);
+            r.addContent(new Element("row").setText(String.valueOf(s[0])));
+            r.addContent(new Element("col").setText(String.valueOf(s[1])));
         }
         res.addContent(seats);
         return res;
@@ -49,10 +52,19 @@ public class Res implements Serializable{
         this.showid = Integer.valueOf(node.getChildText("showid"));
         this.checked = Boolean.valueOf(node.getChildText("checked"));
         Element ss = node.getChild("seats");
+        
         int c = Integer.valueOf(ss.getAttribute("count").getValue());
         this.seat = new int[c][2];
         for(int i = 0; i < c; i++){
 //            this.seat[i][0] = 
+        }
+        int i = 0;
+        
+//        System.out.println("Seats"+ss.getChildren("seat").size());
+        for(Element el : (List<Element>) ss.getChildren("seat")){
+            this.seat[i][0] = Integer.valueOf(el.getChildText("row"));
+            this.seat[i][1] = Integer.valueOf(el.getChildText("col"));
+            i++;
         }
     }
     

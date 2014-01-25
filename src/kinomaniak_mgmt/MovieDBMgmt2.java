@@ -99,6 +99,12 @@ public class MovieDBMgmt2 {
      */
     public void saveXML(){
         Element res = new Element("Kinomaniak");
+        for(Movie movie : this.movies){
+            res.addContent(movie.toXML());
+        }
+        for(CRoom croom : this.crooms){
+            res.addContent(croom.toXML());
+        }
         for(Show show : this.shows){
             res.addContent(show.toXML());
         }
@@ -132,6 +138,7 @@ public class MovieDBMgmt2 {
         List<Movie> m = new ArrayList<Movie>();
         List<CRoom> c = new ArrayList<CRoom>();
         List<User> u = new ArrayList<User>();
+        List<Res> r = new ArrayList<Res>();
         
         try{
             Document doc = (Document) builder.build(xmlFile);
@@ -160,12 +167,19 @@ public class MovieDBMgmt2 {
                 User us = new User(node); //add Constructor for this
                 u.add(us);
             }
+            list = rootNode.getChildren("Res");
+            for(int i = 0; i < list.size(); i++){
+                Element node = (Element) list.get(i);
+                Res re = new Res(node); //add Constructor for this
+                r.add(re);
+            }
             
             
             this.users = u;
             this.shows = s;
             this.crooms = c;
             this.movies = m;
+            this.ress = r;
             
         }catch(IOException e){
             System.err.println("IOEx: "+e);

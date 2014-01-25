@@ -1,5 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Kinomaniak>
+  <Movie>
+    <name>3sda</name>
+    <genre>dsa</genre>
+    <rating>cxzcz</rating>
+    <desc>asdasdas</desc>
+  </Movie>
+  <Movie>
+    <name>Star Wars</name>
+    <genre>Action</genre>
+    <rating>Everyone</rating>
+    <desc>Long long time ago...</desc>
+  </Movie>
+  <Movie>
+    <name>Blablu</name>
+    <genre>balab</genre>
+    <rating>everyone</rating>
+    <desc>balabalablbalbalbalbalbalbalbalbalbalbalablablablablablabalbalbalba</desc>
+  </Movie>
+  <Movie>
+    <name>Szybcy i wściekli 6</name>
+    <genre>Kryminał, Akcja</genre>
+    <rating>16+</rating>
+    <desc>Grupa świetnie wyszkolonych kierowców porywa transport wojskowej broni. W zamian za całkowitą abolicję, Dom i jego grupa zgadzają się pomóc agentowi Hobsowi przy powstrzymaniu najemników.</desc>
+  </Movie>
+  <Movie>
+    <name>Iron Man 3</name>
+    <genre>Akcja,Sci-Fi</genre>
+    <rating>14+</rating>
+    <desc>Tony Stark wyrusza w podróż, by zemścić się na tych, przez których jego świat legł w gruzach.</desc>
+  </Movie>
+  <Movie>
+    <name>Inny Świat</name>
+    <genre>Biograficzny, Dokumentalny</genre>
+    <rating>14+</rating>
+    <desc>Wybitna aktorka Danuta Szaflarska opowiada w filmie w barwny i humorystyczny sposób o swoich przeżyciach i wspomnieniach z dawnych lat.</desc>
+  </Movie>
+  <Movie>
+    <name>Dziewczyna z szafy</name>
+    <genre>Dramat, Komedia</genre>
+    <rating>18+</rating>
+    <desc>Pewnego dnia Jacek prosi depresyjną sąsiadkę o opiekę nad swoim upośledzonym bratem. Nie spodziewa się nawet, że tych dwoje połączy głęboka więź.</desc>
+  </Movie>
+  <Movie>
+    <name>Dziewczynka w trampkach</name>
+    <genre>Dramat</genre>
+    <rating>18+</rating>
+    <desc>Wadjda ma 10 lat i marzy o rowerze, choć w jej kraju kobietom nie wolno prowadzić żadnych pojazdów. Żeby zdobyć na niego pieniądze, zbuntowana dziewczynka bierze udział w konkursie recytatorskim Koranu.</desc>
+  </Movie>
+  <CRoom>
+    <id>1</id>
+  </CRoom>
+  <CRoom>
+    <id>2</id>
+  </CRoom>
+  <CRoom>
+    <id>3</id>
+  </CRoom>
   <Show>
     <showid>1</showid>
     <Movie>
@@ -287,8 +344,10 @@
     <checked>true</checked>
     <ok>false</ok>
     <seats count="1">
-      <row>1</row>
-      <col>1</col>
+      <seat>
+        <row>1</row>
+        <col>1</col>
+      </seat>
     </seats>
   </Res>
   <Res>
@@ -297,10 +356,14 @@
     <checked>false</checked>
     <ok>false</ok>
     <seats count="2">
-      <row>1</row>
-      <col>1</col>
-      <row>1</row>
-      <col>2</col>
+      <seat>
+        <row>1</row>
+        <col>1</col>
+      </seat>
+      <seat>
+        <row>1</row>
+        <col>2</col>
+      </seat>
     </seats>
   </Res>
   <Res>
@@ -309,12 +372,18 @@
     <checked>false</checked>
     <ok>false</ok>
     <seats count="3">
-      <row>2</row>
-      <col>2</col>
-      <row>2</row>
-      <col>3</col>
-      <row>2</row>
-      <col>4</col>
+      <seat>
+        <row>2</row>
+        <col>2</col>
+      </seat>
+      <seat>
+        <row>2</row>
+        <col>3</col>
+      </seat>
+      <seat>
+        <row>2</row>
+        <col>4</col>
+      </seat>
     </seats>
   </Res>
   <Res>
@@ -323,18 +392,30 @@
     <checked>false</checked>
     <ok>false</ok>
     <seats count="6">
-      <row>6</row>
-      <col>7</col>
-      <row>6</row>
-      <col>8</col>
-      <row>6</row>
-      <col>9</col>
-      <row>6</row>
-      <col>6</col>
-      <row>6</row>
-      <col>5</col>
-      <row>6</row>
-      <col>4</col>
+      <seat>
+        <row>6</row>
+        <col>7</col>
+      </seat>
+      <seat>
+        <row>6</row>
+        <col>8</col>
+      </seat>
+      <seat>
+        <row>6</row>
+        <col>9</col>
+      </seat>
+      <seat>
+        <row>6</row>
+        <col>6</col>
+      </seat>
+      <seat>
+        <row>6</row>
+        <col>5</col>
+      </seat>
+      <seat>
+        <row>6</row>
+        <col>4</col>
+      </seat>
     </seats>
   </Res>
 </Kinomaniak>
