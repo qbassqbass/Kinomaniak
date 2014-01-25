@@ -29,6 +29,18 @@ public class Movie implements Serializable{
         return res;
     }
     
+    public Movie(Element node){
+        if(!node.getName().equals("Movie")){
+//            throw new RuntimeException("Wrong element type");
+            System.out.println("Wrong element type: Movie, got: "+node.getName());
+        }
+        
+        this.name = node.getChildText("name");
+        this.genre = node.getChildText("genre");
+        this.rating = node.getChildText("rating");
+        this.desc = node.getChildText("desc");
+    }
+    
     /**
      * Konstruktor klasy filmowej bez opisu
      * @param name tytuł filmu

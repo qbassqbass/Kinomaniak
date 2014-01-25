@@ -28,6 +28,19 @@ public class Time implements Serializable{
         res.addContent(new Element("year").setText(String.valueOf(this.year)));
         return res;
     }
+    
+    public Time(Element node){
+        if(!node.getName().equals("Time")){
+//            throw new RuntimeException("Wrong element type");            
+            System.out.println("Wrong element type: Time, got: "+node.getName());
+        }
+        
+        this.hour = Integer.valueOf(node.getChildText("hour"));
+        this.minute = Integer.valueOf(node.getChildText("minute"));
+        this.day = Integer.valueOf(node.getChildText("day"));
+        this.month = Integer.valueOf(node.getChildText("month"));
+        this.year = Integer.valueOf(node.getChildText("year"));
+    }
         
     /**
      * Konstruktor klasy czasu dla ustawienia godziny

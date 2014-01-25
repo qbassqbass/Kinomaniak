@@ -24,6 +24,15 @@ public class CRoom implements Serializable {
         return res;
     }
     
+    public CRoom(Element node){
+        if(!node.getName().equals("CRoom")){
+//            throw new RuntimeException("Wrong element type");
+            System.out.println("Wrong element type: CRoom, got: "+node.getName());
+        }
+        
+        this.id = Integer.valueOf(node.getChildText("id"));
+    }
+    
     /**
      * Konstruktor klasy Sali kinowej
      * @param id identyfikator sali kinowej

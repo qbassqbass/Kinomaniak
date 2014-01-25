@@ -20,12 +20,23 @@ public class Show implements Serializable {
     private Time time;
     
     public Element toXML(){
-        Element res = new Element("CRoom");
+        Element res = new Element("Show");
         res.addContent(new Element("showid").setText(String.valueOf(this.showid)));
         res.addContent(mov.toXML());
         res.addContent(room.toXML());
         res.addContent(time.toXML());
         return res;
+    }
+    
+    public Show(Element node){
+        if(!node.getName().equals("Show")){
+//            throw new RuntimeException("Wrong element type");
+            System.out.println("Wrong element type: Show, got: "+node.getName());
+        }
+        this.showid = Integer.valueOf(node.getChildText("showid"));
+        this.mov = new Movie(node.getChild("Movie"));
+        this.room = new CRoom(node.getChild("CRoom"));
+        this.time = new Time(node.getChild("Time"));
     }
     
     /**

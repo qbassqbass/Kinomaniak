@@ -97,6 +97,7 @@ public class MainFrame extends javax.swing.JFrame {
         bListLogs = new javax.swing.JButton();
         bListStats = new javax.swing.JButton();
         bSaveXML = new javax.swing.JButton();
+        bLoadXML = new javax.swing.JButton();
         pLogs = new javax.swing.JPanel();
         jScrollPane9 = new javax.swing.JScrollPane();
         liLogList = new javax.swing.JList();
@@ -490,12 +491,21 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        bLoadXML.setText("LoadXML");
+        bLoadXML.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bLoadXMLActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pMainLayout = new javax.swing.GroupLayout(pMain);
         pMain.setLayout(pMainLayout);
         pMainLayout.setHorizontalGroup(
             pMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pMainLayout.createSequentialGroup()
-                .addGap(203, 203, 203)
+                .addGap(120, 120, 120)
+                .addComponent(bLoadXML)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bLoad)
                 .addGap(18, 18, 18)
                 .addComponent(bSave)
@@ -510,7 +520,8 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(pMainLayout.createSequentialGroup()
                 .addGroup(pMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bLoad)
-                    .addComponent(bSave))
+                    .addComponent(bSave)
+                    .addComponent(bLoadXML))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(45, Short.MAX_VALUE))
@@ -1345,6 +1356,17 @@ public class MainFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_bSaveXMLActionPerformed
 
+    private void bLoadXMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoadXMLActionPerformed
+        pOptions.setVisible(true);
+        bSave.setVisible(true);
+        bReturn.setVisible(true);
+        bExit.setVisible(true);
+        lSaveInfo.setVisible(true);
+        lSaveInfo.setText("Data loaded...");
+        lSaveInfo.setForeground(Color.BLUE);
+        mgmt.loadXML();
+    }//GEN-LAST:event_bLoadXMLActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1403,6 +1425,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton bListStats;
     private javax.swing.JButton bListUser;
     private javax.swing.JButton bLoad;
+    private javax.swing.JButton bLoadXML;
     private javax.swing.JButton bReturn;
     private javax.swing.JButton bSave;
     private javax.swing.JButton bSaveXML;

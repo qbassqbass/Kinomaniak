@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.jdom2.Document;
 import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
@@ -112,7 +114,9 @@ public class MovieDBMgmt2 {
         
         xmlOutput.setFormat(Format.getPrettyFormat());
         try{
+            FileOutputStream output = new FileOutputStream("data.xml");
             xmlOutput.output(doc, System.out);
+            xmlOutput.output(doc, output);
         }catch(IOException e){
             System.err.println("IOExc: "+e);
         }
@@ -121,7 +125,53 @@ public class MovieDBMgmt2 {
      * Metoda wczytująca dane z plików XML
      */
     public void loadXML(){
+        SAXBuilder builder = new SAXBuilder();
+        File xmlFile = new File("data.xml");
         
+        List<Show> s = new ArrayList<Show>();
+        List<Movie> m = new ArrayList<Movie>();
+        List<CRoom> c = new ArrayList<CRoom>();
+        List<User> u = new ArrayList<User>();
+        
+        try{
+            Document doc = (Document) builder.build(xmlFile);
+            Element rootNode = doc.getRootElement();
+            List list = rootNode.getChildren("Movie");
+            for(int i = 0; i < list.size(); i++){
+                Element node = (Element) list.get(i);
+                Movie mv = new Movie(node); //add Constructor for this
+                m.add(mv);
+            }
+            list = rootNode.getChildren("Show");
+            for(int i = 0; i < list.size(); i++){
+                Element node = (Element) list.get(i);
+                Show sh = new Show(node); //add Constructor for this
+                s.add(sh);
+            }
+            list = rootNode.getChildren("CRoom");
+            for(int i = 0; i < list.size(); i++){
+                Element node = (Element) list.get(i);
+                CRoom cr = new CRoom(node); //add Constructor for this
+                c.add(cr);
+            }
+            list = rootNode.getChildren("User");
+            for(int i = 0; i < list.size(); i++){
+                Element node = (Element) list.get(i);
+                User us = new User(node); //add Constructor for this
+                u.add(us);
+            }
+            
+            
+            this.users = u;
+            this.shows = s;
+            this.crooms = c;
+            this.movies = m;
+            
+        }catch(IOException e){
+            System.err.println("IOEx: "+e);
+        }catch(JDOMException e){
+            System.err.println("JDOMEx: "+e);
+        }
     }
     /**
      * Metoda zapisująca dane do plików binarnych .kin.

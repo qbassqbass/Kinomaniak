@@ -30,6 +30,17 @@ public class User implements Serializable{
         return res;
     }
     
+    public User(Element node){
+        if(!node.getName().equals("User")){
+//            throw new RuntimeException("Wrong element type");
+            System.out.println("Wrong element type: User, got: "+node.getName());
+        }
+        
+        this.name = node.getChildText("name");
+        this.password = node.getChildText("password");
+        this.utype = Integer.valueOf(node.getChildText("utype"));
+    }
+    
     /**
      * Utworzenie instancji klasy użytkownika o podanych parametrach i ustawiająca dostępne komendy
      * @param name nazwa użytkownika

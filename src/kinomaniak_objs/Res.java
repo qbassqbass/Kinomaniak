@@ -24,18 +24,36 @@ public class Res implements Serializable{
     private boolean ok; // odebrana rezerwacja
     
     public Element toXML(){
-        Element res = new Element("Movie");
+        Element res = new Element("Res");
         res.addContent(new Element("imienazwisko").setText(String.valueOf(this.imienazwisko)));
         res.addContent(new Element("showid").setText(String.valueOf(this.showid)));
         res.addContent(new Element("checked").setText(String.valueOf(this.checked)));
         res.addContent(new Element("ok").setText(String.valueOf(this.ok)));
         Element seats = new Element("seats");
+        seats.setAttribute("count", String.valueOf(this.seat.length));
         for (int[] s : this.seat) {
-                seats.addContent(new Element("row").setText(String.valueOf(s[0])));
-                seats.addContent(new Element("col").setText(String.valueOf(s[1])));
+            seats.addContent(new Element("row").setText(String.valueOf(s[0])));
+            seats.addContent(new Element("col").setText(String.valueOf(s[1])));
         }
         res.addContent(seats);
         return res;
+    }
+    
+    public Res(Element node){
+        if(!node.getName().equals("Res")){
+//            throw new RuntimeException("Wrong element type");
+            System.out.println("Wrong element type: Res, got: "+node.getName());
+        }
+        
+        this.imienazwisko = node.getChildText("imienazwisko");
+        this.showid = Integer.valueOf(node.getChildText("showid"));
+        this.checked = Boolean.valueOf(node.getChildText("checked"));
+        Element ss = node.getChild("seats");
+        int c = Integer.valueOf(ss.getAttribute("count").getValue());
+        this.seat = new int[c][2];
+        for(int i = 0; i < c; i++){
+//            this.seat[i][0] = 
+        }
     }
     
     /**

@@ -348,7 +348,9 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="203" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="bLoadXML" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="bLoad" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="bSave" min="-2" max="-2" attributes="0"/>
@@ -367,6 +369,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="bLoad" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="bSave" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="bLoadXML" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="pOptions" min="-2" max="-2" attributes="0"/>
@@ -559,6 +562,14 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="bLoadXML">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="LoadXML"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bLoadXMLActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="pLogs">
