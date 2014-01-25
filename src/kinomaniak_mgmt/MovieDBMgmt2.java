@@ -89,7 +89,7 @@ public class MovieDBMgmt2 {
         }
     }
     /**
-     * Metoda zapisująca dane do plików .kin.
+     * Metoda zapisująca dane do plików binarnych.kin.
      */
     public void saveData(){
         try{
