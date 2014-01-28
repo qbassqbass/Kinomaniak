@@ -1386,6 +1386,9 @@ public class MainFrame extends javax.swing.JFrame {
         mgmt.saveMovToSQL(sel);
         pMain.setVisible(true);
         pListMov.setVisible(false);
+        lSaveInfo.setVisible(true);
+        lSaveInfo.setText("Saved to MySQL DB");
+        lSaveInfo.setForeground(Color.BLUE);
     }//GEN-LAST:event_bSaveMovSQLActionPerformed
 
     /**

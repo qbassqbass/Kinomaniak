@@ -17,7 +17,7 @@ import kinomaniak_objs.Movie;
  * @author Qbass
  */
 public class DBConnector {
-    private final static String DBURL = "jdbc:mysql://192.168.1.2:3306/kinomaniak";
+    private final static String DBURL = "jdbc:mysql://192.168.1.2:3306/kinomaniak?characterEncoding=utf8";
     private final static String DBUSER = "kinomaniak";
     private final static String DBPASS = "123";
     private final static String DBDRIVER = "com.mysql.jdbc.Driver";
@@ -32,7 +32,7 @@ public class DBConnector {
     }
     
     public void save(Movie mov){
-        query = this.parser.createSaveQuery(mov);
+        query = this.parser.save(mov);
         
         try{
             Class.forName(DBDRIVER).newInstance();
