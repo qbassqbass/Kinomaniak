@@ -17,9 +17,27 @@ public class PayPal implements PaymentStrategy {
     public PayPal(){
         
     }
+    
     @Override
     public void pay(float amount) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(this.checkData()){
+            
+        }else{
+            //send info about payment error
+            //maybe some:
+            //throw new PaymentException();
+        }
+    }
+    
+    public void setData(String email, String password){
+        this.emailAddress = email;
+        this.password = password;
+    }
+    
+    private boolean checkData(){
+        boolean ret = false;
+        
+        return ret;
     }
     
 }

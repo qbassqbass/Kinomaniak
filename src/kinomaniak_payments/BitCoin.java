@@ -20,7 +20,24 @@ public class BitCoin implements PaymentStrategy {
 
     @Override
     public void pay(float amount) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(this.checkData()){
+            
+        }else{
+            //send info about payment error
+            //maybe some:
+            //throw new PaymentException();
+        }
+    }
+    
+    public void setData(String priv, String pub){
+        this.privKey = priv;
+        this.pubKey = pub;
+    }
+    
+    private boolean checkData(){
+        boolean ret = false;
+        
+        return ret;
     }
     
 }

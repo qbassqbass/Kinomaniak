@@ -11,6 +11,7 @@ package kinomaniak_payments;
  * @author Qbass
  */
 public class DummyPay implements PaymentStrategy{
+    private final String dummyData = "dummy";
 
     public DummyPay(){
         
@@ -18,7 +19,19 @@ public class DummyPay implements PaymentStrategy{
     
     @Override
     public void pay(float amount) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(this.checkData()){
+            
+        }else{
+            //send info about payment error
+            //maybe some:
+            //throw new PaymentException();
+        }
+    }
+    
+    private boolean checkData(){
+        boolean ret = true;
+        
+        return ret;
     }
     
 }
