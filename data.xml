@@ -329,13 +329,13 @@
     <utype>1</utype>
   </User>
   <User>
-    <name>qbass</name>
-    <password>d1c422472de65a086b495ecb2c13b57b4c95303b</password>
-    <utype>0</utype>
-  </User>
-  <User>
     <name>kond</name>
     <password>7110eda4d09e062aa5e4a390b0a572ac0d2c0220</password>
+    <utype>1</utype>
+  </User>
+  <User>
+    <name>qbass</name>
+    <password>d1c422472de65a086b495ecb2c13b57b4c95303b</password>
     <utype>1</utype>
   </User>
   <Res>
@@ -414,6 +414,18 @@
       </seat>
       <seat>
         <row>6</row>
+        <col>4</col>
+      </seat>
+    </seats>
+  </Res>
+  <Res>
+    <imienazwisko>Japas</imienazwisko>
+    <showid>1</showid>
+    <checked>false</checked>
+    <ok>false</ok>
+    <seats count="1">
+      <seat>
+        <row>2</row>
         <col>4</col>
       </seat>
     </seats>
