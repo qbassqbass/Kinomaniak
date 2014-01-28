@@ -122,6 +122,14 @@ public class MainFrame extends javax.swing.JFrame {
         pListRes = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
         tResList = new javax.swing.JTextArea();
+        pListMov = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        liMovieList = new javax.swing.JList();
+        bDelMovie = new javax.swing.JButton();
+        bShowMore = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tMovieMore = new javax.swing.JTextArea();
+        bSaveMovSQL = new javax.swing.JButton();
         pListUser = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         liUserList = new javax.swing.JList();
@@ -144,13 +152,6 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         eCRoomID = new javax.swing.JTextField();
         bCRoomAdd = new javax.swing.JButton();
-        pListMov = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        liMovieList = new javax.swing.JList();
-        bDelMovie = new javax.swing.JButton();
-        bShowMore = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tMovieMore = new javax.swing.JTextArea();
         bReturn = new javax.swing.JButton();
         bExit = new javax.swing.JButton();
         lSaveInfo = new javax.swing.JLabel();
@@ -731,6 +732,83 @@ public class MainFrame extends javax.swing.JFrame {
         jLayeredPane1.add(pListRes);
         pListRes.setBounds(0, 0, 530, 260);
 
+        liMovieList.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(liMovieList);
+
+        bDelMovie.setText("Del Movie");
+        bDelMovie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bDelMovieActionPerformed(evt);
+            }
+        });
+
+        bShowMore.setText("Show More");
+        bShowMore.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bShowMoreActionPerformed(evt);
+            }
+        });
+
+        tMovieMore.setEditable(false);
+        tMovieMore.setColumns(20);
+        tMovieMore.setRows(5);
+        jScrollPane3.setViewportView(tMovieMore);
+
+        bSaveMovSQL.setText("Save to DB");
+        bSaveMovSQL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSaveMovSQLActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pListMovLayout = new javax.swing.GroupLayout(pListMov);
+        pListMov.setLayout(pListMovLayout);
+        pListMovLayout.setHorizontalGroup(
+            pListMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pListMovLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pListMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pListMovLayout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addGroup(pListMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bShowMore)
+                            .addGroup(pListMovLayout.createSequentialGroup()
+                                .addComponent(bDelMovie)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(bSaveMovSQL)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pListMovLayout.createSequentialGroup()
+                        .addComponent(jScrollPane3)
+                        .addContainerGap())))
+        );
+        pListMovLayout.setVerticalGroup(
+            pListMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pListMovLayout.createSequentialGroup()
+                .addGroup(pListMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pListMovLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(pListMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bDelMovie)
+                            .addComponent(bSaveMovSQL))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bShowMore)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
+                    .addGroup(pListMovLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
+        jLayeredPane1.add(pListMov);
+        pListMov.setBounds(0, 0, 430, 260);
+
         liUserList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -916,71 +994,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLayeredPane1.add(pAddCRoom);
         pAddCRoom.setBounds(0, 0, 420, 260);
-
-        liMovieList.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(liMovieList);
-
-        bDelMovie.setText("Del Movie");
-        bDelMovie.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bDelMovieActionPerformed(evt);
-            }
-        });
-
-        bShowMore.setText("Show More");
-        bShowMore.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bShowMoreActionPerformed(evt);
-            }
-        });
-
-        tMovieMore.setEditable(false);
-        tMovieMore.setColumns(20);
-        tMovieMore.setRows(5);
-        jScrollPane3.setViewportView(tMovieMore);
-
-        javax.swing.GroupLayout pListMovLayout = new javax.swing.GroupLayout(pListMov);
-        pListMov.setLayout(pListMovLayout);
-        pListMovLayout.setHorizontalGroup(
-            pListMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pListMovLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pListMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pListMovLayout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addGroup(pListMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bShowMore)
-                            .addComponent(bDelMovie))
-                        .addContainerGap(90, Short.MAX_VALUE))
-                    .addGroup(pListMovLayout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addContainerGap())))
-        );
-        pListMovLayout.setVerticalGroup(
-            pListMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pListMovLayout.createSequentialGroup()
-                .addGroup(pListMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pListMovLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(bDelMovie)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bShowMore)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
-                    .addGroup(pListMovLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-
-        jLayeredPane1.add(pListMov);
-        pListMov.setBounds(0, 0, 430, 260);
 
         bReturn.setText("Return");
         bReturn.addActionListener(new java.awt.event.ActionListener() {
@@ -1367,6 +1380,14 @@ public class MainFrame extends javax.swing.JFrame {
         mgmt.loadXML();
     }//GEN-LAST:event_bLoadXMLActionPerformed
 
+    private void bSaveMovSQLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSaveMovSQLActionPerformed
+        int sel = liMovieList.getSelectedIndex();
+        if(sel < 0) return;
+        mgmt.saveMovToSQL(sel);
+        pMain.setVisible(true);
+        pListMov.setVisible(false);
+    }//GEN-LAST:event_bSaveMovSQLActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1429,6 +1450,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton bLoadXML;
     private javax.swing.JButton bReturn;
     private javax.swing.JButton bSave;
+    private javax.swing.JButton bSaveMovSQL;
     private javax.swing.JButton bSaveXML;
     private javax.swing.JButton bShowAddSet;
     private javax.swing.JButton bShowMore;

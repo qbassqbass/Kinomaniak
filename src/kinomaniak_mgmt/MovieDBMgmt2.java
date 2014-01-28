@@ -4,6 +4,7 @@
  */
 package kinomaniak_mgmt;
 import kinomaniak_objs.*;
+import kinomaniak_database.DBConnector;
 import java.io.*;
 import java.util.Date;
 import java.text.SimpleDateFormat;
@@ -414,5 +415,10 @@ public class MovieDBMgmt2 {
      */
     public Time getTime(){
         return time;
+    }
+    
+    public void saveMovToSQL(int sel){
+        Movie m = this.movies.get(sel);
+        new DBConnector().save(m);
     }
 }
