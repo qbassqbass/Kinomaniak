@@ -15,10 +15,15 @@ public class Movie implements Serializable{
     
     private static final long serialVersionUID = 1L;
     
+    private int id;
     private String name;
     private String genre;
     private String rating;
     private String desc;
+    
+    public int getId(){
+        return this.id;
+    }
     
     public Element toXML(){
         Element res = new Element("Movie");

@@ -14,6 +14,14 @@ public class Attraction {
     private int id;
     private String name;
     private float price;
+
+    public String getName() {
+        return name;
+    }
+
+    public float getPrice() {
+        return price;
+    }
     
     public Attraction(String name, float price){
         this.name = name;
