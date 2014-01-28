@@ -1,2 +1,5 @@
 00:13:19  SendRes to Thread-5 as qbass
 00:13:53  Res: Japas ShowID: 1 SeatCount: 1
+01:36:38  SendRes to Thread-2 as qbass
+01:37:00  CancelRes: Japas ShowID:1 SeatsCount:1
+01:37:20  SendRes to Thread-3 as qbass
