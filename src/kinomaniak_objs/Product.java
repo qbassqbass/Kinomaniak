@@ -55,6 +55,13 @@ public class Product implements Serializable{
         this.id = this.getLastId() + 1;
     }
     
+    public boolean buy(){
+        if(this.count > 0){
+            this.count--;
+            return true;
+        }else return false;
+    }
+    
     
     private int getLastId(){
         int tmp = -1;

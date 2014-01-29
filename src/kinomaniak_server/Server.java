@@ -569,10 +569,10 @@ public class Server  implements Runnable{
                     if(tmp.equals("!OK!")){
                         File r = new File("Prod.kin");
                         if(!r.exists()){
-                            this.oout.writeObject((String)"!NORES!");
+                            this.oout.writeObject((String)"!NOPROD!");
                             break;
                         }else{
-                            this.oout.writeObject((String)"!OKRES!");
+                            this.oout.writeObject((String)"!OKPROD!");
                         }
                         synchronized(this){
                             ObjectInputStream we = new ObjectInputStream(new FileInputStream("Prod.kin"));
@@ -598,7 +598,53 @@ public class Server  implements Runnable{
                 
             }
             case 12:{ // sellProductFromList
-                
+                try{
+                    this.oout.writeObject((String)"!GDATA");
+                    String tmp = (String)oin.readObject();
+                    List<Product> prodlist = new ArrayList<Product>();
+                    if(tmp.equals("!OK!")){
+                        File r = new File("Prod.kin");
+                        if(!r.exists()){
+                            this.oout.writeObject((String)"!NOPROD!");
+                            break;
+                        }else{
+                            this.oout.writeObject((String)"!OKPROD!");
+                        }
+                        synchronized(this){
+                            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Prod.kin"));
+                            prodlist = (ArrayList<Product>)we.readObject();
+                            we.close();
+                        }
+                        this.oout.writeObject((String)"!GOPROD!");
+                        int prodId = (int)this.oin.readObject();
+                        boolean ok = false;
+                        for(int i = 0; i < prodlist.size(); i++){
+                            if(prodlist.get(i).getId() == prodId){
+                                if(prodlist.get(i).buy()){
+                                    ok = true;
+                                    logger.doLog(1, "BuyProd: "+prodlist.get(i).getName());
+                                }
+                                break;
+                            }
+                        }
+                        if(ok){
+                            ObjectOutputStream wy = new ObjectOutputStream(new FileOutputStream("Prod.kin"));
+                            wy.writeObject(prodlist);
+                            wy.close();
+                            this.oout.writeObject((String)"!OK!");
+                        }else this.oout.writeObject((String)"!NOK!");
+                    }
+                }catch(SocketException e){
+                    System.err.println("Client Disconnected: "+sockfd.getInetAddress().getHostAddress());
+                    logger.doLog(0, this.threadName+": Client disconnected: "+sockfd.getInetAddress().getHostAddress());
+                    endThread();
+                }catch(IOException e){
+                    System.err.println("IO Error: "+e);
+                    logger.doLog(0, this.threadName+": IOError from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+                } catch (ClassNotFoundException e) {
+                    System.err.println("ClassNotFound Error: "+e);
+                    logger.doLog(0, this.threadName+": ClassNotFound from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+                }
             }
             case 666 :{
                 
