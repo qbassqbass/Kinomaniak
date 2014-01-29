@@ -1,0 +1,36 @@
+00:27:35  SendRes to Thread-1 as qbass
+00:27:42  SendRes to Thread-1 as qbass
+00:27:43  SendRes to Thread-1 as qbass
+00:28:08  SendRes to Thread-1 as qbass
+00:28:09  SendRes to Thread-1 as qbass
+00:28:12  SendRes to Thread-1 as qbass
+00:28:34  SendRes to Thread-2 as qbass
+00:29:15  SendRes to Thread-3 as qbass
+00:29:18  SendRes to Thread-3 as qbass
+00:29:18  SendRes to Thread-3 as qbass
+00:31:11  OffLineRes: NULL ShowID: 4 SeatCount: 3
+00:31:13  SendRes to Thread-4 as qbass
+00:31:14  SendRes to Thread-4 as qbass
+00:31:16  SendRes to Thread-4 as qbass
+00:31:21  OffLineRes: NULL ShowID: 9 SeatCount: 2
+00:31:25  OffLineRes: NULL ShowID: 9 SeatCount: 2
+00:31:30  OffLineRes: NULL ShowID: 5 SeatCount: 2
+00:31:54  OffLineRes: NULL ShowID: 4 SeatCount: 8
+00:32:00  OffLineRes: NULL ShowID: 6 SeatCount: 1
+00:32:04  OffLineRes: NULL ShowID: 6 SeatCount: 1
+00:32:07  OffLineRes: NULL ShowID: 6 SeatCount: 1
+00:32:11  OffLineRes: NULL ShowID: 4 SeatCount: 3
+00:32:14  OffLineRes: NULL ShowID: 4 SeatCount: 1
+00:32:18  OffLineRes: NULL ShowID: 7 SeatCount: 4
+00:32:23  OffLineRes: NULL ShowID: 1 SeatCount: 5
+00:32:28  OffLineRes: NULL ShowID: 6 SeatCount: 7
+00:32:30  SendRes to Thread-4 as qbass
+00:32:32  SendRes to Thread-4 as qbass
+00:36:13  SendRes to Thread-5 as qbass
+00:36:15  SendRes to Thread-5 as qbass
+00:38:21  SendRes to Thread-6 as qbass
+00:38:25  SendRes to Thread-6 as qbass
+00:39:05  SendRes to Thread-7 as qbass
+00:39:06  SendRes to Thread-7 as qbass
+00:39:25  SendRes to Thread-8 as qbass
+00:39:26  SendRes to Thread-8 as qbass

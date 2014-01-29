@@ -686,23 +686,10 @@ public class Server  implements Runnable{
                 try{
                     this.oout.writeObject((String)"!GDATA");
                     String tmp = (String)oin.readObject();
-                    List<Attraction> attrlist = new ArrayList<Attraction>();
+                    List<AttrRes> reslist = new ArrayList<AttrRes>();
                     if(tmp.equals("!OK!")){
-                        File r = new File("Attraction.kin");
-                        if(!r.exists()){
-                            this.oout.writeObject((String)"!NOATTR!");
-                            break;
-                        }else{
-                            this.oout.writeObject((String)"!OKATTR!");
-                        }
-                        synchronized(this){
-                            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Attraction.kin"));
-                            attrlist = (ArrayList<Attraction>)we.readObject();
-                            we.close();
-                        }
-                        Attraction attrtmp[] = new Attraction[attrlist.size()];
-                        attrtmp = attrlist.toArray(attrtmp);
-                        this.oout.writeObject((Attraction[])attrtmp);
+                        
+                        
                         logger.doLog(1, "SendAttr to " + this.threadName);
                     }
                 }catch(SocketException e){

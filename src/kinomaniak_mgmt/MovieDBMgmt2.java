@@ -30,6 +30,7 @@ public class MovieDBMgmt2 {
     private List<CRoom> crooms;
     private List<User> users;
     private List<Res> ress;
+    private List<Product> prods;
     
     /**
      * Konstruktor klasy MovieDBMgmt tworzący listy obiektów projektu Kinomaniak.
@@ -39,6 +40,7 @@ public class MovieDBMgmt2 {
             this.movies = new ArrayList<Movie>();
             this.crooms = new ArrayList<CRoom>();
             this.users = new ArrayList<User>();
+            this.prods = new ArrayList<Product>();
     }
     /**
      * Nieużywany konstruktor klasy MovieDBMgmt
@@ -88,6 +90,9 @@ public class MovieDBMgmt2 {
             we.close();
             we = new ObjectInputStream(new FileInputStream("Res.kin"));
             this.ress = (ArrayList<Res>)we.readObject();
+            we.close();
+            we = new ObjectInputStream(new FileInputStream("Product.kin"));
+            this.prods = (ArrayList<Product>)we.readObject();
             we.close();
          }catch(IOException e){
             System.err.println("IO Error: "+e);
@@ -214,6 +219,9 @@ public class MovieDBMgmt2 {
             wy = new ObjectOutputStream(new FileOutputStream("Res.kin"));
             wy.writeObject(this.ress);
             wy.close();
+            wy = new ObjectOutputStream(new FileOutputStream("Product.kin"));
+            wy.writeObject(this.prods);
+            wy.close();
         }catch(IOException e){
             System.err.println("IO Error: "+e);
         }
@@ -265,6 +273,11 @@ public class MovieDBMgmt2 {
      */
     public void addUser(String name, String password,int utype){
         this.users.add(new User(name,password,utype));
+    }
+    
+    public void addProd(String name, int type, float price, int count){
+        //Product(String name, int type, float price, int count)
+        this.prods.add(new Product(name,type,price,count));
     }
     /**
      * Metoda usuwająca film o danym identyfikatorze

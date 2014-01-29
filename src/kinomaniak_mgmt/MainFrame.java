@@ -41,6 +41,7 @@ public class MainFrame extends javax.swing.JFrame {
         pLogs.setVisible(false);
         pStats.setVisible(false);
         lSaveInfo.setVisible(false);
+        pAddProduct.setVisible(false);
         this.mgmt = new MovieDBMgmt2();
     }
 
@@ -97,6 +98,7 @@ public class MainFrame extends javax.swing.JFrame {
         bListLogs = new javax.swing.JButton();
         bListStats = new javax.swing.JButton();
         bSaveXML = new javax.swing.JButton();
+        bAddProd = new javax.swing.JButton();
         bLoadXML = new javax.swing.JButton();
         pLogs = new javax.swing.JPanel();
         jScrollPane9 = new javax.swing.JScrollPane();
@@ -155,6 +157,16 @@ public class MainFrame extends javax.swing.JFrame {
         bReturn = new javax.swing.JButton();
         bExit = new javax.swing.JButton();
         lSaveInfo = new javax.swing.JLabel();
+        pAddProduct = new javax.swing.JPanel();
+        lName = new javax.swing.JLabel();
+        lType = new javax.swing.JLabel();
+        lPrice = new javax.swing.JLabel();
+        lCount = new javax.swing.JLabel();
+        eName = new javax.swing.JTextField();
+        ePrice = new javax.swing.JTextField();
+        eCount = new javax.swing.JTextField();
+        cbType = new javax.swing.JComboBox();
+        bAddProductOK = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Management app for Kinomaniak project");
@@ -438,6 +450,13 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        bAddProd.setText("Add Product");
+        bAddProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAddProdActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pOptionsLayout = new javax.swing.GroupLayout(pOptions);
         pOptions.setLayout(pOptionsLayout);
         pOptionsLayout.setHorizontalGroup(
@@ -445,30 +464,34 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(pOptionsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bAddProd)
                     .addComponent(bAddMov)
                     .addComponent(bAddCRoom)
                     .addComponent(bAddShow)
                     .addComponent(bAddUser))
                 .addGap(18, 18, 18)
                 .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bListMov)
-                    .addComponent(bListShow)
-                    .addComponent(bListCRoom)
                     .addComponent(bListUser)
-                    .addComponent(bListRes))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pOptionsLayout.createSequentialGroup()
+                    .addComponent(bListRes)
+                    .addGroup(pOptionsLayout.createSequentialGroup()
                         .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bListLogs)
-                            .addComponent(bListStats))
-                        .addGap(4, 4, 4))
-                    .addComponent(bSaveXML, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addComponent(bListMov)
+                            .addComponent(bListShow)
+                            .addComponent(bListCRoom))
+                        .addGap(18, 18, 18)
+                        .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pOptionsLayout.createSequentialGroup()
+                                .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(bListLogs)
+                                    .addComponent(bListStats))
+                                .addGap(4, 4, 4))
+                            .addComponent(bSaveXML, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         pOptionsLayout.setVerticalGroup(
             pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pOptionsLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(30, 30, 30)
                 .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bAddMov)
                     .addComponent(bListMov)
@@ -488,7 +511,9 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(bAddUser)
                     .addComponent(bListUser))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bListRes)
+                .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bListRes)
+                    .addComponent(bAddProd))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -504,17 +529,16 @@ public class MainFrame extends javax.swing.JFrame {
         pMainLayout.setHorizontalGroup(
             pMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pMainLayout.createSequentialGroup()
-                .addGap(120, 120, 120)
-                .addComponent(bLoadXML)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bLoad)
-                .addGap(18, 18, 18)
-                .addComponent(bSave)
+                .addContainerGap()
+                .addGroup(pMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pMainLayout.createSequentialGroup()
+                        .addComponent(bLoadXML)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bLoad)
+                        .addGap(18, 18, 18)
+                        .addComponent(bSave)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pMainLayout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
-                .addComponent(pOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
         );
         pMainLayout.setVerticalGroup(
             pMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -525,7 +549,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(bLoadXML))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jLayeredPane1.add(pMain);
@@ -1018,6 +1042,81 @@ public class MainFrame extends javax.swing.JFrame {
         jLayeredPane1.add(lSaveInfo);
         lSaveInfo.setBounds(140, 280, 240, 14);
 
+        lName.setText("Name:");
+
+        lType.setText("Type:");
+
+        lPrice.setText("Price:");
+
+        lCount.setText("Count");
+
+        ePrice.setText("0,00");
+        ePrice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ePriceActionPerformed(evt);
+            }
+        });
+
+        eCount.setText("1");
+
+        cbType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
+
+        bAddProductOK.setText("Add Product");
+        bAddProductOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAddProductOKActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pAddProductLayout = new javax.swing.GroupLayout(pAddProduct);
+        pAddProduct.setLayout(pAddProductLayout);
+        pAddProductLayout.setHorizontalGroup(
+            pAddProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pAddProductLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pAddProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pAddProductLayout.createSequentialGroup()
+                        .addGroup(pAddProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lName)
+                            .addComponent(lType)
+                            .addComponent(lPrice)
+                            .addComponent(lCount))
+                        .addGap(28, 28, 28)
+                        .addGroup(pAddProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(eName)
+                            .addComponent(cbType, 0, 93, Short.MAX_VALUE)
+                            .addComponent(ePrice)
+                            .addComponent(eCount)))
+                    .addComponent(bAddProductOK))
+                .addContainerGap(180, Short.MAX_VALUE))
+        );
+        pAddProductLayout.setVerticalGroup(
+            pAddProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pAddProductLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(pAddProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lName)
+                    .addComponent(eName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pAddProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lType)
+                    .addComponent(cbType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pAddProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lPrice)
+                    .addComponent(ePrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pAddProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lCount)
+                    .addComponent(eCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bAddProductOK)
+                .addContainerGap(82, Short.MAX_VALUE))
+        );
+
+        jLayeredPane1.add(pAddProduct);
+        pAddProduct.setBounds(0, 0, 342, 248);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1391,6 +1490,27 @@ public class MainFrame extends javax.swing.JFrame {
         lSaveInfo.setForeground(Color.BLUE);
     }//GEN-LAST:event_bSaveMovSQLActionPerformed
 
+    private void ePriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ePriceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ePriceActionPerformed
+
+    private void bAddProductOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAddProductOKActionPerformed
+        String name = eName.getText();
+        int type = cbType.getSelectedIndex();
+        float price = Float.valueOf(ePrice.getText());
+        int count = Integer.valueOf(eCount.getText());
+        this.mgmt.addProd(name, type, price, count);
+        pMain.setVisible(true);
+        pOptions.setVisible(true);
+        pAddProduct.setVisible(false);
+    }//GEN-LAST:event_bAddProductOKActionPerformed
+
+    private void bAddProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAddProdActionPerformed
+        pMain.setVisible(false);
+        pOptions.setVisible(false);
+        pAddProduct.setVisible(true);
+    }//GEN-LAST:event_bAddProdActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1430,6 +1550,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton bAddCRoom;
     private javax.swing.JButton bAddMov;
     private javax.swing.JButton bAddMovOK;
+    private javax.swing.JButton bAddProd;
+    private javax.swing.JButton bAddProductOK;
     private javax.swing.JButton bAddShow;
     private javax.swing.JButton bAddUser;
     private javax.swing.JButton bCRoomAdd;
@@ -1461,8 +1583,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton bUserAddOK;
     private javax.swing.JComboBox cbCRoomList;
     private javax.swing.JComboBox cbMovieList;
+    private javax.swing.JComboBox cbType;
     private javax.swing.JComboBox cbUType;
     private javax.swing.JTextField eCRoomID;
+    private javax.swing.JTextField eCount;
     private javax.swing.JTextField eDaySet;
     private javax.swing.JTextField eHourSet;
     private javax.swing.JTextField eMinuteSet;
@@ -1470,7 +1594,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField eMovieGenre;
     private javax.swing.JTextField eMovieName;
     private javax.swing.JTextField eMovieRating;
+    private javax.swing.JTextField eName;
     private javax.swing.JPasswordField ePassword;
+    private javax.swing.JTextField ePrice;
     private javax.swing.JTextField eUserName;
     private javax.swing.JTextField eYearSet;
     private javax.swing.JLabel jLabel1;
@@ -1489,19 +1615,23 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JLabel lCRoomHello;
     private javax.swing.JLabel lCRoomSet;
+    private javax.swing.JLabel lCount;
     private javax.swing.JLabel lDateSet;
     private javax.swing.JLabel lMovieDesc;
     private javax.swing.JLabel lMovieGenre;
     private javax.swing.JLabel lMovieName;
     private javax.swing.JLabel lMovieRating;
     private javax.swing.JLabel lMovieSet;
+    private javax.swing.JLabel lName;
     private javax.swing.JLabel lPass;
     private javax.swing.JLabel lPassword;
+    private javax.swing.JLabel lPrice;
     private javax.swing.JLabel lSaveInfo;
     private javax.swing.JLabel lSep1;
     private javax.swing.JLabel lSep2;
     private javax.swing.JLabel lSep3;
     private javax.swing.JLabel lTimeSet;
+    private javax.swing.JLabel lType;
     private javax.swing.JLabel lUType;
     private javax.swing.JLabel lUserName;
     private javax.swing.JList liCRoomList;
@@ -1512,6 +1642,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JList liUserList;
     private javax.swing.JPanel pAddCRoom;
     private javax.swing.JPanel pAddMov;
+    private javax.swing.JPanel pAddProduct;
     private javax.swing.JPanel pAddShow;
     private javax.swing.JPanel pAddUser;
     private javax.swing.JPanel pListCRoom;

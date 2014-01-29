@@ -1,0 +1,32 @@
+====00:27:28====
+00:27:28  Client connected from 127.0.0.1
+00:27:28  Thread-1 as qbass: 127.0.0.1
+00:28:23  Thread-1 as qbass: Client disconnected: 127.0.0.1
+====00:28:31====
+00:28:31  Client connected from 127.0.0.1
+00:28:31  Thread-2 as qbass: 127.0.0.1
+00:28:48  Thread-2 as qbass: Client disconnected: 127.0.0.1
+====00:29:10====
+00:29:10  Client connected from 127.0.0.1
+00:29:10  Thread-3 as qbass: 127.0.0.1
+00:29:20  Thread-3 as qbass: Client disconnected: 127.0.0.1
+====00:31:01====
+00:31:01  Client connected from 127.0.0.1
+00:31:01  Thread-4 as qbass: 127.0.0.1
+00:35:55  Thread-4 as qbass: Client disconnected: 127.0.0.1
+====00:36:09====
+00:36:09  Client connected from 127.0.0.1
+00:36:09  Thread-5 as qbass: 127.0.0.1
+00:37:54  Thread-5 as qbass: Client disconnected: 127.0.0.1
+====00:38:18====
+00:38:18  Client connected from 127.0.0.1
+00:38:18  Thread-6 as qbass: 127.0.0.1
+00:38:55  Thread-6 as qbass: Client disconnected: 127.0.0.1
+====00:39:03====
+00:39:03  Client connected from 127.0.0.1
+00:39:03  Thread-7 as qbass: 127.0.0.1
+00:39:11  Thread-7 as qbass: Client disconnected: 127.0.0.1
+====00:39:23====
+00:39:23  Client connected from 127.0.0.1
+00:39:23  Thread-8 as qbass: 127.0.0.1
+00:39:29  Thread-8 as qbass: Client disconnected: 127.0.0.1
