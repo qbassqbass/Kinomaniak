@@ -19,6 +19,8 @@ import java.io.FileOutputStream;
 import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author qbass
@@ -486,7 +488,9 @@ public class Server  implements Runnable{
                              if(rs.getShowID() == showid){
                                  int seats[][] = rs.getSeats();
                                  for(int[] i : seats){
-                                     reserved[i[0]][i[1]] = 1;
+//                                     CHANGED - check Required
+                                     if (rs.ischecked()) reserved[i[0]][i[1]] = 2;
+                                     else reserved[i[0]][i[1]] = 1;
                                  }
                              }
                          }
@@ -556,6 +560,45 @@ public class Server  implements Runnable{
                     logger.doLog(0,this.threadName+": Class not found from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
                 }
                 break;
+            }
+            case 11:{ // getProductList
+                try{
+                    this.oout.writeObject((String)"!GDATA");
+                    String tmp = (String)oin.readObject();
+                    List<Product> prodlist = new ArrayList<Product>();
+                    if(tmp.equals("!OK!")){
+                        File r = new File("Prod.kin");
+                        if(!r.exists()){
+                            this.oout.writeObject((String)"!NORES!");
+                            break;
+                        }else{
+                            this.oout.writeObject((String)"!OKRES!");
+                        }
+                        synchronized(this){
+                            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Prod.kin"));
+                            prodlist = (ArrayList<Product>)we.readObject();
+                            we.close();
+                        }
+                        Product prodtmp[] = new Product[prodlist.size()];
+                        prodtmp = prodlist.toArray(prodtmp);
+                        this.oout.writeObject((Product[])prodtmp);
+                        logger.doLog(1, "SendProd to " + this.threadName);
+                    }
+                }catch(SocketException e){
+                    System.err.println("Client Disconnected: "+sockfd.getInetAddress().getHostAddress());
+                    logger.doLog(0, this.threadName+": Client disconnected: "+sockfd.getInetAddress().getHostAddress());
+                    endThread();
+                }catch(IOException e){
+                    System.err.println("IO Error: "+e);
+                    logger.doLog(0, this.threadName+": IOError from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+                } catch (ClassNotFoundException e) {
+                    System.err.println("ClassNotFound Error: "+e);
+                    logger.doLog(0, this.threadName+": ClassNotFound from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+                }
+                
+            }
+            case 12:{ // sellProductFromList
+                
             }
             case 666 :{
                 

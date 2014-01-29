@@ -6,11 +6,13 @@
 
 package kinomaniak_objs;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Qbass
  */
-public class Report {
+public class Report implements Serializable{
     public static enum element{
         USERID, ATTRID
     };

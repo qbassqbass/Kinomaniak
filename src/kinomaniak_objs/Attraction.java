@@ -6,11 +6,13 @@
 
 package kinomaniak_objs;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Qbass
  */
-public class Attraction {
+public class Attraction implements Serializable{
     private int id;
     private String name;
     private float price;

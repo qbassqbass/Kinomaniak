@@ -6,22 +6,55 @@
 
 package kinomaniak_objs;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Qbass
  */
-public class Product {
+public class Product implements Serializable{
     private int id;
     private String name;
     private int type;
+    private int count;
     private float price;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+    
+    public int getCount(){
+        return this.count;
+    }
     
     public Product(String name, int type, float price){
         this.name = name;
         this.type = type;
         this.price = price;
+        this.count = 1;
         this.id = this.getLastId() + 1;
     }
+    
+    public Product(String name, int type, float price, int count){
+        this.name = name;
+        this.type = type;
+        this.price = price;
+        this.count = count;
+        this.id = this.getLastId() + 1;
+    }
+    
     
     private int getLastId(){
         int tmp = -1;

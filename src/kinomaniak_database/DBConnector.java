@@ -31,8 +31,8 @@ public class DBConnector {
         this.parser = new Parser();
     }
     
-    public void save(Movie mov){
-        query = this.parser.save(mov);
+    public void save(Object obj){
+        query = this.parser.save(obj);
         
         try{
             Class.forName(DBDRIVER).newInstance();

@@ -6,11 +6,13 @@
 
 package kinomaniak_objs;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Qbass
  */
-public class Ticket {
+public class Ticket implements Serializable{
     private int id;
     private int type;
     

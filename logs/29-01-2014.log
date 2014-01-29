@@ -1,0 +1,8 @@
+====07:14:01====
+07:14:01  Client connected from 127.0.0.1
+07:14:01  Thread-1 as qbass: 127.0.0.1
+07:14:37  Thread-1 as qbass: Client disconnected: 127.0.0.1
+====07:14:48====
+07:14:48  Client connected from 127.0.0.1
+07:14:48  Thread-2 as qbass: 127.0.0.1
+07:14:56  Thread-2 as qbass: Client disconnected: 127.0.0.1
