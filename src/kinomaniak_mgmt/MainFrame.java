@@ -1050,7 +1050,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         lCount.setText("Count");
 
-        ePrice.setText("0,00");
+        ePrice.setText("0.00");
         ePrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ePriceActionPerformed(evt);
