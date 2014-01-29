@@ -41,11 +41,17 @@ public class Parser {
             switch(type){
                 case "Movie":
                     obj = new Movie(result.getString("name"),result.getString("genre"),result.getString("rating"),result.getString("type"));
+                    while(result.next())
+                        obj = new Movie(result.getString("name"),result.getString("genre"),result.getString("rating"),result.getString("type"));
                     break;
                 case "CRoom":
 //                    cannot do anything... -.-
                     break;
                 case "Attraction":
+                    int id = result.getInt("id");
+                    String name = result.getString("name");
+                    float price = result.getFloat("price");
+                    obj = new Attraction(id,name,price);
 //                    cannot do anything... -.-
                     break;
                 case "GoldCard":
@@ -91,13 +97,13 @@ public class Parser {
             query = "INSERT INTO attraction VALUES (NULL, '" + at.getName() + "', '" + at.getPrice() + "');";
         }else if(obj instanceof Product){
             Product pr = (Product) obj;
-            
+            query = "INSERT INTO product VALUES (NULL, '" + pr.getName() + "', '" + pr.getType() + "', '" + pr.getPrice() + "', '" + pr.getCount() + ",);";
         }else if(obj instanceof Report){
             Report rep = (Report) obj;
             
         }else if(obj instanceof Res){
             Res res = (Res) obj;
-            query = "INSERT INTO res VALUES (NULL, '" + res.getName() + "', '" + res.getShowID() + "', '" + res.formatSeats() + "', '" + res.ischecked() + "', '" + res.isok() + "');";
+            query = "INSERT INTO res VALUES (NULL, '" + res.getName() + "', '" + res.getShowID() + "', '" + res.formatSeatsSQL()+ "', '" + res.ischecked() + "', '" + res.isok() + "');";
         }else if(obj instanceof Show){
             Show sh = (Show) obj;
             query = "INSERT INTO show VALUES (NULL, '" + sh.getID() + "', '" + sh.getMovie().getId() + "', '" + sh.getRoom().getID() + "', '" + sh.getFormatted() + "');";

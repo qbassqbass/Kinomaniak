@@ -1,1 +1,43 @@
 07:14:50  SendRes to Thread-2 as qbass
+19:57:20  Res: japas okpas ShowID: 2 SeatCount: 10
+19:57:23  SendRes to Thread-1 as qbass
+20:02:56  SendRes to Thread-2 as qbass
+20:05:49  SendRes to Thread-3 as qbass
+20:06:22  Res: dsadas cxzczx ShowID: 1 SeatCount: 10
+20:06:24  SendRes to Thread-3 as qbass
+20:06:37  Res: qweqw cxzczx ShowID: 9 SeatCount: 10
+20:06:38  SendRes to Thread-3 as qbass
+20:22:13  SendRes to Thread-1 as qbass
+22:45:33  SendRes to Thread-1 as qbass
+22:45:56  Res: dsa dsa ShowID: 2 SeatCount: 10
+22:45:57  SendRes to Thread-1 as qbass
+22:46:26  Res: wt45 g433 ShowID: 14 SeatCount: 10
+22:46:27  SendRes to Thread-1 as qbass
+22:49:52  SendRes to Thread-1 as qbass
+22:51:12  SendRes to Thread-2 as qbass
+22:52:00  SendRes to Thread-3 as qbass
+22:52:34  OffLineRes: NULL ShowID: 14 SeatCount: 4
+22:52:35  SendRes to Thread-3 as qbass
+22:52:52  OffLineRes: NULL ShowID: 2 SeatCount: 2
+22:52:53  SendRes to Thread-3 as qbass
+22:56:43  SendRes to Thread-4 as qbass
+22:56:59  OffLineRes: NULL ShowID: 14 SeatCount: 3
+22:57:00  SendRes to Thread-4 as qbass
+22:57:05  SendRes to Thread-4 as qbass
+22:57:09  SendRes to Thread-4 as qbass
+22:57:14  SendRes to Thread-4 as qbass
+22:57:16  SendRes to Thread-4 as qbass
+22:57:38  SendRes to Thread-4 as qbass
+22:57:41  SendRes to Thread-4 as qbass
+22:57:45  SendRes to Thread-4 as qbass
+22:58:03  CancelRes: NULL ShowID:14 SeatsCount:4
+22:58:05  SendRes to Thread-4 as qbass
+22:58:08  SendRes to Thread-4 as qbass
+22:58:11  SendRes to Thread-4 as qbass
+22:58:16  SendRes to Thread-4 as qbass
+22:59:00  SendRes to Thread-5 as qbass
+22:59:04  SendRes to Thread-5 as qbass
+22:59:06  SendRes to Thread-5 as qbass
+23:02:06  SendRes to Thread-6 as qbass
+23:02:09  SendRes to Thread-6 as qbass
+23:02:13  SendRes to Thread-6 as qbass

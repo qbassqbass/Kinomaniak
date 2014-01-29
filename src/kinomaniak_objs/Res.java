@@ -176,4 +176,16 @@ public class Res implements Serializable{
         return tmp;
     }
     
+    public String formatSeatsSQL(){
+        String tmp = "";
+        for(int s[] : this.getSeats()){
+            tmp += s[0] + ":" + s[1] + "|";
+        }
+//        StringBuilder sb = new StringBuilder(tmp);
+//        sb.deleteCharAt(tmp.length()-1);
+//        tmp = sb.toString();
+        tmp = tmp.substring(0, tmp.length()-1);
+        return tmp;
+    }
+    
 }

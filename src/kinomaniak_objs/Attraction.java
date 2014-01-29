@@ -31,6 +31,13 @@ public class Attraction implements Serializable{
         this.id = this.getLastId() + 1;
     }
     
+    public Attraction(int id, String name, float price){
+        this.name = name;
+        this.price = price;
+        this.id = id;
+        
+    }
+    
     private int getLastId(){
         int tmp = -1;
         

@@ -256,6 +256,7 @@ public class Server  implements Runnable{
 ////                        TODO
 //                        this.oout.writeObject((String)"!SOK!");                            
                         Res res = new Res(nazwa,showid,seat.length,seat);
+                        System.out.println("DEBUG::SHOWID: "+showid);
                     synchronized (this){
                         try{
                             File r = new File("Res.kin");
@@ -615,7 +616,7 @@ public class Server  implements Runnable{
                             prodlist = (ArrayList<Product>)we.readObject();
                             we.close();
                         }
-                        this.oout.writeObject((String)"!GOPROD!");
+                        this.oout.writeObject((String)"!GIPROD!"); // get ID Product
                         int prodId = (int)this.oin.readObject();
                         boolean ok = false;
                         for(int i = 0; i < prodlist.size(); i++){
@@ -633,6 +634,76 @@ public class Server  implements Runnable{
                             wy.close();
                             this.oout.writeObject((String)"!OK!");
                         }else this.oout.writeObject((String)"!NOK!");
+                    }
+                }catch(SocketException e){
+                    System.err.println("Client Disconnected: "+sockfd.getInetAddress().getHostAddress());
+                    logger.doLog(0, this.threadName+": Client disconnected: "+sockfd.getInetAddress().getHostAddress());
+                    endThread();
+                }catch(IOException e){
+                    System.err.println("IO Error: "+e);
+                    logger.doLog(0, this.threadName+": IOError from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+                } catch (ClassNotFoundException e) {
+                    System.err.println("ClassNotFound Error: "+e);
+                    logger.doLog(0, this.threadName+": ClassNotFound from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+                }
+            }
+            case 13:{ // getAttractionList
+                try{
+                    this.oout.writeObject((String)"!GDATA");
+                    String tmp = (String)oin.readObject();
+                    List<Attraction> attrlist = new ArrayList<Attraction>();
+                    if(tmp.equals("!OK!")){
+                        File r = new File("Attraction.kin");
+                        if(!r.exists()){
+                            this.oout.writeObject((String)"!NOATTR!");
+                            break;
+                        }else{
+                            this.oout.writeObject((String)"!OKATTR!");
+                        }
+                        synchronized(this){
+                            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Attraction.kin"));
+                            attrlist = (ArrayList<Attraction>)we.readObject();
+                            we.close();
+                        }
+                        Attraction attrtmp[] = new Attraction[attrlist.size()];
+                        attrtmp = attrlist.toArray(attrtmp);
+                        this.oout.writeObject((Attraction[])attrtmp);
+                        logger.doLog(1, "SendAttr to " + this.threadName);
+                    }
+                }catch(SocketException e){
+                    System.err.println("Client Disconnected: "+sockfd.getInetAddress().getHostAddress());
+                    logger.doLog(0, this.threadName+": Client disconnected: "+sockfd.getInetAddress().getHostAddress());
+                    endThread();
+                }catch(IOException e){
+                    System.err.println("IO Error: "+e);
+                    logger.doLog(0, this.threadName+": IOError from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+                } catch (ClassNotFoundException e) {
+                    System.err.println("ClassNotFound Error: "+e);
+                    logger.doLog(0, this.threadName+": ClassNotFound from "+sockfd.getInetAddress().getHostAddress()+": "+e);
+                }
+            }
+            case 14:{ // reserveAttraction
+                try{
+                    this.oout.writeObject((String)"!GDATA");
+                    String tmp = (String)oin.readObject();
+                    List<Attraction> attrlist = new ArrayList<Attraction>();
+                    if(tmp.equals("!OK!")){
+                        File r = new File("Attraction.kin");
+                        if(!r.exists()){
+                            this.oout.writeObject((String)"!NOATTR!");
+                            break;
+                        }else{
+                            this.oout.writeObject((String)"!OKATTR!");
+                        }
+                        synchronized(this){
+                            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Attraction.kin"));
+                            attrlist = (ArrayList<Attraction>)we.readObject();
+                            we.close();
+                        }
+                        Attraction attrtmp[] = new Attraction[attrlist.size()];
+                        attrtmp = attrlist.toArray(attrtmp);
+                        this.oout.writeObject((Attraction[])attrtmp);
+                        logger.doLog(1, "SendAttr to " + this.threadName);
                     }
                 }catch(SocketException e){
                     System.err.println("Client Disconnected: "+sockfd.getInetAddress().getHostAddress());

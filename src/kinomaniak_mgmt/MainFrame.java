@@ -1204,7 +1204,7 @@ public class MainFrame extends javax.swing.JFrame {
         int sel = liShowList.getSelectedIndex();
         if(sel < 0) return;
         tShowMore.setVisible(true);
-        tShowMore.setText("Time: "+mgmt.getShows()[sel].getFormatted()+"\nName: "+mgmt.getShows()[sel].getMovie().getName()
+        tShowMore.setText("ID:"+mgmt.getShows()[sel].getID()+"\nTime: "+mgmt.getShows()[sel].getFormatted()+"\nName: "+mgmt.getShows()[sel].getMovie().getName()
                 +"\nGenre: "+mgmt.getShows()[sel].getMovie().getGenre()+"\nRating: "
                 +mgmt.getShows()[sel].getMovie().getRating()+"\nDesc:\n"+mgmt.getShows()[sel].getMovie().getDesc());
         tShowMore.setWrapStyleWord(true);
