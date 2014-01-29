@@ -688,9 +688,22 @@ public class Server  implements Runnable{
                     String tmp = (String)oin.readObject();
                     List<AttrRes> reslist = new ArrayList<AttrRes>();
                     if(tmp.equals("!OK!")){
-                        
-                        
-                        logger.doLog(1, "SendAttr to " + this.threadName);
+                        File r = new File("AttrRes.kin");
+                        this.oout.writeObject((String)"!GOARES!");
+                        AttrRes res = (AttrRes)this.oin.readObject();
+                        if(!r.exists()){
+                            r.createNewFile();
+                            reslist.add(res);
+                        }else{
+                            ObjectInputStream we = new ObjectInputStream(new FileInputStream("AttrRes.kin"));
+                            reslist = (ArrayList<AttrRes>)we.readObject();
+                            we.close();
+                            reslist.add(res);
+                        }
+                        ObjectOutputStream wy = new ObjectOutputStream(new FileOutputStream("AttrRes.kin"));
+                        wy.writeObject(reslist);
+                        wy.close();                        
+                        logger.doLog(1, "Reserved Attratraction by " + this.threadName);
                     }
                 }catch(SocketException e){
                     System.err.println("Client Disconnected: "+sockfd.getInetAddress().getHostAddress());

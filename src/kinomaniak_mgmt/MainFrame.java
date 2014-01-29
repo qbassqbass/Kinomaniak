@@ -1503,6 +1503,8 @@ public class MainFrame extends javax.swing.JFrame {
         pMain.setVisible(true);
         pOptions.setVisible(true);
         pAddProduct.setVisible(false);
+        lSaveInfo.setText("Remember to save before exit...");
+        lSaveInfo.setForeground(Color.red);
     }//GEN-LAST:event_bAddProductOKActionPerformed
 
     private void bAddProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAddProdActionPerformed

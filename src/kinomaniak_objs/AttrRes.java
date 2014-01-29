@@ -6,11 +6,13 @@
 
 package kinomaniak_objs;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Qbass
  */
-public class AttrRes {
+public class AttrRes implements Serializable{
     private String imienazwisko;
     private int atrid;
     private Time time;
