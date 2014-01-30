@@ -564,7 +564,7 @@ public class Server  implements Runnable{
             }
             case 11:{ // getProductList
                 try{
-                    this.oout.writeObject((String)"!GDATA");
+                    this.oout.writeObject((String)"!GDATA!");
                     String tmp = (String)oin.readObject();
                     List<Product> prodlist = new ArrayList<Product>();
                     if(tmp.equals("!OK!")){
@@ -600,7 +600,7 @@ public class Server  implements Runnable{
             }
             case 12:{ // sellProductFromList
                 try{
-                    this.oout.writeObject((String)"!GDATA");
+                    this.oout.writeObject((String)"!GDATA!");
                     String tmp = (String)oin.readObject();
                     List<Product> prodlist = new ArrayList<Product>();
                     if(tmp.equals("!OK!")){
@@ -649,7 +649,7 @@ public class Server  implements Runnable{
             }
             case 13:{ // getAttractionList
                 try{
-                    this.oout.writeObject((String)"!GDATA");
+                    this.oout.writeObject((String)"!GDATA!");
                     String tmp = (String)oin.readObject();
                     List<Attraction> attrlist = new ArrayList<Attraction>();
                     if(tmp.equals("!OK!")){
@@ -684,7 +684,7 @@ public class Server  implements Runnable{
             }
             case 14:{ // reserveAttraction
                 try{
-                    this.oout.writeObject((String)"!GDATA");
+                    this.oout.writeObject((String)"!GDATA!");
                     String tmp = (String)oin.readObject();
                     List<AttrRes> reslist = new ArrayList<AttrRes>();
                     if(tmp.equals("!OK!")){
