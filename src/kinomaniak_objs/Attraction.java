@@ -7,6 +7,7 @@
 package kinomaniak_objs;
 
 import java.io.Serializable;
+import org.jdom2.Element;
 
 /**
  *
@@ -17,6 +18,14 @@ public class Attraction implements Serializable{
     private String name;
     private float price;
 
+    public Element toXML(){
+        Element res = new Element("Attraction");
+        res.setAttribute("id", String.valueOf(this.id));
+        res.addContent(new Element("name").setText(String.valueOf(this.name)));
+        res.addContent(new Element("price").setText(String.valueOf(this.price)));        
+        return res;
+    }
+    
     public String getName() {
         return name;
     }

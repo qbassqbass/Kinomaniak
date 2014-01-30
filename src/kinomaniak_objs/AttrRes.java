@@ -9,7 +9,7 @@ package kinomaniak_objs;
 import java.io.Serializable;
 
 /**
- *
+ * 
  * @author Qbass
  */
 public class AttrRes implements Serializable{

@@ -120,6 +120,9 @@ public class MovieDBMgmt2 {
         for (Res r : this.ress){
             res.addContent(r.toXML());
         }
+        for(Product p : this.prods){
+            res.addContent(p.toXML());
+        }
         
         Document doc = new Document(res);
         XMLOutputter xmlOutput = new XMLOutputter();
@@ -145,6 +148,7 @@ public class MovieDBMgmt2 {
         List<CRoom> c = new ArrayList<CRoom>();
         List<User> u = new ArrayList<User>();
         List<Res> r = new ArrayList<Res>();
+        List<Product> p = new ArrayList<Product>();
         
         try{
             Document doc = (Document) builder.build(xmlFile);
@@ -178,6 +182,12 @@ public class MovieDBMgmt2 {
                 Element node = (Element) list.get(i);
                 Res re = new Res(node); //add Constructor for this
                 r.add(re);
+            }
+            list = rootNode.getChildren("Product");
+            for(int i = 0; i < list.size(); i++){
+                Element node = (Element) list.get(i);
+                Product pr = new Product(node);
+                p.add(pr);
             }
             
             
@@ -277,7 +287,11 @@ public class MovieDBMgmt2 {
     
     public void addProd(String name, int type, float price, int count){
         //Product(String name, int type, float price, int count)
+        int prevID;
+        if(this.prods.isEmpty()) prevID = 0;
+        else prevID = this.prods.get(this.prods.size()-1).getId();
         this.prods.add(new Product(name,type,price,count));
+        this.prods.get(this.prods.size() - 1).setId(prevID + 1);
     }
     /**
      * Metoda usuwająca film o danym identyfikatorze
@@ -428,6 +442,10 @@ public class MovieDBMgmt2 {
      */
     public Time getTime(){
         return time;
+    }
+    
+    public Product[] getProds(){
+        return this.prods.toArray(new Product[]{});
     }
     
     public void saveMovToSQL(int sel){

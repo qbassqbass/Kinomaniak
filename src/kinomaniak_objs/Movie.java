@@ -27,6 +27,7 @@ public class Movie implements Serializable{
     
     public Element toXML(){
         Element res = new Element("Movie");
+        res.setAttribute("id", String.valueOf(this.id));
         res.addContent(new Element("name").setText(String.valueOf(this.name)));
         res.addContent(new Element("genre").setText(String.valueOf(this.genre)));
         res.addContent(new Element("rating").setText(String.valueOf(this.rating)));

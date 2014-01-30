@@ -17,6 +17,7 @@ import org.jdom2.Element;
  */
 public class User implements Serializable{
     private static final long serialVersionUID = 2L;
+    private int id;
     private String name;
     private String password;
     private int utype;
@@ -24,10 +25,15 @@ public class User implements Serializable{
     
     public Element toXML(){
         Element res = new Element("User");
+        res.setAttribute("id", String.valueOf(this.id));
         res.addContent(new Element("name").setText(String.valueOf(this.name)));
         res.addContent(new Element("password").setText(String.valueOf(this.getPass())));
         res.addContent(new Element("utype").setText(String.valueOf(this.utype)));
         return res;
+    }
+    
+    public int getId(){
+        return this.id;
     }
     
     public User(Element node){
