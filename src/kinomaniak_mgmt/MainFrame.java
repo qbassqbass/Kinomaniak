@@ -21,9 +21,8 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
-    public MainFrame() {
-        initComponents();
-        pOptions.setVisible(false);
+     public void init(){
+         pOptions.setVisible(false);
         pMain.setVisible(true);
         bLoad.setVisible(true);
         bSave.setVisible(false);
@@ -43,6 +42,13 @@ public class MainFrame extends javax.swing.JFrame {
         lSaveInfo.setVisible(false);
         pAddProduct.setVisible(false);
         pListProducts.setVisible(false);
+        pAddAttraction.setVisible(false);
+        pListAttractions.setVisible(false);
+     }
+     
+    public MainFrame() {
+        initComponents();
+        init();
         this.mgmt = new MovieDBMgmt2();
     }
 
@@ -56,6 +62,27 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
+        pMain = new javax.swing.JPanel();
+        bLoad = new javax.swing.JButton();
+        bSave = new javax.swing.JButton();
+        pOptions = new javax.swing.JPanel();
+        bAddMov = new javax.swing.JButton();
+        bAddCRoom = new javax.swing.JButton();
+        bAddShow = new javax.swing.JButton();
+        bListMov = new javax.swing.JButton();
+        bListShow = new javax.swing.JButton();
+        bListCRoom = new javax.swing.JButton();
+        bAddUser = new javax.swing.JButton();
+        bListUser = new javax.swing.JButton();
+        bListRes = new javax.swing.JButton();
+        bListLogs = new javax.swing.JButton();
+        bListStats = new javax.swing.JButton();
+        bSaveXML = new javax.swing.JButton();
+        bAddProd = new javax.swing.JButton();
+        bListProducts = new javax.swing.JButton();
+        bAddAttraction = new javax.swing.JButton();
+        bListAttraction = new javax.swing.JButton();
+        bLoadXML = new javax.swing.JButton();
         pAddMov = new javax.swing.JPanel();
         eMovieName = new javax.swing.JTextField();
         lMovieName = new javax.swing.JLabel();
@@ -83,25 +110,6 @@ public class MainFrame extends javax.swing.JFrame {
         lSep3 = new javax.swing.JLabel();
         eYearSet = new javax.swing.JTextField();
         bShowAddSet = new javax.swing.JButton();
-        pMain = new javax.swing.JPanel();
-        bLoad = new javax.swing.JButton();
-        bSave = new javax.swing.JButton();
-        pOptions = new javax.swing.JPanel();
-        bAddMov = new javax.swing.JButton();
-        bAddCRoom = new javax.swing.JButton();
-        bAddShow = new javax.swing.JButton();
-        bListMov = new javax.swing.JButton();
-        bListShow = new javax.swing.JButton();
-        bListCRoom = new javax.swing.JButton();
-        bAddUser = new javax.swing.JButton();
-        bListUser = new javax.swing.JButton();
-        bListRes = new javax.swing.JButton();
-        bListLogs = new javax.swing.JButton();
-        bListStats = new javax.swing.JButton();
-        bSaveXML = new javax.swing.JButton();
-        bAddProd = new javax.swing.JButton();
-        bListProducts = new javax.swing.JButton();
-        bLoadXML = new javax.swing.JButton();
         pLogs = new javax.swing.JPanel();
         jScrollPane9 = new javax.swing.JScrollPane();
         liLogList = new javax.swing.JList();
@@ -176,10 +184,262 @@ public class MainFrame extends javax.swing.JFrame {
         bProdMore = new javax.swing.JButton();
         sProdMore = new javax.swing.JScrollPane();
         tProdMore = new javax.swing.JTextArea();
+        pAddAttraction = new javax.swing.JPanel();
+        lAttrName = new javax.swing.JLabel();
+        lAttrPrice = new javax.swing.JLabel();
+        eAttrName = new javax.swing.JTextField();
+        eAttrPrice = new javax.swing.JTextField();
+        bAttrAdd = new javax.swing.JButton();
+        pListAttractions = new javax.swing.JPanel();
+        sAttrLisst = new javax.swing.JScrollPane();
+        liAttrList = new javax.swing.JList();
+        sAttrMore = new javax.swing.JScrollPane();
+        tAttrMore = new javax.swing.JTextArea();
+        bDelAttr = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Management app for Kinomaniak project");
         setResizable(false);
+
+        bLoad.setText("LOAD");
+        bLoad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bLoadActionPerformed(evt);
+            }
+        });
+
+        bSave.setText("SAVE");
+        bSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSaveActionPerformed(evt);
+            }
+        });
+
+        bAddMov.setText("Add Movie");
+        bAddMov.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAddMovActionPerformed(evt);
+            }
+        });
+
+        bAddCRoom.setText("Add CRoom");
+        bAddCRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAddCRoomActionPerformed(evt);
+            }
+        });
+
+        bAddShow.setText("Add Show");
+        bAddShow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAddShowActionPerformed(evt);
+            }
+        });
+
+        bListMov.setText("List Movies");
+        bListMov.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bListMovActionPerformed(evt);
+            }
+        });
+
+        bListShow.setText("List Shows");
+        bListShow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bListShowActionPerformed(evt);
+            }
+        });
+
+        bListCRoom.setText("List CRooms");
+        bListCRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bListCRoomActionPerformed(evt);
+            }
+        });
+
+        bAddUser.setText("Add User");
+        bAddUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAddUserActionPerformed(evt);
+            }
+        });
+
+        bListUser.setText("List Users");
+        bListUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bListUserActionPerformed(evt);
+            }
+        });
+
+        bListRes.setText("List Res");
+        bListRes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bListResActionPerformed(evt);
+            }
+        });
+
+        bListLogs.setText("Logs");
+        bListLogs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bListLogsActionPerformed(evt);
+            }
+        });
+
+        bListStats.setText("Stats");
+        bListStats.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bListStatsActionPerformed(evt);
+            }
+        });
+
+        bSaveXML.setText("SaveXML");
+        bSaveXML.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSaveXMLActionPerformed(evt);
+            }
+        });
+
+        bAddProd.setText("Add Product");
+        bAddProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAddProdActionPerformed(evt);
+            }
+        });
+
+        bListProducts.setText("List Products");
+        bListProducts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bListProductsActionPerformed(evt);
+            }
+        });
+
+        bAddAttraction.setText("Add Attraction");
+        bAddAttraction.setName(""); // NOI18N
+        bAddAttraction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAddAttractionActionPerformed(evt);
+            }
+        });
+
+        bListAttraction.setText("List Attractions");
+        bListAttraction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bListAttractionActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pOptionsLayout = new javax.swing.GroupLayout(pOptions);
+        pOptions.setLayout(pOptionsLayout);
+        pOptionsLayout.setHorizontalGroup(
+            pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pOptionsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pOptionsLayout.createSequentialGroup()
+                        .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bAddProd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bAddMov, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bAddUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bAddShow, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bAddAttraction, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))
+                        .addGap(12, 12, 12))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pOptionsLayout.createSequentialGroup()
+                        .addComponent(bAddCRoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pOptionsLayout.createSequentialGroup()
+                        .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pOptionsLayout.createSequentialGroup()
+                                .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(bListShow, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bListCRoom, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                                    .addComponent(bListMov, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(pOptionsLayout.createSequentialGroup()
+                                .addComponent(bListUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(7, 7, 7)))
+                        .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(bListRes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bSaveXML, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bListLogs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bListStats, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(bListProducts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bListAttraction, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        pOptionsLayout.setVerticalGroup(
+            pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pOptionsLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bAddMov)
+                    .addComponent(bListMov)
+                    .addComponent(bListLogs))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bAddCRoom)
+                    .addComponent(bListCRoom)
+                    .addComponent(bListStats))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bAddShow)
+                    .addComponent(bListShow)
+                    .addComponent(bSaveXML))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bAddUser)
+                    .addComponent(bListUser)
+                    .addComponent(bListRes))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bAddProd)
+                    .addComponent(bListProducts))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bAddAttraction)
+                    .addComponent(bListAttraction))
+                .addContainerGap(75, Short.MAX_VALUE))
+        );
+
+        bLoadXML.setText("LoadXML");
+        bLoadXML.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bLoadXMLActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pMainLayout = new javax.swing.GroupLayout(pMain);
+        pMain.setLayout(pMainLayout);
+        pMainLayout.setHorizontalGroup(
+            pMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pMainLayout.createSequentialGroup()
+                .addGroup(pMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pMainLayout.createSequentialGroup()
+                        .addGap(121, 121, 121)
+                        .addComponent(bLoadXML)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bLoad)
+                        .addGap(18, 18, 18)
+                        .addComponent(bSave))
+                    .addGroup(pMainLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(pOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pMainLayout.setVerticalGroup(
+            pMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pMainLayout.createSequentialGroup()
+                .addGroup(pMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bLoad)
+                    .addComponent(bSave)
+                    .addComponent(bLoadXML))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jLayeredPane1.add(pMain);
+        pMain.setBounds(0, 0, 400, 280);
 
         pAddMov.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         pAddMov.setMinimumSize(new java.awt.Dimension(600, 400));
@@ -361,215 +621,6 @@ public class MainFrame extends javax.swing.JFrame {
         jLayeredPane1.add(pAddShow);
         pAddShow.setBounds(0, 0, 460, 270);
 
-        bLoad.setText("LOAD");
-        bLoad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bLoadActionPerformed(evt);
-            }
-        });
-
-        bSave.setText("SAVE");
-        bSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bSaveActionPerformed(evt);
-            }
-        });
-
-        bAddMov.setText("Add Movie");
-        bAddMov.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bAddMovActionPerformed(evt);
-            }
-        });
-
-        bAddCRoom.setText("Add CRoom");
-        bAddCRoom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bAddCRoomActionPerformed(evt);
-            }
-        });
-
-        bAddShow.setText("Add Show");
-        bAddShow.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bAddShowActionPerformed(evt);
-            }
-        });
-
-        bListMov.setText("List Movies");
-        bListMov.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bListMovActionPerformed(evt);
-            }
-        });
-
-        bListShow.setText("List Shows");
-        bListShow.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bListShowActionPerformed(evt);
-            }
-        });
-
-        bListCRoom.setText("List CRooms");
-        bListCRoom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bListCRoomActionPerformed(evt);
-            }
-        });
-
-        bAddUser.setText("Add User");
-        bAddUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bAddUserActionPerformed(evt);
-            }
-        });
-
-        bListUser.setText("List Users");
-        bListUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bListUserActionPerformed(evt);
-            }
-        });
-
-        bListRes.setText("List Res");
-        bListRes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bListResActionPerformed(evt);
-            }
-        });
-
-        bListLogs.setText("Logs");
-        bListLogs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bListLogsActionPerformed(evt);
-            }
-        });
-
-        bListStats.setText("Stats");
-        bListStats.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bListStatsActionPerformed(evt);
-            }
-        });
-
-        bSaveXML.setText("SaveXML");
-        bSaveXML.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bSaveXMLActionPerformed(evt);
-            }
-        });
-
-        bAddProd.setText("Add Product");
-        bAddProd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bAddProdActionPerformed(evt);
-            }
-        });
-
-        bListProducts.setText("List Products");
-        bListProducts.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bListProductsActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pOptionsLayout = new javax.swing.GroupLayout(pOptions);
-        pOptions.setLayout(pOptionsLayout);
-        pOptionsLayout.setHorizontalGroup(
-            pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pOptionsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(bAddProd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bAddMov, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bAddUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bAddShow, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bAddCRoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pOptionsLayout.createSequentialGroup()
-                        .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(bListCRoom, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
-                            .addComponent(bListShow, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bListUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bListMov, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(16, 16, 16)
-                        .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(bListRes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bSaveXML, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bListLogs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bListStats, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(bListProducts))
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
-        pOptionsLayout.setVerticalGroup(
-            pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pOptionsLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bAddMov)
-                    .addComponent(bListMov)
-                    .addComponent(bListLogs))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bAddCRoom)
-                    .addComponent(bListCRoom)
-                    .addComponent(bListStats))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bAddShow)
-                    .addComponent(bListShow)
-                    .addComponent(bSaveXML))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bAddUser)
-                    .addComponent(bListUser)
-                    .addComponent(bListRes))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bAddProd)
-                    .addComponent(bListProducts))
-                .addContainerGap(33, Short.MAX_VALUE))
-        );
-
-        bLoadXML.setText("LoadXML");
-        bLoadXML.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bLoadXMLActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pMainLayout = new javax.swing.GroupLayout(pMain);
-        pMain.setLayout(pMainLayout);
-        pMainLayout.setHorizontalGroup(
-            pMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pMainLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pMainLayout.createSequentialGroup()
-                        .addComponent(bLoadXML)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(bLoad)
-                        .addGap(18, 18, 18)
-                        .addComponent(bSave)))
-                .addContainerGap(51, Short.MAX_VALUE))
-        );
-        pMainLayout.setVerticalGroup(
-            pMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pMainLayout.createSequentialGroup()
-                .addGroup(pMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bLoad)
-                    .addComponent(bSave)
-                    .addComponent(bLoadXML))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jLayeredPane1.add(pMain);
-        pMain.setBounds(0, 0, 390, 240);
-
         liLogList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -691,6 +742,16 @@ public class MainFrame extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        liShowList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                liShowListMouseClicked(evt);
+            }
+        });
+        liShowList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                liShowListValueChanged(evt);
+            }
+        });
         jScrollPane5.setViewportView(liShowList);
 
         bDelShowOK.setText("Del Show");
@@ -775,6 +836,11 @@ public class MainFrame extends javax.swing.JFrame {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
+        });
+        liMovieList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                liMovieListValueChanged(evt);
+            }
         });
         jScrollPane2.setViewportView(liMovieList);
 
@@ -1041,7 +1107,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jLayeredPane1.add(bReturn);
-        bReturn.setBounds(0, 280, 130, 23);
+        bReturn.setBounds(0, 320, 130, 23);
 
         bExit.setText("Exit");
         bExit.addActionListener(new java.awt.event.ActionListener() {
@@ -1050,12 +1116,12 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jLayeredPane1.add(bExit);
-        bExit.setBounds(400, 280, 80, 23);
+        bExit.setBounds(400, 320, 80, 23);
 
         lSaveInfo.setForeground(new java.awt.Color(204, 0, 0));
         lSaveInfo.setText("Remember to save before exit...");
         jLayeredPane1.add(lSaveInfo);
-        lSaveInfo.setBounds(140, 280, 240, 14);
+        lSaveInfo.setBounds(140, 320, 240, 14);
 
         lName.setText("Name:");
 
@@ -1137,6 +1203,16 @@ public class MainFrame extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        liProdList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                liProdListMouseClicked(evt);
+            }
+        });
+        liProdList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                liProdListValueChanged(evt);
+            }
+        });
         sProdList.setViewportView(liProdList);
 
         bDelProd.setText("Del Product");
@@ -1194,6 +1270,122 @@ public class MainFrame extends javax.swing.JFrame {
         jLayeredPane1.add(pListProducts);
         pListProducts.setBounds(0, 0, 490, 249);
 
+        lAttrName.setText("Name: ");
+
+        lAttrPrice.setText("Price: ");
+
+        eAttrPrice.setText("0.00");
+
+        bAttrAdd.setText("Add Attraction");
+        bAttrAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAttrAddActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pAddAttractionLayout = new javax.swing.GroupLayout(pAddAttraction);
+        pAddAttraction.setLayout(pAddAttractionLayout);
+        pAddAttractionLayout.setHorizontalGroup(
+            pAddAttractionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pAddAttractionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pAddAttractionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pAddAttractionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(pAddAttractionLayout.createSequentialGroup()
+                            .addComponent(lAttrName)
+                            .addGap(18, 18, 18)
+                            .addComponent(eAttrName, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pAddAttractionLayout.createSequentialGroup()
+                            .addComponent(lAttrPrice)
+                            .addGap(22, 22, 22)
+                            .addComponent(eAttrPrice)))
+                    .addComponent(bAttrAdd))
+                .addContainerGap(102, Short.MAX_VALUE))
+        );
+        pAddAttractionLayout.setVerticalGroup(
+            pAddAttractionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pAddAttractionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pAddAttractionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lAttrName)
+                    .addComponent(eAttrName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pAddAttractionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lAttrPrice)
+                    .addComponent(eAttrPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bAttrAdd)
+                .addContainerGap(103, Short.MAX_VALUE))
+        );
+
+        jLayeredPane1.add(pAddAttraction);
+        pAddAttraction.setBounds(0, 0, 243, 194);
+
+        liAttrList.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        liAttrList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                liAttrListMouseClicked(evt);
+            }
+        });
+        liAttrList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                liAttrListValueChanged(evt);
+            }
+        });
+        sAttrLisst.setViewportView(liAttrList);
+
+        tAttrMore.setEditable(false);
+        tAttrMore.setColumns(20);
+        tAttrMore.setRows(5);
+        sAttrMore.setViewportView(tAttrMore);
+
+        bDelAttr.setText("Del Attraction");
+        bDelAttr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bDelAttrActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pListAttractionsLayout = new javax.swing.GroupLayout(pListAttractions);
+        pListAttractions.setLayout(pListAttractionsLayout);
+        pListAttractionsLayout.setHorizontalGroup(
+            pListAttractionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 490, Short.MAX_VALUE)
+            .addGroup(pListAttractionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pListAttractionsLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(sAttrLisst, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pListAttractionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pListAttractionsLayout.createSequentialGroup()
+                            .addGap(34, 34, 34)
+                            .addComponent(bDelAttr))
+                        .addGroup(pListAttractionsLayout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(sAttrMore, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        pListAttractionsLayout.setVerticalGroup(
+            pListAttractionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 256, Short.MAX_VALUE)
+            .addGroup(pListAttractionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pListAttractionsLayout.createSequentialGroup()
+                    .addGap(14, 14, 14)
+                    .addGroup(pListAttractionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(sAttrLisst, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                        .addGroup(pListAttractionsLayout.createSequentialGroup()
+                            .addComponent(bDelAttr)
+                            .addGap(35, 35, 35)
+                            .addComponent(sAttrMore)))
+                    .addGap(15, 15, 15)))
+        );
+
+        jLayeredPane1.add(pListAttractions);
+        pListAttractions.setBounds(0, 0, 490, 256);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1202,7 +1394,9 @@ public class MainFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -1280,6 +1474,8 @@ public class MainFrame extends javax.swing.JFrame {
         pStats.setVisible(false);
         pAddProduct.setVisible(false);
         pListProducts.setVisible(false);
+        pAddAttraction.setVisible(false);
+        pListAttractions.setVisible(false);
         lSaveInfo.setVisible(true);
         lSaveInfo.setText("Remember to save before exit...");
         lSaveInfo.setForeground(Color.red);
@@ -1623,6 +1819,105 @@ public class MainFrame extends javax.swing.JFrame {
         liMovieList.setListData((String[])movs);
     }//GEN-LAST:event_bListMovActionPerformed
 
+    private void bAddAttractionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAddAttractionActionPerformed
+       pAddAttraction.setVisible(true);
+       pOptions.setVisible(false);
+       pMain.setVisible(false);
+    }//GEN-LAST:event_bAddAttractionActionPerformed
+
+    private void liProdListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_liProdListMouseClicked
+        int sel = liProdList.getSelectedIndex();
+        if(sel < 0) return;
+        tProdMore.setVisible(true);
+        tProdMore.setText("ID:"+mgmt.getProds()[sel].getId()+"\nName: "+
+                mgmt.getProds()[sel].getName()+"\nCount: "+
+                mgmt.getProds()[sel].getCount()+"\nPrice: "+
+                mgmt.getProds()[sel].getPrice());
+        tProdMore.setWrapStyleWord(true);
+        tProdMore.setLineWrap(true);
+    }//GEN-LAST:event_liProdListMouseClicked
+
+    private void liShowListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_liShowListMouseClicked
+        int sel = liShowList.getSelectedIndex();
+        if(sel < 0) return;
+        tShowMore.setVisible(true);
+        tShowMore.setText("ID:"+mgmt.getShows()[sel].getID()+"\nTime: "+mgmt.getShows()[sel].getFormatted()+"\nName: "+mgmt.getShows()[sel].getMovie().getName()
+                +"\nGenre: "+mgmt.getShows()[sel].getMovie().getGenre()+"\nRating: "
+                +mgmt.getShows()[sel].getMovie().getRating()+"\nDesc:\n"+mgmt.getShows()[sel].getMovie().getDesc());
+        tShowMore.setWrapStyleWord(true);
+        tShowMore.setLineWrap(true);
+    }//GEN-LAST:event_liShowListMouseClicked
+
+    private void liMovieListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_liMovieListValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_liMovieListValueChanged
+
+    private void liShowListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_liShowListValueChanged
+        int sel = liShowList.getSelectedIndex();
+        if(sel < 0) return;
+        tShowMore.setVisible(true);
+        tShowMore.setText("ID:"+mgmt.getShows()[sel].getID()+"\nTime: "+mgmt.getShows()[sel].getFormatted()+"\nName: "+mgmt.getShows()[sel].getMovie().getName()
+                +"\nGenre: "+mgmt.getShows()[sel].getMovie().getGenre()+"\nRating: "
+                +mgmt.getShows()[sel].getMovie().getRating()+"\nDesc:\n"+mgmt.getShows()[sel].getMovie().getDesc());
+        tShowMore.setWrapStyleWord(true);
+        tShowMore.setLineWrap(true);
+    }//GEN-LAST:event_liShowListValueChanged
+
+    private void liProdListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_liProdListValueChanged
+        int sel = liProdList.getSelectedIndex();
+        if(sel < 0) return;
+        tProdMore.setVisible(true);
+        tProdMore.setText("ID:"+mgmt.getProds()[sel].getId()+"\nName: "+
+                mgmt.getProds()[sel].getName()+"\nCount: "+
+                mgmt.getProds()[sel].getCount()+"\nPrice: "+
+                mgmt.getProds()[sel].getPrice());
+        tProdMore.setWrapStyleWord(true);
+        tProdMore.setLineWrap(true);
+    }//GEN-LAST:event_liProdListValueChanged
+
+    private void liAttrListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_liAttrListMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_liAttrListMouseClicked
+
+    private void liAttrListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_liAttrListValueChanged
+        int sel = liAttrList.getSelectedIndex();
+        if(sel < 0) return;
+        tAttrMore.setVisible(true);
+        tAttrMore.setText("ID:"+mgmt.getAttrs()[sel].getId()+"\nName: "+
+                mgmt.getAttrs()[sel].getName()+"\nPrice: "+
+                mgmt.getAttrs()[sel].getPrice());
+        tAttrMore.setWrapStyleWord(true);
+        tAttrMore.setLineWrap(true);
+    }//GEN-LAST:event_liAttrListValueChanged
+
+    private void bDelAttrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDelAttrActionPerformed
+        int sel = liAttrList.getSelectedIndex();
+        if(sel < 0) return;
+        mgmt.delAttr(sel);
+        pMain.setVisible(true);
+        pListAttractions.setVisible(false);
+    }//GEN-LAST:event_bDelAttrActionPerformed
+
+    private void bListAttractionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bListAttractionActionPerformed
+        pMain.setVisible(false);
+        pListAttractions.setVisible(true);
+        tAttrMore.setVisible(false);
+        String[] attrs = new String[mgmt.getAttrs().length];
+        for(int i = 0;i<mgmt.getAttrs().length;i++){
+            attrs[i] = mgmt.getAttrs()[i].getName();
+        }
+        liAttrList.setListData((String[])attrs);
+    }//GEN-LAST:event_bListAttractionActionPerformed
+
+    private void bAttrAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAttrAddActionPerformed
+        String name = eAttrName.getText();
+        float price = Float.valueOf(eAttrPrice.getText());
+        mgmt.addAttr(name, price);
+        pMain.setVisible(true);
+        pOptions.setVisible(true);
+        pAddAttraction.setVisible(false);
+    }//GEN-LAST:event_bAttrAddActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1659,6 +1954,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bAddAttraction;
     private javax.swing.JButton bAddCRoom;
     private javax.swing.JButton bAddMov;
     private javax.swing.JButton bAddMovOK;
@@ -1666,9 +1962,11 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton bAddProductOK;
     private javax.swing.JButton bAddShow;
     private javax.swing.JButton bAddUser;
+    private javax.swing.JButton bAttrAdd;
     private javax.swing.JButton bCRoomAdd;
     private javax.swing.JButton bClearLog;
     private javax.swing.JButton bClearStat;
+    private javax.swing.JButton bDelAttr;
     private javax.swing.JButton bDelCRoomSel;
     private javax.swing.JButton bDelMovie;
     private javax.swing.JButton bDelProd;
@@ -1677,6 +1975,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton bExit;
     private javax.swing.JButton bGetLog;
     private javax.swing.JButton bGetStat;
+    private javax.swing.JButton bListAttraction;
     private javax.swing.JButton bListCRoom;
     private javax.swing.JButton bListLogs;
     private javax.swing.JButton bListMov;
@@ -1700,6 +1999,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox cbMovieList;
     private javax.swing.JComboBox cbType;
     private javax.swing.JComboBox cbUType;
+    private javax.swing.JTextField eAttrName;
+    private javax.swing.JTextField eAttrPrice;
     private javax.swing.JTextField eCRoomID;
     private javax.swing.JTextField eCount;
     private javax.swing.JTextField eDaySet;
@@ -1728,6 +2029,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JLabel lAttrName;
+    private javax.swing.JLabel lAttrPrice;
     private javax.swing.JLabel lCRoomHello;
     private javax.swing.JLabel lCRoomSet;
     private javax.swing.JLabel lCount;
@@ -1749,6 +2052,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lType;
     private javax.swing.JLabel lUType;
     private javax.swing.JLabel lUserName;
+    private javax.swing.JList liAttrList;
     private javax.swing.JList liCRoomList;
     private javax.swing.JList liLogList;
     private javax.swing.JList liMovieList;
@@ -1756,11 +2060,13 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JList liShowList;
     private javax.swing.JList liStatList;
     private javax.swing.JList liUserList;
+    private javax.swing.JPanel pAddAttraction;
     private javax.swing.JPanel pAddCRoom;
     private javax.swing.JPanel pAddMov;
     private javax.swing.JPanel pAddProduct;
     private javax.swing.JPanel pAddShow;
     private javax.swing.JPanel pAddUser;
+    private javax.swing.JPanel pListAttractions;
     private javax.swing.JPanel pListCRoom;
     private javax.swing.JPanel pListMov;
     private javax.swing.JPanel pListProducts;
@@ -1771,8 +2077,11 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel pMain;
     private javax.swing.JPanel pOptions;
     private javax.swing.JPanel pStats;
+    private javax.swing.JScrollPane sAttrLisst;
+    private javax.swing.JScrollPane sAttrMore;
     private javax.swing.JScrollPane sProdList;
     private javax.swing.JScrollPane sProdMore;
+    private javax.swing.JTextArea tAttrMore;
     private javax.swing.JTextArea tLogText;
     private javax.swing.JTextArea tMovieDesc;
     private javax.swing.JTextArea tMovieMore;

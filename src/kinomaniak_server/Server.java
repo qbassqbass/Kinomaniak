@@ -179,6 +179,8 @@ public class Server  implements Runnable{
      * @param cmd identyfikator komendy
      */
     public void processCmd(int cmd){
+        
+                System.err.println("DEBUG::CMD:"+cmd);
         switch(cmd){
             case -1 : {
                 this.logged = false;
@@ -397,6 +399,7 @@ public class Server  implements Runnable{
                     endThread();
                 }catch(IOException e){
                     System.err.println("IO Error: "+e);
+                    e.printStackTrace();
                     logger.doLog(0,this.threadName+": IO Error from "+this.sockfd.getInetAddress().getHostAddress()+": "+e);
                 }catch(ClassNotFoundException e){
                     System.err.println("Class not found :"+e);
@@ -596,6 +599,7 @@ public class Server  implements Runnable{
                     System.err.println("ClassNotFound Error: "+e);
                     logger.doLog(0, this.threadName+": ClassNotFound from "+sockfd.getInetAddress().getHostAddress()+": "+e);
                 }
+                break;
                 
             }
             case 12:{ // sellProductFromList
@@ -612,7 +616,7 @@ public class Server  implements Runnable{
                             this.oout.writeObject((String)"!OKPROD!");
                         }
                         synchronized(this){
-                            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Prod.kin"));
+                            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Product.kin"));
                             prodlist = (ArrayList<Product>)we.readObject();
                             we.close();
                         }
@@ -629,7 +633,7 @@ public class Server  implements Runnable{
                             }
                         }
                         if(ok){
-                            ObjectOutputStream wy = new ObjectOutputStream(new FileOutputStream("Prod.kin"));
+                            ObjectOutputStream wy = new ObjectOutputStream(new FileOutputStream("Product.kin"));
                             wy.writeObject(prodlist);
                             wy.close();
                             this.oout.writeObject((String)"!OK!");
@@ -646,6 +650,7 @@ public class Server  implements Runnable{
                     System.err.println("ClassNotFound Error: "+e);
                     logger.doLog(0, this.threadName+": ClassNotFound from "+sockfd.getInetAddress().getHostAddress()+": "+e);
                 }
+                break;
             }
             case 13:{ // getAttractionList
                 try{
@@ -681,6 +686,7 @@ public class Server  implements Runnable{
                     System.err.println("ClassNotFound Error: "+e);
                     logger.doLog(0, this.threadName+": ClassNotFound from "+sockfd.getInetAddress().getHostAddress()+": "+e);
                 }
+                break;
             }
             case 14:{ // reserveAttraction
                 try{
@@ -716,6 +722,7 @@ public class Server  implements Runnable{
                     System.err.println("ClassNotFound Error: "+e);
                     logger.doLog(0, this.threadName+": ClassNotFound from "+sockfd.getInetAddress().getHostAddress()+": "+e);
                 }
+                break;
             }
             case 666 :{
                 
@@ -723,6 +730,66 @@ public class Server  implements Runnable{
             }
             case 667:{
                 
+                break;
+            }
+            case 777:{           
+                try { // sendAllDataToAdmin
+                    /*
+                    Files:
+                    CRooms.kin
+                    Movies.kin
+                    Product.kin
+                    Res.kin
+                    Shows.kin
+                    Users.kin
+                    */
+                    this.oout.writeObject((String)"!GDATA!");
+                    String tmp = (String)oin.readObject();
+                    if(tmp.equals("!OK!")){
+                        File f = new File("CRooms.kin");
+                        List<CRoom> r = new ArrayList<CRoom>();
+                        if(f.exists()){
+                            ObjectInputStream we = new ObjectInputStream(new FileInputStream("CRooms.kin"));
+                            r = (ArrayList<CRoom>)we.readObject();
+                            we.close();
+                            this.oout.writeObject((String)"!FILE:CROOMS!");
+                            tmp = (String)oin.readObject();
+                            if(tmp.equals("!OK!")) this.oout.writeObject(r);
+                            
+                        }
+                        tmp = (String)oin.readObject();
+                        
+                        f = new File("Movies.kin");
+                        List<Movie> r2 = new ArrayList<Movie>();
+                        if(f.exists()){
+                            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Movies.kin"));
+                            r2 = (ArrayList<Movie>)we.readObject();
+                            we.close();
+                            this.oout.writeObject((String)"!FILE:MOVIES!");
+                            tmp = (String)oin.readObject();
+                            if(tmp.equals("!OK!")) this.oout.writeObject(r);
+                        }
+                        tmp = (String)oin.readObject();
+                        
+                        f = new File("Product.kin");
+                        List<Product> r3 = new ArrayList<Product>();
+                        if(f.exists()){
+                            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Product.kin"));
+                            r3 = (ArrayList<Product>)we.readObject();
+                            we.close();
+                            this.oout.writeObject((String)"!FILE:PRODUCT!");
+                            tmp = (String)oin.readObject();
+                            if(tmp.equals("!OK!")) this.oout.writeObject(r);
+                        }
+                        tmp = (String)oin.readObject();
+                        
+                        this.oout.writeObject((String)"!FILE:EOS!");
+                    }
+                } catch (IOException ex) {
+                    Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 break;
             }
             default:{

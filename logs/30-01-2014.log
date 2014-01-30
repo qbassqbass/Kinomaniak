@@ -34003,3 +34003,121 @@
 10:23:18  Thread-1 as qbass: Client disconnected: 127.0.0.1
 10:23:18  Thread-1 as qbass: Client disconnected: 127.0.0.1
 10:23:18  Thread-1 as qbass: Client disconnected: 127.0.0.1
+====11:08:51====
+11:08:51  Client connected from 127.0.0.1
+11:08:51  Thread-1 as qbass: 127.0.0.1
+11:08:58  Thread-1 as qbass:Connection closed from 127.0.0.1: java.io.EOFException
+11:08:58  Thread-1 as qbass: Connection closed: 127.0.0.1
+====11:12:34====
+11:12:34  Client connected from 81.26.18.246
+11:12:34  Thread-2 as qbass: 81.26.18.246
+11:12:48  Thread-2 as qbass: Client disconnected: 81.26.18.246
+====11:14:06====
+11:14:06  Client connected from 127.0.0.1
+11:14:06  Thread-3 as qbass: 127.0.0.1
+11:14:20  Thread-3 as qbass:Connection closed from 127.0.0.1: java.io.EOFException
+11:14:20  Thread-3 as qbass: Connection closed: 127.0.0.1
+====11:14:41====
+11:14:41  Client connected from 127.0.0.1
+11:14:41  Thread-4 as qbass: 127.0.0.1
+11:14:51  Thread-4 as qbass: Client disconnected: 127.0.0.1
+11:14:52  Thread-4 as qbass: Client disconnected: 127.0.0.1
+11:14:52  Thread-4 as qbass: Client disconnected: 127.0.0.1
+====11:17:09====
+11:17:09  Client connected from 127.0.0.1
+11:17:09  Thread-5 as qbass: 127.0.0.1
+11:17:15  Thread-5 as qbass:Connection closed from 127.0.0.1: java.io.EOFException
+11:17:15  Thread-5 as qbass: Connection closed: 127.0.0.1
+====11:19:25====
+11:19:25  Client connected from 127.0.0.1
+11:19:25  Thread-6 as qbass: 127.0.0.1
+11:24:01  Thread-6 as qbass: Client disconnected: 127.0.0.1
+====11:37:19====
+11:37:19  Client connected from 127.0.0.1
+11:37:19  Thread-7 as qbass: 127.0.0.1
+====11:45:03====
+11:45:03  Client connected from 127.0.0.1
+11:45:03  Thread-8 as qbass: 127.0.0.1
+11:45:10  Thread-8 as qbass: IO Error from 127.0.0.1: java.io.EOFException
+11:45:10  Thread-8 as qbass: Connection closed: 127.0.0.1
+====11:48:36====
+11:48:36  Client connected from 127.0.0.1
+11:48:37  Thread-1 as qbass: 127.0.0.1
+11:48:45  Thread-1 as qbass: IO Error from 127.0.0.1: java.io.EOFException
+11:48:45  Thread-1 as qbass: Connection closed: 127.0.0.1
+====11:51:10====
+11:51:10  Client connected from 127.0.0.1
+11:51:10  Thread-1 as qbass: 127.0.0.1
+11:51:19  Thread-1 as qbass: IO Error from 127.0.0.1: java.io.EOFException
+11:51:19  Thread-1 as qbass: Connection closed: 127.0.0.1
+====11:53:43====
+11:53:43  Client connected from 127.0.0.1
+11:53:43  Thread-2 as qbass: 127.0.0.1
+11:53:52  Thread-2 as qbass: IO Error from 127.0.0.1: java.io.EOFException
+11:53:52  Thread-2 as qbass: Connection closed: 127.0.0.1
+====11:54:58====
+11:54:58  Client connected from 127.0.0.1
+11:54:58  Thread-3 as qbass: 127.0.0.1
+====11:57:46====
+11:57:46  Client connected from 127.0.0.1
+11:57:46  Thread-4 as qbass: 127.0.0.1
+12:03:57  Thread-4 as qbass: IO Error from 127.0.0.1: java.io.EOFException
+12:03:57  Thread-4 as qbass: Connection closed: 127.0.0.1
+====12:04:39====
+12:04:39  Client connected from 127.0.0.1
+12:04:39  Thread-5 as qbass: 127.0.0.1
+12:05:18  Thread-3 as qbass: Client disconnected: 127.0.0.1
+12:05:36  Thread-5 as qbass: Client disconnected: 127.0.0.1
+12:05:36  Thread-5 as qbass: Client disconnected: 127.0.0.1
+====12:06:19====
+12:06:19  Client connected from 127.0.0.1
+12:06:19  Thread-6 as qbass: 127.0.0.1
+12:07:42  Thread-6 as qbass: Client disconnected: 127.0.0.1
+12:07:42  Thread-6 as qbass: Client disconnected: 127.0.0.1
+====12:08:10====
+12:08:10  Client connected from 127.0.0.1
+12:08:10  Thread-7 as qbass: 127.0.0.1
+12:11:03  Thread-7 as qbass:Connection closed from 127.0.0.1: java.io.EOFException
+12:11:03  Thread-7 as qbass: Connection closed: 127.0.0.1
+====12:11:21====
+12:11:21  Client connected from 127.0.0.1
+12:11:21  Thread-8 as qbass: 127.0.0.1
+12:13:15  Thread-8 as qbass: Client disconnected: 127.0.0.1
+====12:14:10====
+12:14:10  Client connected from 127.0.0.1
+12:14:10  Thread-9 as qbass: 127.0.0.1
+12:15:39  Thread-9 as qbass: Client disconnected: 127.0.0.1
+====12:15:55====
+12:15:55  Client connected from 127.0.0.1
+12:15:55  Thread-10 as qbass: 127.0.0.1
+====12:17:22====
+12:17:22  Client connected from 127.0.0.1
+12:17:22  Thread-11 as qbass: 127.0.0.1
+12:17:59  Thread-11 as qbass: Client disconnected: 127.0.0.1
+====12:23:41====
+12:23:41  Client connected from 127.0.0.1
+12:23:41  Thread-12 as qbass: 127.0.0.1
+12:25:06  Thread-12 as qbass: Client disconnected: 127.0.0.1
+====16:04:51====
+16:04:51  Client connected from 127.0.0.1
+16:04:51  Thread-1 as qbass: 127.0.0.1
+16:05:17  Thread-1 as qbass: Client disconnected: 127.0.0.1
+16:05:17  Thread-1 as qbass: Client disconnected: 127.0.0.1
+16:05:17  Thread-1 as qbass: Client disconnected: 127.0.0.1
+====16:31:19====
+16:31:19  Client connected from 127.0.0.1
+16:31:19  Thread-1 as qbass: 127.0.0.1
+====16:36:05====
+16:36:05  Client connected from 127.0.0.1
+16:36:05  Thread-1 as qbass: 127.0.0.1
+====16:37:08====
+16:37:08  Client connected from 127.0.0.1
+16:37:08  Thread-1 as qbass: 127.0.0.1
+16:39:34  Thread-1 as qbass: Client disconnected: 127.0.0.1
+16:39:34  Thread-1 as qbass: Client disconnected: 127.0.0.1
+16:39:34  Thread-1 as qbass: Client disconnected: 127.0.0.1
+====16:39:50====
+16:39:50  Client connected from 127.0.0.1
+16:39:50  Thread-1 as qbass: 127.0.0.1
+16:39:58  Thread-1 as qbass: IOError from 127.0.0.1: java.io.EOFException
+16:39:58  Thread-1 as qbass: Connection closed: 127.0.0.1

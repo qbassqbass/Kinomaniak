@@ -31,6 +31,7 @@ public class MovieDBMgmt2 {
     private List<User> users;
     private List<Res> ress;
     private List<Product> prods;
+    private List<Attraction> attrs;
     
     /**
      * Konstruktor klasy MovieDBMgmt tworzący listy obiektów projektu Kinomaniak.
@@ -41,8 +42,10 @@ public class MovieDBMgmt2 {
             this.crooms = new ArrayList<CRoom>();
             this.users = new ArrayList<User>();
             this.prods = new ArrayList<Product>();
+            this.attrs = new ArrayList<Attraction>();
     }
     /**
+     * @deprecated 
      * Nieużywany konstruktor klasy MovieDBMgmt
      * @param showFile ścieżka pliku zawierającego listę Seansów
      * @param movieFile ścieżka pliku zawierającego listę Filmów
@@ -94,11 +97,18 @@ public class MovieDBMgmt2 {
             we = new ObjectInputStream(new FileInputStream("Product.kin"));
             this.prods = (ArrayList<Product>)we.readObject();
             we.close();
+            we = new ObjectInputStream(new FileInputStream("Attraction.kin"));
+            this.attrs = (ArrayList<Attraction>)we.readObject();
+            we.close();
          }catch(IOException e){
             System.err.println("IO Error: "+e);
         }catch(ClassNotFoundException e){
             System.err.println("Class not found: "+e);
         }
+    }
+    
+    public void getDataFromServer(){
+        
     }
     /**
      * Metoda zapisująca dane do plików XML
@@ -149,6 +159,7 @@ public class MovieDBMgmt2 {
         List<User> u = new ArrayList<User>();
         List<Res> r = new ArrayList<Res>();
         List<Product> p = new ArrayList<Product>();
+        List<Attraction> a = new ArrayList<Attraction>();
         
         try{
             Document doc = (Document) builder.build(xmlFile);
@@ -196,6 +207,8 @@ public class MovieDBMgmt2 {
             this.crooms = c;
             this.movies = m;
             this.ress = r;
+            this.prods = p;
+            this.attrs = a;
             
         }catch(IOException e){
             System.err.println("IOEx: "+e);
@@ -231,6 +244,9 @@ public class MovieDBMgmt2 {
             wy.close();
             wy = new ObjectOutputStream(new FileOutputStream("Product.kin"));
             wy.writeObject(this.prods);
+            wy.close();
+            wy = new ObjectOutputStream(new FileOutputStream("Attraction.kin"));
+            wy.writeObject(this.attrs);
             wy.close();
         }catch(IOException e){
             System.err.println("IO Error: "+e);
@@ -284,7 +300,13 @@ public class MovieDBMgmt2 {
     public void addUser(String name, String password,int utype){
         this.users.add(new User(name,password,utype));
     }
-    
+    /**
+     * Metoda dodająca produkt
+     * @param name przyjazna nazwa
+     * @param type typ produktu(jedzenie/picie/zabawki/..)
+     * @param price cena produktu
+     * @param count ilość dostępnych
+     */
     public void addProd(String name, int type, float price, int count){
         //Product(String name, int type, float price, int count)
         int prevID;
@@ -292,6 +314,18 @@ public class MovieDBMgmt2 {
         else prevID = this.prods.get(this.prods.size()-1).getId();
         this.prods.add(new Product(name,type,price,count));
         this.prods.get(this.prods.size() - 1).setId(prevID + 1);
+    }
+    /**
+     * Metoda dodająca atrakcje
+     * @param name przyjazna nazwa
+     * @param price cena
+     */
+    public void addAttr(String name, float price){
+        int prevID;
+        if(this.attrs.isEmpty()) prevID = 0;
+        else prevID = this.attrs.get(this.attrs.size()-1).getId();
+        this.attrs.add(new Attraction(name, price));
+        this.attrs.get(this.attrs.size() - 1).setId(prevID + 1);
     }
     /**
      * Metoda usuwająca film o danym identyfikatorze
@@ -337,6 +371,12 @@ public class MovieDBMgmt2 {
     public int delProduct(int n){
         if(n>=this.prods.size()) return -1;
         this.prods.remove(n);
+        return 0;
+    }
+    
+    public int delAttr(int n){
+        if(n>=this.attrs.size()) return -1;
+        this.attrs.remove(n);
         return 0;
     }
     /**
@@ -452,6 +492,10 @@ public class MovieDBMgmt2 {
     
     public Product[] getProds(){
         return this.prods.toArray(new Product[]{});
+    }
+    
+    public Attraction[] getAttrs(){
+        return this.attrs.toArray(new Attraction[]{});
     }
     
     public void saveMovToSQL(int sel){

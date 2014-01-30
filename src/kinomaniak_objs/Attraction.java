@@ -34,6 +34,14 @@ public class Attraction implements Serializable{
         return price;
     }
     
+    public int getId(){
+        return this.id;
+    }
+    
+    public void setId(int id){
+        this.id = id;
+    }
+    
     public Attraction(String name, float price){
         this.name = name;
         this.price = price;
