@@ -333,6 +333,12 @@ public class MovieDBMgmt2 {
         this.users.remove(n);
         return 0;
     }
+    
+    public int delProduct(int n){
+        if(n>=this.prods.size()) return -1;
+        this.prods.remove(n);
+        return 0;
+    }
     /**
      * Metoda zwracająca listę filmów w postaci tablicy
      * @return tablica filmów Movie[]

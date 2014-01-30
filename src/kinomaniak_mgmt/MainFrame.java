@@ -564,7 +564,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(bLoadXML))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLayeredPane1.add(pMain);
@@ -1243,17 +1243,6 @@ public class MainFrame extends javax.swing.JFrame {
         tMovieDesc.setLineWrap(true);
     }//GEN-LAST:event_bAddMovActionPerformed
 
-    private void bListMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bListMovActionPerformed
-        pMain.setVisible(false);
-        pListMov.setVisible(true);
-        tMovieMore.setVisible(false);
-        String[] movs = new String[mgmt.getMovies().length];
-        for(int i = 0;i<mgmt.getMovies().length;i++){
-            movs[i] = mgmt.getMovies()[i].getName();
-        }
-        liMovieList.setListData((String[])movs);
-    }//GEN-LAST:event_bListMovActionPerformed
-
     private void bDelMovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDelMovieActionPerformed
         int sel = liMovieList.getSelectedIndex();
         if(sel < 0) return;
@@ -1593,7 +1582,11 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_bAddProdActionPerformed
 
     private void bDelProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDelProdActionPerformed
-        // TODO add your handling code here:
+        int sel = liProdList.getSelectedIndex();
+        if(sel < 0) return;
+        mgmt.delProduct(sel);
+        pMain.setVisible(true);
+        pListProducts.setVisible(false);
     }//GEN-LAST:event_bDelProdActionPerformed
 
     private void bProdMoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bProdMoreActionPerformed
@@ -1618,6 +1611,17 @@ public class MainFrame extends javax.swing.JFrame {
         }
         liProdList.setListData((String[])prods);     
     }//GEN-LAST:event_bListProductsActionPerformed
+
+    private void bListMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bListMovActionPerformed
+        pMain.setVisible(false);
+        pListMov.setVisible(true);
+        tMovieMore.setVisible(false);
+        String[] movs = new String[mgmt.getMovies().length];
+        for(int i = 0;i<mgmt.getMovies().length;i++){
+            movs[i] = mgmt.getMovies()[i].getName();
+        }
+        liMovieList.setListData((String[])movs);
+    }//GEN-LAST:event_bListMovActionPerformed
 
     /**
      * @param args the command line arguments

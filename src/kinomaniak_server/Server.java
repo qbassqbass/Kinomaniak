@@ -576,7 +576,7 @@ public class Server  implements Runnable{
                             this.oout.writeObject((String)"!OKPROD!");
                         }
                         synchronized(this){
-                            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Prod.kin"));
+                            ObjectInputStream we = new ObjectInputStream(new FileInputStream("Product.kin"));
                             prodlist = (ArrayList<Product>)we.readObject();
                             we.close();
                         }

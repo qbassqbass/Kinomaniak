@@ -33909,3 +33909,97 @@
 02:08:45  Thread-1 as qbass: Client disconnected: 127.0.0.1
 02:08:45  Thread-1 as qbass: Client disconnected: 127.0.0.1
 02:08:45  Thread-1 as qbass: Client disconnected: 127.0.0.1
+====02:12:13====
+02:12:13  Client connected from 127.0.0.1
+02:12:13  Thread-1 as qbass: 127.0.0.1
+02:12:16  Thread-1 as qbass: IOError from 127.0.0.1: java.io.FileNotFoundException: Prod.kin (Nie można odnaleźć określonego pliku)
+====02:14:06====
+02:14:06  Client connected from 127.0.0.1
+02:14:06  Thread-2 as qbass: 127.0.0.1
+02:14:08  Thread-2 as qbass: IOError from 127.0.0.1: java.io.FileNotFoundException: Prod.kin (Nie można odnaleźć określonego pliku)
+02:14:58  Thread-1 as qbass: Client disconnected: 127.0.0.1
+02:14:58  Thread-1 as qbass: Client disconnected: 127.0.0.1
+02:14:58  Thread-1 as qbass: Client disconnected: 127.0.0.1
+02:14:58  Thread-1 as qbass: Client disconnected: 127.0.0.1
+02:15:00  Thread-2 as qbass: Client disconnected: 127.0.0.1
+02:15:00  Thread-2 as qbass: Client disconnected: 127.0.0.1
+02:15:00  Thread-2 as qbass: Client disconnected: 127.0.0.1
+02:15:00  Thread-2 as qbass: Client disconnected: 127.0.0.1
+====02:18:48====
+02:18:48  Client connected from 127.0.0.1
+02:18:48  Thread-1 as qbass: 127.0.0.1
+02:19:01  Thread-1 as qbass: Client disconnected: 127.0.0.1
+02:19:01  Thread-1 as qbass: Client disconnected: 127.0.0.1
+02:19:01  Thread-1 as qbass: Client disconnected: 127.0.0.1
+02:19:01  Thread-1 as qbass: Client disconnected: 127.0.0.1
+====02:19:18====
+02:19:18  Client connected from 127.0.0.1
+02:19:18  Thread-2 as qbass: 127.0.0.1
+02:20:01  Thread-2 as qbass: Client disconnected: 127.0.0.1
+02:20:01  Thread-2 as qbass: Client disconnected: 127.0.0.1
+02:20:01  Thread-2 as qbass: Client disconnected: 127.0.0.1
+02:20:01  Thread-2 as qbass: Client disconnected: 127.0.0.1
+====08:26:52====
+08:26:52  Client connected from 127.0.0.1
+08:26:52  Thread-1 as qbass: 127.0.0.1
+08:28:42  Thread-1 as qbass: Client disconnected: 127.0.0.1
+08:28:42  Thread-1 as qbass: Client disconnected: 127.0.0.1
+08:28:42  Thread-1 as qbass: Client disconnected: 127.0.0.1
+08:28:42  Thread-1 as qbass: Client disconnected: 127.0.0.1
+====08:29:02====
+08:29:02  Client connected from 127.0.0.1
+08:29:02  Thread-2 as qbass: 127.0.0.1
+08:30:14  Thread-2 as qbass: Client disconnected: 127.0.0.1
+08:30:14  Thread-2 as qbass: Client disconnected: 127.0.0.1
+08:30:14  Thread-2 as qbass: Client disconnected: 127.0.0.1
+08:30:14  Thread-2 as qbass: Client disconnected: 127.0.0.1
+====08:31:04====
+08:31:04  Client connected from 127.0.0.1
+08:31:04  Thread-3 as qbass: 127.0.0.1
+08:33:22  Thread-3 as qbass: Client disconnected: 127.0.0.1
+08:33:22  Thread-3 as qbass: Client disconnected: 127.0.0.1
+08:33:22  Thread-3 as qbass: Client disconnected: 127.0.0.1
+08:33:22  Thread-3 as qbass: Client disconnected: 127.0.0.1
+====08:33:33====
+08:33:33  Client connected from 127.0.0.1
+08:33:33  Thread-4 as qbass: 127.0.0.1
+08:33:37  Thread-4 as qbass: IOError from 127.0.0.1: java.io.InvalidClassException: kinomaniak_objs.Product; local class incompatible: stream classdesc serialVersionUID = 1, local class serialVersionUID = -4465917003428965208
+08:34:08  Thread-4 as qbass: Client disconnected: 127.0.0.1
+08:34:08  Thread-4 as qbass: Client disconnected: 127.0.0.1
+08:34:08  Thread-4 as qbass: Client disconnected: 127.0.0.1
+08:34:08  Thread-4 as qbass: Client disconnected: 127.0.0.1
+====08:34:22====
+08:34:22  Client connected from 127.0.0.1
+08:34:22  Thread-5 as qbass: 127.0.0.1
+08:34:26  Thread-5 as qbass: IOError from 127.0.0.1: java.io.InvalidClassException: kinomaniak_objs.Product; local class incompatible: stream classdesc serialVersionUID = 1, local class serialVersionUID = -4465917003428965208
+08:34:36  Thread-5 as qbass: Client disconnected: 127.0.0.1
+08:34:36  Thread-5 as qbass: Client disconnected: 127.0.0.1
+08:34:36  Thread-5 as qbass: Client disconnected: 127.0.0.1
+08:34:36  Thread-5 as qbass: Client disconnected: 127.0.0.1
+====08:37:40====
+08:37:40  Client connected from 127.0.0.1
+08:37:40  Thread-1 as qbass: 127.0.0.1
+08:38:19  Thread-1 as qbass: Client disconnected: 127.0.0.1
+08:38:19  Thread-1 as qbass: Client disconnected: 127.0.0.1
+08:38:19  Thread-1 as qbass: Client disconnected: 127.0.0.1
+08:38:19  Thread-1 as qbass: Client disconnected: 127.0.0.1
+====08:38:39====
+08:38:39  Client connected from 127.0.0.1
+08:38:39  Thread-2 as qbass: 127.0.0.1
+08:40:06  Thread-2 as qbass: Client disconnected: 127.0.0.1
+08:40:06  Thread-2 as qbass: Client disconnected: 127.0.0.1
+08:40:06  Thread-2 as qbass: Client disconnected: 127.0.0.1
+08:40:06  Thread-2 as qbass: Client disconnected: 127.0.0.1
+====08:42:31====
+08:42:31  Client connected from 127.0.0.1
+08:42:31  Thread-3 as qbass: 127.0.0.1
+08:42:40  Thread-3 as qbass: Client disconnected: 127.0.0.1
+08:42:40  Thread-3 as qbass: Client disconnected: 127.0.0.1
+08:42:40  Thread-3 as qbass: Client disconnected: 127.0.0.1
+====10:23:10====
+10:23:10  Client connected from 127.0.0.1
+10:23:10  Thread-1 as qbass: 127.0.0.1
+10:23:18  Thread-1 as qbass: Client disconnected: 127.0.0.1
+10:23:18  Thread-1 as qbass: Client disconnected: 127.0.0.1
+10:23:18  Thread-1 as qbass: Client disconnected: 127.0.0.1
+10:23:18  Thread-1 as qbass: Client disconnected: 127.0.0.1
