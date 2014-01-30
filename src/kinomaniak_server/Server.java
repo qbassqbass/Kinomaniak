@@ -568,7 +568,7 @@ public class Server  implements Runnable{
                     String tmp = (String)oin.readObject();
                     List<Product> prodlist = new ArrayList<Product>();
                     if(tmp.equals("!OK!")){
-                        File r = new File("Prod.kin");
+                        File r = new File("Product.kin");
                         if(!r.exists()){
                             this.oout.writeObject((String)"!NOPROD!");
                             break;
@@ -604,7 +604,7 @@ public class Server  implements Runnable{
                     String tmp = (String)oin.readObject();
                     List<Product> prodlist = new ArrayList<Product>();
                     if(tmp.equals("!OK!")){
-                        File r = new File("Prod.kin");
+                        File r = new File("Product.kin");
                         if(!r.exists()){
                             this.oout.writeObject((String)"!NOPROD!");
                             break;

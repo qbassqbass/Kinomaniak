@@ -33901,3 +33901,11 @@
 02:05:23  Client connected from 127.0.0.1
 02:05:23  Thread-1 as qbass: 127.0.0.1
 02:05:42  Thread-1 as qbass: Client disconnected: 127.0.0.1
+====02:08:30====
+02:08:30  Client connected from 127.0.0.1
+02:08:30  Thread-1 as qbass: 127.0.0.1
+02:08:32  Thread-1 as qbass: IOError from 127.0.0.1: java.io.FileNotFoundException: Prod.kin (Nie można odnaleźć określonego pliku)
+02:08:45  Thread-1 as qbass: Client disconnected: 127.0.0.1
+02:08:45  Thread-1 as qbass: Client disconnected: 127.0.0.1
+02:08:45  Thread-1 as qbass: Client disconnected: 127.0.0.1
+02:08:45  Thread-1 as qbass: Client disconnected: 127.0.0.1
