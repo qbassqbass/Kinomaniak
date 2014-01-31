@@ -696,7 +696,8 @@ public class Server  implements Runnable{
                     if(tmp.equals("!OK!")){
                         File r = new File("AttrRes.kin");
                         this.oout.writeObject((String)"!GOARES!");
-                        AttrRes res = (AttrRes)this.oin.readObject();
+                        Attraction atr = (Attraction)this.oin.readObject();
+                        AttrRes res = new AttrRes(atr);
                         if(!r.exists()){
                             r.createNewFile();
                             reslist.add(res);

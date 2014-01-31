@@ -23,6 +23,12 @@ public class AttrRes implements Serializable{
         this.time = time;
     }
     
+    public AttrRes(Attraction atr){
+        this.imienazwisko = null;
+        this.atrid = atr.getId();
+        this.time = null;
+    }
+    
     public String getName(){
         return this.imienazwisko;
     }
