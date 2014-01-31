@@ -1,0 +1,12 @@
+09:14:33  Res: dasdas ShowID: 2 SeatCount: 6
+09:19:58  Res: das ShowID: 1 SeatCount: 1
+09:20:57  Res: dasxc ShowID: 1 SeatCount: 2
+10:36:13  Res: japas ShowID: 1 SeatCount: 2
+10:38:03  GetRes: japas ShowID:1 SeatsCount:2
+10:40:38  Res: japas ShowID: 1 SeatCount: 1
+10:40:50  CancelRes: japas ShowID:1 SeatsCount:2
+10:41:16  CancelRes: japas ShowID:1 SeatsCount:1
+10:41:39  CancelRes: dasxc ShowID:1 SeatsCount:2
+10:42:26  GetRes: das ShowID:1 SeatsCount:1
+10:42:28  CancelRes: das ShowID:1 SeatsCount:1
+10:42:33  CancelRes: jpas ShowID:1 SeatsCount:1

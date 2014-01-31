@@ -1,0 +1,46 @@
+====15:38:52====
+15:38:52  Client connected from 127.0.0.1
+15:38:52  Thread-0: 127.0.0.1
+15:39:23  Thread-0 as adas: Connection closed: 127.0.0.1
+====15:43:11====
+15:43:11  Client connected from 127.0.0.1
+15:43:13  Thread-0 as adas: 127.0.0.1
+15:44:23  Thread-0 as adas: Connection closed: 127.0.0.1
+====18:12:48====
+18:12:48  Client connected from 127.0.0.1
+18:12:51  Thread-0 as adas: 127.0.0.1
+====18:13:20====
+18:13:20  Client connected from 127.0.0.1
+18:13:28  Thread-0: User login error from 127.0.0.1
+====18:15:00====
+18:15:00  Client connected from 127.0.0.1
+18:15:04  Thread-0 as adas: 127.0.0.1
+18:15:15  Thread-0 as adas: Connection closed: 127.0.0.1
+====18:15:17====
+18:15:17  Client connected from 127.0.0.1
+18:15:21  Thread-1: User login error from 127.0.0.1
+18:15:21  Thread-1 as sdasdas: 127.0.0.1
+18:15:21  Thread-1 as sdasdas: IOError from 127.0.0.1: java.net.SocketException: Socket closed
+====18:19:54====
+18:19:54  Client connected from 127.0.0.1
+18:19:58  Thread-0: User login error from 127.0.0.1
+18:19:58  Thread-0 as das: 127.0.0.1
+18:19:58  Thread-0 as das: IOError from 127.0.0.1: java.net.SocketException: Socket closed
+====18:23:48====
+18:23:48  Client connected from 127.0.0.1
+18:23:53  Thread-0: User login error from 127.0.0.1
+18:23:53  Thread-0 as czas: 127.0.0.1
+18:23:53  Thread-0 as czas: IOError from 127.0.0.1: java.net.SocketException: Socket closed
+====18:24:23====
+18:24:23  Client connected from 127.0.0.1
+18:24:26  Thread-0: User login error from 127.0.0.1
+18:24:26  Thread-0 as dsada: 127.0.0.1
+18:24:26  Thread-0 as dsada: IOError from 127.0.0.1: java.net.SocketException: Socket closed
+====18:29:47====
+18:29:47  Client connected from 127.0.0.1
+18:29:51  Thread-0: User login error from 127.0.0.1
+23:10:52  
+====23:11:12====
+23:11:12  Client connected from 127.0.0.1
+23:11:21  Thread-0 as adas: 127.0.0.1
+23:11:40  Thread-0 as adas: Connection closed: 127.0.0.1

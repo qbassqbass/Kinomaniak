@@ -1,0 +1,15 @@
+00:16:22  SendProd to Thread-1 as qbass
+00:16:24  BuyProd: Dummy
+00:16:25  SendProd to Thread-1 as qbass
+00:16:27  BuyProd: Dummy
+00:16:28  SendProd to Thread-1 as qbass
+00:16:29  BuyProd: Dummy
+00:16:30  SendProd to Thread-1 as qbass
+00:16:31  BuyProd: Dummy
+00:16:32  SendRes to Thread-1 as qbass
+00:17:00  SendProd to Thread-2 as qbass
+09:03:58  SendAttr to Thread-1 as qbass
+09:05:21  SendAttr to Thread-2 as qbass
+09:06:10  SendAttr to Thread-3 as qbass
+09:10:28  SendAttr to Thread-1 as qbass
+09:10:33  SendAttr to Thread-1 as qbass

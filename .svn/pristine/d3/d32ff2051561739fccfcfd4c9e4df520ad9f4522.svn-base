@@ -1,0 +1,967 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Kinomaniak>
+  <Movie id="0">
+    <name>3sda</name>
+    <genre>dsa</genre>
+    <rating>cxzcz</rating>
+    <desc>asdasdas</desc>
+  </Movie>
+  <Movie id="0">
+    <name>Star Wars</name>
+    <genre>Action</genre>
+    <rating>Everyone</rating>
+    <desc>Long long time ago...</desc>
+  </Movie>
+  <Movie id="0">
+    <name>Blablu</name>
+    <genre>balab</genre>
+    <rating>everyone</rating>
+    <desc>balabalablbalbalbalbalbalbalbalbalbalbalablablablablablabalbalbalba</desc>
+  </Movie>
+  <Movie id="0">
+    <name>Szybcy i wściekli 6</name>
+    <genre>Kryminał, Akcja</genre>
+    <rating>16+</rating>
+    <desc>Grupa świetnie wyszkolonych kierowców porywa transport wojskowej broni. W zamian za całkowitą abolicję, Dom i jego grupa zgadzają się pomóc agentowi Hobsowi przy powstrzymaniu najemników.</desc>
+  </Movie>
+  <Movie id="0">
+    <name>Iron Man 3</name>
+    <genre>Akcja,Sci-Fi</genre>
+    <rating>14+</rating>
+    <desc>Tony Stark wyrusza w podróż, by zemścić się na tych, przez których jego świat legł w gruzach.</desc>
+  </Movie>
+  <Movie id="0">
+    <name>Inny Świat</name>
+    <genre>Biograficzny, Dokumentalny</genre>
+    <rating>14+</rating>
+    <desc>Wybitna aktorka Danuta Szaflarska opowiada w filmie w barwny i humorystyczny sposób o swoich przeżyciach i wspomnieniach z dawnych lat.</desc>
+  </Movie>
+  <Movie id="0">
+    <name>Dziewczyna z szafy</name>
+    <genre>Dramat, Komedia</genre>
+    <rating>18+</rating>
+    <desc>Pewnego dnia Jacek prosi depresyjną sąsiadkę o opiekę nad swoim upośledzonym bratem. Nie spodziewa się nawet, że tych dwoje połączy głęboka więź.</desc>
+  </Movie>
+  <Movie id="0">
+    <name>Dziewczynka w trampkach</name>
+    <genre>Dramat</genre>
+    <rating>18+</rating>
+    <desc>Wadjda ma 10 lat i marzy o rowerze, choć w jej kraju kobietom nie wolno prowadzić żadnych pojazdów. Żeby zdobyć na niego pieniądze, zbuntowana dziewczynka bierze udział w konkursie recytatorskim Koranu.</desc>
+  </Movie>
+  <CRoom>
+    <id>1</id>
+  </CRoom>
+  <CRoom>
+    <id>2</id>
+  </CRoom>
+  <CRoom>
+    <id>3</id>
+  </CRoom>
+  <Show>
+    <showid>1</showid>
+    <Movie id="0">
+      <name>3sda</name>
+      <genre>dsa</genre>
+      <rating>cxzcz</rating>
+      <desc>asdasdas</desc>
+    </Movie>
+    <CRoom>
+      <id>1</id>
+    </CRoom>
+    <Time>
+      <hour>12</hour>
+      <minute>12</minute>
+      <day>12</day>
+      <month>12</month>
+      <year>2012</year>
+    </Time>
+  </Show>
+  <Show>
+    <showid>2</showid>
+    <Movie id="0">
+      <name>Star Wars</name>
+      <genre>Action</genre>
+      <rating>Everyone</rating>
+      <desc>Long long time ago...</desc>
+    </Movie>
+    <CRoom>
+      <id>1</id>
+    </CRoom>
+    <Time>
+      <hour>20</hour>
+      <minute>15</minute>
+      <day>1</day>
+      <month>1</month>
+      <year>2013</year>
+    </Time>
+  </Show>
+  <Show>
+    <showid>3</showid>
+    <Movie id="0">
+      <name>Szybcy i wściekli 6</name>
+      <genre>Kryminał, Akcja</genre>
+      <rating>16+</rating>
+      <desc>Grupa świetnie wyszkolonych kierowców porywa transport wojskowej broni. W zamian za całkowitą abolicję, Dom i jego grupa zgadzają się pomóc agentowi Hobsowi przy powstrzymaniu najemników.</desc>
+    </Movie>
+    <CRoom>
+      <id>2</id>
+    </CRoom>
+    <Time>
+      <hour>22</hour>
+      <minute>0</minute>
+      <day>18</day>
+      <month>6</month>
+      <year>2013</year>
+    </Time>
+  </Show>
+  <Show>
+    <showid>4</showid>
+    <Movie id="0">
+      <name>Iron Man 3</name>
+      <genre>Akcja,Sci-Fi</genre>
+      <rating>14+</rating>
+      <desc>Tony Stark wyrusza w podróż, by zemścić się na tych, przez których jego świat legł w gruzach.</desc>
+    </Movie>
+    <CRoom>
+      <id>2</id>
+    </CRoom>
+    <Time>
+      <hour>20</hour>
+      <minute>0</minute>
+      <day>18</day>
+      <month>6</month>
+      <year>2013</year>
+    </Time>
+  </Show>
+  <Show>
+    <showid>5</showid>
+    <Movie id="0">
+      <name>Iron Man 3</name>
+      <genre>Akcja,Sci-Fi</genre>
+      <rating>14+</rating>
+      <desc>Tony Stark wyrusza w podróż, by zemścić się na tych, przez których jego świat legł w gruzach.</desc>
+    </Movie>
+    <CRoom>
+      <id>2</id>
+    </CRoom>
+    <Time>
+      <hour>18</hour>
+      <minute>0</minute>
+      <day>18</day>
+      <month>6</month>
+      <year>2013</year>
+    </Time>
+  </Show>
+  <Show>
+    <showid>6</showid>
+    <Movie id="0">
+      <name>Iron Man 3</name>
+      <genre>Akcja,Sci-Fi</genre>
+      <rating>14+</rating>
+      <desc>Tony Stark wyrusza w podróż, by zemścić się na tych, przez których jego świat legł w gruzach.</desc>
+    </Movie>
+    <CRoom>
+      <id>2</id>
+    </CRoom>
+    <Time>
+      <hour>16</hour>
+      <minute>0</minute>
+      <day>18</day>
+      <month>6</month>
+      <year>2013</year>
+    </Time>
+  </Show>
+  <Show>
+    <showid>7</showid>
+    <Movie id="0">
+      <name>Inny Świat</name>
+      <genre>Biograficzny, Dokumentalny</genre>
+      <rating>14+</rating>
+      <desc>Wybitna aktorka Danuta Szaflarska opowiada w filmie w barwny i humorystyczny sposób o swoich przeżyciach i wspomnieniach z dawnych lat.</desc>
+    </Movie>
+    <CRoom>
+      <id>3</id>
+    </CRoom>
+    <Time>
+      <hour>16</hour>
+      <minute>0</minute>
+      <day>18</day>
+      <month>6</month>
+      <year>2013</year>
+    </Time>
+  </Show>
+  <Show>
+    <showid>8</showid>
+    <Movie id="0">
+      <name>Inny Świat</name>
+      <genre>Biograficzny, Dokumentalny</genre>
+      <rating>14+</rating>
+      <desc>Wybitna aktorka Danuta Szaflarska opowiada w filmie w barwny i humorystyczny sposób o swoich przeżyciach i wspomnieniach z dawnych lat.</desc>
+    </Movie>
+    <CRoom>
+      <id>3</id>
+    </CRoom>
+    <Time>
+      <hour>18</hour>
+      <minute>0</minute>
+      <day>18</day>
+      <month>6</month>
+      <year>2013</year>
+    </Time>
+  </Show>
+  <Show>
+    <showid>9</showid>
+    <Movie id="0">
+      <name>Inny Świat</name>
+      <genre>Biograficzny, Dokumentalny</genre>
+      <rating>14+</rating>
+      <desc>Wybitna aktorka Danuta Szaflarska opowiada w filmie w barwny i humorystyczny sposób o swoich przeżyciach i wspomnieniach z dawnych lat.</desc>
+    </Movie>
+    <CRoom>
+      <id>3</id>
+    </CRoom>
+    <Time>
+      <hour>20</hour>
+      <minute>0</minute>
+      <day>18</day>
+      <month>6</month>
+      <year>2013</year>
+    </Time>
+  </Show>
+  <Show>
+    <showid>10</showid>
+    <Movie id="0">
+      <name>Dziewczyna z szafy</name>
+      <genre>Dramat, Komedia</genre>
+      <rating>18+</rating>
+      <desc>Pewnego dnia Jacek prosi depresyjną sąsiadkę o opiekę nad swoim upośledzonym bratem. Nie spodziewa się nawet, że tych dwoje połączy głęboka więź.</desc>
+    </Movie>
+    <CRoom>
+      <id>1</id>
+    </CRoom>
+    <Time>
+      <hour>20</hour>
+      <minute>0</minute>
+      <day>18</day>
+      <month>6</month>
+      <year>2013</year>
+    </Time>
+  </Show>
+  <Show>
+    <showid>11</showid>
+    <Movie id="0">
+      <name>Dziewczyna z szafy</name>
+      <genre>Dramat, Komedia</genre>
+      <rating>18+</rating>
+      <desc>Pewnego dnia Jacek prosi depresyjną sąsiadkę o opiekę nad swoim upośledzonym bratem. Nie spodziewa się nawet, że tych dwoje połączy głęboka więź.</desc>
+    </Movie>
+    <CRoom>
+      <id>1</id>
+    </CRoom>
+    <Time>
+      <hour>18</hour>
+      <minute>0</minute>
+      <day>18</day>
+      <month>6</month>
+      <year>2013</year>
+    </Time>
+  </Show>
+  <Show>
+    <showid>12</showid>
+    <Movie id="0">
+      <name>Dziewczyna z szafy</name>
+      <genre>Dramat, Komedia</genre>
+      <rating>18+</rating>
+      <desc>Pewnego dnia Jacek prosi depresyjną sąsiadkę o opiekę nad swoim upośledzonym bratem. Nie spodziewa się nawet, że tych dwoje połączy głęboka więź.</desc>
+    </Movie>
+    <CRoom>
+      <id>1</id>
+    </CRoom>
+    <Time>
+      <hour>16</hour>
+      <minute>0</minute>
+      <day>18</day>
+      <month>6</month>
+      <year>2013</year>
+    </Time>
+  </Show>
+  <Show>
+    <showid>13</showid>
+    <Movie id="0">
+      <name>Dziewczyna z szafy</name>
+      <genre>Dramat, Komedia</genre>
+      <rating>18+</rating>
+      <desc>Pewnego dnia Jacek prosi depresyjną sąsiadkę o opiekę nad swoim upośledzonym bratem. Nie spodziewa się nawet, że tych dwoje połączy głęboka więź.</desc>
+    </Movie>
+    <CRoom>
+      <id>1</id>
+    </CRoom>
+    <Time>
+      <hour>14</hour>
+      <minute>0</minute>
+      <day>18</day>
+      <month>6</month>
+      <year>2013</year>
+    </Time>
+  </Show>
+  <Show>
+    <showid>14</showid>
+    <Movie id="0">
+      <name>Dziewczynka w trampkach</name>
+      <genre>Dramat</genre>
+      <rating>18+</rating>
+      <desc>Wadjda ma 10 lat i marzy o rowerze, choć w jej kraju kobietom nie wolno prowadzić żadnych pojazdów. Żeby zdobyć na niego pieniądze, zbuntowana dziewczynka bierze udział w konkursie recytatorskim Koranu.</desc>
+    </Movie>
+    <CRoom>
+      <id>1</id>
+    </CRoom>
+    <Time>
+      <hour>12</hour>
+      <minute>0</minute>
+      <day>18</day>
+      <month>6</month>
+      <year>2013</year>
+    </Time>
+  </Show>
+  <User id="0">
+    <name>adas</name>
+    <password>40bd001563085fc35165329ea1ff5c5ecbdbbeef</password>
+    <utype>1</utype>
+  </User>
+  <User id="0">
+    <name>kond</name>
+    <password>7110eda4d09e062aa5e4a390b0a572ac0d2c0220</password>
+    <utype>1</utype>
+  </User>
+  <User id="0">
+    <name>qbass</name>
+    <password>d1c422472de65a086b495ecb2c13b57b4c95303b</password>
+    <utype>1</utype>
+  </User>
+  <Res>
+    <imienazwisko>da</imienazwisko>
+    <showid>1</showid>
+    <checked>true</checked>
+    <ok>false</ok>
+    <seats count="1">
+      <seat>
+        <row>1</row>
+        <col>1</col>
+      </seat>
+    </seats>
+  </Res>
+  <Res>
+    <imienazwisko>jalac</imienazwisko>
+    <showid>1</showid>
+    <checked>false</checked>
+    <ok>false</ok>
+    <seats count="2">
+      <seat>
+        <row>1</row>
+        <col>1</col>
+      </seat>
+      <seat>
+        <row>1</row>
+        <col>2</col>
+      </seat>
+    </seats>
+  </Res>
+  <Res>
+    <imienazwisko>qbass</imienazwisko>
+    <showid>1</showid>
+    <checked>false</checked>
+    <ok>false</ok>
+    <seats count="3">
+      <seat>
+        <row>2</row>
+        <col>2</col>
+      </seat>
+      <seat>
+        <row>2</row>
+        <col>3</col>
+      </seat>
+      <seat>
+        <row>2</row>
+        <col>4</col>
+      </seat>
+    </seats>
+  </Res>
+  <Res>
+    <imienazwisko>dasdas</imienazwisko>
+    <showid>2</showid>
+    <checked>false</checked>
+    <ok>false</ok>
+    <seats count="6">
+      <seat>
+        <row>6</row>
+        <col>7</col>
+      </seat>
+      <seat>
+        <row>6</row>
+        <col>8</col>
+      </seat>
+      <seat>
+        <row>6</row>
+        <col>9</col>
+      </seat>
+      <seat>
+        <row>6</row>
+        <col>6</col>
+      </seat>
+      <seat>
+        <row>6</row>
+        <col>5</col>
+      </seat>
+      <seat>
+        <row>6</row>
+        <col>4</col>
+      </seat>
+    </seats>
+  </Res>
+  <Res>
+    <imienazwisko>japas okpas</imienazwisko>
+    <showid>2</showid>
+    <checked>false</checked>
+    <ok>false</ok>
+    <seats count="10">
+      <seat>
+        <row>4</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>5</row>
+        <col>1</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+    </seats>
+  </Res>
+  <Res>
+    <imienazwisko>dsadas cxzczx</imienazwisko>
+    <showid>1</showid>
+    <checked>false</checked>
+    <ok>false</ok>
+    <seats count="10">
+      <seat>
+        <row>3</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+    </seats>
+  </Res>
+  <Res>
+    <imienazwisko>qweqw cxzczx</imienazwisko>
+    <showid>9</showid>
+    <checked>false</checked>
+    <ok>false</ok>
+    <seats count="10">
+      <seat>
+        <row>5</row>
+        <col>3</col>
+      </seat>
+      <seat>
+        <row>6</row>
+        <col>3</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+    </seats>
+  </Res>
+  <Res>
+    <imienazwisko>dsa dsa</imienazwisko>
+    <showid>2</showid>
+    <checked>false</checked>
+    <ok>false</ok>
+    <seats count="10">
+      <seat>
+        <row>7</row>
+        <col>7</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+    </seats>
+  </Res>
+  <Res>
+    <imienazwisko>wt45 g433</imienazwisko>
+    <showid>14</showid>
+    <checked>false</checked>
+    <ok>false</ok>
+    <seats count="10">
+      <seat>
+        <row>4</row>
+        <col>2</col>
+      </seat>
+      <seat>
+        <row>5</row>
+        <col>4</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+    </seats>
+  </Res>
+  <Res>
+    <imienazwisko>NULL</imienazwisko>
+    <showid>2</showid>
+    <checked>true</checked>
+    <ok>true</ok>
+    <seats count="2">
+      <seat>
+        <row>4</row>
+        <col>1</col>
+      </seat>
+      <seat>
+        <row>4</row>
+        <col>2</col>
+      </seat>
+    </seats>
+  </Res>
+  <Res>
+    <imienazwisko>NULL</imienazwisko>
+    <showid>14</showid>
+    <checked>true</checked>
+    <ok>true</ok>
+    <seats count="3">
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>4</row>
+        <col>2</col>
+      </seat>
+      <seat>
+        <row>5</row>
+        <col>4</col>
+      </seat>
+    </seats>
+  </Res>
+  <Res>
+    <imienazwisko>NULL</imienazwisko>
+    <showid>4</showid>
+    <checked>true</checked>
+    <ok>true</ok>
+    <seats count="3">
+      <seat>
+        <row>4</row>
+        <col>2</col>
+      </seat>
+      <seat>
+        <row>4</row>
+        <col>3</col>
+      </seat>
+      <seat>
+        <row>5</row>
+        <col>3</col>
+      </seat>
+    </seats>
+  </Res>
+  <Res>
+    <imienazwisko>NULL</imienazwisko>
+    <showid>9</showid>
+    <checked>true</checked>
+    <ok>true</ok>
+    <seats count="2">
+      <seat>
+        <row>4</row>
+        <col>7</col>
+      </seat>
+      <seat>
+        <row>5</row>
+        <col>6</col>
+      </seat>
+    </seats>
+  </Res>
+  <Res>
+    <imienazwisko>NULL</imienazwisko>
+    <showid>9</showid>
+    <checked>true</checked>
+    <ok>true</ok>
+    <seats count="2">
+      <seat>
+        <row>4</row>
+        <col>6</col>
+      </seat>
+      <seat>
+        <row>5</row>
+        <col>5</col>
+      </seat>
+    </seats>
+  </Res>
+  <Res>
+    <imienazwisko>NULL</imienazwisko>
+    <showid>5</showid>
+    <checked>true</checked>
+    <ok>true</ok>
+    <seats count="2">
+      <seat>
+        <row>4</row>
+        <col>7</col>
+      </seat>
+      <seat>
+        <row>5</row>
+        <col>6</col>
+      </seat>
+    </seats>
+  </Res>
+  <Res>
+    <imienazwisko>NULL</imienazwisko>
+    <showid>4</showid>
+    <checked>true</checked>
+    <ok>true</ok>
+    <seats count="8">
+      <seat>
+        <row>0</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>1</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>5</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>5</row>
+        <col>1</col>
+      </seat>
+      <seat>
+        <row>5</row>
+        <col>2</col>
+      </seat>
+      <seat>
+        <row>6</row>
+        <col>0</col>
+      </seat>
+      <seat>
+        <row>6</row>
+        <col>1</col>
+      </seat>
+      <seat>
+        <row>6</row>
+        <col>2</col>
+      </seat>
+    </seats>
+  </Res>
+  <Res>
+    <imienazwisko>NULL</imienazwisko>
+    <showid>6</showid>
+    <checked>true</checked>
+    <ok>true</ok>
+    <seats count="1">
+      <seat>
+        <row>9</row>
+        <col>6</col>
+      </seat>
+    </seats>
+  </Res>
+  <Res>
+    <imienazwisko>NULL</imienazwisko>
+    <showid>6</showid>
+    <checked>true</checked>
+    <ok>true</ok>
+    <seats count="1">
+      <seat>
+        <row>1</row>
+        <col>3</col>
+      </seat>
+    </seats>
+  </Res>
+  <Res>
+    <imienazwisko>NULL</imienazwisko>
+    <showid>6</showid>
+    <checked>true</checked>
+    <ok>true</ok>
+    <seats count="1">
+      <seat>
+        <row>3</row>
+        <col>4</col>
+      </seat>
+    </seats>
+  </Res>
+  <Res>
+    <imienazwisko>NULL</imienazwisko>
+    <showid>4</showid>
+    <checked>true</checked>
+    <ok>true</ok>
+    <seats count="3">
+      <seat>
+        <row>4</row>
+        <col>5</col>
+      </seat>
+      <seat>
+        <row>5</row>
+        <col>4</col>
+      </seat>
+      <seat>
+        <row>5</row>
+        <col>5</col>
+      </seat>
+    </seats>
+  </Res>
+  <Res>
+    <imienazwisko>NULL</imienazwisko>
+    <showid>4</showid>
+    <checked>true</checked>
+    <ok>true</ok>
+    <seats count="1">
+      <seat>
+        <row>5</row>
+        <col>6</col>
+      </seat>
+    </seats>
+  </Res>
+  <Res>
+    <imienazwisko>NULL</imienazwisko>
+    <showid>7</showid>
+    <checked>true</checked>
+    <ok>true</ok>
+    <seats count="4">
+      <seat>
+        <row>5</row>
+        <col>4</col>
+      </seat>
+      <seat>
+        <row>5</row>
+        <col>5</col>
+      </seat>
+      <seat>
+        <row>6</row>
+        <col>4</col>
+      </seat>
+      <seat>
+        <row>7</row>
+        <col>3</col>
+      </seat>
+    </seats>
+  </Res>
+  <Res>
+    <imienazwisko>NULL</imienazwisko>
+    <showid>1</showid>
+    <checked>true</checked>
+    <ok>true</ok>
+    <seats count="5">
+      <seat>
+        <row>2</row>
+        <col>1</col>
+      </seat>
+      <seat>
+        <row>3</row>
+        <col>1</col>
+      </seat>
+      <seat>
+        <row>3</row>
+        <col>2</col>
+      </seat>
+      <seat>
+        <row>3</row>
+        <col>3</col>
+      </seat>
+      <seat>
+        <row>3</row>
+        <col>4</col>
+      </seat>
+    </seats>
+  </Res>
+  <Res>
+    <imienazwisko>NULL</imienazwisko>
+    <showid>6</showid>
+    <checked>true</checked>
+    <ok>true</ok>
+    <seats count="7">
+      <seat>
+        <row>3</row>
+        <col>6</col>
+      </seat>
+      <seat>
+        <row>4</row>
+        <col>1</col>
+      </seat>
+      <seat>
+        <row>4</row>
+        <col>6</col>
+      </seat>
+      <seat>
+        <row>5</row>
+        <col>2</col>
+      </seat>
+      <seat>
+        <row>5</row>
+        <col>4</col>
+      </seat>
+      <seat>
+        <row>5</row>
+        <col>5</col>
+      </seat>
+      <seat>
+        <row>7</row>
+        <col>5</col>
+      </seat>
+    </seats>
+  </Res>
+  <Product id="0">
+    <name>Dummy</name>
+    <type>3</type>
+    <count>30</count>
+    <price>42.87</price>
+  </Product>
+</Kinomaniak>

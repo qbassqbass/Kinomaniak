@@ -1,0 +1,28 @@
+====00:16:03====
+00:16:03  Client connected from 127.0.0.1
+00:16:03  Thread-1 as qbass: 127.0.0.1
+00:16:34  Thread-1 as qbass: Client disconnected: 127.0.0.1
+====00:16:57====
+00:16:57  Client connected from 127.0.0.1
+00:16:57  Thread-2 as qbass: 127.0.0.1
+00:17:04  Thread-2 as qbass: Client disconnected: 127.0.0.1
+====09:03:54====
+09:03:54  Client connected from 127.0.0.1
+09:03:54  Thread-1 as qbass: 127.0.0.1
+09:05:05  Thread-1 as qbass: Client disconnected: 127.0.0.1
+====09:05:18====
+09:05:18  Client connected from 127.0.0.1
+09:05:18  Thread-2 as qbass: 127.0.0.1
+09:05:30  Thread-2 as qbass: Client disconnected: 127.0.0.1
+====09:06:07====
+09:06:07  Client connected from 127.0.0.1
+09:06:07  Thread-3 as qbass: 127.0.0.1
+09:06:21  Thread-3 as qbass: Client disconnected: 127.0.0.1
+====09:08:08====
+09:08:08  Client connected from 127.0.0.1
+09:08:08  Thread-4 as qbass: 127.0.0.1
+09:08:13  Thread-4 as qbass: IOError from 127.0.0.1: java.io.InvalidClassException: kinomaniak_objs.Attraction; local class incompatible: stream classdesc serialVersionUID = 1, local class serialVersionUID = -7842207680136494734
+====09:10:23====
+09:10:23  Client connected from 127.0.0.1
+09:10:23  Thread-1 as qbass: 127.0.0.1
+09:10:49  Thread-1 as qbass: Client disconnected: 127.0.0.1
