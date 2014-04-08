@@ -1849,7 +1849,14 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_liShowListMouseClicked
 
     private void liMovieListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_liMovieListValueChanged
-        // TODO add your handling code here:
+        int sel = liMovieList.getSelectedIndex();
+        if(sel < 0) return;
+        tMovieMore.setVisible(true);
+        
+        tMovieMore.setText("Name: "+mgmt.getMovies()[sel].getName()+"\nGenre: "+mgmt.getMovies()[sel].getGenre()+"\nRating: "
+                +mgmt.getMovies()[sel].getRating()+"\nDesc:\n"+mgmt.getMovies()[sel].getDesc());
+        tMovieMore.setWrapStyleWord(true);
+        tMovieMore.setLineWrap(true);
     }//GEN-LAST:event_liMovieListValueChanged
 
     private void liShowListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_liShowListValueChanged

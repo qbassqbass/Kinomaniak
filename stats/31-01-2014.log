@@ -13,3 +13,12 @@
 09:06:10  SendAttr to Thread-3 as qbass
 09:10:28  SendAttr to Thread-1 as qbass
 09:10:33  SendAttr to Thread-1 as qbass
+10:01:09  OffLineRes: NULL ShowID: 15 SeatCount: 2
+10:01:14  SendRes to Thread-1 as qbass
+10:01:16  SendRes to Thread-1 as qbass
+10:01:47  CancelRes: NULL ShowID:2 SeatsCount:2
+10:02:20  OffLineRes: NULL ShowID: 9 SeatCount: 2
+10:02:22  SendRes to Thread-1 as qbass
+10:03:54  Res: japasa dsacxz ShowID: 15 SeatCount: 2
+10:03:56  SendRes to Thread-1 as qbass
+10:03:58  SendRes to Thread-1 as qbass

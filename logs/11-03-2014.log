@@ -1,0 +1,12 @@
+====16:45:36====
+16:45:36  Client connected from 192.168.0.1
+16:45:37  Thread-1 as adas: 192.168.0.1
+====16:49:28====
+16:49:28  Client connected from 192.168.0.2
+16:49:28  Thread-2 as qbass: 192.168.0.2
+16:51:48  Thread-1 as adas: Client disconnected: 192.168.0.1
+====16:52:11====
+16:52:11  Client connected from 192.168.0.1
+16:52:11  Thread-3 as adas: 192.168.0.1
+16:54:53  Thread-2 as qbass: Client disconnected: 192.168.0.2
+17:04:20  Thread-3 as adas: Client disconnected: 192.168.0.1

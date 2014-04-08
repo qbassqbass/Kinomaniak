@@ -1,0 +1,59 @@
+16:46:02  SendRes to Thread-1 as adas
+16:46:22  SendRes to Thread-1 as adas
+16:46:26  SendRes to Thread-1 as adas
+16:46:32  CancelRes: japasa dsacxz ShowID:15 SeatsCount:2
+16:47:37  OffLineRes: NULL ShowID: 1 SeatCount: 2
+16:48:30  Res: Adam Odrobinsa ShowID: 1 SeatCount: 2
+16:48:31  SendProd to Thread-1 as adas
+16:48:31  SendProd to Thread-1 as adas
+16:48:58  SendRes to Thread-1 as adas
+16:49:03  SendRes to Thread-1 as adas
+16:49:04  SendRes to Thread-1 as adas
+16:49:15  Res: sasfdsfd dfsfgfgf ShowID: 5 SeatCount: 2
+16:49:17  SendRes to Thread-1 as adas
+16:49:37  SendRes to Thread-2 as qbass
+16:49:45  Res: Izus izus ShowID: 11 SeatCount: 2
+16:49:47  SendRes to Thread-2 as qbass
+16:49:53  CancelRes: Izus izus ShowID:11 SeatsCount:2
+16:49:58  OffLineRes: NULL ShowID: 11 SeatCount: 2
+16:50:04  SendRes to Thread-1 as adas
+16:50:19  SendProd to Thread-1 as adas
+16:50:19  SendProd to Thread-1 as adas
+16:50:38  SendAttr to Thread-1 as adas
+16:50:43  SendProd to Thread-1 as adas
+16:50:43  SendProd to Thread-1 as adas
+16:51:03  SendProd to Thread-1 as adas
+16:51:03  SendProd to Thread-1 as adas
+16:51:18  SendProd to Thread-1 as adas
+16:51:19  SendProd to Thread-1 as adas
+16:51:20  SendProd to Thread-1 as adas
+16:51:21  BuyProd: AK47
+16:51:30  SendProd to Thread-2 as qbass
+16:51:30  SendProd to Thread-2 as qbass
+16:51:33  SendProd to Thread-2 as qbass
+16:51:33  SendProd to Thread-2 as qbass
+16:51:34  SendProd to Thread-2 as qbass
+16:51:34  BuyProd: AK47
+16:51:36  SendProd to Thread-2 as qbass
+16:51:36  SendProd to Thread-2 as qbass
+16:51:38  SendProd to Thread-2 as qbass
+16:51:40  SendProd to Thread-2 as qbass
+16:51:40  SendProd to Thread-2 as qbass
+16:51:40  SendProd to Thread-2 as qbass
+16:51:42  SendProd to Thread-2 as qbass
+16:51:42  SendProd to Thread-2 as qbass
+16:51:43  SendProd to Thread-2 as qbass
+16:52:14  SendProd to Thread-3 as adas
+16:52:15  SendProd to Thread-3 as adas
+16:52:31  SendProd to Thread-2 as qbass
+16:52:31  SendProd to Thread-2 as qbass
+16:52:31  SendProd to Thread-3 as adas
+16:52:31  SendProd to Thread-3 as adas
+16:52:56  SendProd to Thread-3 as adas
+16:52:56  SendProd to Thread-3 as adas
+16:53:02  SendAttr to Thread-3 as adas
+16:53:10  SendAttr to Thread-2 as qbass
+16:53:10  SendAttr to Thread-3 as adas
+16:53:11  SendAttr to Thread-3 as adas
+16:53:11  Reserved Attratraction by Thread-3 as adas
+16:53:14  SendAttr to Thread-2 as qbass
